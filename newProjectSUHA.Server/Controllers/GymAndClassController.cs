@@ -9,6 +9,7 @@ namespace newProjectSUHA.Server.Controllers
     public class GymAndClassController : ControllerBase
     {
 
+
         private readonly MyDbContext _db;
 
         public GymAndClassController(MyDbContext db)
