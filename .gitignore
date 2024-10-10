@@ -362,5 +362,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /newProjectSUHA.Server/appsettings.json
-/newProjectSUHA.Server/Program.cs
 /newProjectSUHA.Server/Models/MyDbContext.cs
