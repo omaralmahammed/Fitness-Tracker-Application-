@@ -363,5 +363,3 @@ MigrationBackup/
 FodyWeavers.xsd
 /newProjectSUHA.Server/appsettings.json
 /newProjectSUHA.Server/Models/MyDbContext.cs
-/newProjectSUHA.Server/appsettings.json
-/newProjectSUHA.Server/appsettings.json
