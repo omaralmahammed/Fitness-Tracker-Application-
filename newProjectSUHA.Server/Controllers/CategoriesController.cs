@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
 namespace newProjectSUHA.Server.Controllers
