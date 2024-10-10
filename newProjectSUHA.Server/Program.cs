@@ -27,7 +27,6 @@ options.AddPolicy("Development", builder =>
 );
 
 
-
 var app = builder.Build();
 
 app.UseDefaultFiles();
@@ -42,11 +41,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseCors("Development");
+
 app.UseAuthorization();
 app.UseCors("Development");
 
 
 app.MapControllers();
+app.UseCors("Development");
+
 
 app.MapFallbackToFile("/index.html");
 
