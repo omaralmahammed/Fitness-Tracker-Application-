@@ -10,9 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("YourConnectionString")));
-
 
 builder.Services.AddCors(options =>
 
@@ -25,6 +25,7 @@ options.AddPolicy("Development", builder =>
 
 
 );
+
 
 var app = builder.Build();
 
@@ -43,8 +44,12 @@ app.UseHttpsRedirection();
 app.UseCors("Development");
 
 app.UseAuthorization();
+app.UseCors("Development");
+
 
 app.MapControllers();
+app.UseCors("Development");
+
 
 app.MapFallbackToFile("/index.html");
 
