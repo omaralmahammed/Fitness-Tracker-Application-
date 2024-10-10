@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using newProjectSUHA.Server.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +24,7 @@ options.AddPolicy("Development", builder =>
 })
 
 
+);
 
 var app = builder.Build();
 
