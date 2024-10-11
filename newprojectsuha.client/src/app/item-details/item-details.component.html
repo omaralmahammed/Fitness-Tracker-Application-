@@ -29,10 +29,17 @@
           <p class="single-product-pricing"><span>Per Months</span> ${{itemDetails.price}}</p>
           <p>{{itemDetails.description}}</p>
           <div class="single-product-form">
-            
-            <a href="cart.html" class="cart-btn"> Subscription Now</a>
+            <a routerLink="cart.html/{{itemDetails.id}}" class="cart-btn"> Subscription Now</a>
           </div>
-         
+          <div class="single-product-form">
+            <select >
+              <option>Select available time</option>
+              <option *ngFor="let item of availableTimesArray">
+                {{ item.startTime | date: 'HH:mm' }} - {{ item.endTime | date: 'HH:mm' }}
+              </option>
+
+            </select>
+          </div>
         </div>
       </div>
     </div>

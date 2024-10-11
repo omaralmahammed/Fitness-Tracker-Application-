@@ -15,6 +15,7 @@ export class ItemDetailsComponent {
     this.itemId = this._route.snapshot.paramMap.get("id");
 
     this.getItems(this.itemId)
+    this.getIAvailableTimes(this.itemId)
   }
   constructor(private _ser: UrlService, private _route: ActivatedRoute) { }
 
@@ -24,6 +25,15 @@ export class ItemDetailsComponent {
   getItems(id: number) {
     this._ser.GetGymAndClassItemDetails(id).subscribe((data) => {
       this.itemDetails = data;
+    })
+  }
+
+
+  availableTimesArray: any
+
+  getIAvailableTimes(id: number) {
+    this._ser.GetGymAndClassItemAvailableTime(id).subscribe((data) => {
+      this.availableTimesArray = data;
     })
   }
 

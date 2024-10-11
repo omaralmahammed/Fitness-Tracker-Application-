@@ -13,6 +13,7 @@ import { ShopComponent } from './shop/shop.component';
 import { GymComponent } from './gym/gym.component';
 import { GymAndClassItemsComponent } from './gym-and-class-items/gym-and-class-items.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
+import { GymAndClassSubscriptionComponent } from './gym-and-class-subscription/gym-and-class-subscription.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     FooterComponent,
     GymComponent,
     GymAndClassItemsComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    GymAndClassSubscriptionComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -37,7 +39,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
       { path: "gym", component: GymComponent},
       { path: "GymAndClassItems/:type", component: GymAndClassItemsComponent },
       { path: "itemDetails/:id", component: ItemDetailsComponent },
-
+      { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
 
     ])
 
