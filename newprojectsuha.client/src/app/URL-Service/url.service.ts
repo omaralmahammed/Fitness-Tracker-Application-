@@ -9,7 +9,7 @@ export class UrlService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = "https://localhost:7286/api/"
+  baseUrl = "https:/localhost:7286/api/"
 
 
   GetGymAndClassItems(type:string): Observable<any> {
@@ -18,15 +18,15 @@ export class UrlService {
 
   // Method to get all products
   GetAllProducts(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/Products/AllProducts`);
+    return this.http.get<any>(`${this.baseUrl}Products/AllProducts`);
   }
 
   // Method to get all categories
   GetAllCategories(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/Categories/AllCategories`);
+    return this.http.get<any>(`${this.baseUrl}Categories/AllCategories`);
   }
   GetProductsByCategory(categoryId: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/Categories/ProductsByCategoryId2/${categoryId}`);
+    return this.http.get<any[]>(`${this.baseUrl}Categories/ProductsByCategoryId2/${categoryId}`);
   }
 
 
