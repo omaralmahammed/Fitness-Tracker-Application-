@@ -17,5 +17,7 @@ export class UrlService {
   }
 
 
-
+  GetGymAndClassItemDetails(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClass/GetItemsDetails/${id}`)
+  }
 }

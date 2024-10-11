@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { ShopComponent } from './shop/shop.component';
 import { GymComponent } from './gym/gym.component';
 import { GymAndClassItemsComponent } from './gym-and-class-items/gym-and-class-items.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { GymAndClassItemsComponent } from './gym-and-class-items/gym-and-class-i
     ShopComponent,
     FooterComponent,
     GymComponent,
-    GymAndClassItemsComponent
+    GymAndClassItemsComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
@@ -31,6 +33,7 @@ import { GymAndClassItemsComponent } from './gym-and-class-items/gym-and-class-i
       { path: "Shop", component: ShopComponent },
       { path: "gym", component: GymComponent},
       { path: "GymAndClassItems/:type", component: GymAndClassItemsComponent },
+      { path: "itemDetails/:id", component: ItemDetailsComponent },
 
 
     ])
