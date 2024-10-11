@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms'; // <-- Add FormsModule here
-import { HttpClientModule } from '@angular/common/http'; // <-- Import HttpClientModule
+import { FormsModule } from '@angular/forms'; 
+import { HttpClientModule } from '@angular/common/http'; 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './suha/home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
-//import { RegisterComponent } from './Tuqa/register/register.component';
 import { ShopComponent } from './shop/shop.component';
 import { GymComponent } from './gym/gym.component';
 import { GymAndClassItemsComponent } from './gym-and-class-items/gym-and-class-items.component';
@@ -25,7 +24,6 @@ import { TipsComponent } from './tips/tips.component';
     HomeComponent,
     NavBarComponent,
     FooterComponent,
-    //RegisterComponent,
     ShopComponent,
     GymComponent,
     GymAndClassItemsComponent,

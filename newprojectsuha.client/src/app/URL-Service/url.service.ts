@@ -11,6 +11,9 @@ export class UrlService {
 
   baseUrl = "https://localhost:7286/api/"
 
+  email: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  emailaddress = this.email.asObservable();
+
 
   GetGymAndClassItems(type:string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetClassOrGym/${type}`)
@@ -45,8 +48,7 @@ export class UrlService {
   }
 
 
-  email: BehaviorSubject<string> = new BehaviorSubject<string>("");
-  emailaddress = this.email.asObservable();
+ 
 
 
 
