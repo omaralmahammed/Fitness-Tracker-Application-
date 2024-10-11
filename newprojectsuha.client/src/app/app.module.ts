@@ -40,8 +40,8 @@ import { TipsComponent } from './tips/tips.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,  // <-- Ensure HttpClientModule is imported
-    FormsModule,       // <-- Add FormsModule here to enable ngModel and ngForm
+    HttpClientModule,  
+    FormsModule,     
     AppRoutingModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
@@ -53,7 +53,7 @@ import { TipsComponent } from './tips/tips.component';
       { path: "LogIn", component: LogInComponent },
       { path: "Register", component: RegisterComponent },
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
-      { path: "Tips", component: TipsComponent }
+      { path: "Tips", component: TipsComponent },
 
     ])
   ],
