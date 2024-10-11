@@ -20,7 +20,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
     HomeComponent,
     NavBarComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
     FooterComponent,
     ShopComponent,
     FooterComponent,
