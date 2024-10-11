@@ -9,7 +9,6 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ShopComponent } from './shop/shop.component';
-
 import { GymComponent } from './gym/gym.component';
 
 @NgModule({
@@ -19,8 +18,6 @@ import { GymComponent } from './gym/gym.component';
     NavBarComponent,
     FooterComponent,
     ShopComponent
-    FooterComponent,
-    GymComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
