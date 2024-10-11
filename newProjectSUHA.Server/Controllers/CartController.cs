@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
 namespace newProjectSUHA.Server.Controllers
@@ -17,6 +18,41 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
+
+        [HttpPost("addCartItems/{userId}")]
+        public IActionResult addCartItems(int userId, [FromBody] addCartItemsDTO ci)
+        {
+            if (userId <= 0) return BadRequest("invalid id");
+
+            var userCart = _db.Carts.Where(a => a.UserId == userId).FirstOrDefault();
+
+            var existingItem = _db.CartItems
+                                .FirstOrDefault(x => x.CartId == userCart.Id && x.ProductId == ci.ProductId);
+
+            if (existingItem != null)
+            {
+                existingItem.Quantity += ci.Quantity ?? 1;
+
+                _db.SaveChanges();
+
+                return Ok();
+            }
+            else
+            {
+
+                var newItem = new CartItem
+                {
+                    CartId = userCart.Id,
+                    ProductId = ci.ProductId,
+                    Quantity = ci.Quantity ?? 1,
+                };
+
+                _db.CartItems.Add(newItem);
+                _db.SaveChanges();
+
+                return Ok();
+            }
+        }
 
 
         [HttpGet("getCartItems/{userId}")]
@@ -103,6 +139,13 @@ namespace newProjectSUHA.Server.Controllers
             _db.SaveChanges();
             return NoContent();
         }
+
+
+
+
+
+
+
 
 
 
