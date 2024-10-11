@@ -9,11 +9,11 @@ export class UrlService {
 
   constructor(private http: HttpClient) { }
 
-  baseUrl = "https://localhost:7286/api"
+  baseUrl = "https://localhost:7286/api/"
 
 
   GetGymAndClassItems(type:string): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/GymAndClass/GetClassOrGym/${type}`)
+    return this.http.get<any>(`${this.baseUrl}GymAndClass/GetClassOrGym/${type}`)
   }
 
 
