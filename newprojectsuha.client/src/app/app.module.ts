@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { ShopComponent } from './shop/shop.component';
 import { GymComponent } from './gym/gym.component';
+import { GymAndClassItemsComponent } from './gym-and-class-items/gym-and-class-items.component';
+import { ItemDetailsComponent } from './item-details/item-details.component';
 
 @NgModule({
   declarations: [
@@ -19,18 +21,19 @@ import { GymComponent } from './gym/gym.component';
     FooterComponent,
     ShopComponent,
     FooterComponent,
-    GymComponent
+    GymComponent,
+    GymAndClassItemsComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
-
       { path: "Shop", component: ShopComponent },
-      
-
       { path: "gym", component: GymComponent},
+      { path: "GymAndClassItems/:type", component: GymAndClassItemsComponent },
+      { path: "itemDetails/:id", component: ItemDetailsComponent },
 
 
     ])

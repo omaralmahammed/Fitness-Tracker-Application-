@@ -1,10 +1,9 @@
-<!-- breadcrumb-section -->
 <div class="breadcrumb-section breadcrumb-bg">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="breadcrumb-text">
-          <h1>Our Gym Services</h1>
+          <h1>Our {{ arrayOfItems[0]?.flag }}</h1>
         </div>
       </div>
     </div>
@@ -14,24 +13,17 @@
 <div class="product-section  d-flex justify-content-center align-items-center" style="min-height: 100vh;">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-5 col-md-8 text-center strawberry">
+      <div class="col-lg-5 col-md-8 text-center strawberry" *ngFor="let item of arrayOfItems">
         <div class="single-product-item">
           <div class="product-image">
-            <a routerLink="/GymAndClassItems/GYM"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+            <a routerLink="/itemDetails/{{item.id}}">
+            <img src="assets/img/products/product-img-1.jpg" alt=""></a>
           </div>
-          <h3>Local GYMs</h3>
-        </div>
-      </div>
-      <div class="col-lg-5 col-md-8 text-center strawberry">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a routerLink="/GymAndClassItems/Class"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
-          </div>
-          <h3>Fitness Class</h3>
+          <h3>{{item.name}}</h3>
+          <h4>{{item.trainer}}</h4>
+          <p>{{item.description}}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-

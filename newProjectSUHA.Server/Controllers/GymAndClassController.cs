@@ -28,7 +28,14 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
+        [HttpGet("GetItemsDetails/{id}")]
+        public IActionResult GetItemsDetails(int id)
+        {
 
+            var itemDetails = _db.ClassAndGyms.Find(id);
+
+            return Ok(itemDetails);
+        }
 
     }
 }
