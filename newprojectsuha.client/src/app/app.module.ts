@@ -14,6 +14,7 @@ import { GymComponent } from './gym/gym.component';
 import { GymAndClassItemsComponent } from './gym-and-class-items/gym-and-class-items.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { GymAndClassSubscriptionComponent } from './gym-and-class-subscription/gym-and-class-subscription.component';
+import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +22,15 @@ import { GymAndClassSubscriptionComponent } from './gym-and-class-subscription/g
     HomeComponent,
     NavBarComponent,
     FooterComponent,
-    RegisterComponent
+    RegisterComponent,
     FooterComponent,
     ShopComponent,
     FooterComponent,
     GymComponent,
     GymAndClassItemsComponent,
     ItemDetailsComponent,
-    GymAndClassSubscriptionComponent
+    GymAndClassSubscriptionComponent,
+    PreLoaderComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
