@@ -1,0 +1,31 @@
+.accordion-container {
+  margin: 20px auto;
+  max-width: 600px; /* Center the accordion */
+}
+
+.accordion-header {
+  cursor: pointer;
+  padding: 15px;
+  background-color: #f7f7f7; /* Background color */
+  border: 1px solid #ccc; /* Border for each header */
+  border-radius: 5px; /* Rounded corners */
+  margin-bottom: 5px; /* Space between headers */
+  transition: background-color 0.3s ease; /* Smooth transition for background */
+}
+
+  .accordion-header:hover {
+    background-color: #e2e2e2; /* Change background on hover */
+  }
+
+.accordion-body {
+  max-height: 0; /* Initially hide content */
+  overflow: hidden; /* Hide overflow */
+  transition: max-height 0.3s ease; /* Smooth transition */
+  padding: 0 15px; /* Padding for content */
+  border: 1px solid #ccc; /* Border for content */
+  border-top: none; /* Remove top border */
+}
+
+  .accordion-body.active {
+    max-height: 200px; /* Set a max height when active */
+  }

@@ -1,0 +1,51 @@
+<!-- Container for the Health Tips section -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>Health Tips</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end breadcrumb section -->
+<!-- Static paragraph with inline styling -->
+<h1 class="text-center" style="margin-top: 20px; margin-bottom: 10px; font-size: 18px; color: #333; line-height: 1.6;">
+  Here are some valuable health tips to help you maintain <br /> a healthy lifestyle. Click on the titles below to learn more about each tip.
+</h1>
+
+<div class="product-section d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-8 text-center" *ngFor="let tip of TipsArray; let i = index">
+        <div class="tip-item"
+             style="border: 1px solid #fd7e14; border-radius: 8px; padding: 20px; margin: 10px; cursor: pointer;"
+             (click)="openModal(tip.title, tip.description)">
+          <h3 style="color: #fd7e14;">{{ tip.title }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="tipsModal" tabindex="-1" role="dialog" aria-hidden="true" [class.show]="showModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ modalTitle }}</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ modalDescription }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

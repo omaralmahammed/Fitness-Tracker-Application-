@@ -16,6 +16,10 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetClassOrGym/${type}`)
   }
 
+  getTips(): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Nutirition/Tips`)
 
-
+  }
 }
+
+
