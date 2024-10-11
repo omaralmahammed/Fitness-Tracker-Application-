@@ -17,6 +17,7 @@ import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { RouterModule } from '@angular/router';
 import { LogInComponent } from './Tuqaa/log-in/log-in.component';
 import { RegisterComponent } from './Tuqaa/register/register.component';
+import { TipsComponent } from './tips/tips.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,9 @@ import { RegisterComponent } from './Tuqaa/register/register.component';
     PreLoaderComponent,
     LogInComponent,
     RegisterComponent
+    PreLoaderComponent,
+    GymAndClassItemsComponent,
+    TipsComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,9 @@ import { RegisterComponent } from './Tuqaa/register/register.component';
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "LogIn", component: LogInComponent },
       { path: "Register", component: RegisterComponent }
+
+      { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
+      { path: "Tips", component: TipsComponent }
 
     ])
   ],
