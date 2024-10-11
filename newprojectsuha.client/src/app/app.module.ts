@@ -8,6 +8,7 @@ import { HomeComponent } from './suha/home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { ShopComponent } from './shop/shop.component';
 
 import { GymComponent } from './gym/gym.component';
 
@@ -17,6 +18,8 @@ import { GymComponent } from './gym/gym.component';
     HomeComponent,
     NavBarComponent,
     FooterComponent,
+    ShopComponent
+    FooterComponent,
     GymComponent
   ],
   imports: [
@@ -24,6 +27,9 @@ import { GymComponent } from './gym/gym.component';
     AppRoutingModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
+
+      { path: "Shop", component: ShopComponent },
+      
 
       { path: "gym", component: GymComponent},
 
