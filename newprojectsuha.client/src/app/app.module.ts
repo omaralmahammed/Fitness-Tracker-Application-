@@ -17,7 +17,9 @@ import { GymComponent } from './gym/gym.component';
     HomeComponent,
     NavBarComponent,
     FooterComponent,
-    ShopComponent
+    ShopComponent,
+    FooterComponent,
+    GymComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
