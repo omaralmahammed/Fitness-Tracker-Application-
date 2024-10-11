@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -38,7 +38,22 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetAvailableTime/${id}`)
   }
 
+
+
   GetSubscriptions(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetSubscription/${id}`)
+  }
+
+
+  email: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  emailaddress = this.email.asObservable();
+
+
+
+  register(data: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}User/Register`, data)
+}
+  loginUser(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}User/LOGIN`, data)
   }
 }
