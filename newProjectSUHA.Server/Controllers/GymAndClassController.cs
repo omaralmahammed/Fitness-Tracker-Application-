@@ -18,6 +18,17 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
+        [HttpGet("GetClassOrGym/{type}")]
+        public IActionResult GetClassOrGym(string type)
+        {
+
+            var categoryItems = _db.ClassAndGyms.Where(f => f.Flag == type).ToList();
+
+            return Ok(categoryItems);
+        }
+
+
+
 
     }
 }
