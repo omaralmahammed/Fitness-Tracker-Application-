@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace newProjectSUHA.Server.Models;
 
@@ -13,6 +14,7 @@ public partial class Subscription
 
     public int? ClassId { get; set; }
 
+    [JsonIgnore]
     public virtual ClassAndGym? Class { get; set; }
 
     public virtual ICollection<Enrolled> Enrolleds { get; set; } = new List<Enrolled>();

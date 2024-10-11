@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
 namespace newProjectSUHA.Server.Controllers
@@ -36,6 +37,81 @@ namespace newProjectSUHA.Server.Controllers
 
             return Ok(itemDetails);
         }
+
+        [HttpGet("GetAvailableTime/{id}")]
+        public IActionResult GetAvailableTime(int id)
+        {
+
+            var itemAvailableTimes = _db.AvailableTimes.Where(c => c.ClassId == id).ToList();
+
+            return Ok(itemAvailableTimes);
+        }
+
+        [HttpPost("AddAvailableTime")]
+        public IActionResult AddAvailableTime([FromForm] AvailableTimeDTO addTime)
+        {
+            AvailableTime newTime = new AvailableTime()
+            {
+                ClassId = addTime.ClassId,
+                StartTime = addTime.StartTime,
+                EndTime = addTime.EndTime
+
+            };
+
+            _db.AvailableTimes.Add(newTime);
+            _db.SaveChanges();
+
+            return Ok(newTime);
+        }
+
+        [HttpGet("GetSubscription/{classId}")]
+        public IActionResult GetSubscription(int classId)
+        {
+
+            var itemSubscriptions = _db.Subscriptions.Where(c => c.ClassId == classId).ToList();
+
+            return Ok(itemSubscriptions);
+        }
+
+
+        [HttpPost("AddSubscriptions/{classId}")]
+        public IActionResult AddSubscriptions([FromBody] SubscriptionDTO addSubscription, int classId)
+        {
+            var classInfo = _db.ClassAndGyms.Find(classId);
+
+            if (classInfo == null)
+            {
+                return NotFound("Class not found");
+            }
+
+            var pricePerMonth = classInfo.Price;
+
+            var durationInMonths = Convert.ToInt32(addSubscription.Duration);
+
+            decimal discount = 0.10m;
+
+            var totalPrice = durationInMonths * pricePerMonth;
+
+            var discountAmount = totalPrice * discount;
+            var finalPriceAfterDiscount = totalPrice - discountAmount;
+
+            if (durationInMonths == 1) {
+                finalPriceAfterDiscount = pricePerMonth;
+            }
+
+            Subscription newSubscription = new Subscription()
+            {
+                Duration = addSubscription.Duration,
+                FinalPrice = finalPriceAfterDiscount,
+                ClassId = classId
+            };
+
+            _db.Subscriptions.Add(newSubscription);
+            _db.SaveChanges();
+
+            return Ok(newSubscription);
+        }
+
 
     }
 }
