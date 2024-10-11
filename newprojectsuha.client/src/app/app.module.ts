@@ -32,7 +32,7 @@ import { TipsComponent } from './tips/tips.component';
     GymAndClassSubscriptionComponent,
     PreLoaderComponent,
     GymAndClassItemsComponent,
-    TipsComponent
+    TipsComponent,
   ],
   imports: [
     BrowserModule,
