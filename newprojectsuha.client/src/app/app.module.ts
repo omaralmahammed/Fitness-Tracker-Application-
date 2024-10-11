@@ -33,7 +33,7 @@ import { TipsComponent } from './tips/tips.component';
     GymAndClassSubscriptionComponent,
     PreLoaderComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
     PreLoaderComponent,
     GymAndClassItemsComponent,
     TipsComponent,
@@ -51,8 +51,7 @@ import { TipsComponent } from './tips/tips.component';
       { path: "itemDetails/:id", component: ItemDetailsComponent },
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "LogIn", component: LogInComponent },
-      { path: "Register", component: RegisterComponent }
-
+      { path: "Register", component: RegisterComponent },
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "Tips", component: TipsComponent }
 
