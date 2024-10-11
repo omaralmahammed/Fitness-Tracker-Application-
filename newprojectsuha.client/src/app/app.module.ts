@@ -16,6 +16,7 @@ import { ItemDetailsComponent } from './item-details/item-details.component';
 import { GymAndClassSubscriptionComponent } from './gym-and-class-subscription/gym-and-class-subscription.component';
 import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { RouterModule } from '@angular/router';
+import { TipsComponent } from './tips/tips.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,8 @@ import { RouterModule } from '@angular/router';
     ItemDetailsComponent,
     GymAndClassSubscriptionComponent,
     PreLoaderComponent
+    GymAndClassItemsComponent,
+    TipsComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,8 @@ import { RouterModule } from '@angular/router';
       { path: "GymAndClassItems/:type", component: GymAndClassItemsComponent },
       { path: "itemDetails/:id", component: ItemDetailsComponent },
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent }
+      { path: "Tips", component: TipsComponent }
+
     ])
   ],
   providers: [],
