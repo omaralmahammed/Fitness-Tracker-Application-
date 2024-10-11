@@ -8,13 +8,15 @@ import { HomeComponent } from './suha/home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './Tuqa/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavBarComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule, HttpClientModule,
