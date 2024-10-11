@@ -8,6 +8,7 @@ import { HomeComponent } from './suha/home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+
 import { GymComponent } from './gym/gym.component';
 
 @NgModule({
@@ -23,6 +24,7 @@ import { GymComponent } from './gym/gym.component';
     AppRoutingModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
+
       { path: "gym", component: GymComponent},
 
 
