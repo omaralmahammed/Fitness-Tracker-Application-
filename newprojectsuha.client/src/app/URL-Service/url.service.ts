@@ -56,14 +56,15 @@ export class UrlService {
   loginUser(data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}User/LOGIN`, data)
   }
-}
+
 
   getTips(): Observable<any> {
     return this.http.get<any>(`https://localhost:7286/api/Nutirition/Tips`)
   }
 
-
-
 }
+
+ 
+
 
 

@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
 import { LogInComponent } from './Tuqaa/log-in/log-in.component';
 import { RegisterComponent } from './Tuqaa/register/register.component';
 import { TipsComponent } from './tips/tips.component';
+import { AboutComponent } from './Tuqaa/about/about.component';
 
 @NgModule({
   declarations: [
@@ -33,15 +34,16 @@ import { TipsComponent } from './tips/tips.component';
     GymAndClassSubscriptionComponent,
     PreLoaderComponent,
     LogInComponent,
-    RegisterComponent
+    RegisterComponent,
     PreLoaderComponent,
     GymAndClassItemsComponent,
     TipsComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,  // <-- Ensure HttpClientModule is imported
-    FormsModule,       // <-- Add FormsModule here to enable ngModel and ngForm
+    HttpClientModule,  
+    FormsModule,       
     AppRoutingModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
@@ -51,10 +53,11 @@ import { TipsComponent } from './tips/tips.component';
       { path: "itemDetails/:id", component: ItemDetailsComponent },
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "LogIn", component: LogInComponent },
-      { path: "Register", component: RegisterComponent }
+      { path: "Register", component: RegisterComponent },
 
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
-      { path: "Tips", component: TipsComponent }
+      { path: "Tips", component: TipsComponent },
+      { path: "About" , component : AboutComponent },
 
     ])
   ],
