@@ -8,6 +8,7 @@ import { HomeComponent } from './suha/home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { RegisterComponent } from './Tuqa/register/register.component';
 import { ShopComponent } from './shop/shop.component';
 import { GymComponent } from './gym/gym.component';
 import { GymAndClassItemsComponent } from './gym-and-class-items/gym-and-class-items.component';
@@ -19,6 +20,8 @@ import { GymAndClassSubscriptionComponent } from './gym-and-class-subscription/g
     AppComponent,
     HomeComponent,
     NavBarComponent,
+    FooterComponent,
+    RegisterComponent
     FooterComponent,
     ShopComponent,
     FooterComponent,
