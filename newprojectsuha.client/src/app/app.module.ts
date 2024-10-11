@@ -30,9 +30,9 @@ import { TipsComponent } from './tips/tips.component';
     GymAndClassItemsComponent,
     ItemDetailsComponent,
     GymAndClassSubscriptionComponent,
-    PreLoaderComponent
+    PreLoaderComponent,
     GymAndClassItemsComponent,
-    TipsComponent
+    TipsComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +45,7 @@ import { TipsComponent } from './tips/tips.component';
       { path: "gym", component: GymComponent },
       { path: "GymAndClassItems/:type", component: GymAndClassItemsComponent },
       { path: "itemDetails/:id", component: ItemDetailsComponent },
-      { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent }
+      { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "Tips", component: TipsComponent }
 
     ])
