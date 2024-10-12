@@ -71,7 +71,7 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
       { path: "Tips", component: TipsComponent },
       { path: "RecipesCategories", component: RecipesCategoriesComponent },
       { path : "Recipe/:id", component:RecipesComponent},
-      { path:"Recipedetals", component:RecipeDetailsComponent},
+      { path:"Recipedetals/:id", component:RecipeDetailsComponent},
       {path : "Recipe", component:RecipesComponent},
 
       { path: "LogIn", component: LogInComponent },
