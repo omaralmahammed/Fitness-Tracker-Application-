@@ -70,6 +70,16 @@ export class UrlService {
   }
 
 
+
+  getRecipeDetails(id: number): Observable<any> {
+    const url = `https://localhost:7286/api/Nutirition/Recipesdetels/${id}`; 
+    return this.http.get<any>(url); 
+  }
+
+
+
+
+
   GetProductById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)
   }
