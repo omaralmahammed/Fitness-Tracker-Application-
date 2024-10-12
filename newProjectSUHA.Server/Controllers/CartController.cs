@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
@@ -67,7 +68,21 @@ namespace newProjectSUHA.Server.Controllers
 
             if (userCart == null) return NotFound("no cart was found");
 
-            var cartItems = _db.CartItems.Where(a => a.CartId == userCart.Id).ToList();
+            var cartItems = _db.CartItems
+                .Where(a => a.CartId == userCart.Id)
+                .Include(a => a.Product)
+                .Select(a => new CartItemsDto
+                {
+                    Id = a.Id,
+                    Quantity = a.Quantity ?? 1,
+                    cp = new cartProduct
+                    {
+                        Name = a.Product.Name,
+                        Image = a.Product.Image,
+                        Price = a.Product.Price,
+                    }
+                })
+                .ToList();
 
             if (cartItems.IsNullOrEmpty()) return NotFound("no cart Items was found");
 
@@ -102,39 +117,31 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
-        [HttpPut("changeCartItemQuantity/{usrId}/{productId}")]
-        public IActionResult changeCartItemQuantity(int userId, int productId, [FromBody] int quantity)
+        [HttpPut("changeCartItemQuantity/{cartItemId}")]
+        public IActionResult changeCartItemQuantity(int cartItemId, [FromBody] int quantity)
         {
-            if (productId <= 0 || userId <= 0) return BadRequest("invaid id");
+            
+            if (cartItemId <= 0) return BadRequest("invaid id");
             if (quantity <= 0) return BadRequest("can't accept quantity of 0 or less");
 
-            var userCart = _db.Carts.Where(a => a.UserId == userId).FirstOrDefault();
-
-            if (userCart == null) return NotFound("no cart was found");
-
-            var product = _db.CartItems.Where(a => a.CartId == userCart.Id && a.ProductId == productId).FirstOrDefault();
+            var product = _db.CartItems.Where(a => a.Id == cartItemId).FirstOrDefault();
 
             if (product == null) return NotFound("no product was found");
 
             product.Quantity = quantity;
             _db.CartItems.Update(product);
             _db.SaveChanges();
-            return Ok("quantity updated");
+            return Ok(quantity);
         }
 
 
 
-        [HttpDelete("deleteCartItemQuantity/{usrId}/{productId}")]
-        public IActionResult deleteCartItemQuantity(int userId, int productId, [FromBody] int quantity)
+        [HttpDelete("deleteCartItem/{cartItemId}")]
+        public IActionResult deleteCartItem(int cartItemId)
         {
-            if (productId <= 0 || userId <= 0) return BadRequest("invaid id");
-            if (quantity <= 0) return BadRequest("can't accept quantity of 0 or less");
+            if (cartItemId <= 0) return BadRequest("invaid id");
 
-            var userCart = _db.Carts.Where(a => a.UserId == userId).FirstOrDefault();
-
-            if (userCart == null) return NotFound("no cart was found");
-
-            var product = _db.CartItems.Where(a => a.CartId == userCart.Id && a.ProductId == productId).FirstOrDefault();
+            var product = _db.CartItems.Where(a => a.Id == cartItemId).FirstOrDefault();
 
             if (product == null) return NotFound("no product was found");
 
@@ -244,7 +251,7 @@ namespace newProjectSUHA.Server.Controllers
             _db.CartItems.RemoveRange(cartList);
             _db.SaveChanges();
 
-            return Ok();
+            return Ok("cart was moved successfully to order");
         }
 
 
