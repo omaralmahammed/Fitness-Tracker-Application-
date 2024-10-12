@@ -20,7 +20,7 @@
         <div class="single-product-item">
           <div class="product-image">
             <a [routerLink]="['/Recipe', item.id]">
-              <img src="assets/img/products/product-img-1.jpg" alt="">
+              <img src="https://localhost:7286/api/Images/RecipesCatImages/{{item.Image}}" alt="{{item.Image}}">
             </a>
           </div>
           <h3>{{item.name}}</h3>
