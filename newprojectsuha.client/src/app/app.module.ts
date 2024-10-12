@@ -23,6 +23,7 @@ import { AboutComponent } from './Tuqaa/about/about.component';
 //import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { CartComponent } from './cart/cart.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { CartComponent } from './cart/cart.component';
   //  ContactUsComponent,
     SingleProductComponent,
     CartComponent,
+    RecipeDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,8 +66,8 @@ import { CartComponent } from './cart/cart.component';
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "Tips", component: TipsComponent },
       { path: "RecipesCategories", component: RecipesCategoriesComponent },
-      {path : "Recipe", component:RecipesComponent}
-
+      { path : "Recipe/:id", component:RecipesComponent},
+      { path:"Recipedetals", component:RecipeDetailsComponent},
       { path: "LogIn", component: LogInComponent },
       { path: "Register", component: RegisterComponent },
       { path: "SingleProduct/:id", component: SingleProductComponent },
