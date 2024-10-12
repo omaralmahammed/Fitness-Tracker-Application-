@@ -11,6 +11,5 @@
     <Folder Include="src\app\Tuqaa\" />
     <Folder Include="src\app\URL-Service\" />
     <Folder Include="src\app\suha\" />
-    <Folder Include="src\assets\" />
   </ItemGroup>
 </Project>

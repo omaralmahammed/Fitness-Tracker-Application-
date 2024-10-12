@@ -1,35 +1,48 @@
-.modal {
-  display: none; /* Hide by default */
-  position: fixed; /* Stay in place */
-  z-index: 1050; /* Sit on top */
-  left: 0;
+/*.modal {
+  display: none;*/ /* Hide by default */
+  /*position: fixed;*/ /* Stay in place */
+  /*z-index: 1050;*/ /* Sit on top */
+  /*left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
-}
+  width: 100%;*/ /* Full width */
+  /*height: 100%;*/ /* Full height */
+  /*overflow: auto;*/ /* Enable scroll if needed */
+  /*background-color: rgba(0,0,0,0.5);*/ /* Black w/ opacity */
+/*}
 
   .modal.show {
-    display: block; /* Show the modal */
-  }
+    display: block;*/ /* Show the modal */
+  /*}
 
 .modal-dialog {
-  margin: 15% auto; /* Center the modal */
-}
+  margin: 15% auto;*/ /* Center the modal */
+/*}
 
 .modal-content {
-  border-radius: 5px; /* Rounded corners */
-}
+  border-radius: 5px;*/ /* Rounded corners */
+/*}
 
 .modal-header {
-  border-bottom: none; /* Remove border */
-}
+  border-bottom: none;*/ /* Remove border */
+/*}
 
 .modal-footer {
-  border-top: none; /* Remove border */
-}
+  border-top: none;*/ /* Remove border */
+/*}
 
 .close {
-  cursor: pointer; /* Pointer on hover */
+  cursor: pointer;*/ /* Pointer on hover */
+/*}*/
+
+
+.blog-item {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
 }
+
+
+
+  .blog-item:hover {
+    transform: scale(1.05); /* Slightly enlarges the item on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a shadow effect */
+  }

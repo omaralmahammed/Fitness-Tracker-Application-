@@ -23,6 +23,7 @@ import { AboutComponent } from './Tuqaa/about/about.component';
 //import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { CartComponent } from './cart/cart.component';
   //  ContactUsComponent,
     SingleProductComponent,
     CartComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +77,7 @@ import { CartComponent } from './cart/cart.component';
       //{ path: "Contact", component: ContactUsComponent },
       { path: "Tips", component: TipsComponent },
       { path: "cart", component: CartComponent },
+      { path: "checkout", component: CheckoutComponent },
 
     ])
   ],
