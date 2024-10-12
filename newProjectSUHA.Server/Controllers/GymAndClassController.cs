@@ -115,8 +115,9 @@ namespace newProjectSUHA.Server.Controllers
         [HttpPost("AddSubscriptionToEnrolled")]
         public IActionResult AddSubscriptionToEnrolled([FromBody] EnrolledRequestDTO subscriptionInfo)
         {
-            var check = _db.Enrolleds.Where(s => s.ClassSubId == subscriptionInfo.ClassSubId);
+            var check = _db.Enrolleds.Where(s => s.ClassSubId == subscriptionInfo.ClassSubId).FirstOrDefault();
 
+            
             if(check != null)
             {
                 return BadRequest("You are already subscribed to this event. Please select a different event.");
@@ -136,6 +137,7 @@ namespace newProjectSUHA.Server.Controllers
 
             _db.Enrolleds.Add(newOrder);
             _db.SaveChanges();
+
             return Ok(newOrder);
         }
     }

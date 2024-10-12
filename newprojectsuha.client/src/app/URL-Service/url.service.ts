@@ -41,16 +41,9 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetAvailableTime/${id}`)
   }
 
-
-
   GetSubscriptions(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetSubscription/${id}`)
   }
-
-
- 
-
-
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}User/Register`, data)
@@ -59,9 +52,12 @@ export class UrlService {
     return this.http.post<any>(`${this.baseUrl}User/LOGIN`, data)
   }
 
-
   getTips(): Observable<any> {
     return this.http.get<any>(`https://localhost:7286/api/Nutirition/Tips`)
+  }
+
+  addSubscribtionToEnrolled(data : any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}GymAndClass/AddSubscriptionToEnrolled`, data)
   }
 }
 
