@@ -42,7 +42,7 @@ namespace newProjectSUHA.Server.Controllers
         public IActionResult GetAvailableTime(int id)
         {
 
-            var itemAvailableTimes = _db.AvailableTimes.Where(c => c.ClassId == id).ToList();
+            var itemAvailableTimes = _db.AvailableTimes.OrderBy(c => c.StartTime).Where(c => c.ClassId == id).ToList();
 
             return Ok(itemAvailableTimes);
         }
@@ -68,7 +68,7 @@ namespace newProjectSUHA.Server.Controllers
         public IActionResult GetSubscription(int classId)
         {
 
-            var itemSubscriptions = _db.Subscriptions.Where(c => c.ClassId == classId).ToList();
+            var itemSubscriptions = _db.Subscriptions.OrderBy(d => d.Duration).Where(c => c.ClassId == classId).ToList();
 
             return Ok(itemSubscriptions);
         }
