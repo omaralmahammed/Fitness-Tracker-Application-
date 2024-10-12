@@ -79,11 +79,11 @@
 			<div class="col-lg-4 col-md-6 text-center"  *ngFor="let product of relatedProducts">
 				<div class="single-product-item">
 					<div class="product-image">
-						<a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+						<img src="https://i.pinimg.com/564x/e2/d1/95/e2d19587202b24c3066ce3e357d3b09e.jpg" alt="{{ product.name }}" (click)="navigateToProduct(product.id)">
 					</div>
-					<h3>{{ product.name }}</h3>
+					<a [routerLink]="['/SingleProduct', product.id]" (click)="navigateToProduct(product.id)">{{ product.name }}</a>
 					<p class="product-price">{{ product.price }}$</p>
-					<a class="cart-btn" (click)="addToCart(product.id, 1)"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+					<a class="cart-btn" (click)="addToCart(product.id, quantity)"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
 				</div>
 			</div>
 

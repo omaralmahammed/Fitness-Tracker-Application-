@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UrlService } from '../URL-Service/url.service';
 import Swal from 'sweetalert2';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-single-product',
@@ -15,7 +16,13 @@ export class SingleProductComponent {
   relatedProducts: any[] = []; // Array to hold related products
   quantity: number = 1; // Default quantity
 
-  constructor(private route: ActivatedRoute, private productService: UrlService) { }
+  constructor(
+    private route: ActivatedRoute,
+
+    private productService: UrlService,
+    private router: Router,  // Inject Router
+    private viewportScroller: ViewportScroller  // Inject ViewportScroller
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -24,21 +31,25 @@ export class SingleProductComponent {
         this.productService.GetProductById(this.productId).subscribe(product => {
           this.product = product;
           // Now fetch the last 3 products from the same category
-          this.loadRelatedProducts(product.categoryId);
+          this.loadRelatedProducts();
         });
       }
     });
   }
   
-  loadRelatedProducts(categoryId: any) {
-    this.productService.GetLast3ProductsByCategory(categoryId).subscribe(
-      products => {
-        this.relatedProducts = products; // Assign the fetched products
-      },
-      error => {
-        console.error("Error fetching related products:", error);
-      }
-    );
+  // Fetch 3 random products excluding the current one
+  loadRelatedProducts() {
+    if (this.productId) {
+      // Fetch random 3 products in the same category except the current product
+      this.productService.GetRandom3ProductsByCategory(this.productId).subscribe(
+        products => {
+          this.relatedProducts = products; // Assign the fetched products
+        },
+        error => {
+          console.error("Error fetching related products:", error);
+        }
+      );
+    }
   }
 
   addToCart(productId: number, quantity: number) {
@@ -71,6 +82,14 @@ export class SingleProductComponent {
       });
     });
   }
+  // Navigate to the selected product and scroll to top
+  navigateToProduct(productId: number) {
+    this.router.navigate(['/SingleProduct', productId]).then(() => {
+      // Scroll to the top of the page
+      this.viewportScroller.scrollToPosition([500, 500]);
+    });
+  }
+
 
 }
 

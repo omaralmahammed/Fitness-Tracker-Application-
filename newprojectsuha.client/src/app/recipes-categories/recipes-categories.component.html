@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="breadcrumb-text">
-          <h1>Our Gym Services</h1>
+          <h1> Recipes</h1>
         </div>
       </div>
     </div>
@@ -15,21 +15,16 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-5 col-md-8 text-center strawberry">
-        <div class="single-product-item">
+        <div class="single-product-item" *ngFor="let item of categorieArray">
           <div class="product-image">
-            <a routerLink="/GymAndClassItems/GYM"><img src="assets/img/gymImage.jpeg" alt="gymImage.jpeg" height="300px"></a>
+            <a  routerLink="/Recipe/{{item.id}}">
+            <img src="assets/img/products/product-img-1.jpg" alt=""></a>
           </div>
-          <h3>Local GYMs</h3>
+         
+          <h3>{{item.name}}</h3>
         </div>
       </div>
-      <div class="col-lg-5 col-md-8 text-center strawberry">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a routerLink="/GymAndClassItems/Class"><img src="assets/img/fitnessClass.jpg" alt="fitnessClass.jpg"height="300px"></a>
-          </div>
-          <h3>Fitness Class</h3>
-        </div>
-      </div>
+     
     </div>
   </div>
 </div>
