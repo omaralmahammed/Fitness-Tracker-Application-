@@ -70,11 +70,16 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)
   }
 
-
+  GetRandom3ProductsByCategory(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Products/GetRandom3ProductsByCategory/${id}`)
+  }
 
   GetLast3ProductsByCategory(categoryId: any) {
     return this.http.get<any[]>(`${this.baseUrl}Products/GetLast3ProductsByCategory/${categoryId}`);
   }
+
+
+ 
 
 
   addCartItem(userId: number, cartItem: any): Observable<any> {
