@@ -48,6 +48,7 @@ namespace newProjectSUHA.Server.Controllers
                 };
 
                 _db.CartItems.Add(newItem);
+
                 _db.SaveChanges();
 
                 return Ok();

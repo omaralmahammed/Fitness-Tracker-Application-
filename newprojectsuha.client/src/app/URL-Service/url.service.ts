@@ -63,6 +63,23 @@ export class UrlService {
   getTips(): Observable<any> {
     return this.http.get<any>(`https://localhost:7286/api/Nutirition/Tips`)
   }
+
+
+  GetProductById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)
+  }
+
+
+
+  GetLast3ProductsByCategory(categoryId: any) {
+    return this.http.get<any[]>(`${this.baseUrl}Products/GetLast3ProductsByCategory/${categoryId}`);
+  }
+
+
+  addCartItem(userId: number, cartItem: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Cart/addCartItems/${userId}`, cartItem);
+  }
+
 }
 
 
