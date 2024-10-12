@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UrlService } from '../URL-Service/url.service';
 import Swal from 'sweetalert2';
+import { ViewportScroller } from '@angular/common';
 
 @Component({
   selector: 'app-single-product',
@@ -15,7 +16,13 @@ export class SingleProductComponent {
   relatedProducts: any[] = []; // Array to hold related products
   quantity: number = 1; // Default quantity
 
-  constructor(private route: ActivatedRoute, private productService: UrlService) { }
+  constructor(
+    private route: ActivatedRoute,
+
+    private productService: UrlService,
+    private router: Router,  // Inject Router
+    private viewportScroller: ViewportScroller  // Inject ViewportScroller
+  ) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -29,7 +36,7 @@ export class SingleProductComponent {
       }
     });
   }
-
+  
   loadRelatedProducts(categoryId: any) {
     this.productService.GetLast3ProductsByCategory(categoryId).subscribe(
       products => {
@@ -71,6 +78,14 @@ export class SingleProductComponent {
       });
     });
   }
+  // Navigate to the selected product and scroll to top
+  navigateToProduct(productId: number) {
+    this.router.navigate(['/SingleProduct', productId]).then(() => {
+      // Scroll to the top of the page
+      this.viewportScroller.scrollToPosition([500, 500]);
+    });
+  }
+
 
 }
 

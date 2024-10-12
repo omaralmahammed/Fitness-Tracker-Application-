@@ -14,6 +14,9 @@ export class UrlService {
   email: BehaviorSubject<string> = new BehaviorSubject<string>("");
   emailaddress = this.email.asObservable();
 
+  UserId: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  UserIdObserve = this.UserId.asObservable();
+
 
   GetGymAndClassItems(type:string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetClassOrGym/${type}`)
@@ -57,6 +60,12 @@ export class UrlService {
   }
 
 
+  getCategorieRecipe(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Nutirition/RecipesCategory`);
+  }
+  getSRecipe(id: any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Nutirition/Recipes/${id}`);
+  }
   GetProductById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)
   }
@@ -71,6 +80,16 @@ export class UrlService {
   addCartItem(userId: number, cartItem: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}Cart/addCartItems/${userId}`, cartItem);
   }
+
+  submitContact(contactData: FormData): Observable<any> {
+    return this.http.post(`${this.baseUrl}Contact`, contactData);
+  }
+
+  getContacts(): Observable<any> {
+    return this.http.get(`${this.baseUrl}Contact/contact`);
+  }
+
+
 
 
   addSubscribtionToEnrolled(data : any): Observable<any> {

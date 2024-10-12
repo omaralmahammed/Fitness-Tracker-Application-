@@ -27,7 +27,7 @@ namespace newProjectSUHA.Server.Controllers
         [HttpGet("Recipes/{id}")]
         public IActionResult SubFood(int id)
         {
-            var SubFood = _db.Recipes.Where(a => a.Id == id).FirstOrDefault();
+            var SubFood = _db.Recipes.Where(a => a.CategoryId == id);
             return Ok(SubFood);
         }
 
