@@ -63,9 +63,13 @@ export class UrlService {
   getCategorieRecipe(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Nutirition/RecipesCategory`);
   }
-  getSRecipe(id: any): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}Nutirition/Recipes/${id}`);
+  
+  getRecipesByCategory(categoryId: number): Observable<any[]> {
+    const url = `https://localhost:7286/api/Nutirition/Recipes/${categoryId}`; 
+    return this.http.get<any[]>(url);
   }
+
+
   GetProductById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)
   }
@@ -99,6 +103,11 @@ export class UrlService {
 
   addSubscribtionToEnrolled(data : any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}GymAndClass/AddSubscriptionToEnrolled`, data)
+  }
+
+  getTestimonials(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Testimonials`);
+
   }
 
 
