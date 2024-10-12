@@ -59,21 +59,27 @@
     </div>
   </div>
 </div>
+<!-- End Breadcrumb Section -->
 
-<!-- Blog Section -->
-<div class="container mt-5">
-  <!-- Add margin top to separate from the breadcrumb -->
-  <div class="row">
-    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let tip of TipsArray">
-      <div class="blog-item" style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; transition: transform 0.3s;">
-        <img [src]="tip.Image" alt="{{ tip.Title }}" style="width: 100%; height: 200px; object-fit: cover;">
-        <div class="p-3">
-          <h5 style="color: #fd7e14;">{{ tip.Title }}</h5>
-          <p style="color: #555;">{{ tip.Description }}</p>
+<div class="tips-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="tip-item" *ngFor="let tip of TipsArray">
+          <div class="tip-header">
+            <h2>{{ tip.title }}</h2>
+          </div>
+          <div class="tip-image">
+            <img src="https://localhost:7286/api/Images/TipsImages/{{tip.image}}" alt="{{tip.image}}">
+          </div>
+          <p>{{ tip.description }}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
 
 
