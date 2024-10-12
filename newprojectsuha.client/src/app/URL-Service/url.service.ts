@@ -63,6 +63,31 @@ export class UrlService {
   getTips(): Observable<any> {
     return this.http.get<any>(`https://localhost:7286/api/Nutirition/Tips`)
   }
+
+
+  getCartItems(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Cart/getCartItems/${id}`)
+  }
+
+  getCartTotal(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Cart/getCartTotal/${id}`)
+  }
+
+  deleteCartItem(cartItemId: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}Cart/deleteCartItem/${cartItemId}`)
+  }
+
+  changeCartItemQuantity(cartItemId: number, quantity: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}Cart/changeCartItemQuantity/${cartItemId}`, quantity)
+  }
+
+  moveFromCartToOrder(userId: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Cart/moveFromCartToOrder/${userId}`, null)
+  }
+
+
+
+
 }
 
 

@@ -19,6 +19,7 @@ import { RegisterComponent } from './Tuqaa/register/register.component';
 import { TipsComponent } from './tips/tips.component';
 import { AboutComponent } from './Tuqaa/about/about.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CartComponent } from './cart/cart.component';
     TipsComponent,
     AboutComponent,
     CartComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { CartComponent } from './cart/cart.component';
       { path: "About" , component : AboutComponent },
       { path: "Tips", component: TipsComponent },
       { path: "cart", component: CartComponent },
+      { path: "checkout", component: CheckoutComponent },
 
     ])
   ],
