@@ -17,6 +17,8 @@ import { RouterModule } from '@angular/router';
 import { LogInComponent } from './Tuqaa/log-in/log-in.component';
 import { RegisterComponent } from './Tuqaa/register/register.component';
 import { TipsComponent } from './tips/tips.component';
+import { RecipesCategoriesComponent } from './recipes-categories/recipes-categories.component';
+import { RecipesComponent } from './recipes/recipes.component';
 import { AboutComponent } from './Tuqaa/about/about.component';
 //import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
 import { SingleProductComponent } from './single-product/single-product.component';
@@ -39,6 +41,8 @@ import { CartComponent } from './cart/cart.component';
     PreLoaderComponent,
     GymAndClassItemsComponent,
     TipsComponent,
+    RecipesCategoriesComponent,
+    RecipesComponent,
     AboutComponent,
   //  ContactUsComponent,
     SingleProductComponent,
@@ -58,6 +62,10 @@ import { CartComponent } from './cart/cart.component';
       { path: "GymAndClassItems/:type", component: GymAndClassItemsComponent },
       { path: "itemDetails/:id", component: ItemDetailsComponent },
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
+      { path: "Tips", component: TipsComponent },
+      { path: "RecipesCategories", component: RecipesCategoriesComponent },
+      {path : "Recipe", component:RecipesComponent}
+
       { path: "LogIn", component: LogInComponent },
       { path: "Register", component: RegisterComponent },
       { path: "SingleProduct/:id", component: SingleProductComponent },
