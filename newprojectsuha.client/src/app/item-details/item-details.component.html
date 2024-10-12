@@ -15,33 +15,94 @@
 
 
 
-<div class="single-product mt-150 mb-150">
+<div class="single-product mt-5 mb-5">
   <div class="container">
     <div class="row">
+      <!-- Product Image -->
       <div class="col-md-5">
         <div class="single-product-img">
-          <img src="assets/img/products/product-img-5.jpg" alt="">
+          <img src="https://localhost:7286/api/Images/getImages/{{itemDetails.image}}" class="img-fluid rounded" alt="Product Image">
         </div>
       </div>
+
+      <!-- Product Details -->
       <div class="col-md-7">
         <div class="single-product-content">
-          <h3>{{itemDetails.name}}</h3>
-          <p class="single-product-pricing"><span>Per Months</span> ${{itemDetails.price}}</p>
-          <p>{{itemDetails.description}}</p>
-          <div class="single-product-form">
-            <a routerLink="cart.html/{{itemDetails.id}}" class="cart-btn"> Subscription Now</a>
+          <!-- Product Title -->
+          <h2 class="display-6">{{itemDetails.name}} {{itemDetails.flag}}</h2>
+
+          <!-- Product Description -->
+          <p class="text-start" style=" text-align: left; ">{{itemDetails.description}}</p>
+          <hr />
+
+          <div class="single-product-pricing h4 text-muted d-flex align-items-center">
+            <span class="fw-bold mr-2">Price Per Month:</span>
+            <span>${{itemDetails.price}}</span>
           </div>
-          <div class="single-product-form">
-            <select >
-              <option>Select available time</option>
-              <option *ngFor="let item of availableTimesArray">
+
+
+          <div class="single-product-pricing h4 text-muted d-flex align-items-center">
+            <label for="timeSelection" class="form-label mr-2">Select Available Time:</label>
+            <select id="timeSelection" class="form-select mb-3" (change)="storeAvailabelTimeId($event)">
+              <option>Available time</option>
+              <option *ngFor="let item of availableTimesArray" value="{{item.id}}">
                 {{ item.startTime | date: 'HH:mm' }} - {{ item.endTime | date: 'HH:mm' }}
               </option>
-
             </select>
           </div>
+
+          <p class="text-danger text-left">{{errorMessage}}</p>
+
+
+          <div>
+            <a (click) ="goToSubscription(itemDetails.id)" class="btn cart-btn btn-lg w-100">
+              Select Subscription
+            </a>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+<style>
+
+  /* General styles for the select dropdown */
+  #timeSelection {
+    background-color: #f8f9fa; /* Light grey background */
+    border: 1px solid #ced4da; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px; /* Padding for better spacing */
+    font-size: 16px; /* Larger font size for readability */
+    color: #495057; /* Text color */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease; /* Smooth transition for focus effect */
+  }
+
+    /* Styles for the dropdown when focused */
+    #timeSelection:focus {
+      border-color: #80bdff; /* Highlighted border color */
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Light blue glow */
+      outline: none; /* Remove default outline */
+    }
+
+    /* Styles for disabled option */
+    #timeSelection option:disabled {
+      color: #6c757d; /* Grey color for disabled text */
+    }
+
+    /* Add a hover effect for better interaction feedback */
+    #timeSelection:hover {
+      border-color: #6c757d; /* Slightly darker border on hover */
+    }
+
+  /* Media query for responsiveness */
+  @media (max-width: 576px) {
+    #timeSelection {
+      font-size: 14px; /* Slightly smaller font size for mobile */
+      padding: 8px; /* Adjust padding for smaller screens */
+    }
+  }
+
+</style>

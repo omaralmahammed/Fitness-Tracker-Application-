@@ -9,22 +9,31 @@
     </div>
   </div>
 </div>
+
+
+<div class="text-center mt-5" >
+  <h2>Choose Your Plan!</h2>
+</div>
+
 <!-- end breadcrumb section -->
-<div class="product-section  d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+<div class="product-section d-flex justify-content-center align-items-center" style="min-height: 80vh;">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-5 col-md-8 text-center strawberry" *ngFor="let item of arrayOfSubscriptions">
-        <div class="single-product-item">
-          <div class="product-image">
-          </div>
-          <h3>{{item.duration}} Months</h3>
-
-          <h4>Price: {{item.finalPrice}}$/ Per Months</h4>
-
-      
-
+      <div class="col-lg-4 col-md-6 text-center" *ngFor="let item of arrayOfSubscriptions">
+        <div class="single-product-item border rounded p-4 shadow-sm">
+          <h4 class="text-danger mb-3">
+            {{item.finalPrice}}$ /
+            <span style="font-size: 0.6em;">Total price</span>
+          </h4>          <hr>
+          <h3 class="mb-3">{{item.duration}} Months</h3>
+          <h6 class="text-success mb-3">Save {{item.duration}}0%</h6>
+          <a class="cart-btn mt-3" (click)="AddSubscription(item.id)">
+            Choose Now
+          </a>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+

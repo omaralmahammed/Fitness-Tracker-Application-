@@ -42,7 +42,7 @@ namespace newProjectSUHA.Server.Controllers
         public IActionResult GetAvailableTime(int id)
         {
 
-            var itemAvailableTimes = _db.AvailableTimes.Where(c => c.ClassId == id).ToList();
+            var itemAvailableTimes = _db.AvailableTimes.OrderBy(c => c.StartTime).Where(c => c.ClassId == id).ToList();
 
             return Ok(itemAvailableTimes);
         }
@@ -68,7 +68,7 @@ namespace newProjectSUHA.Server.Controllers
         public IActionResult GetSubscription(int classId)
         {
 
-            var itemSubscriptions = _db.Subscriptions.Where(c => c.ClassId == classId).ToList();
+            var itemSubscriptions = _db.Subscriptions.OrderBy(d => d.Duration).Where(c => c.ClassId == classId).ToList();
 
             return Ok(itemSubscriptions);
         }
@@ -112,6 +112,33 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(newSubscription);
         }
 
+        [HttpPost("AddSubscriptionToEnrolled")]
+        public IActionResult AddSubscriptionToEnrolled([FromBody] EnrolledRequestDTO subscriptionInfo)
+        {
+            var check = _db.Enrolleds.Where(s => s.ClassSubId == subscriptionInfo.ClassSubId).FirstOrDefault();
 
+            
+            if(check != null)
+            {
+                return BadRequest("You are already subscribed to this event. Please select a different event.");
+            }
+
+            var subscription = _db.Subscriptions.Find(subscriptionInfo.ClassSubId);
+
+            Enrolled newOrder = new Enrolled()
+            {
+                UserId = subscriptionInfo.UserId,
+                ClassSubId = subscriptionInfo.ClassSubId,
+                ClassTimeId = subscriptionInfo.ClassTimeId,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddMonths(Convert.ToInt32(subscription.Duration)),
+                PaymentMethod = "Active",
+            };
+
+            _db.Enrolleds.Add(newOrder);
+            _db.SaveChanges();
+
+            return Ok(newOrder);
+        }
     }
 }

@@ -41,6 +41,15 @@ namespace newProjectSUHA.Server.Controllers
             _db.Users.Add(NewUser);
             _db.SaveChanges();
 
+            var userId = NewUser.Id;
+
+            var NewUserCart = new Cart
+            {
+                UserId = userId
+
+            };
+            _db.Carts.Add(NewUserCart);
+            _db.SaveChanges();
             return Ok();
         }
 
