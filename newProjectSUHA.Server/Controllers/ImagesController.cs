@@ -39,8 +39,8 @@ namespace newProjectSUHA.Server.Controllers
         }
 
         ///this api is for recipes images dooooont touch it plz
-        [HttpGet("RecipesCatImages/{imageName}")]
-        public IActionResult getRecCatImage(string imageName)
+        [HttpGet("RecipesImages/{imageName}")]
+        public IActionResult getRecImage(string imageName)
         {
             var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "Upload", imageName);
 
