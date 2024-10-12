@@ -64,7 +64,7 @@ import { CartComponent } from './cart/cart.component';
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "Tips", component: TipsComponent },
       { path: "RecipesCategories", component: RecipesCategoriesComponent },
-      {path : "Recipe", component:RecipesComponent}
+      {path : "Recipe", component:RecipesComponent},
 
       { path: "LogIn", component: LogInComponent },
       { path: "Register", component: RegisterComponent },
