@@ -83,7 +83,7 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
       { path: "Contact", component: ContactUsComponent },
       { path: "Tips", component: TipsComponent },
       { path: "cart", component: CartComponent },
-      { path: "Testimonial", component: TestimonialComponent }
+      { path: "Testimonial", component: TestimonialComponent },
       { path: "checkout", component: CheckoutComponent },
 
     ])
