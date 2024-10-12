@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace newProjectSUHA.Server.Models;
 
@@ -19,6 +20,7 @@ public partial class Enrolled
 
     public string? PaymentMethod { get; set; }
 
+    [JsonIgnore]
     public virtual Subscription? ClassSub { get; set; }
 
     public virtual User? User { get; set; }

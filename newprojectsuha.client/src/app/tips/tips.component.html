@@ -1,5 +1,5 @@
 <!-- Container for the Health Tips section -->
-<div class="breadcrumb-section breadcrumb-bg">
+<!--<div class="breadcrumb-section breadcrumb-bg">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
@@ -9,10 +9,10 @@
       </div>
     </div>
   </div>
-</div>
+</div>-->
 <!-- end breadcrumb section -->
 <!-- Static paragraph with inline styling -->
-<h1 class="text-center" style="margin-top: 20px; margin-bottom: 10px; font-size: 18px; color: #333; line-height: 1.6;">
+<!--<h1 class="text-center" style="margin-top: 20px; margin-bottom: 10px; font-size: 18px; color: #333; line-height: 1.6;">
   Here are some valuable health tips to help you maintain <br /> a healthy lifestyle. Click on the titles below to learn more about each tip.
 </h1>
 <div class="product-section d-flex justify-content-center align-items-center" style="min-height: 70vh;">
@@ -27,10 +27,9 @@
       </div>
     </div>
   </div>
-</div>
-
+</div>-->
 <!-- Modal -->
-<div class="modal" id="tipsModal" tabindex="-1" role="dialog" aria-hidden="true" [class.show]="showModal">
+<!--<div class="modal" id="tipsModal" tabindex="-1" role="dialog" aria-hidden="true" [class.show]="showModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -47,4 +46,34 @@
       </div>
     </div>
   </div>
+</div>-->
+<!-- Breadcrumb Section -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>Health Tips</h1>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Blog Section -->
+<div class="container mt-5">
+  <!-- Add margin top to separate from the breadcrumb -->
+  <div class="row">
+    <div class="col-lg-4 col-md-6 mb-4" *ngFor="let tip of TipsArray">
+      <div class="blog-item" style="border: 1px solid #ccc; border-radius: 8px; overflow: hidden; transition: transform 0.3s;">
+        <img [src]="tip.Image" alt="{{ tip.Title }}" style="width: 100%; height: 200px; object-fit: cover;">
+        <div class="p-3">
+          <h5 style="color: #fd7e14;">{{ tip.Title }}</h5>
+          <p style="color: #555;">{{ tip.Description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
