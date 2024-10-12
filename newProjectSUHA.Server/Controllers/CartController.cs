@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
 namespace newProjectSUHA.Server.Controllers
@@ -14,6 +15,44 @@ namespace newProjectSUHA.Server.Controllers
         public CartController(MyDbContext db)
         {
             _db = db;
+        }
+
+
+
+        [HttpPost("addCartItems/{userId}")]
+        public IActionResult addCartItems(int userId, [FromBody] addCartItemsDTO ci)
+        {
+            if (userId <= 0) return BadRequest("invalid id");
+
+            var userCart = _db.Carts.Where(a => a.UserId == userId).FirstOrDefault();
+
+            var existingItem = _db.CartItems
+                                .FirstOrDefault(x => x.CartId == userCart.Id && x.ProductId == ci.ProductId);
+
+            if (existingItem != null)
+            {
+                existingItem.Quantity += ci.Quantity ?? 1;
+
+                _db.SaveChanges();
+
+                return Ok();
+            }
+            else
+            {
+
+                var newItem = new CartItem
+                {
+                    CartId = userCart.Id,
+                    ProductId = ci.ProductId,
+                    Quantity = ci.Quantity ?? 1,
+                };
+
+                _db.CartItems.Add(newItem);
+
+                _db.SaveChanges();
+
+                return Ok();
+            }
         }
 
 
@@ -103,6 +142,114 @@ namespace newProjectSUHA.Server.Controllers
             _db.SaveChanges();
             return NoContent();
         }
+
+
+        [HttpPost("moveFromCartToOrder/{userId}")]
+        public IActionResult moveFromCartToOrder(int userId)
+        {
+            if (userId <= 0) return BadRequest("invalid id");
+
+            var userCart = _db.Carts.FirstOrDefault(a => a.UserId == userId);
+
+            if (userCart == null) return NotFound("no cart was found");
+
+
+            var cartList = _db.CartItems
+                .Where(a => a.CartId == userCart.Id)
+                .ToList();
+
+            if (cartList.IsNullOrEmpty()) return BadRequest("empty cart");
+
+            decimal? finalTotal = 0;
+
+            foreach (var item in cartList)
+            {
+                var product = _db.Products.Where(a => a.Id == item.ProductId).FirstOrDefault();
+
+                finalTotal += item.Quantity * product.Price;
+            }
+
+
+            // check if there's an order that hasn't been proccessed yet / not paid yet
+
+            var existingOrder = _db.Orders
+                .Where(a => a.Id == userId && a.PaymentMethod == null)
+                .FirstOrDefault();
+
+            if (existingOrder == null)
+            {
+                // create new order
+
+                var newOrder = new Order
+                {
+                    UserId = userId,
+                    Date = DateTime.Now,
+                    Total = finalTotal,
+                };
+
+                _db.Orders.Add(newOrder);
+                _db.SaveChanges();
+
+
+                foreach (var item in cartList)
+                {
+                    var newItem = new OrderItem
+                    {
+                        OrderId = newOrder.Id,
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+                    };
+                    _db.OrderItems.Add(newItem);
+                }
+                _db.SaveChanges();
+            }
+            else
+            {
+                // add to the existing order
+
+                existingOrder.Total += finalTotal;
+                _db.SaveChanges();
+
+                // check if a product is ordered again
+
+                foreach (var item in cartList)
+                {
+                    var existingItem = _db.OrderItems
+                    .FirstOrDefault(x => x.OrderId == existingOrder.Id && x.ProductId == item.ProductId);
+
+                    if (existingItem != null)
+                    {
+                        existingItem.Quantity += item.Quantity ?? 1;
+                    }
+                    else
+                    {
+
+                        var newItem = new OrderItem
+                        {
+                            OrderId = existingOrder.Id,
+                            ProductId = item.ProductId,
+                            Quantity = item.Quantity ?? 1,
+                        };
+
+                        _db.OrderItems.Add(newItem);
+                    }
+
+                }
+                _db.SaveChanges();
+
+
+            }
+
+
+            _db.CartItems.RemoveRange(cartList);
+            _db.SaveChanges();
+
+            return Ok();
+        }
+
+
+
+
 
 
 

@@ -25,20 +25,20 @@
       </div>
       <div class="col-md-7">
         <div class="single-product-content">
-          <h3>{{itemDetails.name}}</h3>
+          <h3>{{itemDetails.name}} {{itemDetails.flag}}</h3>
           <p class="single-product-pricing"><span>Per Months</span> ${{itemDetails.price}}</p>
           <p>{{itemDetails.description}}</p>
+
           <div class="single-product-form">
-            <a routerLink="cart.html/{{itemDetails.id}}" class="cart-btn"> Subscription Now</a>
-          </div>
-          <div class="single-product-form">
-            <select >
+            <select (change)="storeAvailabelTimeId($event)">
               <option>Select available time</option>
-              <option *ngFor="let item of availableTimesArray">
+              <option *ngFor="let item of availableTimesArray" value="{{item.id}}" >
                 {{ item.startTime | date: 'HH:mm' }} - {{ item.endTime | date: 'HH:mm' }}
               </option>
-
             </select>
+          </div>
+          <div class="single-product-form">
+            <a routerLink="/subscriptions/{{itemDetails.id}}" class="cart-btn">Select Subscription</a>
           </div>
         </div>
       </div>

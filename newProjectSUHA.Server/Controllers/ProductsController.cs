@@ -27,6 +27,23 @@ namespace newProjectSUHA.Server.Controllers
 
 
 
+        // Get Last 3 Products by CategoryId
+        [HttpGet("GetLast3ProductsByCategory/{categoryId}")]
+        public IActionResult GetLast3ProductsByCategory(int categoryId)
+        {
+            // Fetch products that match the given categoryId
+            var productsByCategory = _db.Products
+                                         .Where(p => p.CategoryId == categoryId)
+                                         .OrderByDescending(p => p.Id) // Assuming there's a CreatedAt property
+                                         .Take(3) // Get the last 3 products
+                                         .ToList();
+
+            return Ok(productsByCategory);
+        }
+
+
+
+
 
         // Get Last5 INDEX products
         [HttpGet("GetLast5Products")]

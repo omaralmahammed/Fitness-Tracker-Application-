@@ -37,4 +37,9 @@ export class ItemDetailsComponent {
     })
   }
 
+  storeAvailabelTimeId(event: any) {
+    const selectedValue = event.target.value;
+
+    localStorage.setItem('AvailabelTimeId', selectedValue);
+  }
 }
