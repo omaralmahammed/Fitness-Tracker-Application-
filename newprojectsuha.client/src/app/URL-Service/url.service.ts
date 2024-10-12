@@ -89,6 +89,11 @@ export class UrlService {
   addSubscribtionToEnrolled(data : any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}GymAndClass/AddSubscriptionToEnrolled`, data)
   }
+
+  getTestimonials(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Testimonials`);
+
+  }
 }
 
 
