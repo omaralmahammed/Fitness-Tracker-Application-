@@ -112,6 +112,31 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(newSubscription);
         }
 
+        [HttpPost("AddSubscriptionToEnrolled")]
+        public IActionResult AddSubscriptionToEnrolled([FromBody] EnrolledRequestDTO subscriptionInfo)
+        {
+            var check = _db.Enrolleds.Where(s => s.ClassSubId == subscriptionInfo.ClassSubId);
 
+            if(check != null)
+            {
+                return BadRequest("You are already subscribed to this event. Please select a different event.");
+            }
+
+            var subscription = _db.Subscriptions.Find(subscriptionInfo.ClassSubId);
+
+            Enrolled newOrder = new Enrolled()
+            {
+                UserId = subscriptionInfo.UserId,
+                ClassSubId = subscriptionInfo.ClassSubId,
+                ClassTimeId = subscriptionInfo.ClassTimeId,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddMonths(Convert.ToInt32(subscription.Duration)),
+                PaymentMethod = "Active",
+            };
+
+            _db.Enrolleds.Add(newOrder);
+            _db.SaveChanges();
+            return Ok(newOrder);
+        }
     }
 }
