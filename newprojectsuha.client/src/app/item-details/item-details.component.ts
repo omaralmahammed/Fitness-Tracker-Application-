@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../URL-Service/url.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-details',
@@ -17,7 +17,7 @@ export class ItemDetailsComponent {
     this.getItems(this.itemId)
     this.getIAvailableTimes(this.itemId)
   }
-  constructor(private _ser: UrlService, private _route: ActivatedRoute) { }
+  constructor(private _ser: UrlService, private _route: ActivatedRoute, private _router: Router) { }
 
 
   itemDetails: any
@@ -39,7 +39,21 @@ export class ItemDetailsComponent {
 
   storeAvailabelTimeId(event: any) {
     const selectedValue = event.target.value;
-
     localStorage.setItem('AvailabelTimeId', selectedValue);
   }
+
+  errorMessage = "";
+
+  goToSubscription(id: any) {
+
+    const checkSelectedTime = localStorage.getItem("AvailabelTimeId");
+
+    if (checkSelectedTime) {
+      this._router.navigate([`/subscriptions/${id}`]);
+    } else {
+      this.errorMessage = "You must choose the right time for you.";
+    }
+  }
+
+
 }
