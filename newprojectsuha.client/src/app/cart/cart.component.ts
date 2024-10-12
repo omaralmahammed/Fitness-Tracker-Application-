@@ -9,9 +9,13 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
 
-  userId: any = 1;
+  userId: any 
 
   ngOnInit() {
+    this._ser.UserIdObserve.subscribe((data) => {
+      this.userId = data
+    })
+
     this.CartItems(this.userId)
     this.CartItemsTotal(this.userId)
 
