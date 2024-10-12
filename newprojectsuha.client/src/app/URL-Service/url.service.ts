@@ -47,6 +47,12 @@ export class UrlService {
   }
 
 
+  getCategorieRecipe(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Nutirition/RecipesCategory`);
+  }
+  getSRecipe(id: any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Nutirition/Recipes/${id}`);
+  }
 
 }
 

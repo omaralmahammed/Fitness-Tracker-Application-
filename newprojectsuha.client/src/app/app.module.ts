@@ -17,6 +17,8 @@ import { GymAndClassSubscriptionComponent } from './gym-and-class-subscription/g
 import { PreLoaderComponent } from './pre-loader/pre-loader.component';
 import { RouterModule } from '@angular/router';
 import { TipsComponent } from './tips/tips.component';
+import { RecipesCategoriesComponent } from './recipes-categories/recipes-categories.component';
+import { RecipesComponent } from './recipes/recipes.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { TipsComponent } from './tips/tips.component';
     PreLoaderComponent,
     GymAndClassItemsComponent,
     TipsComponent,
+    RecipesCategoriesComponent,
+    RecipesComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,10 @@ import { TipsComponent } from './tips/tips.component';
       { path: "GymAndClassItems/:type", component: GymAndClassItemsComponent },
       { path: "itemDetails/:id", component: ItemDetailsComponent },
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
-      { path: "Tips", component: TipsComponent }
+      { path: "Tips", component: TipsComponent },
+      { path: "RecipesCategories", component: RecipesCategoriesComponent },
+      {path : "Recipe", component:RecipesComponent}
+
 
     ])
   ],
