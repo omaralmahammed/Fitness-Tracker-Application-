@@ -18,6 +18,8 @@ import { LogInComponent } from './Tuqaa/log-in/log-in.component';
 import { RegisterComponent } from './Tuqaa/register/register.component';
 import { TipsComponent } from './tips/tips.component';
 import { AboutComponent } from './Tuqaa/about/about.component';
+import { SingleProductComponent } from './single-product/single-product.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { AboutComponent } from './Tuqaa/about/about.component';
     GymAndClassItemsComponent,
     TipsComponent,
     AboutComponent,
+    SingleProductComponent,
+    CartComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,12 +58,12 @@ import { AboutComponent } from './Tuqaa/about/about.component';
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "LogIn", component: LogInComponent },
       { path: "Register", component: RegisterComponent },
-
-      { path: "Register", component: RegisterComponent },
+      { path: "SingleProduct/:id", component: SingleProductComponent },
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "Tips", component: TipsComponent },
       { path: "About" , component : AboutComponent },
       { path: "Tips", component: TipsComponent },
+      { path: "cart", component: CartComponent },
 
     ])
   ],
