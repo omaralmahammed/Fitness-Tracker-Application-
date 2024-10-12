@@ -7,6 +7,8 @@ import { UrlService } from '../URL-Service/url.service';
   styleUrl: './recipes-categories.component.css'
 })
 export class RecipesCategoriesComponent {
+  getSRecipe: any;
+
   ngOnInit() {
     this.getCategorieRecipes();
   }

@@ -1,33 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UrlService } from '../URL-Service/url.service';
 import { ActivatedRoute } from '@angular/router';
+import { RecipesCategoriesComponent } from '../recipes-categories/recipes-categories.component';
 
 @Component({
   selector: 'app-recipes',
   templateUrl: './recipes.component.html',
   styleUrl: './recipes.component.css'
 })
-export class RecipesComponent {
+export class RecipesComponent implements OnInit {
 
+  arrayOfItems: any[] = []; 
+  categoryId: number | null = null;
 
+  constructor(private route: ActivatedRoute, private _ser: UrlService) { }
 
-  classId: any
-
-  ngOnInit() {
-    this.classId = this._route.snapshot.paramMap.get("id");
-
-    this.getSRecipe(this.classId)
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      this.categoryId = Number(params.get('id')); 
+      if (this.categoryId) {
+        this.getRecipesByCategory(this.categoryId); 
+      }
+    });
   }
-  constructor(private _ser: UrlService, private _route: ActivatedRoute) { }
 
-
-  arrayOfSubscriptions: any
-
-  getSRecipe(id: number) {
-    this._ser.getSRecipe(id).subscribe((data) => {
-      console.log(data);
-      this.arrayOfSubscriptions = data;
-    })
+  getRecipesByCategory(categoryId: number) {
+    this._ser.getRecipesByCategory(categoryId).subscribe((data: any[]) => {
+      this.arrayOfItems = data;
+      console.log(this.arrayOfItems, 'الوصفات المستلمة');
+    }, error => {
+      console.error('حدث خطأ في جلب الوصفات:', error);
+    });
   }
+  
 
 }

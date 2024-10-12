@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
@@ -21,7 +22,16 @@ namespace newProjectSUHA.Server.Controllers
         [HttpGet]
         public IActionResult getAllTestimonial()
         {
-            var testimonials= _db.Testimonials.Where(a=>a.Status == "Accepted").ToList();
+            var testimonials = _db.Testimonials
+                .Where(t => t.Status == "Accepted")
+                .Include(t => t.User) 
+                .Select(t => new
+                {
+                    Content = t.Content,
+                    UserName = t.User != null ? t.User.FirstName + " " + t.User.LastName : "Unknown User"
+                })
+                .ToList();
+
             return Ok(testimonials);
         }
 

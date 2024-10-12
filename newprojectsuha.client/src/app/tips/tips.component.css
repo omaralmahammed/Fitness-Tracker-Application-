@@ -1,35 +1,84 @@
-.modal {
-  display: none; /* Hide by default */
-  position: fixed; /* Stay in place */
-  z-index: 1050; /* Sit on top */
-  left: 0;
+/*.modal {
+  display: none;*/ /* Hide by default */
+  /*position: fixed;*/ /* Stay in place */
+  /*z-index: 1050;*/ /* Sit on top */
+  /*left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
-}
+  width: 100%;*/ /* Full width */
+  /*height: 100%;*/ /* Full height */
+  /*overflow: auto;*/ /* Enable scroll if needed */
+  /*background-color: rgba(0,0,0,0.5);*/ /* Black w/ opacity */
+/*}
 
   .modal.show {
-    display: block; /* Show the modal */
-  }
+    display: block;*/ /* Show the modal */
+  /*}
 
 .modal-dialog {
-  margin: 15% auto; /* Center the modal */
-}
+  margin: 15% auto;*/ /* Center the modal */
+/*}
 
 .modal-content {
-  border-radius: 5px; /* Rounded corners */
-}
+  border-radius: 5px;*/ /* Rounded corners */
+/*}
 
 .modal-header {
-  border-bottom: none; /* Remove border */
-}
+  border-bottom: none;*/ /* Remove border */
+/*}
 
 .modal-footer {
-  border-top: none; /* Remove border */
-}
+  border-top: none;*/ /* Remove border */
+/*}
 
 .close {
-  cursor: pointer; /* Pointer on hover */
+  cursor: pointer;*/ /* Pointer on hover */
+/*}*/
+
+.tips-section {
+  padding: 40px 0; 
 }
+
+.tip-item {
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the item */
+  margin-bottom: 20px; /* Space between items */
+  background-color: #f9f9f9; /* Light background */
+  transition: box-shadow 0.3s; /* Smooth shadow transition */
+}
+
+  .tip-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+  }
+
+.tip-header {
+  margin-bottom: 10px; /* Space below the header */
+}
+
+  .tip-header h2 {
+    color: #fd7e14; /* Orange color for the title */
+    font-size: 1.8rem; /* Adjust size if needed */
+  }
+
+.tip-image {
+  text-align: center; /* Center the image */
+  margin-bottom: 15px; /* Add some space below the image */
+}
+
+  .tip-image img {
+    max-width: 80%; /* Smaller image */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+.tip-description {
+  font-size: 1.2rem; /* Larger description text */
+  line-height: 1.6; /* Better line spacing */
+}
+
+.breadcrumb-section {
+  background-color: #f1f1f1; /* Background color for breadcrumb */
+  padding: 20px 0; /* Padding for breadcrumb */
+}
+
+
+

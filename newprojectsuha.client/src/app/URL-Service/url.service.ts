@@ -63,18 +63,37 @@ export class UrlService {
   getCategorieRecipe(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Nutirition/RecipesCategory`);
   }
-  getSRecipe(id: any): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}Nutirition/Recipes/${id}`);
+  
+  getRecipesByCategory(categoryId: number): Observable<any[]> {
+    const url = `https://localhost:7286/api/Nutirition/Recipes/${categoryId}`; 
+    return this.http.get<any[]>(url);
   }
+
+
+
+  getRecipeDetails(id: number): Observable<any> {
+    const url = `https://localhost:7286/api/Nutirition/Recipesdetels/${id}`; 
+    return this.http.get<any>(url); 
+  }
+
+
+
+
+
   GetProductById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)
   }
 
-
+  GetRandom3ProductsByCategory(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Products/GetRandom3ProductsByCategory/${id}`)
+  }
 
   GetLast3ProductsByCategory(categoryId: any) {
     return this.http.get<any[]>(`${this.baseUrl}Products/GetLast3ProductsByCategory/${categoryId}`);
   }
+
+
+ 
 
 
   addCartItem(userId: number, cartItem: any): Observable<any> {
@@ -96,6 +115,42 @@ export class UrlService {
     
     return this.http.post<any>(`https://localhost:7286/api/Pyment/checkoutForSubscription`, data)
   }
+
+  getTestimonials(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Testimonials`);
+
+  }
+
+
+  getCartItems(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Cart/getCartItems/${id}`)
+  }
+
+  getCartTotal(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Cart/getCartTotal/${id}`)
+  }
+
+  deleteCartItem(cartItemId: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}Cart/deleteCartItem/${cartItemId}`)
+  }
+
+  changeCartItemQuantity(cartItemId: number, quantity: number): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}Cart/changeCartItemQuantity/${cartItemId}`, quantity)
+  }
+
+  moveFromCartToOrder(userId: number): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Cart/moveFromCartToOrder/${userId}`, null)
+  }
+
+  getUserInfoForOrder(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}CheckOut/getUserInfoForOrder/${userId}`)
+  }
+
+  getCartDetailsForCheckout(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}CheckOut/getCartDetailsForCheckout/${userId}`)
+  }
+
+
 }
 
 
