@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
 
+  /*userId: any = 1*/
   userId: any 
 
   ngOnInit() {
@@ -68,8 +69,8 @@ export class CartComponent {
       const item = this.cartItemsList.find((i: any) => i.id === cartItemId);
 
       if (item) {
-        item.quantity = quantity; // Update the quantity
-        item.total = item.cp.price * quantity; // Recalculate the total
+        item.quantity = quantity; // update quantity
+        item.total = item.cp.price * quantity; // update total
       }
 
       this.CartItems(this.userId),
