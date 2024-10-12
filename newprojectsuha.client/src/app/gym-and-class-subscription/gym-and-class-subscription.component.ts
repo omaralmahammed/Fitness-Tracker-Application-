@@ -53,7 +53,7 @@ export class GymAndClassSubscriptionComponent {
           timer: 2000
         });
 
-        localStorage.setItem("ClassId", id);
+        localStorage.setItem("ClassId", this.classId);
         setTimeout(() => {
           this._router.navigate(['/LogIn']);
         }, 2000);
