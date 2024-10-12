@@ -29,7 +29,7 @@ export class SingleProductComponent {
       }
     });
   }
-
+  
   loadRelatedProducts(categoryId: any) {
     this.productService.GetLast3ProductsByCategory(categoryId).subscribe(
       products => {
