@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../URL-Service/url.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 
@@ -19,7 +19,7 @@ export class GymAndClassSubscriptionComponent {
     this.getSubscriptions(this.classId)
 
   }
-  constructor(private _ser: UrlService, private _route: ActivatedRoute) { }
+  constructor(private _ser: UrlService, private _route: ActivatedRoute, private url: UrlService, private _router: Router ) { }
 
 
   arrayOfSubscriptions: any
@@ -43,24 +43,57 @@ export class GymAndClassSubscriptionComponent {
   AddSubscription(id: any) {
     this.subscriptionData.classSubId = id;
 
-    this._ser.addSubscribtionToEnrolled(this.subscriptionData).subscribe(
-      () => {
+    this.url.UserIdObserve.subscribe((userId: any) => {
+      if (userId === "") {
+
         Swal.fire({
-          icon: "success",
-          title: "Subscribed Successfully!",
-          showConfirmButton: false,
-          timer: 2000
-        });      },
-      (error) => {
-        Swal.fire({
-          icon: "warning",
-          title: `${error.error}`,
+          icon: "info",
+          title: "You must be Login!",
           showConfirmButton: false,
           timer: 2000
         });
-}
-    );
+
+        localStorage.setItem("ClassId", id);
+        setTimeout(() => {
+          this._router.navigate(['/LogIn']);
+        }, 2000);
+      } else {
+
+        this._ser.addSubscribtionToEnrolled(this.subscriptionData).subscribe((data) => {
+
+          const width = 600;
+          const height = 700;
+          const left = (screen.width / 2) - (width / 2);
+          const top = (screen.height / 2) - (height / 2);
+
+
+          const popupWindow = window.open(
+            data.approvalUrl,
+            'PayPal Payment',
+            `width=${width},height=${height},top=${top},scrollbars=yes,resizable=yes`
+          );
+
+          const checkWindowClosed = setInterval(() => {
+            if (popupWindow && popupWindow.closed) {
+              clearInterval(checkWindowClosed);
+              Swal.fire({
+                icon: "success",
+                title: "Subscribed Successfully!",
+                showConfirmButton: false,
+                timer: 2000
+              });
+            }
+          }, 500);
+
+        },
+          (error) => {
+            Swal.fire({
+              icon: "warning",
+              title: `${error.error}`,
+              showConfirmButton: false,
+              timer: 2000
+            });
+          });      }
+    });
   }
-
-
 }

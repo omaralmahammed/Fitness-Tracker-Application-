@@ -92,8 +92,9 @@ export class UrlService {
 
 
 
-  addSubscribtionToEnrolled(data : any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}GymAndClass/AddSubscriptionToEnrolled`, data)
+  addSubscribtionToEnrolled(data:any): Observable<any> {
+    
+    return this.http.post<any>(`https://localhost:7286/api/Pyment/checkoutForSubscription`, data)
   }
 }
 
