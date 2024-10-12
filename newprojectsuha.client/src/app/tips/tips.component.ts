@@ -34,24 +34,24 @@ import { UrlService } from '../URL-Service/url.service';
 //    this.showModal = false; // Hide the modal
 //  }
 export class TipsComponent {
-  TipsArray: any[] = []; // Initialize as an empty array
+  TipsArray: any[] = []; // Array to hold health tips
 
   constructor(private _ser: UrlService) { }
 
   ngOnInit() {
-    this.getTips(); // Fetch tips when the component initializes
+    this.getTips(); // Fetch tips on initialization
   }
 
   getTips() {
-    this._ser.getTips().subscribe(
-      (data: any[]) => { // Ensure the data type matches your API response
-        this.TipsArray = data;
-        console.log("Fetched health tips data:", this.TipsArray);
-      },
-      (error) => {
-        console.error("Error fetching health tips:", error); // Handle errors if needed
-      }
-    );
+    this._ser.getTips().subscribe((data: any) => {
+      debugger
+      this.TipsArray = data.map((tip: any) => ({
+        title: tip.title,
+        image: tip.image, // Fallback image URL
+        description: tip.description
+      }));
+      console.log("Fetched services data:", this.TipsArray); // Log the data for debugging
+    });
   }
 }
 

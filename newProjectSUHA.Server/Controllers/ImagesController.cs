@@ -21,5 +21,21 @@ namespace newProjectSUHA.Server.Controllers
             return NotFound();
 
         }
+
+        ///this api is for tips images dooooont touch it plz
+
+        [HttpGet("TipsImages/{imageName}")]
+        public IActionResult getTipsImage(string imageName)
+        {
+            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "Upload", imageName);
+
+            if (System.IO.File.Exists(pathImage))
+            {
+                return PhysicalFile(pathImage, "image/*");
+            }
+
+            return NotFound();
+
+        }
     }
 }
