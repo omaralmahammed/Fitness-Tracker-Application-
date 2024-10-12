@@ -141,7 +141,13 @@ export class UrlService {
     return this.http.post<any>(`${this.baseUrl}Cart/moveFromCartToOrder/${userId}`, null)
   }
 
+  getUserInfoForOrder(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}CheckOut/getUserInfoForOrder/${userId}`)
+  }
 
+  getCartDetailsForCheckout(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}CheckOut/getCartDetailsForCheckout/${userId}`)
+  }
 
 
 }
