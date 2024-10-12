@@ -20,11 +20,13 @@ export class LogInComponent {
     this._ser.loginUser(form).subscribe((newData) => {
 
       this._ser['email'].next(newData.email);
+      this._ser['UserId'].next(newData.id);
+      console.log(newData.id);
       if (newData.email == 'admin@gmail.com') {
         this._router.navigate(['/dashboard'])
 
       } else {
-        this._router.navigate(['/NutritionPageOne'])
+        this._router.navigate(['/'])
 
       }
       alert('userLogin successfully')

@@ -14,6 +14,9 @@ export class UrlService {
   email: BehaviorSubject<string> = new BehaviorSubject<string>("");
   emailaddress = this.email.asObservable();
 
+  UserId: BehaviorSubject<string> = new BehaviorSubject<string>("");
+  UserIdObserve = this.UserId.asObservable();
+
 
   GetGymAndClassItems(type:string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetClassOrGym/${type}`)
@@ -58,6 +61,16 @@ export class UrlService {
   loginUser(data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}User/LOGIN`, data)
   }
+
+  submitContact(contactData: FormData): Observable<any> {
+    return this.http.post(`${this.baseUrl}Contact`, contactData);
+  }
+
+  getContacts(): Observable<any> {
+    return this.http.get(`${this.baseUrl}Contact/contact`);
+  }
+
+
 
 
   getTips(): Observable<any> {
