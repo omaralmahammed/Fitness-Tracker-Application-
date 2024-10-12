@@ -19,7 +19,6 @@ export class HomeComponent {
 
   testimonialArray: any[] = [];
   getTestimonial() {
-    debugger;
     this._ser.getTestimonials().subscribe((data) => {
       this.testimonialArray = data
       console.log(this.testimonialArray, "this.testimonialArray")

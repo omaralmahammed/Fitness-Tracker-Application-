@@ -44,7 +44,6 @@ export class TipsComponent {
 
   getTips() {
     this._ser.getTips().subscribe((data: any) => {
-      debugger
       this.TipsArray = data.map((tip: any) => ({
         title: tip.title,
         image: tip.image, // Fallback image URL
