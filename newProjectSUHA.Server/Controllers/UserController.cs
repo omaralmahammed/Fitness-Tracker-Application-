@@ -40,10 +40,12 @@ namespace newProjectSUHA.Server.Controllers
             };
             _db.Users.Add(NewUser);
             _db.SaveChanges();
-            var UserId = NewUser.Id;
+
+            var userId = NewUser.Id;
+
             var NewUserCart = new Cart
             {
-                Id = UserId
+                UserId = userId
 
             };
             _db.Carts.Add(NewUserCart);
