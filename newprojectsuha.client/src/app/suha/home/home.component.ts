@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../URL-Service/url.service';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -23,6 +25,7 @@ export class HomeComponent {
       console.log(this.testimonialArray, "this.testimonialArray")
     })
 
+  
   }
 
 }

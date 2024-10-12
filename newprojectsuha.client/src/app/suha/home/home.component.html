@@ -141,14 +141,15 @@
 <!-- end cart banner section -->
 
 <!-- testimonail-section -->
-<div class="testimonail-section mt-150 mb-150" *ngIf="testimonialArray.length > 0">
+<div class="testimonail-section mt-150 mb-150">
   <div class="container">
     <div class="row">
       <div class="col-lg-10 offset-lg-1 text-center">
-        <div class="testimonial-sliders">
+        <div class="testimonial-sliders owl-carousel">
           <div *ngFor="let testimonial of testimonialArray" class="single-testimonial-slider">
+           
             <div class="client-meta">
-              <h3>{{ testimonial.userName }}</h3>
+              <h3>{{ testimonial.userName }} <span>Customer</span></h3>
               <p class="testimonial-body">
                 "{{ testimonial.content }}"
               </p>
@@ -162,6 +163,7 @@
     </div>
   </div>
 </div>
+
 
 <!-- Display a message if there are no testimonials -->
 <div *ngIf="testimonialArray.length === 0" class="text-center">
