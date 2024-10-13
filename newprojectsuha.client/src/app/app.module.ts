@@ -37,6 +37,7 @@ import { AllProductComponent } from './all-product/all-product.component';
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
+import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { CreateComponent } from './suha/admin/GymAndClasses/create/create.compon
     DisplayComponent,
     UpdateComponent,
     CreateComponent,
+    OrderhistoryComponent,
   ],
   imports: [
     BrowserModule,
