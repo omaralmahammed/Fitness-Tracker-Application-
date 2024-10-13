@@ -283,7 +283,18 @@ export class UrlService {
   }
 
 
+  // Update product by id
+  EditProduct(id: number, data: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/Products/UpdateProduct/${id}`, data);
+  }
 
+
+  //home page get last 3 products
+
+ 
+  GetLast3Products(): Observable<any[]> {
+    return this.http.get<any>(`${this.baseUrl}Products/GetLast3Products`)
+  }
 
 
 
