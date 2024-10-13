@@ -22,4 +22,5 @@ public partial class ClassAndGym
     public virtual ICollection<AvailableTime> AvailableTimes { get; set; } = new List<AvailableTime>();
 
     public virtual ICollection<Subscription> Subscriptions { get; set; } = new List<Subscription>();
+
 }
