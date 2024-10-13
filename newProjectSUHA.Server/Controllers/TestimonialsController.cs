@@ -35,6 +35,22 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(testimonials);
         }
 
+        [HttpGet("getAllTestimonialInAdmin")]
+        public IActionResult getAllTestimonialInAdmin()
+        {
+            var testimonials = _db.Testimonials
+                .Include(t => t.User)
+                .Select(t => new
+                {
+                    Content = t.Content,
+                    Status=t.Status,
+                    UserName = t.User != null ? t.User.FirstName + " " + t.User.LastName : "Unknown User"
+                })
+                .ToList();
+
+            return Ok(testimonials);
+        }
+
 
         [HttpPost]
         public IActionResult postTestimonial([FromForm] TestimonialDTO testimonialDto) 
@@ -70,6 +86,8 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(new { message = "Testimonial status updated successfully", status = existingTestimonial.Status });
         }
 
+
+       
 
         [HttpPut("updateRejectTestimonialStatus/{id}")]
         public IActionResult updateRejectTestimonialStatus(int id)
