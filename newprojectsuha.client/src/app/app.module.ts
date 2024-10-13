@@ -33,7 +33,6 @@ import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AllProductsComponent } from './all-product/all-product.component';
-import { AllProductComponent } from './all-product/all-product.component';
 import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
 import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
 import { AdminContactComponent } from './suha/admin/admin-contact/admin-contact.component';
@@ -74,11 +73,9 @@ import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.co
     ProfileComponent,
     DashboardComponent,
     AddProductComponent,
-    AllProductsComponent
-    AllProductComponent,
+    AllProductsComponent,
     RecipeDashboardComponent,
     ShowAllRecipeComponent,
-
     DisplayComponent,
     UpdateComponent,
     CreateComponent,
@@ -136,11 +133,10 @@ import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.co
 
           { path: "Display_GymAndClasses", component: DisplayComponent },
 
-          { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
-          { path: "child1", component: AddProductsComponent },
           { path: "", redirectTo: "child1", pathMatch: "full" },
-          { path: "ContactAdmin", component: AdminContactComponent }
-          // Default child route
+          { path: "child1", component: AddProductComponent },
+          { path: "", redirectTo: "child1", pathMatch: "full" },
+          { path: "ContactAdmin", component: AdminContactComponent },
         ]
       },
 
