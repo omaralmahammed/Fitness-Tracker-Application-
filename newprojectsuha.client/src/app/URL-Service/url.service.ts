@@ -175,7 +175,6 @@ export class UrlService {
       this.BSCArtList.push(data);
       this.BSCArtListSub.next(this.BSCArtList)
       //console.log(this.BSCArtList)
-
     }
 
   }
@@ -193,6 +192,34 @@ export class UrlService {
     return total
   }
 
+
+  BSCartItemDelete(productId: number) {
+
+    const index = this.BSCArtList.findIndex((x: any) => x.productId === productId);
+
+    if (index !== -1) {
+      this.BSCArtList.splice(index, 1); // Remove the item using splice
+      this.BSCArtListSub.next([...this.BSCArtList]); // Update the BehaviorSubject with a new array
+    } else {
+      alert("No product was found");
+    }
+
+  }
+
+  BSCartItemQuantity(productId: number, quantity: number) {
+    var product = this.BSCArtList.find((a: any) => a.productId == productId);
+
+    if (product) {
+      product.quantity += quantity; // Corrected 'Quantity' to 'quantity'
+
+      // Optional: Prevent negative quantities
+      if (product.quantity < 0) {
+        product.quantity = 0;
+      }
+
+      this.BSCArtListSub.next([...this.BSCArtList]);
+    }
+  }
 
 
 

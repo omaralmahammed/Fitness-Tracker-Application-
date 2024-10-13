@@ -130,15 +130,15 @@
 
             <tbody *ngFor="let item of BSCartItemsList">
               <tr class="table-body-row">
-                <td class="product-remove"><button type="button" (click)="deleteCartItem(item.productId)">X</button></td>
+                <td class="product-remove"><button type="button" (click)="removeItem(item.productId)">X</button></td>
                 <td class="product-image"><img src="{{item.image}}" alt=""></td>
                 <td class="product-name">{{item.name}}</td>
                 <td class="product-price">${{item.price | number:'1.0-2'}}</td>
                 <td class="product-quantity">
 
-                  <button type="button" class="boxed-btn" (click)="changeCartItemQuantity(item.id, (item.quantity + 1))">+</button>
-                  <input type="number" [(ngModel)]="item.quantity" (change)="changeCartItemQuantity(item.productId, item.quantity)">
-                  <button type="button" class="boxed-btn" (click)="changeCartItemQuantity(item.id, (item.quantity - 1))">-</button>
+                  <button type="button" class="boxed-btn" (click)="changeBSCartItemQuantity(item.productId, (item.quantity + 1))">+</button>
+                  <input type="number" [(ngModel)]="item.quantity" (change)="changeBSCartItemQuantity(item.productId, item.quantity)">
+                  <button type="button" class="boxed-btn" (click)="changeBSCartItemQuantity(item.productId, (item.quantity - 1))">-</button>
 
                 </td>
                 <td class="product-total">{{item.itemTotal | number:'1.0-2'}}</td>

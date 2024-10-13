@@ -73,7 +73,7 @@ export class CartComponent {
 
 
   changeCartItemQuantity(cartItemId: number, quantity: number) {
-    debugger
+    //debugger
     this._ser.changeCartItemQuantity(cartItemId, quantity).subscribe(() => {
 
       if (quantity <= 0) {
@@ -112,15 +112,20 @@ export class CartComponent {
   }
 
   BSCArtTotal(a: any) {
-    debugger
+    //debugger
     const total = this._ser.BSCArtTotal(a);
     this.cartTotal = total;
     this.cartTotalFinal = total + this.shipping;
   }
 
+  removeItem(productId: number) {
+    debugger
+    this._ser.BSCartItemDelete(productId);
+  }
 
-
-
+  changeBSCartItemQuantity(productId: number, quantity: number) {
+    this._ser.BSCartItemQuantity(productId, quantity)
+  }
 
 
 
