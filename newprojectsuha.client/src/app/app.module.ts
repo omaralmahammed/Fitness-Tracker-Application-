@@ -28,6 +28,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
 import { ProfileComponent } from './Qusai/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
+import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -57,6 +58,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TestimonialComponent,
     CheckoutComponent,
     ProfileComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -92,6 +94,8 @@ import { ReactiveFormsModule } from '@angular/forms';
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
+      { path: "dash", component: DashboardComponent },
+
 
     ])
   ],

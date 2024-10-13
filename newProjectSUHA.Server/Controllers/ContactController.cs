@@ -27,7 +27,9 @@ namespace newProjectSUHA.Server.Controllers
                 Subject = DTO.Subject,  
                 Email = DTO.Email,
                 Message = DTO.Message,
+                Status = "pending"
             };
+
                 _db.ContactUs.Add(Contact);
                 _db.SaveChanges();
 
@@ -43,7 +45,23 @@ namespace newProjectSUHA.Server.Controllers
                 var contact = _db.ContactUs.ToList();
                 return Ok(contact);
             }
+
+
+        [HttpGet("ContactStatus")]
+        public IActionResult ContactStatus(int contactId)
+        {
+            var contact = _db.ContactUs.Find(contactId);
+            if (contact == null)
+            {
+                return NotFound("Contact not found");
+            }
+            return Ok(contact);
         }
-    }
+
+
+            return Ok(contact);
+        }
+     }
+}
 
 
