@@ -32,14 +32,17 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AllProductsComponent } from './all-product/all-product.component';
 import { AllProductComponent } from './all-product/all-product.component';
 import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
 import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
+import { AdminContactComponent } from './suha/admin/admin-contact/admin-contact.component';
 
  
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
+import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
 
 
 @NgModule({
@@ -71,6 +74,7 @@ import { CreateComponent } from './suha/admin/GymAndClasses/create/create.compon
     ProfileComponent,
     DashboardComponent,
     AddProductComponent,
+    AllProductsComponent
     AllProductComponent,
     RecipeDashboardComponent,
     ShowAllRecipeComponent,
@@ -78,6 +82,8 @@ import { CreateComponent } from './suha/admin/GymAndClasses/create/create.compon
     DisplayComponent,
     UpdateComponent,
     CreateComponent,
+    OrderhistoryComponent,
+    AdminContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -114,9 +120,15 @@ import { CreateComponent } from './suha/admin/GymAndClasses/create/create.compon
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
+
       {
         path: "dash", component: DashboardComponent,
         children: [
+          { path: "EditProduct", component: EditProductComponent },
+          { path: "AddProduct", component: AddProductComponent },
+          { path: "AllProduct", component: AllProductsComponent },
+
+          { path: "", redirectTo: "child1", pathMatch: "full" }, 
           { path: "child1", component: EditProductComponent },
           { path: "", redirectTo: "child1", pathMatch: "full" } , // Default child route
           { path: "recipeDashboard", component: RecipeDashboardComponent },
@@ -125,6 +137,10 @@ import { CreateComponent } from './suha/admin/GymAndClasses/create/create.compon
           { path: "Display_GymAndClasses", component: DisplayComponent },
 
           { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
+          { path: "child1", component: AddProductsComponent },
+          { path: "", redirectTo: "child1", pathMatch: "full" },
+          { path: "ContactAdmin", component: AdminContactComponent }
+          // Default child route
         ]
       },
 

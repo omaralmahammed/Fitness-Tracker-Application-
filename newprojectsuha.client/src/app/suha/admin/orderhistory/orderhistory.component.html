@@ -1,0 +1,51 @@
+<!--<div class="container mt-4">
+  <h1>User Orders</h1>
+
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Order ID</th>
+        <th scope="col">User ID</th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.id }}</td>
+        <td>{{ order.userId }}</td>
+        <td>${{ order.totalAmount }}</td>  Adjust according to your order properties 
+        <td>{{ order.orderDate | date }}</td>  Adjust according to your order properties 
+        <td>
+          <button class="btn btn-info" (click)="getOrderItems(order.id)">View Items</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="selectedOrderItems.length > 0">
+    <h2>Order Items</h2>
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of selectedOrderItems">
+          <td>
+            <img [src]="'https://localhost:7286/api/Images/getImages/' + item.product.image"
+                 alt="{{item.product.name}}" class="img-fluid" style="max-width: 100px;" />
+          </td>
+          <td>{{ item.product.name }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>${{ item.product.price }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>-->
