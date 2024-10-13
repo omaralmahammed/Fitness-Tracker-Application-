@@ -1,0 +1,134 @@
+   <!-- Table -->
+<table class="table mb-0 text-nowrap table-hover table-centered table-with-checkbox">
+  <!-- Table Head -->
+  <thead class="table-light">
+    <tr>
+      
+      <th>Products</th>
+<!-- <th>Inventory</th>-->
+      <th>Category</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- Table body -->
+    <tr *ngFor="let product of allProductsArray">
+
+      <td>
+        <a href="#" class="text-inherit">
+          <div class="d-flex align-items-center flex-row gap-3">
+            <div>
+              <img src="https://localhost:7286/api/Products/getImages/{{ product.image }}" alt="{{ product.name }}" style="width: 60px; height: 60px; object-fit: cover;"> &nbsp;&nbsp;
+            </div>
+            <div class="">
+              <h5 class="mb-0 text-primary-hover">{{ product.name }}</h5>
+            </div>
+          </div>
+        </a>
+      </td>
+
+      <!--    <td>5</td>-->
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}$</td>
+
+      <td>
+        <button class="btn btn-edit">
+          <span class="mdi mdi-pencil mdi-24px"></span>
+          <span class="mdi mdi-pencil-outline mdi-24px"></span>
+          <span>Edit</span>
+        </button>
+      </td>
+      <td>
+        <button class="btn btn-delete">
+          <span class="mdi mdi-delete mdi-24px"></span>
+          <span class="mdi mdi-delete-empty mdi-24px"></span>
+          <span>Delete</span>
+        </button>
+      </td>
+
+    </tr>
+
+  </tbody>
+</table>
+<style>
+  body {
+    margin: 32px;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 1px solid lighten(gray, 24%);
+    height: 48px;
+    padding: 0 24px 0 16px;
+    letter-spacing: .25px;
+    border-radius: 24px;
+    cursor: pointer;
+    margin-right: 1px; 
+  }
+
+    .btn:focus {
+      outline: none;
+    }
+
+  .mdi {
+    margin-right: 8px;
+  }
+
+
+  /* Delete button styles */
+  .btn-delete {
+    font-size: 16px;
+    color: red;
+  }
+
+    .btn-delete > .mdi-delete-empty {
+      display: none;
+    }
+
+    .btn-delete:hover {
+      background-color: lighten(red, 48%);
+    }
+
+      .btn-delete:hover > .mdi-delete-empty {
+        display: block;
+      }
+
+      .btn-delete:hover > .mdi-delete {
+        display: none;
+      }
+
+    .btn-delete:focus {
+      box-shadow: 0 0 0 4px lighten(red, 40%);
+    }
+
+  /* Edit button styles */
+  .btn-edit {
+    font-size: 16px;
+    color: blue;
+  }
+
+    .btn-edit > .mdi-pencil-outline {
+      display: none;
+    }
+
+    .btn-edit:hover {
+      background-color: lighten(blue, 48%);
+    }
+
+      .btn-edit:hover > .mdi-pencil-outline {
+        display: block;
+      }
+
+      .btn-edit:hover > .mdi-pencil {
+        display: none;
+      }
+
+    .btn-edit:focus {
+      box-shadow: 0 0 0 4px lighten(blue, 40%);
+    }
+
+
+</style>

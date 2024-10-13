@@ -20,7 +20,8 @@ export class UrlService {
 
   GetGymAndClassItems(type:string): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetClassOrGym/${type}`)
-  }
+  }  
+
 
 
   GetAllProducts(): Observable<any> {
@@ -151,15 +152,90 @@ export class UrlService {
   getCartDetailsForCheckout(userId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}CheckOut/getCartDetailsForCheckout/${userId}`)
   }
+  //Admin :
+
+
+  // Get all ClassAndGyms
+  GetClassAndGyms(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms`);
+  }
+
+
+  // Get ClassAndGym details by id
+  GetClassAndGym(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms/${id}`);
+  }
+
+  // Create a new ClassAndGym
+  CreateClassAndGym(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms`, data);
+  }
+
+  // Update ClassAndGym by id
+  UpdateClassAndGym(id: number, data: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms/${id}`, data);
+  }
+
+  // Delete ClassAndGym by id
+  DeleteClassAndGym(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms/${id}`);
+  }
+
+  // Subscription CRUD methods
+
+
+
+  // Create a new subscription
+  CreateSubscription(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}GymAndClassAdmin/Subscriptions`, data);
+  }
+
+  // Update subscription by id
+  UpdateSubscription(id: number, data: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}GymAndClassAdmin/Subscriptions/${id}`, data);
+  }
+
+  // Delete subscription by id
+  DeleteSubscription(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}GymAndClassAdmin/Subscriptions/${id}`);
+  }
+
+  // AvailableTimes CRUD methods
+
+  // Get all available times
+  GetAvailableTimes(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClassAdmin/AvailableTimes`);
+  }
+
+  // Get available time by id
+  GetAvailableTime(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClassAdmin/AvailableTimes/${id}`);
+  }
+
+  // Create a new available time
+  CreateAvailableTime(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}GymAndClassAdmin/AvailableTimes`, data);
+  }
+
+  // Update available time by id
+  UpdateAvailableTime(id: number, data: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}GymAndClassAdmin/AvailableTimes/${id}`, data);
+  }
+
+  // Delete available time by id
+  DeleteAvailableTime(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}GymAndClassAdmin/AvailableTimes/${id}`);
+  }
+
 
 
   BSCArtList: any = []
-  BSCArtListSub = new BehaviorSubject<any>("BSCArtList")
+  BSCArtListSub = new BehaviorSubject<any>(this.BSCArtList)
   BSCArtListObs = this.BSCArtListSub.asObservable()
 
   BSAddToCart(data: any) {
-
-    var record = this.BSCArtList.find((x: any) => x.ProductID == data.ProductID)
+    //debugger
+    var record = this.BSCArtList.find((x: any) => x.productId == data.productId)
 
     if (record) {
       record.quantity += data.quantity
@@ -177,11 +253,18 @@ export class UrlService {
 
   }
 
-
   getProductInfoForCart(productId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Cart/getProductInfoForCart/${productId}`)
   }
 
+  BSCArtTotal(data: any): number {
+    let total: any = 0;
+    data.forEach((item: any) => {
+      total += item.quantity * item.price
+    })
+    console.log(total)
+    return total
+  }
 
   // Get all contacts
   getContacts(): Observable<any> {

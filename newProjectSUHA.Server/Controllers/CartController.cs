@@ -257,7 +257,11 @@ namespace newProjectSUHA.Server.Controllers
 
 
 
-
+        /// <summary>
+        /// /////////////////////////////////////////////////////// behavior subject
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <returns></returns>
 
         [HttpGet("getProductInfoForCart/{productId}")]
         public IActionResult getProductInfoForCart (int productId)
