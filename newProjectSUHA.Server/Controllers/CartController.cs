@@ -259,6 +259,38 @@ namespace newProjectSUHA.Server.Controllers
 
 
 
+        [HttpGet("getProductInfoForCart/{productId}")]
+        public IActionResult getProductInfoForCart (int productId)
+        {
+            if (productId <= 0) return BadRequest("invalid id");
+
+            var product = _db.Products
+                .Where(a => a.Id == productId)
+                .Select(a => new CartProductsInfoDTO
+                {
+                    Name = a.Name,
+                    Price = a.Price,
+                    Image = a.Image,
+                })
+                .FirstOrDefault();
+
+            if (product == null) return NotFound("the product was not found");
+
+            return Ok(product);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
