@@ -29,6 +29,8 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
 import { ProfileComponent } from './Qusai/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
+import { AddProductsComponent } from './add-products/add-products.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -62,7 +64,8 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,  
+    HttpClientModule,
+    CommonModule,  
     FormsModule,       
     HttpClientModule,  
     FormsModule,     
@@ -94,8 +97,13 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
-      { path: "dash", component: DashboardComponent },
-
+      {
+        path: "dash", component: DashboardComponent,
+        children: [
+          { path: "child1", component: AddProductsComponent },
+          { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
+        ]
+      },
 
     ])
   ],

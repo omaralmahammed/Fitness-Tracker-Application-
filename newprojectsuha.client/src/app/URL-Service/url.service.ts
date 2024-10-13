@@ -181,7 +181,9 @@ export class UrlService {
   }
 
 
-
+  getProductInfoForCart(productId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Cart/getProductInfoForCart/${productId}`)
+  }
 
 
 
