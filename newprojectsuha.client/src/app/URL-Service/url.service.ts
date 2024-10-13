@@ -150,6 +150,34 @@ export class UrlService {
   }
 
 
+  BSCArtList: any = []
+  BSCArtListSub = new BehaviorSubject<any>("BSCArtList")
+  BSCArtListObs = this.BSCArtListSub.asObservable()
+
+  BSAddToCart(data: any) {
+
+    var record = this.BSCArtList.find((x: any) => x.ProductID == data.ProductID)
+
+    if (record) {
+      record.quantity += data.quantity
+      //alert("product already exist in the cart")
+    }
+    else {
+      this.BSCArtList.push(data);
+      this.BSCArtListSub.next(this.BSCArtList)
+    }
+
+  }
+
+
+
+
+
+
+
+
+
+
 }
 
 
