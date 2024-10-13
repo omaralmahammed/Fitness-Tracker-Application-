@@ -31,10 +31,10 @@ export class AddProductsComponent {
     });
   }
 
-  onFilterChanged(categoryId: string) {
-    this.selectedCategory = categoryId;
-    this.filterProductsByCategory(categoryId);
-  }
+  //onFilterChanged(categoryId: string) {
+  //  this.selectedCategory = categoryId;
+  //  this.filterProductsByCategory(categoryId);
+  //}
 
 
 
