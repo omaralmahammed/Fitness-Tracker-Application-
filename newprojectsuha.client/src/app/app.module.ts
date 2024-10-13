@@ -132,6 +132,8 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
           { path: "showrecipe", component: ShowAllRecipeComponent },
 
           { path: "Display_GymAndClasses", component: DisplayComponent },
+          { path: "create-gym-class", component: CreateComponent },
+          { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
 
           { path: "", redirectTo: "child1", pathMatch: "full" },

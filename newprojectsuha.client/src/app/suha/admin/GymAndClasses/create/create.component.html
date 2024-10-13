@@ -1,36 +1,42 @@
-<div class="container mt-4">
-  <h1>Create New Gym/Class</h1>
-  <form (ngSubmit)="createItem()" #createForm="ngForm">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" class="form-control" [(ngModel)]="newItem.name" name="name" required>
-    </div>
-
-    <div class="form-group">
-      <label for="trainer">Trainer:</label>
-      <input type="text" id="trainer" class="form-control" [(ngModel)]="newItem.trainer" name="trainer" required>
-    </div>
-
-    <div class="form-group">
-      <label for="description">Description:</label>
-      <textarea id="description" class="form-control" [(ngModel)]="newItem.description" name="description" required></textarea>
-    </div>
-
-    <div class="form-group">
-      <label for="price">Price:</label>
-      <input type="number" id="price" class="form-control" [(ngModel)]="newItem.price" name="price" required>
-    </div>
-
-    <div class="form-group">
-      <label for="flag">Flag:</label>
-      <input type="text" id="flag" class="form-control" [(ngModel)]="newItem.flag" name="flag" required>
-    </div>
-
-    <div class="form-group">
-      <label for="image">Image URL:</label>
-      <input type="text" id="image" class="form-control" [(ngModel)]="newItem.image" name="image" required>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Create</button>
-  </form>
+<div class="container mt-5">
+  <h2 class="mb-4">Create New Gym/Class</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Trainer</th>
+          <th>Description</th>
+          <th>Price</th>
+          <th>Flag</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="newItem.image" name="image" placeholder="Image URL">
+          </td>
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="newItem.name" name="name" placeholder="Name">
+          </td>
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="newItem.trainer" name="trainer" placeholder="Trainer">
+          </td>
+          <td>
+            <textarea class="form-control" [(ngModel)]="newItem.description" name="description" placeholder="Description" rows="3"></textarea>
+          </td>
+          <td>
+            <input type="number" class="form-control" [(ngModel)]="newItem.price" name="price" placeholder="Price">
+          </td>
+          <td>
+            <input type="text" class="form-control" [(ngModel)]="newItem.flag" name="flag" placeholder="Flag">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center mt-3">
+    <button (click)="createItem()" class="btn btn-success">Add New Gym/Class</button>
+  </div>
 </div>
