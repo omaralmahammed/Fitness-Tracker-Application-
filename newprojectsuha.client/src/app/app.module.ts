@@ -104,7 +104,10 @@ import { AllProductComponent } from './all-product/all-product.component';
       {
         path: "dash", component: DashboardComponent,
         children: [
-          { path: "child1", component: EditProductComponent },
+          { path: "EditProduct", component: EditProductComponent },
+          { path: "AddProduct", component: AddProductComponent },
+          { path: "AllProduct", component: AllProductComponent },
+
           { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
         ]
       },
