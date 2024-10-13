@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+//import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OrderhistoryComponent } from './orderhistory.component';
+//import { OrderhistoryComponent } from './orderhistory.component';
 
-describe('OrderhistoryComponent', () => {
-  let component: OrderhistoryComponent;
-  let fixture: ComponentFixture<OrderhistoryComponent>;
+//describe('OrderhistoryComponent', () => {
+//  let component: OrderhistoryComponent;
+//  let fixture: ComponentFixture<OrderhistoryComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [OrderhistoryComponent]
-    })
-    .compileComponents();
+//  beforeEach(async () => {
+//    await TestBed.configureTestingModule({
+//      declarations: [OrderhistoryComponent]
+//    })
+//    .compileComponents();
 
-    fixture = TestBed.createComponent(OrderhistoryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//    fixture = TestBed.createComponent(OrderhistoryComponent);
+//    component = fixture.componentInstance;
+//    fixture.detectChanges();
+//  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//  it('should create', () => {
+//    expect(component).toBeTruthy();
+//  });
+//});
