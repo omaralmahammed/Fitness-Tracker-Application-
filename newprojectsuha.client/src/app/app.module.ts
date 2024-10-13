@@ -42,6 +42,9 @@ import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.com
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
 import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { CategoriesComponent } from './Categories/categories/categories.component';
+import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
+import { AddCategoryComponent } from './Categories/add-category/add-category.component';
 
 
 @NgModule({
@@ -81,6 +84,9 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
     CreateComponent,
     AdminOrdersComponent,
     AdminContactComponent,
+    CategoriesComponent,
+    EditCategoryComponent,
+    AddCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,6 +130,9 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
           { path: "EditProduct", component: EditProductComponent },
           { path: "AddProduct", component: AddProductComponent },
           { path: "AllProduct", component: AllProductsComponent },
+          { path: "EditCategory", component: EditCategoryComponent },
+          { path: "AddCategory", component: AddCategoryComponent },
+          { path: "Categories", component: CategoriesComponent },
 
           { path: "", redirectTo: "child1", pathMatch: "full" }, 
           { path: "child1", component: EditProductComponent },
