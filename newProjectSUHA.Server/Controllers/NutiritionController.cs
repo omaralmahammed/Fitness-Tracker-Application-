@@ -30,6 +30,12 @@ namespace newProjectSUHA.Server.Controllers
             var SubFood = _db.Recipes.Where(a => a.CategoryId == id);
             return Ok(SubFood);
         }
+        [HttpGet("Recipesdetels/{id}")]
+        public IActionResult Recipesdetels(int id)
+        {
+            var SubFood = _db.Recipes.Where(a => a.Id == id).FirstOrDefault();
+            return Ok(SubFood);
+        }
 
 
         [HttpGet("Tips")]

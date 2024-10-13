@@ -27,7 +27,7 @@ namespace newProjectSUHA.Server.Controllers
                 .Select(a => new UserCheckoutInfoDTO
                 {
                     FirstName = a.FirstName,
-                    LastName = a.LastName,  
+                    LastName = a.LastName,
                     Email = a.Email,
                 })
                 .FirstOrDefault();
@@ -38,39 +38,36 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
-        [HttpGet("getOrderDetails/{userId}")]
-        public IActionResult getOrderDetails (int userId)
+        [HttpGet("getCartDetailsForCheckout/{userId}")]
+        public IActionResult getCartDetailsForCheckout(int userId)
         {
             if (userId <= 0) return BadRequest("invalid id");
 
-            var oreder = _db.Orders
-                .Where(a => a.UserId == userId && a.PaymentMethod == null)
-                .Include(a => a.OrderItems)
-                .ThenInclude(x => x.Product)
-                .Select(a => new CheckoutOrderInfoDTO
+            var userCart = _db.Carts.Where(a => a.UserId == userId).FirstOrDefault();
+
+            var cart = _db.CartItems
+                .Where(a => a.CartId == userCart.Id)
+                .Include(a => a.Product)
+                .Select(a => new CheckoutCartInfoDTO
                 {
-                    Total = a.Total,
-                    oi = a.OrderItems.Select(i => new orderItemsInfo
+                    Quantity = a.Quantity,
+                    p = new productIno
                     {
-                        Quantity = i.Quantity,
-                        p = new productIno
-                        {
-                            Name = i.Product.Name,
-                            Price = i.Product.Price,
-                        }
-                    }).ToList(),
+                        Name = a.Product.Name,
+                        Price = a.Product.Price,
+                    }
 
                 })
                 .ToList();
 
-            if (oreder == null) return NotFound("the order is empty");
+            if (cart == null) return NotFound("the order is empty");
 
-            return Ok(oreder);
+            return Ok(cart);
         }
 
 
         [HttpPut("finishOrder/{userId}")]
-        public IActionResult finishOrder (int userId, [FromBody] string method)
+        public IActionResult finishOrder(int userId, [FromBody] string method)
         {
             if (userId <= 0) return BadRequest("invalid id");
 

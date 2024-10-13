@@ -22,9 +22,13 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { AboutComponent } from './Tuqaa/about/about.component';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { CartComponent } from './cart/cart.component';
+import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
+import { ProfileComponent } from './Qusai/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms'; 
+
 
 @NgModule({
   declarations: [
@@ -49,8 +53,10 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
    ContactUsComponent,
     SingleProductComponent,
     CartComponent,
+    RecipeDetailsComponent,
     TestimonialComponent,
     CheckoutComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +65,7 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
     HttpClientModule,  
     FormsModule,     
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "Shop", component: ShopComponent },
@@ -68,6 +75,8 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
       { path: "subscriptions/:id", component: GymAndClassSubscriptionComponent },
       { path: "Tips", component: TipsComponent },
       { path: "RecipesCategories", component: RecipesCategoriesComponent },
+      { path : "Recipe/:id", component:RecipesComponent},
+      { path:"Recipedetals/:id", component:RecipeDetailsComponent},
       {path : "Recipe", component:RecipesComponent},
 
       { path: "LogIn", component: LogInComponent },
@@ -81,6 +90,8 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
       { path: "cart", component: CartComponent },
       { path: "Testimonial", component: TestimonialComponent },
       { path: "checkout", component: CheckoutComponent },
+      { path: "checkout", component: CheckoutComponent },  
+      { path: "profile", component: ProfileComponent },
 
     ])
   ],

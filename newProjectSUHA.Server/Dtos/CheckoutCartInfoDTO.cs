@@ -1,19 +1,12 @@
 ﻿namespace newProjectSUHA.Server.Dtos
 {
-    public class CheckoutOrderInfoDTO
-    {
-        public decimal? Total { get; set; }
-
-        public List<orderItemsInfo> oi { get; set; }
-    }
-
-
-    public class orderItemsInfo
+    public class CheckoutCartInfoDTO
     {
         public int? Quantity { get; set; }
 
         public productIno p { get; set; }
     }
+
 
     public class productIno
     {
