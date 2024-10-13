@@ -157,12 +157,12 @@ export class UrlService {
 
 
   BSCArtList: any = []
-  BSCArtListSub = new BehaviorSubject<any>("BSCArtList")
+  BSCArtListSub = new BehaviorSubject<any>(this.BSCArtList)
   BSCArtListObs = this.BSCArtListSub.asObservable()
 
   BSAddToCart(data: any) {
-
-    var record = this.BSCArtList.find((x: any) => x.ProductID == data.ProductID)
+    //debugger
+    var record = this.BSCArtList.find((x: any) => x.productId == data.productId)
 
     if (record) {
       record.quantity += data.quantity
@@ -180,11 +180,18 @@ export class UrlService {
 
   }
 
-
   getProductInfoForCart(productId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Cart/getProductInfoForCart/${productId}`)
   }
 
+  BSCArtTotal(data: any): number {
+    let total: any = 0;
+    data.forEach((item: any) => {
+      total += item.quantity * item.price
+    })
+    console.log(total)
+    return total
+  }
 
 
 
