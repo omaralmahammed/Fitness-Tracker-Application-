@@ -92,6 +92,13 @@ export class ShopComponent {
     else {
       this.productService.BSAddToCart({ ...cartItem })
       //console.log(cartItem)
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Added!',
+        text: 'The product has been successfully added to the cart.',
+        confirmButtonText: 'OK'
+      });
     }
 
 
