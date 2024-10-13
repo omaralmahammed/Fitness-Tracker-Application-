@@ -23,6 +23,10 @@ export class CartComponent {
     }
     else {
 
+      this.getBSCartItems()
+
+      this.BSCArtTotal(this.BSCartItemsList)
+
     }
 
 
@@ -32,14 +36,13 @@ export class CartComponent {
 
   cartItemsList: any
   BSCartItemsList: any
-  BSCartItemsInfo: any
 
   cartTotal: number = 0
   shipping: number = 5
   cartTotalFinal: number = 0
 
 
-  /// logged in user methods
+  /// logged IN user methods
   CartItems(id: number) {
     this._ser.getCartItems(id).subscribe((data) => {
       this.cartItemsList = data.map((item: any) => {
@@ -90,10 +93,30 @@ export class CartComponent {
   }
 
 
-  //// logged out user methods
+  //// logged OUT user methods
 
+  itemTotal :any
 
+  getBSCartItems() {
+    this._ser.BSCArtListObs.subscribe((BSdata) => {
 
+      this.BSCartItemsList = BSdata.map((item: any) => {
+        return {
+          ...item,
+          itemTotal: item.price * item.quantity
+        };
+      });
+      console.log(BSdata)
+
+    })
+  }
+
+  BSCArtTotal(a: any) {
+    debugger
+    const total = this._ser.BSCArtTotal(a);
+    this.cartTotal = total;
+    this.cartTotalFinal = total + this.shipping;
+  }
 
 
 
@@ -105,6 +128,13 @@ export class CartComponent {
 
   /// go to checkout
   goToCheckout() {
+
+    if (this.userId == "") {
+      this._route.navigate(["/LogIn"])
+    }
+    else {
+      this._route.navigate(["/checkout"])
+    }
 
   }
 

@@ -36,6 +36,11 @@ import { AllProductComponent } from './all-product/all-product.component';
 import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
 import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
 
+ 
+import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
+import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
+import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
+
 
 @NgModule({
   declarations: [
@@ -69,6 +74,10 @@ import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-re
     AllProductComponent,
     RecipeDashboardComponent,
     ShowAllRecipeComponent,
+
+    DisplayComponent,
+    UpdateComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,6 +122,9 @@ import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-re
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
 
+          { path: "Display_GymAndClasses", component: DisplayComponent },
+
+          { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
         ]
       },
 
