@@ -11,7 +11,7 @@
 }
 
 .profile-header {
-  background-color: #0d1117;
+  background-color: #051922;
   color: white;
   padding: 20px;
   text-align: center;
@@ -97,4 +97,8 @@
 .save-button:disabled {
   background-color: #6c757d;
   cursor: not-allowed;
+}
+
+.card-title {
+    color : white ;
 }
