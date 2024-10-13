@@ -68,13 +68,13 @@ namespace newProjectSUHA.Server.Controllers
 
 
 
-        // Get Last5 INDEX products
-        [HttpGet("GetLast5Products")]
-        public IActionResult GetLast5Products()
+        // Get Last3 INDEX products
+        [HttpGet("GetLast3Products")]
+        public IActionResult GetLast3Products()
         {
 
             var data = _db.Products.OrderBy(p => p.Name).ToList();
-            var lastFiveProducts = data.TakeLast(5).ToList();
+            var lastFiveProducts = data.TakeLast(3).ToList();
 
             return Ok(lastFiveProducts);
 

@@ -32,6 +32,8 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { AllProductComponent } from './all-product/all-product.component';
+import { AdminTestimonialComponent } from './suha/admin/admin-testimonial/admin-testimonial.component';
 import { AllProductsComponent } from './all-product/all-product.component';
 import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
 import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
@@ -41,7 +43,7 @@ import { AdminContactComponent } from './suha/admin/admin-contact/admin-contact.
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
-import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
 
 
 @NgModule({
@@ -73,13 +75,15 @@ import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.co
     ProfileComponent,
     DashboardComponent,
     AddProductComponent,
+    AllProductComponent,
+    AdminTestimonialComponent,
     AllProductsComponent,
     RecipeDashboardComponent,
     ShowAllRecipeComponent,
     DisplayComponent,
     UpdateComponent,
     CreateComponent,
-    OrderhistoryComponent,
+    AdminOrdersComponent,
     AdminContactComponent,
   ],
   imports: [
@@ -127,11 +131,15 @@ import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.co
 
           { path: "", redirectTo: "child1", pathMatch: "full" }, 
           { path: "child1", component: EditProductComponent },
+          { path: "", redirectTo: "child1", pathMatch: "full" },  // Default child route
+          { path: "TestimonialAdmin", component: AdminTestimonialComponent }
+         
           { path: "", redirectTo: "child1", pathMatch: "full" } , // Default child route
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
 
           { path: "Display_GymAndClasses", component: DisplayComponent },
+          { path: "Orderhisstory", component: AdminOrdersComponent },
 
           { path: "", redirectTo: "child1", pathMatch: "full" },
           { path: "child1", component: AddProductComponent },
