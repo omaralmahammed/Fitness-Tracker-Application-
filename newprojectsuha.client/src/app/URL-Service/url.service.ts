@@ -185,11 +185,17 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}Cart/getProductInfoForCart/${productId}`)
   }
 
+  ////////Admin///////////////
+
+  AdminTestimonials(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Testimonials/getAllTestimonialInAdmin`);
+
+  }
 
 
-
-
-
+  updateTestimonialStatus(id: number, status: string): Observable<any> {
+    return this.http.put(`${this.baseUrl}Testimonials/updateTestimonialStatus/${id}`, { status: status });
+  }
 
 }
 

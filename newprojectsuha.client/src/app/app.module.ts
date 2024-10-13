@@ -33,6 +33,7 @@ import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AllProductComponent } from './all-product/all-product.component';
+import { AdminTestimonialComponent } from './suha/admin/admin-testimonial/admin-testimonial.component';
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { AllProductComponent } from './all-product/all-product.component';
     DashboardComponent,
     AddProductComponent,
     AllProductComponent,
+    AdminTestimonialComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,7 +107,9 @@ import { AllProductComponent } from './all-product/all-product.component';
         path: "dash", component: DashboardComponent,
         children: [
           { path: "child1", component: EditProductComponent },
-          { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
+          { path: "", redirectTo: "child1", pathMatch: "full" },  // Default child route
+          { path: "TestimonialAdmin", component: AdminTestimonialComponent }
+         
         ]
       },
 
