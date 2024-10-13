@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
 namespace newProjectSUHA.Server.Controllers
@@ -38,6 +39,7 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
+
         [HttpGet("Tips")]
         public IActionResult Tips()
         {
@@ -66,5 +68,25 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(blog);
         }
 
+        [HttpPost("recipepost")]
+        public IActionResult recipepost([FromForm] RecipeDTO Recipedto) {
+            Recipe newitime = new Recipe()
+            {
+                Name= Recipedto.Name,
+                Image = Recipedto.Image,
+                Description = Recipedto.Description,
+                NutritionalFacts=Recipedto.NutritionalFacts,
+                CategoryId = Recipedto.CategoryId,
+
+            };
+
+            _db.Recipes.Add(newitime);
+            _db.SaveChanges();
+
+            return Ok(newitime);
+        }
+
+
+        
     }
 }
