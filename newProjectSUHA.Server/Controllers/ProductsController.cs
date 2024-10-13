@@ -237,5 +237,25 @@ namespace newProjectSUHA.Server.Controllers
             _db.SaveChanges();
             return Ok(data);
         }
+
+
+
+
+
+
+
+
+
+
+        [HttpGet("getImages/{imageName}")]
+        public IActionResult getImage(string imageName)
+        {
+            var pathImage = Path.Combine(Directory.GetCurrentDirectory(), "Upload", imageName);
+            if (System.IO.File.Exists(pathImage))
+            {
+                return PhysicalFile(pathImage, "image/jpeg");
+            }
+            return NotFound();
+        }
     }
 }

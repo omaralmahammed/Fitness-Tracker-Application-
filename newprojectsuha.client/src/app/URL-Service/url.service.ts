@@ -120,6 +120,11 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}Testimonials`);
 
   }
+  addTestimonial(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Testimonials`, formData)
+  }
+
+  
 
 
   getCartItems(id: number): Observable<any> {
