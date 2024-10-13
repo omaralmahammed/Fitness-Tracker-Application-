@@ -248,7 +248,6 @@ export class UrlService {
       this.BSCArtList.push(data);
       this.BSCArtListSub.next(this.BSCArtList)
       //console.log(this.BSCArtList)
-
     }
 
   }
@@ -288,6 +287,43 @@ export class UrlService {
     return this.http.put<any>(`${this.baseUrl}/Products/UpdateProduct/${id}`, data);
   }
 
+  BSCartItemDelete(productId: number) {
+
+    const index = this.BSCArtList.findIndex((x: any) => x.productId === productId);
+
+    if (index !== -1) {
+      this.BSCArtList.splice(index, 1); // Remove the item using splice
+      this.BSCArtListSub.next([...this.BSCArtList]); // Update the BehaviorSubject with a new array
+    } else {
+      alert("No product was found");
+    }
+
+  }
+  //=======================================
+  //profile admin cycle
+  getAllOrdersByUserId(userId: number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Order/${userId}`);
+  }
+
+  BSCartItemQuantity(productId: number, quantity: number) {
+    var product = this.BSCArtList.find((a: any) => a.productId == productId);
+
+    if (product) {
+      product.quantity += quantity; // Corrected 'Quantity' to 'quantity'
+
+      // Optional: Prevent negative quantities
+      if (product.quantity < 0) {
+        product.quantity = 0;
+      }
+
+      this.BSCArtListSub.next([...this.BSCArtList]);
+    }
+  }
+
+  // Get order items by OrderId
+  getOrderItems(orderId: number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Order/getOrderItem/${orderId}`);
+  }
 
   //home page get last 3 products
 
