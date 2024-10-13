@@ -1,7 +1,7 @@
 <div class="container mt-4">
   <h1>Gym and Class List</h1>
   
-  <button class="btn btn-success mb-3" (click)="createNewItem()">Create New Item</button> <!-- Button to create new item -->
+  <!--<button class="btn btn-success mb-3" (click)="createNewItem()">Create New Item</button>-->  
 
   <table class="table table-bordered table-hover">
     <thead class="thead-dark">
@@ -25,8 +25,8 @@
         <td>{{item.description | slice:0:100}}...</td>
         <td>${{item.price}}</td>
         <td>
-          <button class="btn btn-warning" (click)="editItem(item)">Edit</button> <!-- Edit button -->
-          <button class="btn btn-danger" (click)="deleteItem(item.id)">Delete</button> <!-- Delete button -->
+          <!--<button class="btn btn-warning" (click)="editItem(item)">Edit</button>-->  
+          <!--<button class="btn btn-danger" (click)="deleteItem(item.id)">Delete</button>--> 
         </td>
       </tr>
     </tbody>
