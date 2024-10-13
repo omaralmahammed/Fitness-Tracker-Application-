@@ -28,9 +28,6 @@ export class HomeComponent {
 
   
 
-    this._ser.GetAllProducts().subscribe((products) => {
-      this.Last3ProductArray = products;
-    });
 
   }
 
