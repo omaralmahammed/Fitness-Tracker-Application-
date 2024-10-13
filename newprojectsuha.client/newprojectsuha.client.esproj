@@ -8,8 +8,8 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\newprojectsuha.client\browser\</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\app\suha\admin\" />
     <Folder Include="src\app\Tuqaa\" />
     <Folder Include="src\app\URL-Service\" />
-    <Folder Include="src\app\suha\" />
   </ItemGroup>
 </Project>

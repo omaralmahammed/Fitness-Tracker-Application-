@@ -26,6 +26,7 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
+import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
     RecipeDetailsComponent,
     TestimonialComponent,
     CheckoutComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +87,8 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
       { path: "cart", component: CartComponent },
       { path: "Testimonial", component: TestimonialComponent },
       { path: "checkout", component: CheckoutComponent },
+      { path: "dash", component: DashboardComponent },
+
 
     ])
   ],
