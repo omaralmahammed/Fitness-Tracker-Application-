@@ -18,7 +18,6 @@ public partial class User
     public string? PasswordHash { get; set; }
 
     public string? PasswordSalt { get; set; }
-
     public virtual ICollection<Cart> Carts { get; set; } = new List<Cart>();
 
     public virtual ICollection<Enrolled> Enrolleds { get; set; } = new List<Enrolled>();

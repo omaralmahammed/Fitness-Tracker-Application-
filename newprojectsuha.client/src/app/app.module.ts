@@ -24,6 +24,9 @@ import { AboutComponent } from './Tuqaa/about/about.component';
 import { SingleProductComponent } from './single-product/single-product.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ProfileComponent } from './Qusai/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms'; 
+
 
 @NgModule({
   declarations: [
@@ -49,6 +52,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     SingleProductComponent,
     CartComponent,
     CheckoutComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +61,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
     HttpClientModule,  
     FormsModule,     
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "Shop", component: ShopComponent },
@@ -77,7 +82,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
       //{ path: "Contact", component: ContactUsComponent },
       { path: "Tips", component: TipsComponent },
       { path: "cart", component: CartComponent },
-      { path: "checkout", component: CheckoutComponent },
+      { path: "checkout", component: CheckoutComponent },  
+      { path: "profile", component: ProfileComponent },
 
     ])
   ],
