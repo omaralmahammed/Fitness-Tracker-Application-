@@ -166,11 +166,16 @@ export class UrlService {
 
     if (record) {
       record.quantity += data.quantity
+      console.log(record)
+      //console.log(this.BSCArtList)
+
       //alert("product already exist in the cart")
     }
     else {
       this.BSCArtList.push(data);
       this.BSCArtListSub.next(this.BSCArtList)
+      //console.log(this.BSCArtList)
+
     }
 
   }

@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
 
-  userId: any = 1
-  //userId: any 
+  //userId: any = 1
+  userId: any 
 
   ngOnInit() {
-    //this._ser.UserIdObserve.subscribe((data) => {
-    //  this.userId = data
-    //})
+    this._ser.UserIdObserve.subscribe((data) => {
+      this.userId = data
+    })
 
     if (this.userId != "") {
       this.CartItems(this.userId)

@@ -16,8 +16,9 @@ namespace newProjectSUHA.Server.Controllers
         string _redirectUrl;
         private PayPalPaymentService payPalService;
 
-        public PymentController(MyDbContext db, IConfiguration config, PayPalPaymentService paypal) { 
-        
+        public PymentController(MyDbContext db, IConfiguration config, PayPalPaymentService paypal)
+        {
+
             _db = db;
 
             _redirectUrl = config["PayPal:RedirectUrl"] + "/api/Pyment";
@@ -31,7 +32,8 @@ namespace newProjectSUHA.Server.Controllers
         {
             var checkSubscription = _db.Enrolleds.Where(u => u.UserId == orderInfo.UserId && u.ClassSubId == orderInfo.ClassSubId).FirstOrDefault();
 
-            if (checkSubscription != null) {
+            if (checkSubscription != null)
+            {
 
                 return BadRequest("You are already subscribed to this event. Please select a different event.");
             }
