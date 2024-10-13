@@ -48,9 +48,9 @@
                 <ul>
                   <li> <a class="shopping-cart" routerLink="cart"><i class="fas fa-shopping-cart"></i></a></li>
 
-                  <li><a routerLink="/LogIn" *ngIf="UserId != ''">LogIn</a></li>
+                  <li><a routerLink="/LogIn" *ngIf="UserId == ''">LogIn</a></li>
 
-                  <li *ngIf="UserId == ''">
+                  <li *ngIf="UserId != ''">
                     <div >
                       <a><i class="fas fa-user"></i></a>
                       <ul class="sub-menu">
