@@ -16,6 +16,8 @@ export class SingleProductComponent {
   relatedProducts: any[] = []; // Array to hold related products
   quantity: number = 1; // Default quantity
 
+  userId: any
+
   constructor(
     private route: ActivatedRoute,
 
@@ -25,6 +27,11 @@ export class SingleProductComponent {
   ) { }
 
   ngOnInit() {
+
+    this.productService.UserIdObserve.subscribe((data) => {
+      this.userId = data
+    })
+
     this.route.paramMap.subscribe(params => {
       this.productId = params.get('id');
       if (this.productId) {
@@ -53,35 +60,54 @@ export class SingleProductComponent {
   }
 
   addToCart(productId: number, quantity: number) {
-    const userId = 1; // Replace with the actual user ID or get it dynamically
+
     const cartItem = {
       productId: productId,
       quantity: quantity
     };
 
-    this.productService.addCartItem(userId, cartItem).subscribe(response => {
-      console.log('Item added to cart:', response);
+    if (this.userId != "") {
 
-      // Show SweetAlert
+      this.productService.addCartItem(this.userId, cartItem).subscribe(response => {
+        console.log('Item added to cart:', response);
+
+        // Show SweetAlert
+        Swal.fire({
+          icon: 'success',
+          title: 'Added!',
+          text: 'The product has been successfully added to the cart.',
+          confirmButtonText: 'OK'
+        });
+
+      }, error => {
+        console.error('Error adding item to cart:', error);
+
+        // Show error message if the operation fails
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops!',
+          text: 'Failed to add the product to the cart.',
+          confirmButtonText: 'OK'
+        });
+      });
+    }
+    else {
+      this.productService.BSAddToCart({ ...cartItem })
+      //console.log(cartItem)
+
       Swal.fire({
         icon: 'success',
         title: 'Added!',
         text: 'The product has been successfully added to the cart.',
         confirmButtonText: 'OK'
       });
+    }
 
-    }, error => {
-      console.error('Error adding item to cart:', error);
 
-      // Show error message if the operation fails
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops!',
-        text: 'Failed to add the product to the cart.',
-        confirmButtonText: 'OK'
-      });
-    });
   }
+
+
+
   // Navigate to the selected product and scroll to top
   navigateToProduct(productId: number) {
     this.router.navigate(['/SingleProduct', productId]).then(() => {

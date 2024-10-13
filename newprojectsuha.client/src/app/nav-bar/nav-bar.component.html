@@ -21,11 +21,7 @@
           <nav class="main-menu">
             <ul>
               <li class="current-list-item">
-                <a href="#">Home</a>
-                <ul class="sub-menu">
-                  <li><a href="index.html">Static Home</a></li>
-                  <li><a href="index_2.html">Slider Home</a></li>
-                </ul>
+                <a routerLink="/">Home</a>
               </li>
 
               <li>
@@ -52,9 +48,9 @@
                 <ul>
                   <li> <a class="shopping-cart" routerLink="cart"><i class="fas fa-shopping-cart"></i></a></li>
 
-                  <li><a routerLink="/LogIn" *ngIf="UserId != ''">LogIn</a></li>
+                  <li><a routerLink="/LogIn" *ngIf="UserId == ''">LogIn</a></li>
 
-                  <li *ngIf="UserId == ''">
+                  <li *ngIf="UserId != ''">
                     <div >
                       <a><i class="fas fa-user"></i></a>
                       <ul class="sub-menu">

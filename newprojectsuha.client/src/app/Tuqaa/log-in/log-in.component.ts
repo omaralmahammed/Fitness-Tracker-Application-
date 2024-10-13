@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../URL-Service/url.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-log-in',
@@ -30,9 +31,17 @@ export class LogInComponent {
       } else if (newData.email == 'admin@gmail.com') {
         this._router.navigate(['/dashboard']);
       } else {
-        this._router.navigate(['/']);
+        Swal.fire({
+          icon: "success",
+          title: "Welcome You!",
+          showConfirmButton: false,
+          timer: 2000
+        }).then(() => {
+          setTimeout(() => {
+            this._router.navigate(['/']);
+          }, 1000);
+        });
       }
-      alert('userLogin successfully')
 
     })
   }
