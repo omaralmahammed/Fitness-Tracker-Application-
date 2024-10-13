@@ -48,16 +48,16 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
-        [HttpGet("ContactStatus")]
-        public IActionResult ContactStatus(int contactId)
-        {
-            var contact = _db.ContactUs.Find(contactId);
-            if (contact == null)
+            [HttpGet("ContactStatus")]
+            public IActionResult ContactStatus(int contactId)
             {
-                return NotFound("Contact not found");
+                var contact = _db.ContactUs.Find(contactId);
+                if (contact == null)
+                {
+                    return NotFound("Contact not found");
+                }
+                return Ok(contact);
             }
-            return Ok(contact);
-        }
 
 
         [HttpPut("UpdateContactStatus")]
