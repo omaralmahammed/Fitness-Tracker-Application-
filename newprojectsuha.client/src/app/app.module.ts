@@ -32,6 +32,8 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+//import { AllProductComponent } from './all-product/all-product.component';
+import { AdminTestimonialComponent } from './suha/admin/admin-testimonial/admin-testimonial.component';
 import { AllProductsComponent } from './all-product/all-product.component';
 import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
 import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
@@ -76,6 +78,8 @@ import { AddCategoryComponent } from './Categories/add-category/add-category.com
     ProfileComponent,
     DashboardComponent,
     AddProductComponent,
+    //AllProductComponent,
+    AdminTestimonialComponent,
     AllProductsComponent,
     RecipeDashboardComponent,
     ShowAllRecipeComponent,
@@ -92,9 +96,7 @@ import { AddCategoryComponent } from './Categories/add-category/add-category.com
     BrowserModule,
     HttpClientModule,
     CommonModule,  
-    FormsModule,       
-    HttpClientModule,  
-    FormsModule,     
+    FormsModule,           
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
@@ -136,6 +138,9 @@ import { AddCategoryComponent } from './Categories/add-category/add-category.com
 
           { path: "", redirectTo: "child1", pathMatch: "full" }, 
           { path: "child1", component: EditProductComponent },
+          { path: "", redirectTo: "child1", pathMatch: "full" },  // Default child route
+          { path: "TestimonialAdmin", component: AdminTestimonialComponent },
+         
           { path: "", redirectTo: "child1", pathMatch: "full" } , // Default child route
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
