@@ -3,7 +3,8 @@
     // ClassAndGym DTO
     public class ClassAndGymDto
     {
-      
+        public int? id { get; set; }
+
         public string? Name { get; set; }
         public string? Trainer { get; set; }
         public string? Description { get; set; }

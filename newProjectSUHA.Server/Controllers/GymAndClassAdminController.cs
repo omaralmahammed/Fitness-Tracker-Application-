@@ -24,7 +24,8 @@ namespace newProjectSUHA.Server.Controllers
         {
             var classAndGyms = _context.ClassAndGyms
                 .Select(c => new ClassAndGymDto
-                {
+                {   
+                    id = c.Id,
                     Name = c.Name,
                     Trainer = c.Trainer,
                     Description = c.Description,
