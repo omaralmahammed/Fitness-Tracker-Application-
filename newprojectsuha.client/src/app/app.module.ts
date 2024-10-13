@@ -32,7 +32,7 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { AllProductComponent } from './all-product/all-product.component';
+//import { AllProductComponent } from './all-product/all-product.component';
 import { AdminTestimonialComponent } from './suha/admin/admin-testimonial/admin-testimonial.component';
 import { AllProductsComponent } from './all-product/all-product.component';
 import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
@@ -75,7 +75,7 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
     ProfileComponent,
     DashboardComponent,
     AddProductComponent,
-    AllProductComponent,
+    //AllProductComponent,
     AdminTestimonialComponent,
     AllProductsComponent,
     RecipeDashboardComponent,
@@ -90,9 +90,7 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
     BrowserModule,
     HttpClientModule,
     CommonModule,  
-    FormsModule,       
-    HttpClientModule,  
-    FormsModule,     
+    FormsModule,           
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
@@ -132,7 +130,7 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
           { path: "", redirectTo: "child1", pathMatch: "full" }, 
           { path: "child1", component: EditProductComponent },
           { path: "", redirectTo: "child1", pathMatch: "full" },  // Default child route
-          { path: "TestimonialAdmin", component: AdminTestimonialComponent }
+          { path: "TestimonialAdmin", component: AdminTestimonialComponent },
          
           { path: "", redirectTo: "child1", pathMatch: "full" } , // Default child route
           { path: "recipeDashboard", component: RecipeDashboardComponent },
