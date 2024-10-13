@@ -68,5 +68,12 @@ namespace newProjectSUHA.Server.Controllers
 
 
         }
-    }
+        [HttpGet("GetAllUsers")]
+        public IActionResult GetAllUsers()
+        {
+            var Users = _db.Users.ToList();
+            return Ok(Users);
+        }
+    
+}
 }

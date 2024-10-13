@@ -60,7 +60,7 @@
       <div class="single-product-item">
         <div class="product-image">
           <a [routerLink]="['/SingleProduct', product.id]">
-            <img src="https://i.pinimg.com/564x/e2/d1/95/e2d19587202b24c3066ce3e357d3b09e.jpg" alt="{{ product.name }}">
+            <img src="https://localhost:7286/api/Products/getImages/{{ product.image }}" alt="{{ product.name }}" style="width: 300px; height: 300px; object-fit: cover;">
           </a>
         </div>
         <a [routerLink]="['/SingleProduct', product.id]">{{ product.name }}</a>
