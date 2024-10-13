@@ -31,21 +31,25 @@ export class SingleProductComponent {
         this.productService.GetProductById(this.productId).subscribe(product => {
           this.product = product;
           // Now fetch the last 3 products from the same category
-          this.loadRelatedProducts(product.categoryId);
+          this.loadRelatedProducts();
         });
       }
     });
   }
   
-  loadRelatedProducts(categoryId: any) {
-    this.productService.GetLast3ProductsByCategory(categoryId).subscribe(
-      products => {
-        this.relatedProducts = products; // Assign the fetched products
-      },
-      error => {
-        console.error("Error fetching related products:", error);
-      }
-    );
+  // Fetch 3 random products excluding the current one
+  loadRelatedProducts() {
+    if (this.productId) {
+      // Fetch random 3 products in the same category except the current product
+      this.productService.GetRandom3ProductsByCategory(this.productId).subscribe(
+        products => {
+          this.relatedProducts = products; // Assign the fetched products
+        },
+        error => {
+          console.error("Error fetching related products:", error);
+        }
+      );
+    }
   }
 
   addToCart(productId: number, quantity: number) {

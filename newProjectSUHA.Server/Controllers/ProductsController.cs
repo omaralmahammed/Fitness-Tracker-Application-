@@ -40,6 +40,29 @@ namespace newProjectSUHA.Server.Controllers
 
             return Ok(productsByCategory);
         }
+        // Get 3 Random Products by ProductId, excluding the product itself
+        [HttpGet("GetRandom3ProductsByCategory/{excludeProductId}")]
+        public IActionResult GetRandom3ProductsByCategory(int excludeProductId)
+        {
+            // Fetch the product to get its categoryId
+            var product = _db.Products.FirstOrDefault(p => p.Id == excludeProductId);
+
+            if (product == null)
+            {
+                return NotFound("Product not found");
+            }
+
+            int? categoryId = product.CategoryId;
+
+            // Fetch products that match the categoryId and exclude the specified product
+            var randomProductsByCategory = _db.Products
+                                              .Where(p => p.CategoryId == categoryId && p.Id != excludeProductId) // Exclude the specified product
+                                              .OrderBy(p => Guid.NewGuid()) // Order by random GUID to shuffle the products
+                                              .Take(3) // Get 3 random products
+                                              .ToList();
+
+            return Ok(randomProductsByCategory);
+        }
 
 
 

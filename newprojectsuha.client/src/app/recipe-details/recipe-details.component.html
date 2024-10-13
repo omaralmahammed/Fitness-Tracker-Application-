@@ -4,28 +4,31 @@
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="breadcrumb-text">
-          <h1>Recipes</h1>
+          <h1>Recipe Details</h1>
         </div>
       </div>
     </div>
   </div>
 </div>
 <!-- end breadcrumb section -->
-
+<!-- recipe details section -->
 <div class="product-section d-flex justify-content-center align-items-center" style="min-height: 100vh;">
   <div class="container">
     <div class="row justify-content-center">
-      <!-- Loop through categorieArray and place each item in a column -->
-      <div class="col-lg-4 col-md-6 text-center strawberry" *ngFor="let item of categorieArray">
-        <div class="single-product-item">
+      <div class="col-lg-8 text-center strawberry">
+        <!-- عرض تفاصيل الوصفة -->
+        <div class="single-product-item" *ngIf="recipeDetails">
           <div class="product-image">
-            <a [routerLink]="['/Recipe', item.id]">
-              <img src="assets/img/products/product-img-1.jpg" alt="">
-            </a>
+            <img [src]="recipeDetails.image" alt="{{ recipeDetails.name }}">
           </div>
-          <h3>{{item.name}}</h3>
+          <h3>{{ recipeDetails.name }}</h3>
+          <h4>Nutritional Facts:</h4>
+          <p>{{ recipeDetails.nutritionalFacts }}</p>
+          <h4>Description:</h4>
+          <p>{{ recipeDetails.description }}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
+<!-- end recipe details section -->
