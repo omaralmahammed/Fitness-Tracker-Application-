@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace newProjectSUHA.Server.Models;
 
@@ -20,6 +21,7 @@ public partial class Product
     public virtual ICollection<CartItem> CartItems { get; set; } = new List<CartItem>();
 
     public virtual Category? Category { get; set; }
+    [JsonIgnore]
 
     public virtual ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 }
