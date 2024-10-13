@@ -31,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 import { AddProductsComponent } from './add-products/add-products.component';
 import { CommonModule } from '@angular/common';
+import { AdminContactComponent } from './suha/admin/admin-contact/admin-contact.component';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { CommonModule } from '@angular/common';
     CheckoutComponent,
     ProfileComponent,
     DashboardComponent,
+    AdminContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,11 +99,14 @@ import { CommonModule } from '@angular/common';
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
+
       {
         path: "dash", component: DashboardComponent,
         children: [
           { path: "child1", component: AddProductsComponent },
-          { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
+          { path: "", redirectTo: "child1", pathMatch: "full" },
+          { path: "ContactAdmin", component: AdminContactComponent }
+          // Default child route
         ]
       },
 

@@ -104,9 +104,6 @@ export class UrlService {
     return this.http.post(`${this.baseUrl}Contact`, contactData);
   }
 
-  getContacts(): Observable<any> {
-    return this.http.get(`${this.baseUrl}Contact/contact`);
-  }
 
 
 
@@ -183,6 +180,23 @@ export class UrlService {
 
   getProductInfoForCart(productId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Cart/getProductInfoForCart/${productId}`)
+  }
+
+
+  // Get all contacts
+  getContacts(): Observable<any> {
+    return this.http.get(`${this.baseUrl}Contact/contact`);
+  }
+
+
+  // Get a single contact by ID
+  getContactById(contactId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ContactStatus?contactId=${contactId}`);
+  }
+
+  // Update contact status
+  updateContactStatus(contactId: number, status: string): Observable<any> {
+    return this.http.put(`${this.baseUrl}/UpdateContactStatus?contactId=${contactId}`, { status });
   }
 
 
