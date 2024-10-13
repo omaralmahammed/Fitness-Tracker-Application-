@@ -9,8 +9,14 @@ import Swal from 'sweetalert2';
   styleUrl: './log-in.component.css'
 })
 export class LogInComponent {
-  ngOnInit() { }
+  ngOnInit() {
+
+    this.getBSCartItems()
+
+  }
   constructor(private _ser: UrlService, private _router: Router) { }
+
+  BSCartItemsList: any
 
   loginNewUser(data: any) {
 
@@ -18,19 +24,34 @@ export class LogInComponent {
     for (let key in data) {
       form.append(key, data[key])
     }
+
     this._ser.loginUser(form).subscribe((newData) => {
 
       this._ser['email'].next(newData.email);
       this._ser['UserId'].next(newData.id);
 
       var checkClassPayment = localStorage.getItem("ClassId")
+      var fromCart = localStorage.getItem("cartPage")
 
       if (checkClassPayment != null) {
+
         this._router.navigate([`/subscriptions/${checkClassPayment}`]);
         localStorage.removeItem("ClassId");
-      } else if (newData.email == 'admin@gmail.com') {
+
+      } else if (fromCart) {
+        //debugger
+        this.moveFromBStoDB(newData.id, this.BSCartItemsList)
+
+        this._router.navigate([`/cart`]);
+        localStorage.removeItem("cartPage");
+
+      }
+      else if (newData.email == 'admin@gmail.com') {
+
         this._router.navigate(['/dashboard']);
+
       } else {
+
         Swal.fire({
           icon: "success",
           title: "Welcome You!",
@@ -45,4 +66,23 @@ export class LogInComponent {
 
     })
   }
+
+
+  moveFromBStoDB(userId: number, BSList: any) {
+    this._ser.moveFromBStoDB(userId, BSList).subscribe(() => {
+      alert("items moved siccessfully")
+    })
+  }
+
+  getBSCartItems() {
+    this._ser.BSCArtListObs.subscribe((BSdata) => {
+      this.BSCartItemsList = BSdata
+    })
+  }
+
+
+
+
+
+
 }

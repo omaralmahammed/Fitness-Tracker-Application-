@@ -120,7 +120,7 @@ namespace newProjectSUHA.Server.Controllers
         [HttpPut("changeCartItemQuantity/{cartItemId}")]
         public IActionResult changeCartItemQuantity(int cartItemId, [FromBody] int quantity)
         {
-            
+
             if (cartItemId <= 0) return BadRequest("invaid id");
             if (quantity <= 0) return BadRequest("can't accept quantity of 0 or less");
 
@@ -152,7 +152,7 @@ namespace newProjectSUHA.Server.Controllers
 
 
         [HttpPost("moveFromCartToOrder/{userId}")]
-        public IActionResult moveFromCartToOrder(int userId)
+        public IActionResult moveFromCartToOrder(int userId, string method)
         {
             if (userId <= 0) return BadRequest("invalid id");
 
@@ -177,21 +177,12 @@ namespace newProjectSUHA.Server.Controllers
             }
 
 
-            // check if there's an order that hasn't been proccessed yet / not paid yet
-
-            var existingOrder = _db.Orders
-                .Where(a => a.Id == userId && a.PaymentMethod == null)
-                .FirstOrDefault();
-
-            if (existingOrder == null)
-            {
-                // create new order
-
                 var newOrder = new Order
                 {
                     UserId = userId,
                     Date = DateTime.Now,
                     Total = finalTotal,
+                    PaymentMethod = method,
                 };
 
                 _db.Orders.Add(newOrder);
@@ -209,43 +200,7 @@ namespace newProjectSUHA.Server.Controllers
                     _db.OrderItems.Add(newItem);
                 }
                 _db.SaveChanges();
-            }
-            else
-            {
-                // add to the existing order
 
-                existingOrder.Total += finalTotal;
-                _db.SaveChanges();
-
-                // check if a product is ordered again
-
-                foreach (var item in cartList)
-                {
-                    var existingItem = _db.OrderItems
-                    .FirstOrDefault(x => x.OrderId == existingOrder.Id && x.ProductId == item.ProductId);
-
-                    if (existingItem != null)
-                    {
-                        existingItem.Quantity += item.Quantity ?? 1;
-                    }
-                    else
-                    {
-
-                        var newItem = new OrderItem
-                        {
-                            OrderId = existingOrder.Id,
-                            ProductId = item.ProductId,
-                            Quantity = item.Quantity ?? 1,
-                        };
-
-                        _db.OrderItems.Add(newItem);
-                    }
-
-                }
-                _db.SaveChanges();
-
-
-            }
 
 
             _db.CartItems.RemoveRange(cartList);
@@ -264,7 +219,7 @@ namespace newProjectSUHA.Server.Controllers
         /// <returns></returns>
 
         [HttpGet("getProductInfoForCart/{productId}")]
-        public IActionResult getProductInfoForCart (int productId)
+        public IActionResult getProductInfoForCart(int productId)
         {
             if (productId <= 0) return BadRequest("invalid id");
 
@@ -288,7 +243,48 @@ namespace newProjectSUHA.Server.Controllers
 
 
 
+        ///////////////////////////////////////////////////////////////// moving from Behavior subject to databse
+        ///
 
+        [HttpPost("moveFromBStoDB/{userId}")]
+        public IActionResult moveFromBStoDB(int userId, [FromBody] List<BStoCartDTO> l)
+        {
+            if (userId <= 0) return BadRequest("invalid id");
+            if (l.IsNullOrEmpty()) return BadRequest("empty cart in BS");
+
+            var userCart = _db.Carts.FirstOrDefault(a => a.UserId == userId);
+
+            if (userCart == null) return NotFound("no cart was found");
+
+            foreach (var item in l)
+            {
+
+                var existingItem = _db.CartItems
+                    .FirstOrDefault(x => x.CartId == userCart.Id && x.ProductId == item.ProductId);
+
+                if (existingItem != null)
+                {
+                    existingItem.Quantity += item.Quantity ?? 1;
+
+                }
+                else
+                {
+
+                    var newItem = new CartItem
+                    {
+                        CartId = userCart.Id,
+                        ProductId = item.ProductId,
+                        Quantity = item.Quantity,
+
+                    };
+                    _db.CartItems.Add(newItem);
+                }
+
+                _db.SaveChanges();
+            }
+
+            return Ok();
+        }
 
 
 
