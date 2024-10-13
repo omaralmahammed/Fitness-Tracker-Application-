@@ -32,27 +32,10 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(orders);
         }
 
-        [HttpGet("{orderId}")]
+        [HttpGet("getOrderItem/{orderId}")]
         public IActionResult GetOrderDetails(int orderId)
         {
-            var orderDetails = _db.OrderItems
-                .Where(oi => oi.OrderId == orderId)
-                //.Include(o => o.Order)
-                .Include(p => p.Product)
-                .Select(t => new OrderItem
-                {
-                    Quantity = t.Quantity,
-                    Product = new Product
-                    {
-                        Name = t.Product.Name,
-                        Price = t.Product.Price,
-                        Image = t.Product.Image,
-                        //Description=t.Product.Description,
-                    }
-                    //Total=t.Order.Total,
-                    //PaymentMethod=t.Order.PaymentMethod,
-                    //Date=t.Order.Date
-                }).ToList();
+            var orderDetails = _db.OrderItems.Include(p => p.Product).Where(oi => oi.OrderId == orderId).ToList();
 
             if (orderDetails == null || orderDetails.Count == 0)
             {

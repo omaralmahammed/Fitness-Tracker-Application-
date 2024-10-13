@@ -33,6 +33,9 @@ import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AllProductComponent } from './all-product/all-product.component';
+import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
+import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
+
  
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
@@ -69,6 +72,8 @@ import { CreateComponent } from './suha/admin/GymAndClasses/create/create.compon
     DashboardComponent,
     AddProductComponent,
     AllProductComponent,
+    RecipeDashboardComponent,
+    ShowAllRecipeComponent,
 
     DisplayComponent,
     UpdateComponent,
@@ -113,6 +118,10 @@ import { CreateComponent } from './suha/admin/GymAndClasses/create/create.compon
         path: "dash", component: DashboardComponent,
         children: [
           { path: "child1", component: EditProductComponent },
+          { path: "", redirectTo: "child1", pathMatch: "full" } , // Default child route
+          { path: "recipeDashboard", component: RecipeDashboardComponent },
+          { path: "showrecipe", component: ShowAllRecipeComponent },
+
           { path: "Display_GymAndClasses", component: DisplayComponent },
 
           { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
