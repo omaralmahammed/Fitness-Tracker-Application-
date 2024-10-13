@@ -1,0 +1,34 @@
+<div class="container mt-4">
+  <h1>Gym and Class List</h1>
+  
+  <button class="btn btn-success mb-3" (click)="createNewItem()">Create New Item</button> <!-- Button to create new item -->
+
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Name</th>
+        <th scope="col">Trainer</th>
+        <th scope="col">Description</th>
+        <th scope="col">Price</th>
+        <th scope="col">Actions</th> <!-- Updated header for actions -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of gymAndClassItems">
+        <td>
+          <img [src]="'https://localhost:7286/api/Images/getImages/' + item.image" 
+               alt="{{item.name}}" class="img-fluid" style="max-width: 150px;" />
+        </td>
+        <td>{{item.name}}</td>
+        <td>{{item.trainer}}</td>
+        <td>{{item.description | slice:0:100}}...</td>
+        <td>${{item.price}}</td>
+        <td>
+          <button class="btn btn-warning" (click)="editItem(item)">Edit</button> <!-- Edit button -->
+          <button class="btn btn-danger" (click)="deleteItem(item.id)">Delete</button> <!-- Delete button -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

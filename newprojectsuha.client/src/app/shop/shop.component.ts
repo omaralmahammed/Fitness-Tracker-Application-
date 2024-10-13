@@ -64,7 +64,16 @@ export class ShopComponent {
       quantity: quantity
     };
 
+    const BScartItem = {
+      productId: productId,
+      quantity: quantity,
+      name: "",
+      image: "",
+      price: 0,
+    };
+
     if (this.userId != "") {
+
 
       this.productService.addCartItem(this.userId, cartItem).subscribe(response => {
         console.log('Item added to cart:', response);
@@ -90,8 +99,20 @@ export class ShopComponent {
       });
     }
     else {
-      this.productService.BSAddToCart({ ...cartItem })
-      //console.log(cartItem)
+
+
+      //debugger
+
+      this.productService.getProductInfoForCart(productId).subscribe((info) => {
+        //debugger
+        BScartItem.name = info.name,
+          BScartItem.image = info.image,
+          BScartItem.price = info.price,
+        this.productService.BSAddToCart({ ...BScartItem })
+      })
+
+
+      console.log(BScartItem)
 
       Swal.fire({
         icon: 'success',

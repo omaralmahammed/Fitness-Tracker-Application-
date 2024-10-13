@@ -33,6 +33,10 @@ import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AllProductComponent } from './all-product/all-product.component';
+ 
+import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
+import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
+import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
 
 
 @NgModule({
@@ -65,6 +69,10 @@ import { AllProductComponent } from './all-product/all-product.component';
     DashboardComponent,
     AddProductComponent,
     AllProductComponent,
+
+    DisplayComponent,
+    UpdateComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,6 +113,8 @@ import { AllProductComponent } from './all-product/all-product.component';
         path: "dash", component: DashboardComponent,
         children: [
           { path: "child1", component: EditProductComponent },
+          { path: "Display_GymAndClasses", component: DisplayComponent },
+
           { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
         ]
       },
