@@ -63,9 +63,23 @@ export class UrlService {
   getCategorieRecipe(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Nutirition/RecipesCategory`);
   }
-  getSRecipe(id: any): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}Nutirition/Recipes/${id}`);
+  
+  getRecipesByCategory(categoryId: number): Observable<any[]> {
+    const url = `https://localhost:7286/api/Nutirition/Recipes/${categoryId}`; 
+    return this.http.get<any[]>(url);
   }
+
+
+
+  getRecipeDetails(id: number): Observable<any> {
+    const url = `https://localhost:7286/api/Nutirition/Recipesdetels/${id}`; 
+    return this.http.get<any>(url); 
+  }
+
+
+
+
+
   GetProductById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)
   }
@@ -97,9 +111,20 @@ export class UrlService {
 
 
 
-  addSubscribtionToEnrolled(data : any): Observable<any> {
-    return this.http.post<any>(`${this.baseUrl}GymAndClass/AddSubscriptionToEnrolled`, data)
+  addSubscribtionToEnrolled(data:any): Observable<any> {
+    
+    return this.http.post<any>(`https://localhost:7286/api/Pyment/checkoutForSubscription`, data)
   }
+
+  getTestimonials(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Testimonials`);
+
+  }
+  addTestimonial(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Testimonials`, formData)
+  }
+
+  
 
 
   getCartItems(id: number): Observable<any> {
@@ -121,6 +146,40 @@ export class UrlService {
   moveFromCartToOrder(userId: number): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}Cart/moveFromCartToOrder/${userId}`, null)
   }
+
+  getUserInfoForOrder(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}CheckOut/getUserInfoForOrder/${userId}`)
+  }
+
+  getCartDetailsForCheckout(userId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}CheckOut/getCartDetailsForCheckout/${userId}`)
+  }
+
+
+  BSCArtList: any = []
+  BSCArtListSub = new BehaviorSubject<any>("BSCArtList")
+  BSCArtListObs = this.BSCArtListSub.asObservable()
+
+  BSAddToCart(data: any) {
+
+    var record = this.BSCArtList.find((x: any) => x.ProductID == data.ProductID)
+
+    if (record) {
+      record.quantity += data.quantity
+      //alert("product already exist in the cart")
+    }
+    else {
+      this.BSCArtList.push(data);
+      this.BSCArtListSub.next(this.BSCArtList)
+    }
+
+  }
+
+
+
+
+
+
 
 
 
