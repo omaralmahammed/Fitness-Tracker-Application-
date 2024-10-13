@@ -12,12 +12,15 @@ import Swal from 'sweetalert2';
 export class GymAndClassSubscriptionComponent {
 
   classId: any
-
+  UserId: any
   ngOnInit() {
     this.classId = this._route.snapshot.paramMap.get("id");
 
     this.getSubscriptions(this.classId)
 
+    this._ser.UserIdObserve.subscribe((UserId) => {
+      this.UserId = UserId;
+    });
   }
   constructor(private _ser: UrlService, private _route: ActivatedRoute, private url: UrlService, private _router: Router ) { }
 
@@ -41,7 +44,9 @@ export class GymAndClassSubscriptionComponent {
     }
 
   AddSubscription(id: any) {
+    this.subscriptionData.userId = this.UserId;
     this.subscriptionData.classSubId = id;
+
 
     this.url.UserIdObserve.subscribe((userId: any) => {
       if (userId === "") {

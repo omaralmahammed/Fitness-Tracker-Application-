@@ -19,7 +19,7 @@ namespace newProjectSUHA.Server.Controllers
         [HttpGet("{UserId}")]
         public IActionResult GetAllOrdersByUserId(int UserId)
         {
-            
+
             var orders = _db.Orders
                             .Where(order => order.UserId == UserId)
                             .ToList();
@@ -37,18 +37,21 @@ namespace newProjectSUHA.Server.Controllers
         {
             var orderDetails = _db.OrderItems
                 .Where(oi => oi.OrderId == orderId)
-                .Include(o => o.Order)
+                //.Include(o => o.Order)
                 .Include(p => p.Product)
-                .Select(t => new
+                .Select(t => new OrderItem
                 {
-                    Name= t.Product.Name,
-                    Price=t.Product.Price,
-                    Description=t.Product.Description,
-                    Image=t.Product.Image,
-                    Quantity=t.Quantity,
-                    Total=t.Order.Total,
-                    PaymentMethod=t.Order.PaymentMethod,
-                    Date=t.Order.Date
+                    Quantity = t.Quantity,
+                    Product = new Product
+                    {
+                        Name = t.Product.Name,
+                        Price = t.Product.Price,
+                        Image = t.Product.Image,
+                        //Description=t.Product.Description,
+                    }
+                    //Total=t.Order.Total,
+                    //PaymentMethod=t.Order.PaymentMethod,
+                    //Date=t.Order.Date
                 }).ToList();
 
             if (orderDetails == null || orderDetails.Count == 0)
@@ -59,6 +62,5 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(orderDetails);
 
         }
-
     }
 }
