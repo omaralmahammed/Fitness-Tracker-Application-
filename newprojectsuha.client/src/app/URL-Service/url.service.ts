@@ -120,6 +120,11 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}Testimonials`);
 
   }
+  addTestimonial(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Testimonials`, formData)
+  }
+
+  
 
 
   getCartItems(id: number): Observable<any> {
@@ -149,6 +154,34 @@ export class UrlService {
   getCartDetailsForCheckout(userId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}CheckOut/getCartDetailsForCheckout/${userId}`)
   }
+
+
+  BSCArtList: any = []
+  BSCArtListSub = new BehaviorSubject<any>("BSCArtList")
+  BSCArtListObs = this.BSCArtListSub.asObservable()
+
+  BSAddToCart(data: any) {
+
+    var record = this.BSCArtList.find((x: any) => x.ProductID == data.ProductID)
+
+    if (record) {
+      record.quantity += data.quantity
+      //alert("product already exist in the cart")
+    }
+    else {
+      this.BSCArtList.push(data);
+      this.BSCArtListSub.next(this.BSCArtList)
+    }
+
+  }
+
+
+
+
+
+
+
+
 
 
 }

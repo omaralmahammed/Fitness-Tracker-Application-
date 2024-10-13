@@ -1,1 +1,49 @@
-<p>testimonial works!</p>
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>Testimonial</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end breadcrumb section -->
+<!-- contact form -->
+<div class="contact-from-section mt-150 mb-150">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Left side with image -->
+      <div class="col-lg-6">
+        <div class="feedback-image">
+          <img src="assets/img/gymImage.jpeg" alt="Feedback Image" class="img-fluid">
+        </div>
+      </div>
+      <!-- Right side with form and text -->
+      <div class="col-lg-6">
+        <div class="form-section">
+          <div class="form-title">
+            <h2>We value your feedback</h2>
+            <p>Please leave your message and share your experience with us.</p>
+          </div>
+          <div id="form_status"></div>
+          <form (ngSubmit)="submitTestimonial(testimonialContent.value)">
+            <div class="form-group">
+              <textarea #testimonialContent name="message" class="form-control" cols="30" rows="8" placeholder="Your message" ngModel required></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-primary btn-block" value="Submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end contact form -->
+
+
+
+

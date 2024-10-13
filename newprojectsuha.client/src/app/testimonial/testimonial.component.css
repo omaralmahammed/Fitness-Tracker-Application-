@@ -1,0 +1,60 @@
+/* General Styles for the Form Section */
+.form-section {
+  padding: 30px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the form section */
+}
+
+.form-title h2 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.form-title p {
+  font-size: 16px;
+  color: #666;
+}
+
+textarea.form-control {
+  resize: none;
+  padding: 15px;
+  font-size: 14px;
+  color: #333;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 30px; /* Rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Box shadow for the button */
+  transition: all 0.3s ease; /* Smooth hover effect */
+}
+
+  .btn-primary:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Slightly larger shadow on hover */
+  }
+
+.feedback-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for the image */
+}
+
+@media (max-width: 768px) {
+  .contact-from-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .form-section {
+    margin-top: 20px;
+  }
+}
