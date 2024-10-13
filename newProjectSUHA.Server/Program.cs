@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using newProjectSUHA.Server.Models;
+using newProjectSUHA.Server.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,8 @@ options.AddPolicy("Development", builder =>
 
 );
 
+
+builder.Services.AddScoped<PayPalPaymentService>();
 
 var app = builder.Build();
 
