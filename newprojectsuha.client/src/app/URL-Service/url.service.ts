@@ -309,11 +309,11 @@ export class UrlService {
     var product = this.BSCArtList.find((a: any) => a.productId == productId);
 
     if (product) {
-      product.quantity += quantity; // Corrected 'Quantity' to 'quantity'
+      product.quantity = quantity;
 
-      // Optional: Prevent negative quantities
-      if (product.quantity < 0) {
-        product.quantity = 0;
+      // stop negative quantities
+      if (product.quantity <= 0) {
+        product.quantity = 1;
       }
 
       this.BSCArtListSub.next([...this.BSCArtList]);
@@ -335,6 +335,12 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}Testimonials/getAllTestimonialInAdmin`);
 
   }
+
+  moveFromBStoDB(userId: number, BSList: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Cart/moveFromBStoDB/${userId}`, BSList)
+  }
+
+
 
 
   updateTestimonialStatus(id: number, status: string): Observable<any> {
