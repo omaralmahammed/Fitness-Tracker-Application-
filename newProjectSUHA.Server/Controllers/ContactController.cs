@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Azure.Core;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
@@ -19,7 +20,7 @@ namespace newProjectSUHA.Server.Controllers
 
             // GET: api/Contact
             [HttpPost]
-            public IActionResult Contact([FromForm] ContactDTO  DTO)
+        public IActionResult Contact([FromForm] ContactDTO DTO)
             {
             var Contact = new ContactU
             {
@@ -34,7 +35,7 @@ namespace newProjectSUHA.Server.Controllers
                 _db.SaveChanges();
 
 
-                return Ok(Contact);
+            return Ok("Contact request submitted successfully");
             }
 
 
@@ -59,9 +60,25 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
-            return Ok(contact);
+        [HttpPut("UpdateContactStatus")]
+        public IActionResult UpdateContactStatus(int contactId, [FromBody] string status)
+        {
+            var contact = _db.ContactUs.Find(contactId);
+            if (contact == null)
+            {
+                return NotFound("Contact not found");
         }
+
+            if (status != "done" && status != "pending")
+            {
+                return BadRequest("Invalid status. Allowed values: 'pending', 'done'.");
      }
+
+            contact.Status = status;
+            _db.SaveChanges();
+            return Ok($"Contact status updated to {status}");
 }
 
+    }
+}
 
