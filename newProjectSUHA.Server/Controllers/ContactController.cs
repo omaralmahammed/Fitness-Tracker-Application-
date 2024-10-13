@@ -51,6 +51,12 @@ namespace newProjectSUHA.Server.Controllers
         public IActionResult ContactStatus(int contactId)
         {
             var contact = _db.ContactUs.Find(contactId);
+            if (contact == null)
+            {
+                return NotFound("Contact not found");
+            }
+            return Ok(contact);
+        }
 
 
             return Ok(contact);
