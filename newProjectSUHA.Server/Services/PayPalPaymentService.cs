@@ -59,10 +59,7 @@ namespace newProjectSUHA.Server.Services
 
         public Payment ExecutePayment(string paymentId, string payerId, int userId, int subscriptionId, int timeId)
         {
-
-
-
-
+         
             var apiContext = GetAPIContext();
             var paymentExecution = new PaymentExecution { payer_id = payerId };
             var payment = new Payment { id = paymentId };
