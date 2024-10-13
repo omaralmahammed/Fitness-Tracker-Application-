@@ -41,7 +41,7 @@ import { AdminContactComponent } from './suha/admin/admin-contact/admin-contact.
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
-import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
 
 
 @NgModule({
@@ -79,7 +79,7 @@ import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.co
     DisplayComponent,
     UpdateComponent,
     CreateComponent,
-    OrderhistoryComponent,
+    AdminOrdersComponent,
     AdminContactComponent,
   ],
   imports: [
@@ -132,6 +132,7 @@ import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.co
           { path: "showrecipe", component: ShowAllRecipeComponent },
 
           { path: "Display_GymAndClasses", component: DisplayComponent },
+          { path: "Orderhisstory", component: AdminOrdersComponent },
 
           { path: "", redirectTo: "child1", pathMatch: "full" },
           { path: "child1", component: AddProductComponent },

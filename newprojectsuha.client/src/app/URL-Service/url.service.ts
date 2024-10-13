@@ -282,8 +282,16 @@ export class UrlService {
     return this.http.put(`${this.baseUrl}/UpdateContactStatus?contactId=${contactId}`, { status });
   }
 
+  //=======================================
+  //profile admin cycle
+  getAllOrdersByUserId(userId: number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Order/${userId}`);
+  }
 
-
+  // Get order items by OrderId
+  getOrderItems(orderId: number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Order/getOrderItem/${orderId}`);
+  }
 
 
 
