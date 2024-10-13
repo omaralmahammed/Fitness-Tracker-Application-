@@ -26,7 +26,10 @@ import { RecipeDetailsComponent } from './recipe-details/recipe-details.componen
 import { TestimonialComponent } from './testimonial/testimonial.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
+import { ProfileComponent } from './Qusai/profile/profile.component';
+import { ReactiveFormsModule } from '@angular/forms'; 
 import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
     RecipeDetailsComponent,
     TestimonialComponent,
     CheckoutComponent,
+    ProfileComponent,
     DashboardComponent,
   ],
   imports: [
@@ -63,6 +67,7 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
     HttpClientModule,  
     FormsModule,     
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "Shop", component: ShopComponent },
@@ -87,6 +92,8 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
       { path: "cart", component: CartComponent },
       { path: "Testimonial", component: TestimonialComponent },
       { path: "checkout", component: CheckoutComponent },
+      { path: "checkout", component: CheckoutComponent },  
+      { path: "profile", component: ProfileComponent },
       { path: "dash", component: DashboardComponent },
 
 

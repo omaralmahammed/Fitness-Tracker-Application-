@@ -9,6 +9,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\app\suha\admin\" />
+    <Folder Include="src\app\Qusai\URL\" />
     <Folder Include="src\app\Tuqaa\" />
     <Folder Include="src\app\URL-Service\" />
   </ItemGroup>

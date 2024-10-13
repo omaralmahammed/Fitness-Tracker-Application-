@@ -21,13 +21,16 @@ export class LogInComponent {
 
       this._ser['email'].next(newData.email);
       this._ser['UserId'].next(newData.id);
-      console.log(newData.id);
-      if (newData.email == 'admin@gmail.com') {
-        this._router.navigate(['/dashboard'])
 
+      var checkClassPayment = localStorage.getItem("ClassId")
+
+      if (checkClassPayment != null) {
+        this._router.navigate([`/subscriptions/${checkClassPayment}`]);
+        localStorage.removeItem("ClassId");
+      } else if (newData.email == 'admin@gmail.com') {
+        this._router.navigate(['/dashboard']);
       } else {
-        this._router.navigate(['/'])
-
+        this._router.navigate(['/']);
       }
       alert('userLogin successfully')
 

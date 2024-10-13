@@ -37,7 +37,7 @@
 		<div class="row">
 			<div class="col-md-5">
 				<div class="single-product-img">
-					<img src="https://i.pinimg.com/564x/e2/d1/95/e2d19587202b24c3066ce3e357d3b09e.jpg" alt="{{ product.name }}">
+					<img src="https://localhost:7286/api/Products/getImages/{{ product.image }}" alt="{{ product.name }}">
 				</div>
 			</div>
 			<div class="col-md-7">
@@ -79,7 +79,7 @@
 			<div class="col-lg-4 col-md-6 text-center"  *ngFor="let product of relatedProducts">
 				<div class="single-product-item">
 					<div class="product-image">
-						<img src="https://i.pinimg.com/564x/e2/d1/95/e2d19587202b24c3066ce3e357d3b09e.jpg" alt="{{ product.name }}" (click)="navigateToProduct(product.id)">
+						<img src="https://localhost:7286/api/Products/getImages/{{ product.image }}" alt="{{ product.name }}" style="width: 300px; height: 300px; object-fit: cover;"(click)="navigateToProduct(product.id)">
 					</div>
 					<a [routerLink]="['/SingleProduct', product.id]" (click)="navigateToProduct(product.id)">{{ product.name }}</a>
 					<p class="product-price">{{ product.price }}$</p>
