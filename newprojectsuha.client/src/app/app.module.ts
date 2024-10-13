@@ -32,8 +32,7 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { AllProductComponent } from './all-product/all-product.component';
-
+import { AllProductsComponent } from './all-product/all-product.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +63,7 @@ import { AllProductComponent } from './all-product/all-product.component';
     ProfileComponent,
     DashboardComponent,
     AddProductComponent,
-    AllProductComponent,
+    AllProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -106,9 +105,9 @@ import { AllProductComponent } from './all-product/all-product.component';
         children: [
           { path: "EditProduct", component: EditProductComponent },
           { path: "AddProduct", component: AddProductComponent },
-          { path: "AllProduct", component: AllProductComponent },
+          { path: "AllProduct", component: AllProductsComponent },
 
-          { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
+          { path: "", redirectTo: "child1", pathMatch: "full" }, 
         ]
       },
 
