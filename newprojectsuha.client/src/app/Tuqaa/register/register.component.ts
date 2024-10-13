@@ -30,7 +30,8 @@ export class RegisterComponent {
         title: "Subscribed Successfully!",
         showConfirmButton: false,
         timer: 2000
-      }); this._router.navigate(['/LogIn'])
+      });
+      this._router.navigate(['/LogIn'])
     },
       (error) => {
         alert(error.error)

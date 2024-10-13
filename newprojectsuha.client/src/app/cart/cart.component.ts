@@ -31,7 +31,15 @@ export class CartComponent {
   constructor(private _ser: UrlService, private _route: Router) { }
 
   cartItemsList: any
+  BSCartItemsList: any
+  BSCartItemsInfo: any
 
+  cartTotal: number = 0
+  shipping: number = 5
+  cartTotalFinal: number = 0
+
+
+  /// logged in user methods
   CartItems(id: number) {
     this._ser.getCartItems(id).subscribe((data) => {
       this.cartItemsList = data.map((item: any) => {
@@ -43,9 +51,6 @@ export class CartComponent {
     });
   }
 
-  cartTotal: number = 0
-  shipping: number = 5
-  cartTotalFinal: number = 0
 
   CartItemsTotal(id: number) {
     this._ser.getCartTotal(id).subscribe((data) => {
@@ -85,12 +90,22 @@ export class CartComponent {
   }
 
 
+  //// logged out user methods
+
+
+
+
+
+
+
+
+
+
+
+
+  /// go to checkout
   goToCheckout() {
 
   }
-
-
-
-
 
 }
