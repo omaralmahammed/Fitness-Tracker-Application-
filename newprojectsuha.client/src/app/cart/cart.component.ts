@@ -17,8 +17,14 @@ export class CartComponent {
     //  this.userId = data
     //})
 
-    this.CartItems(this.userId)
-    this.CartItemsTotal(this.userId)
+    if (this.userId != "") {
+      this.CartItems(this.userId)
+      this.CartItemsTotal(this.userId)
+    }
+    else {
+
+    }
+
 
   }
 
@@ -77,6 +83,14 @@ export class CartComponent {
         this.CartItemsTotal(this.userId)
     })
   }
+
+
+  goToCheckout() {
+
+  }
+
+
+
 
 
 }
