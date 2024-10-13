@@ -124,6 +124,13 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
+        //[HttpGet("showallrecipe")]
+        //public IActionResult showallrecipe() { 
+        //var data= _db.Recipes;
+
+        //}
+
+
 
     }
 }

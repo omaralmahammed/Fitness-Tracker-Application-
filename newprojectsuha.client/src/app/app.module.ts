@@ -33,6 +33,8 @@ import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { AllProductComponent } from './all-product/all-product.component';
+import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
+import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
 
 
 @NgModule({
@@ -65,6 +67,8 @@ import { AllProductComponent } from './all-product/all-product.component';
     DashboardComponent,
     AddProductComponent,
     AllProductComponent,
+    RecipeDashboardComponent,
+    ShowAllRecipeComponent,
   ],
   imports: [
     BrowserModule,
@@ -105,7 +109,10 @@ import { AllProductComponent } from './all-product/all-product.component';
         path: "dash", component: DashboardComponent,
         children: [
           { path: "child1", component: EditProductComponent },
-          { path: "", redirectTo: "child1", pathMatch: "full" }  // Default child route
+          { path: "", redirectTo: "child1", pathMatch: "full" } , // Default child route
+          { path: "recipeDashboard", component: RecipeDashboardComponent },
+          { path: "showrecipe", component: ShowAllRecipeComponent },
+
         ]
       },
 
