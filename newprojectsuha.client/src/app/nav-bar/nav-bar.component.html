@@ -28,19 +28,11 @@
                 </ul>
               </li>
               <li><a routerLink="About">About</a></li>
-              <li><a routerLink="gym">GYM</a></li>
-
               <li>
-                <a href="#">Pages</a>
+                <a routerLink="gym">GYM</a>
                 <ul class="sub-menu">
-                  <li><a href="404.html">404 page</a></li>
-                  <li><a href="about.html">About</a></li>
-                  <li><a routerLink="cart">Cart</a></li>
-                  <li><a routerLink="checkout">Check Out</a></li>
-                  <li><a routerLink="/Contact">Contact</a></li>
-
-                  <li><a href="news.html">News</a></li>
-                  <li><a href="shop.html">Shop</a></li>
+                  <li><a routerLink="/GymAndClassItems/GYM">Local GYM</a></li>
+                  <li><a routerLink="/GymAndClassItems/Class">Fitness Class</a></li>
                 </ul>
               </li>
               <li>
@@ -55,7 +47,6 @@
               <li><a routerLink="/Contact">Contact</a></li>
 
 
-              <li><a routerLink="/LogIn">LogIn</a></li>
 
 
               <li>
@@ -69,9 +60,20 @@
               </li>
               <li>
                 <div class="header-icons">
-                  <a class="shopping-cart" routerLink="cart"><i class="fas fa-shopping-cart"></i></a>
-                  <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-                </div>
+              <li>
+                <a><i class="fas fa-user"></i></a>
+                <ul class="sub-menu">
+                  <li><a href="#">My Profile</a></li>
+                  <li><a href="#">My Orders</a></li>
+                  <li><a href="#">My Subscriptions</a> </li>
+                  <li><a href="#">Log Out</a></li>
+                </ul>
+              </li>
+
+              <a class="shopping-cart" routerLink="cart"><i class="fas fa-shopping-cart"></i></a>
+              <li><a routerLink="/LogIn">LogIn</a></li>
+
+              </div>
               </li>
             </ul>
           </nav>
