@@ -1,0 +1,104 @@
+.profile-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 200px;
+  margin-bottom:200px;
+}
+
+.profile-header {
+  background-color: #051922;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+  .profile-header h2 {
+    margin: 0;
+    font-size: 24px;
+  }
+
+.profile-content {
+  padding: 30px;
+}
+
+.profile-info .info-item {
+  margin-bottom: 15px;
+}
+
+.profile-info .label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.edit-button, .save-button, .cancel-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+  .edit-button:hover {
+    background-color: #0056b3;
+  }
+
+.edit-form .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.edit-form .form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.save-button {
+  background-color: #28a745;
+  color: white;
+}
+
+  .save-button:hover {
+    background-color: #218838;
+  }
+
+.cancel-button {
+  background-color: #dc3545;
+  color: white;
+}
+
+  .cancel-button:hover {
+    background-color: #c82333;
+  }
+
+.save-button:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+.card-title {
+    color : white ;
+}
