@@ -43,7 +43,7 @@ namespace newProjectSUHA.Server.Controllers
 
             var testimonial = new Testimonial
             {
-                UserId = 1, 
+                UserId = testimonialDto.UserId, 
                 Content = testimonialDto.Content,
                 Status = "Pending" 
             };
