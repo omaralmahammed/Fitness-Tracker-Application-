@@ -60,6 +60,9 @@ import { DisplayClassSubscriptionsComponent } from './suha/admin/Subscription/di
 import { CreateClassSubscriptionsComponent } from './suha/admin/Subscription/create-class-subscriptions/create-class-subscriptions.component';
 import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/update-class-subscriptions/update-class-subscriptions.component';
 import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.component';
+import { UserSubscriptionHistoryComponent } from './user-subscription-history/user-subscription-history.component';
+import { TipsAdminComponent } from './suha/admin/tips-admin/tips-admin.component';
+import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
 import { AdminCategoryComponent } from './suha/admin/admin-category/admin-category.component';
 
 
@@ -116,8 +119,11 @@ import { AdminCategoryComponent } from './suha/admin/admin-category/admin-catego
     UpdateClassSubscriptionsComponent,
     EditRecipeComponent,
     OrderHistoryComponent,
+    TipsAdminComponent,
+    AddTipsComponent,
     EditProductComponent,
     AdminCategoryComponent,
+    UserSubscriptionHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -153,6 +159,7 @@ import { AdminCategoryComponent } from './suha/admin/admin-category/admin-catego
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
       { path: "orderhistory", component: OrderHistoryComponent },
+      { path: "usersubscriptions", component: UserSubscriptionHistoryComponent },
 
       {
         path: "dash", component: DashboardComponent,
@@ -175,7 +182,10 @@ import { AdminCategoryComponent } from './suha/admin/admin-category/admin-catego
          
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
-          { path: "editRecipe/:id", component:EditRecipeComponent},
+          { path: "editRecipe/:id", component: EditRecipeComponent },
+
+          { path: "AllTips", component: TipsAdminComponent },
+          { path: "addTips" , component:AddTipsComponent},
 
           //Gym and Classes
           { path: "Display_GymAndClasses", component: DisplayComponent },

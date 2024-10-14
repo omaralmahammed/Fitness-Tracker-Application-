@@ -71,7 +71,7 @@ export class LogInComponent {
 
   moveFromBStoDB(userId: number, BSList: any) {
     this._ser.moveFromBStoDB(userId, BSList).subscribe(() => {
-      alert("items moved siccessfully")
+      //alert("items moved siccessfully")
     })
   }
 

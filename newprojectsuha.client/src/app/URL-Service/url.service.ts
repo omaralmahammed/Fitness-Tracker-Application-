@@ -96,6 +96,17 @@ export class UrlService {
   }
 
 
+  getallTips(): Observable<any[]> {
+    return this.http.get<any>('https://localhost:7286/api/Nutirition/Tips');
+  }
+  deleteTip(id: any): Observable<any> {
+    return this.http.delete<any>(`https://localhost:7286/api/Nutirition/DeleteTips/${id}`)
+    this.getallTips();
+  }
+  addTips(data: any): Observable<any> {
+    return this.http.post<any>('https://localhost:7286/api/Nutirition/TipsPost', data);
+  }
+
   GetProductById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)
   }
@@ -446,6 +457,26 @@ export class UrlService {
   }
 
 
+  //////get user subscription//////
+  getUserSubscriptions(userId: number, flag: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClass/getUserSubscriptions/${userId}?flag=${flag}`)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
   getAdminCategory(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Categories/AllCategories`)
