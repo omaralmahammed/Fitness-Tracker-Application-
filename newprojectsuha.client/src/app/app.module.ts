@@ -99,6 +99,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     OrderHistoryComponent,
     MyProfileComponent,
     OrderHistoryComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,

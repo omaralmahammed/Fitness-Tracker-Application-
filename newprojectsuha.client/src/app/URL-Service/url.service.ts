@@ -404,9 +404,9 @@ export class UrlService {
   }
 
 
-  //UpdateProduct(id: any, product: any): Observable<any> {
-  //  return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
-  //}
+  UpdateProduct(id: any, product: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
+  }
   // Update category method
   UpdateCategory(id: any, category: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}Categories/${id}`, category);
