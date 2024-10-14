@@ -1,10 +1,10 @@
 
 
-<form #addRecipe="ngForm" (ngSubmit)="addNewRecipe(addRecipe.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+<form #edit="ngForm" (ngSubmit)="editRecipe(edit.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
   <!-- CSRF Token (if needed) -->
   <input type="hidden" name="__RequestVerificationToken" value="TOKEN_VALUE">
 
-  <h2 style="text-align: center; margin-bottom: 20px;">Add Recipe</h2>
+  <h2 style="text-align: center; margin-bottom: 20px;">Edit Recipec</h2>
 
   <div class="form-container">
     <!-- Title Field -->

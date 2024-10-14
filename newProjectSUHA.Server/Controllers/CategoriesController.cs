@@ -29,7 +29,8 @@ namespace newProjectSUHA.Server.Controllers
         //Get Category By Id
 
         [HttpGet]
-        [Route("Category/{id:int:min(3)}")]
+        [Route("GetCategoryById/{id}")]
+
         public IActionResult GetCategoryById(int id)
         {
             var data = _db.Categories.Find(id);

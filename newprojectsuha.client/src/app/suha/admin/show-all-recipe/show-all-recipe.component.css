@@ -1,0 +1,9 @@
+.table img {
+  max-width: 80px; /* تصغير حجم الصورة */
+  height: auto;
+}
+
+.table td, .table th {
+  font-size: 0.9rem; /* تقليص حجم النصوص داخل الجدول */
+  padding: 0.5rem; /* تقليص المسافات بين الخلايا */
+}

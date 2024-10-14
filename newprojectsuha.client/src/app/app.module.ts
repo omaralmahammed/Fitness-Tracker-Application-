@@ -44,6 +44,10 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
+//import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
+//import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
+//import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { GetAllUSERSComponent } from './suha/admin/get-all-users/get-all-users.component';
 import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
 import { CategoriesComponent } from './Categories/categories/categories.component';
 import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
@@ -55,6 +59,7 @@ import { DisplaySubscriptionComponent } from './suha/admin/Subscription/display-
 import { DisplayClassSubscriptionsComponent } from './suha/admin/Subscription/display-class-subscriptions/display-class-subscriptions.component';
 import { CreateClassSubscriptionsComponent } from './suha/admin/Subscription/create-class-subscriptions/create-class-subscriptions.component';
 import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/update-class-subscriptions/update-class-subscriptions.component';
+import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.component';
 
 
 @NgModule({
@@ -96,6 +101,7 @@ import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/upd
     CreateComponent,
     AdminOrdersComponent,
     AdminContactComponent,
+    GetAllUSERSComponent,
     CategoriesComponent,
     EditCategoryComponent,
     AddCategoryComponent,
@@ -107,6 +113,9 @@ import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/upd
     DisplayClassSubscriptionsComponent,
     CreateClassSubscriptionsComponent,
     UpdateClassSubscriptionsComponent,
+    EditRecipeComponent,
+    OrderHistoryComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -151,25 +160,27 @@ import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/upd
 
           //Products
 
-          { path: "EditProduct", component: EditProductComponent },
+          { path: "EditProduct/:id", component: EditProductComponent },
           { path: "AddProduct", component: AddProductComponent },
           { path: "AllProduct", component: AllProductsComponent },
 
           //Categories
 
-          { path: "EditCategory", component: EditCategoryComponent },
+          { path: "EditCategory/:id", component: EditCategoryComponent },
           { path: "AddCategory", component: AddCategoryComponent },
           { path: "Categories", component: CategoriesComponent },
 
          
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
+          { path: "editRecipe/:id", component:EditRecipeComponent},
 
           //Gym and Classes
           { path: "Display_GymAndClasses", component: DisplayComponent },
           { path: "create-gym-class", component: CreateComponent },
           { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
+          { path: "TestimonialAdmin", component: AdminTestimonialComponent },
 
           //Sybscription
           { path: "Display-Subscription", component: DisplaySubscriptionComponent},
@@ -179,6 +190,8 @@ import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/upd
           { path: "create-class-subscription/:id", component: CreateClassSubscriptionsComponent },
           { path: "update-class-subscription/:id", component: UpdateClassSubscriptionsComponent },
           { path: "ContactAdmin", component: AdminContactComponent },
+          { path: "AdminTestimonial", component: AdminTestimonialComponent },
+          { path: "GetAllUsers", component: GetAllUSERSComponent },
         ]
       },
       { path: "dash", component: DashboardComponent },

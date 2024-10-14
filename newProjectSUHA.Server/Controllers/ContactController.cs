@@ -59,23 +59,23 @@ namespace newProjectSUHA.Server.Controllers
             }
 
 
-        [HttpPut("UpdateContactStatus")]
-        public IActionResult UpdateContactStatus(int contactId, [FromBody] string status)
+        [HttpPut("UpdateContactStatus/{contactId}")]
+        public IActionResult UpdateContactStatus(int contactId)
         {
+           
             var contact = _db.ContactUs.Find(contactId);
+
             if (contact == null)
             {
                 return NotFound("Contact not found");
             }
 
-            if (status != "done" && status != "pending")
-            {
-                return BadRequest("Invalid status. Allowed values: 'pending', 'done'.");
-            }
+            contact.Status = "Pending";
 
-            contact.Status = status;
+            _db.ContactUs.Update(contact);
             _db.SaveChanges();
-            return Ok($"Contact status updated to {status}");
+
+            return Ok(contact);
         }
 
     }

@@ -14,6 +14,7 @@ export class CartComponent {
   userId: any
 
   ngOnInit() {
+    debugger
     this._ser.UserIdObserve.subscribe((data) => {
       this.userId = data
     })
@@ -32,8 +33,8 @@ export class CartComponent {
 
   constructor(private _ser: UrlService, private _route: Router) { }
 
-  cartItemsList: any
-  BSCartItemsList: any
+  cartItemsList: any[] = []
+  BSCartItemsList: any[] = []
 
   cartTotal: number = 0
   shipping: number = 5
@@ -42,6 +43,7 @@ export class CartComponent {
 
   /// logged IN user methods
   CartItems(id: number) {
+    debugger
     this._ser.getCartItems(id).subscribe((data) => {
       this.cartItemsList = data.map((item: any) => {
         return {
@@ -136,6 +138,8 @@ export class CartComponent {
   itemTotal: any
 
   getBSCartItems() {
+    debugger
+
     this._ser.BSCArtListObs.subscribe((BSdata) => {
 
       this.BSCartItemsList = BSdata.map((item: any) => {
@@ -147,6 +151,7 @@ export class CartComponent {
       console.log(BSdata)
 
     })
+    console.log(this.BSCartItemsList)
   }
 
   BSCArtTotal(a: any) {
