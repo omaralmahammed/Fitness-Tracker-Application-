@@ -33,14 +33,16 @@ export class LogInComponent {
       var checkClassPayment = localStorage.getItem("ClassId")
       var fromCart = localStorage.getItem("cartPage")
 
-      if (checkClassPayment != null && newData.email != 'admin@gmail.com') {
+      this.moveFromBStoDB(newData.id, this.BSCartItemsList)
+
+      if (checkClassPayment != null) {
 
         this._router.navigate([`/subscriptions/${checkClassPayment}`]);
         localStorage.removeItem("ClassId");
 
       } else if (fromCart && newData.email != 'admin@gmail.com') {
         debugger
-        this.moveFromBStoDB(newData.id, this.BSCartItemsList)
+
 
         this._router.navigate([`/shop`]);
         this._router.navigate([`/cart`]);
