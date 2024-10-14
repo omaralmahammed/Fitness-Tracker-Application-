@@ -33,6 +33,8 @@ export class LogInComponent {
       var checkClassPayment = localStorage.getItem("ClassId")
       var fromCart = localStorage.getItem("cartPage")
 
+      this.moveFromBStoDB(newData.id, this.BSCartItemsList)
+
       if (checkClassPayment != null) {
 
         this._router.navigate([`/subscriptions/${checkClassPayment}`]);
@@ -40,7 +42,7 @@ export class LogInComponent {
 
       } else if (fromCart) {
         debugger
-        this.moveFromBStoDB(newData.id, this.BSCartItemsList)
+
 
         this._router.navigate([`/shop`]);
         this._router.navigate([`/cart`]);
@@ -71,7 +73,7 @@ export class LogInComponent {
 
   moveFromBStoDB(userId: number, BSList: any) {
     this._ser.moveFromBStoDB(userId, BSList).subscribe(() => {
-      alert("items moved siccessfully")
+      //alert("items moved siccessfully")
     })
   }
 
