@@ -83,8 +83,8 @@ export class UrlService {
   }
 
 
-  addRecipe(formData: FormData): Observable<any> {
-    return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', formData);
+  addRecipe(data: any): Observable<any> {
+    return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', data);
   }
 
 
@@ -243,7 +243,7 @@ export class UrlService {
   BSCArtListObs = this.BSCArtListSub.asObservable()
 
   BSAddToCart(data: any) {
-    //debugger
+    /*debugger*/
     var record = this.BSCArtList.find((x: any) => x.productId == data.productId)
 
     if (record) {
@@ -337,6 +337,15 @@ export class UrlService {
     }
   }
 
+
+  //get all orders
+
+
+  getAllOrders(): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Order/GetAllOrdersAdmin`);
+
+  }
+
   // Get order items by OrderId
   getOrderItems(orderId: number): Observable<any> {
     return this.http.get<any>(`https://localhost:7286/api/Order/getOrderItem/${orderId}`);
@@ -374,7 +383,7 @@ export class UrlService {
   
   // Delete Category by id
   DeleteCategory(id: number): Observable<any> {
-    return this.http.delete<any>(`${this.baseUrl}Products/Delete/${id}`);
+    return this.http.delete<any>(`${this.baseUrl}Categories/${id}`);
   }
 
   //AddCategory
@@ -398,10 +407,17 @@ export class UrlService {
   //UpdateProduct(id: any, product: any): Observable<any> {
   //  return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
   //}
+  // Update category method
+  UpdateCategory(id: any, category: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}Categories/${id}`, category);
+  }
 
-  //UpdateCategory(id: any, category: any): Observable<any> {
-  //  return this.http.put<any>(`${this.baseUrl}Categories/${id}`, category) 
-  //}
+
+  // Get Category by ID
+  GetCategoryById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Categories/GetCategoryById/${id}`);
+  }
+
 }
 
 

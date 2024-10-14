@@ -16,6 +16,13 @@ namespace newProjectSUHA.Server.Controllers
             _db = db;
         }
 
+        [HttpGet("GetAllOrdersAdmin")]
+        public IActionResult GetAllOrdersAdmin()
+        {
+            var data = _db.Orders.ToList();
+            return Ok(data);
+        }
+
         [HttpGet("{UserId}")]
         public IActionResult GetAllOrdersByUserId(int UserId)
         {
