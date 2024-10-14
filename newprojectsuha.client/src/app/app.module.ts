@@ -60,8 +60,13 @@ import { DisplayClassSubscriptionsComponent } from './suha/admin/Subscription/di
 import { CreateClassSubscriptionsComponent } from './suha/admin/Subscription/create-class-subscriptions/create-class-subscriptions.component';
 import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/update-class-subscriptions/update-class-subscriptions.component';
 import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.component';
+import { UserSubscriptionHistoryComponent } from './user-subscription-history/user-subscription-history.component';
 import { TipsAdminComponent } from './suha/admin/tips-admin/tips-admin.component';
 import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
+import { AdminCategoryComponent } from './suha/admin/admin-category/admin-category.component';
+import { DisplayProductsComponent } from './suha/admin/Product/display-products/display-products.component';
+import { CreateProductsComponent } from './suha/admin/Product/create-products/create-products.component';
+import { UpdateProductsComponent } from './suha/admin/Product/update-products/update-products.component';
 
 
 @NgModule({
@@ -120,6 +125,11 @@ import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
     TipsAdminComponent,
     AddTipsComponent,
     EditProductComponent,
+    AdminCategoryComponent,
+    UserSubscriptionHistoryComponent,
+    DisplayProductsComponent,
+    CreateProductsComponent,
+    UpdateProductsComponent,
   ],
   imports: [
     BrowserModule,
@@ -155,6 +165,7 @@ import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
       { path: "orderhistory", component: OrderHistoryComponent },
+      { path: "usersubscriptions", component: UserSubscriptionHistoryComponent },
 
       {
         path: "dash", component: DashboardComponent,
@@ -188,6 +199,9 @@ import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
           { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
           { path: "TestimonialAdmin", component: AdminTestimonialComponent },
+          //Products
+
+          { path: "DisplayProducts", component: DisplayProductsComponent },
 
           //Sybscription
           { path: "Display-Subscription", component: DisplaySubscriptionComponent},
@@ -199,6 +213,7 @@ import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
           { path: "ContactAdmin", component: AdminContactComponent },
           { path: "AdminTestimonial", component: AdminTestimonialComponent },
           { path: "GetAllUsers", component: GetAllUSERSComponent },
+          { path: "AdminCategory", component: AdminCategoryComponent } 
         ]
       },
       { path: "dash", component: DashboardComponent },
