@@ -418,6 +418,12 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}Categories/GetCategoryById/${id}`);
   }
 
+  CartCheckOut(id: number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/CartPayment/checkoutForSubscription/${id}`);
+  }
+
+  
+
 }
 
 
