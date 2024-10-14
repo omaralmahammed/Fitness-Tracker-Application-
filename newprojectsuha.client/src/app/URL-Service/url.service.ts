@@ -241,6 +241,7 @@ export class UrlService {
   BSCArtList: any = []
   BSCArtListSub = new BehaviorSubject<any>(this.BSCArtList)
   BSCArtListObs = this.BSCArtListSub.asObservable()
+  
 
   BSAddToCart(data: any) {
     /*debugger*/
@@ -264,6 +265,11 @@ export class UrlService {
   logoutFunc() {
     this.BSCArtList = [];
     this.BSCArtListSub.next(this.BSCArtList)
+
+    // Clear the email and user ID by emitting an empty string
+    this.email.next("");
+    this.UserId.next("");
+
   }
 
   getProductInfoForCart(productId: number): Observable<any> {
