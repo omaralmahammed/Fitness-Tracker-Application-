@@ -14,9 +14,9 @@ export class CheckoutComponent {
 
   ngOnInit() {
 
-    //this._ser.UserIdObserve.subscribe((data) => {
-    //  this.userId = data
-    //})
+    this._ser.UserIdObserve.subscribe((data) => {
+      this.userId = data
+    })
 
     this.getUserInfoForOrder(this.userId)
 

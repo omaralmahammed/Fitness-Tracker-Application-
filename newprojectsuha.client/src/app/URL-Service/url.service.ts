@@ -261,6 +261,11 @@ export class UrlService {
 
   }
 
+  logoutFunc() {
+    this.BSCArtList = [];
+    this.BSCArtListSub.next(this.BSCArtList)
+  }
+
   getProductInfoForCart(productId: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Cart/getProductInfoForCart/${productId}`)
   }
