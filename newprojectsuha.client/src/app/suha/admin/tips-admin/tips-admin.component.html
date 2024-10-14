@@ -1,0 +1,33 @@
+
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Show All Recipes</h1>
+
+  <!-- جعل الجدول متجاوبًا باستخدام table-responsive -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Image</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tips of TipsArray">
+          <td>{{tips.id}}</td>
+          <td><img src="https://localhost:7286/api/Images/TipsImages/{{tips.image}}" alt="Recipe Image" class="img-fluid" style="max-width: 80px;"></td> <!-- تعديل حجم الصورة -->
+          <td>{{ tips.title }}</td>
+          <td>{{tips.description }}</td>
+          <td>
+            <!--<a routerLink="/dash/editRecipe/{{tips.id}}" class="btn btn-primary btn-sm">Edit</a>--> <!-- إضافة btn-sm لتصغير حجم الزر -->
+            <button (click)="deleteTips(tips.id)">Delete</button>
+          </td>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

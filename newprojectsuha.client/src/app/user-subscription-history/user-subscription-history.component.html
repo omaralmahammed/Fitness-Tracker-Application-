@@ -1,0 +1,126 @@
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>My Subscriptions</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end breadcrumb section -->
+
+
+
+<div class="cart-section mt-150 mb-150" *ngIf="userId != ''">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 col-md-12 spacing">
+        <div class="cart-table-wrap">
+
+          <h2>My Classes</h2>
+          <br />
+
+          <table class="table table-bordered table-hover">
+            <thead class="cart-table-head">
+              <tr class="table-head-row">
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Trainer</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Price</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">end Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of classList">
+                <td><img src="https://localhost:7286/api/Images/getImages/{{item.image}}" alt="{{ item.name }}" style="width: 10em" /></td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.trainer }}</td>
+                <td>{{ item.duration }} Days</td>
+                <td>{{ item.finalPrice | currency }}</td>
+                <td>{{ item.startDate | date }}</td>
+                <td>{{ item.endDate | date }}</td>
+                <td [ngClass]="{'text-success': item.paymentMethod === 'Active', 'text-danger': item.paymentMethod === 'Inactive'}">
+                  {{ item.paymentMethod }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+        </div>
+      </div>
+
+
+
+      <div class="col-lg-12 col-md-12 spacing">
+        <div class="cart-table-wrap">
+
+          <h2>My Gyms</h2>
+          <br />
+
+          <table class="table table-bordered table-hover">
+            <thead class="cart-table-head">
+              <tr class="table-head-row">
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Trainer</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Price</th>
+                <th scope="col">Start Date</th>
+                <th scope="col">end Date</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of gymList">
+                <td><img src="https://localhost:7286/api/Images/getImages/{{item.image}}" alt="{{ item.name }}" style="width: 10em" /></td>
+                <td>{{ item.name }}</td>
+                <td>{{ item.trainer }}</td>
+                <td>{{ item.duration }} Days</td>
+                <td>{{ item.finalPrice | currency }}</td>
+                <td>{{ item.startDate | date }}</td>
+                <td>{{ item.endDate | date }}</td>
+                <td [ngClass]="{'text-success': item.paymentMethod === 'Active', 'text-danger': item.paymentMethod === 'Inactive'}">
+                  {{ item.paymentMethod }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<div class="cart-section mt-150 mb-150" *ngIf="userId == ''">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 col-md-12 spacing">
+        <div class="cart-table-wrap">
+
+          <h3>Please Log In to See Your Subscriptions</h3>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+

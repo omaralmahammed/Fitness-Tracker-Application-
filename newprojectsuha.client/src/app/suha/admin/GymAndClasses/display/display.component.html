@@ -21,8 +21,9 @@
         <td>{{ item.description | slice:0:50 }}...</td>
         <td>${{ item.price }}</td>
         <td>
-          <button class="btn btn-primary btn-sm me-2 mybutton" (click)="editItem(item.id)">Edit</button>
-          <button class="btn btn-danger btn-sm ms-2 mybutton" (click)="deleteItem(item.id)">Delete</button>
+          <button class="btn btn-primary btn-sm me-2" (click)="editItem(item.id)">Edit</button>
+          <button class="btn btn-danger btn-sm me-2" (click)="deleteItem(item.id)">Delete</button>
+          <button class="btn btn-info btn-sm" (click)="viewSubscriptions(item.id)">Subscriptions</button>
         </td>
       </tr>
     </tbody>
