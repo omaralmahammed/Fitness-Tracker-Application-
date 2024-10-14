@@ -44,6 +44,8 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
+import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { GetAllUSERSComponent } from './suha/admin/get-all-users/get-all-users.component';
 import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
 import { CategoriesComponent } from './Categories/categories/categories.component';
 import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
@@ -90,6 +92,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     CreateComponent,
     AdminOrdersComponent,
     AdminContactComponent,
+    GetAllUSERSComponent,
     CategoriesComponent,
     EditCategoryComponent,
     AddCategoryComponent,
@@ -139,13 +142,13 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 
           //Products
 
-          { path: "EditProduct", component: EditProductComponent },
+          { path: "EditProduct/:id", component: EditProductComponent },
           { path: "AddProduct", component: AddProductComponent },
           { path: "AllProduct", component: AllProductsComponent },
 
           //Categories
 
-          { path: "EditCategory", component: EditCategoryComponent },
+          { path: "EditCategory/:id", component: EditCategoryComponent },
           { path: "AddCategory", component: AddCategoryComponent },
           { path: "Categories", component: CategoriesComponent },
 
@@ -161,6 +164,8 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 
         
           { path: "ContactAdmin", component: AdminContactComponent },
+          { path: "AdminTestimonial", component: AdminTestimonialComponent }
+          { path: "GetAllUsers", component: GetAllUSERSComponent },
         ]
       },
       { path: "dash", component: DashboardComponent },
