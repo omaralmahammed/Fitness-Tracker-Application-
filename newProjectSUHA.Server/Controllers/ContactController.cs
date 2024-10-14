@@ -62,6 +62,7 @@ namespace newProjectSUHA.Server.Controllers
         [HttpPut("UpdateContactStatus")]
         public IActionResult UpdateContactStatus(int contactId, [FromBody] string status)
         {
+           
             var contact = _db.ContactUs.Find(contactId);
             if (contact == null)
             {
@@ -72,6 +73,7 @@ namespace newProjectSUHA.Server.Controllers
             {
                 return BadRequest("Invalid status. Allowed values: 'pending', 'done'.");
             }
+           
 
             contact.Status = status;
             _db.SaveChanges();
