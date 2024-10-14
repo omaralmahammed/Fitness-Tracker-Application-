@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../URL-Service/url.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -8,7 +9,7 @@ import { UrlService } from '../URL-Service/url.service';
 })
 export class NavBarComponent {
 
-  constructor(private _ser: UrlService) { }
+  constructor(private _ser: UrlService, private _route: Router) { }
 
   email: any;
   UserId: any;
@@ -23,6 +24,13 @@ export class NavBarComponent {
       this.UserId = UserId;
     });
 
+  }
+
+
+  logout() {
+    this.email = "";
+    this.UserId = "";
+    this._route.navigate(['/'])
   }
 
 }

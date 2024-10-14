@@ -1,20 +1,31 @@
-   <!-- Table -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- Button to add products -->
+<button class="btn btn-add-product">
+  <span class="mdi mdi-plus mdi-24px"></span> 
+  <span class="add-product-text">Add Product</span> 
+</button>
+
+
+<!-- Table -->
 <table class="table mb-0 text-nowrap table-hover table-centered table-with-checkbox">
   <!-- Table Head -->
   <thead class="table-light">
     <tr>
-      
       <th>Products</th>
-<!-- <th>Inventory</th>-->
       <th>Category</th>
       <th>Price</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <!-- Table body -->
     <tr *ngFor="let product of allProductsArray">
-
       <td>
         <a href="#" class="text-inherit">
           <div class="d-flex align-items-center flex-row gap-3">
@@ -27,30 +38,27 @@
           </div>
         </a>
       </td>
-
-      <!--    <td>5</td>-->
       <td>{{ product.name }}</td>
       <td>{{ product.price }}$</td>
-
       <td>
-        <button class="btn btn-edit">
-          <span class="mdi mdi-pencil mdi-24px"></span>
-          <span class="mdi mdi-pencil-outline mdi-24px"></span>
-          <span>Edit</span>
-        </button>
-      </td>
-      <td>
-        <button class="btn btn-delete">
-          <span class="mdi mdi-delete mdi-24px"></span>
-          <span class="mdi mdi-delete-empty mdi-24px"></span>
-          <span>Delete</span>
-        </button>
-      </td>
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-edit">
+            <span class="mdi mdi-pencil mdi-24px"></span>
+            <span class="mdi mdi-pencil-outline mdi-24px"></span>
+            <span>Edit</span>
+          </button>
 
+          <button class="btn btn-delete">
+            <span class="mdi mdi-delete mdi-24px"></span>
+            <span class="mdi mdi-delete-empty mdi-24px"></span>
+            <span>Delete</span>
+          </button>
+        </div>
+      </td>
     </tr>
-
   </tbody>
 </table>
+
 <style>
   body {
     margin: 32px;
@@ -66,7 +74,7 @@
     letter-spacing: .25px;
     border-radius: 24px;
     cursor: pointer;
-    margin-right: 1px; 
+    margin-right: 1px;
   }
 
     .btn:focus {
@@ -77,6 +85,28 @@
     margin-right: 8px;
   }
 
+  /* Add Product button styles */
+  .btn-add-product {
+    font-size: 16px;
+    color: white;
+    background-color: blue; 
+    border: 1px solid blue;
+    margin-bottom: 16px;
+    font-weight: bold;
+    float: right; 
+  }
+
+    .btn-add-product:hover {
+      background-color: lighten(blue, 30%);
+    }
+
+    .btn-add-product:focus {
+      box-shadow: 0 0 0 4px lighten(blue, 40%);
+    }
+
+  .add-product-text {
+    font-size: 18px; 
+  }
 
   /* Delete button styles */
   .btn-delete {
@@ -129,6 +159,4 @@
     .btn-edit:focus {
       box-shadow: 0 0 0 4px lighten(blue, 40%);
     }
-
-
 </style>

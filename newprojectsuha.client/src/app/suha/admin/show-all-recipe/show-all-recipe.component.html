@@ -1,1 +1,28 @@
-<p>show-all-recipe works!</p>
+
+<div class="container mt-4">
+  <h1>Show All Recipes</h1>
+
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Image</th>
+        <th scope="col">Category ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Nutritional Facts</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let recipe of recipes">
+        <td>{{recipe.id}}</td>
+        <td><img [src]="recipe.image" alt="Recipe Image" width="100"></td>
+        <td>{{ recipe.categoryId }}</td>
+        <td>{{ recipe.name }}</td>
+        <td>{{recipe.description }}</td>
+        <td>{{ recipe.nutritionalFacts }}</td>
+       
+      </tr>
+    </tbody>
+  </table>
+</div>

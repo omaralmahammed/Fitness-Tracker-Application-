@@ -1,0 +1,29 @@
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+  .table th, .table td {
+    vertical-align: middle;
+  }
+
+.form-control {
+  border: none;
+  background-color: transparent;
+}
+
+  .form-control:focus {
+    box-shadow: none;
+    background-color: rgba(0, 123, 255, 0.1);
+  }
+
+textarea.form-control {
+  resize: vertical;
+}
+
+.btn-success {
+  padding: 10px 20px;
+}
