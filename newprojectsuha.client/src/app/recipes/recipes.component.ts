@@ -27,9 +27,9 @@ export class RecipesComponent implements OnInit {
   getRecipesByCategory(categoryId: number) {
     this._ser.getRecipesByCategory(categoryId).subscribe((data: any[]) => {
       this.arrayOfItems = data;
-      console.log(this.arrayOfItems, 'الوصفات المستلمة');
+      console.log(this.arrayOfItems, 'get recipes');
     }, error => {
-      console.error('حدث خطأ في جلب الوصفات:', error);
+      console.error('error getting data', error);
     });
   }
   

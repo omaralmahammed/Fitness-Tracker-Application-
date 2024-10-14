@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../URL-Service/url.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-cart',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 export class CartComponent {
 
   //userId: any = 1
-  userId: any 
+  userId: any
 
   ngOnInit() {
     this._ser.UserIdObserve.subscribe((data) => {
@@ -23,23 +24,23 @@ export class CartComponent {
     }
     else {
 
+      this.getBSCartItems()
+
+      this.BSCArtTotal(this.BSCartItemsList)
     }
-
-
   }
 
   constructor(private _ser: UrlService, private _route: Router) { }
 
   cartItemsList: any
   BSCartItemsList: any
-  BSCartItemsInfo: any
 
   cartTotal: number = 0
   shipping: number = 5
   cartTotalFinal: number = 0
 
 
-  /// logged in user methods
+  /// logged IN user methods
   CartItems(id: number) {
     this._ser.getCartItems(id).subscribe((data) => {
       this.cartItemsList = data.map((item: any) => {
@@ -61,16 +62,53 @@ export class CartComponent {
 
 
   deleteCartItem(cartItemId: number) {
-    this._ser.deleteCartItem(cartItemId).subscribe(() => {
-      alert("cart item was deleted"),
-        this.CartItems(this.userId),
-        this.CartItemsTotal(this.userId)
-    })
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this item from your cart?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this._ser.deleteCartItem(cartItemId).subscribe(() => {
+          //alert("cart item was deleted"),
+            this.CartItems(this.userId),
+            this.CartItemsTotal(this.userId)
+        })
+
+        swalWithBootstrapButtons.fire({
+          title: "Deleted!",
+          text: "the item has been removed from your cart",
+          icon: "success"
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Your item is safe :)",
+          icon: "error"
+        });
+      }
+    });
+    
   }
 
 
   changeCartItemQuantity(cartItemId: number, quantity: number) {
-    debugger
+    //debugger
     this._ser.changeCartItemQuantity(cartItemId, quantity).subscribe(() => {
 
       if (quantity <= 0) {
@@ -90,14 +128,82 @@ export class CartComponent {
   }
 
 
-  //// logged out user methods
 
 
 
+  //// logged OUT user methods
+
+  itemTotal: any
+
+  getBSCartItems() {
+    this._ser.BSCArtListObs.subscribe((BSdata) => {
+
+      this.BSCartItemsList = BSdata.map((item: any) => {
+        return {
+          ...item,
+          itemTotal: item.price * item.quantity
+        };
+      });
+      console.log(BSdata)
+
+    })
+  }
+
+  BSCArtTotal(a: any) {
+    //debugger
+    const total = this._ser.BSCArtTotal(a);
+    this.cartTotal = total;
+    this.cartTotalFinal = total + this.shipping;
+  }
+
+  removeItem(productId: number) {
+    //debugger
+
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "Are you sure?",
+      text: "Do you want to delete this item from your cart?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this._ser.BSCartItemDelete(productId);
+
+        swalWithBootstrapButtons.fire({
+          title: "Deleted!",
+          text: "the item has been removed from your cart",
+          icon: "success"
+        });
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "Your item is safe :)",
+          icon: "error"
+        });
+      }
+    });
 
 
 
+  }
 
+  changeBSCartItemQuantity(productId: number, quantity: number) {
+    this._ser.BSCartItemQuantity(productId, quantity)
+    this.BSCArtTotal(this.BSCartItemsList)
+  }
 
 
 
@@ -105,6 +211,15 @@ export class CartComponent {
 
   /// go to checkout
   goToCheckout() {
+
+    if (this.userId == "") {
+      localStorage.setItem("cartPage", "cart")
+
+      this._route.navigate(["/LogIn"])
+    }
+    else {
+      this._route.navigate(["/checkout"])
+    }
 
   }
 

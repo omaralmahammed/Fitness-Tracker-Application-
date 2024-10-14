@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using newProjectSUHA.Server.Dtos;
+using Microsoft.EntityFrameworkCore;
 using newProjectSUHA.Server.Models;
 
 namespace newProjectSUHA.Server.Controllers
@@ -39,6 +41,7 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
+
         [HttpGet("Tips")]
         public IActionResult Tips()
         {
@@ -66,6 +69,70 @@ namespace newProjectSUHA.Server.Controllers
 
             return Ok(blog);
         }
+
+        [HttpPost("recipepost")]
+        public IActionResult recipepost([FromForm] RecipeDTO Recipedto) {
+            Recipe newitime = new Recipe()
+            {
+                Name= Recipedto.Name,
+                Image = Recipedto.Image,
+                Description = Recipedto.Description,
+                NutritionalFacts=Recipedto.NutritionalFacts,
+                CategoryId = Recipedto.CategoryId,
+
+            };
+
+            _db.Recipes.Add(newitime);
+            _db.SaveChanges();
+
+            return Ok(newitime);
+        }
+
+
+        [HttpPut("recipeput/{id}")]
+        public async Task<IActionResult> UpdateClassAndGym(int id, RecipeDTO recipeDTO)
+        {
+            var data = await _db.Recipes.FindAsync(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+
+            data.Name = recipeDTO.Name;
+            data.Description = recipeDTO.Description;
+            data.CategoryId = recipeDTO.CategoryId;
+            data.NutritionalFacts= recipeDTO.NutritionalFacts;
+            data.Image = recipeDTO.Image;
+
+            _db.Recipes.Update(data);
+            await _db.SaveChangesAsync();
+
+            return Ok(data);
+        }
+
+
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            var data = _db.Recipes.Find(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+            _db.Recipes.Remove(data);
+            _db.SaveChanges();
+            return Ok(data);
+        }
+
+
+       
+        [HttpGet("showallrecipe")]
+        public IActionResult showallrecipe()
+        {
+            var food = _db.Recipes.ToList();
+            return Ok(food);
+        }
+
 
     }
 }

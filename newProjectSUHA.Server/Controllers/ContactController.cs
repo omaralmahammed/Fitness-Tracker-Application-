@@ -47,8 +47,7 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(contact);
         }
 
-
-            [HttpGet("ContactStatus")]
+        [HttpGet("ContactStatus")]
             public IActionResult ContactStatus(int contactId)
             {
                 var contact = _db.ContactUs.Find(contactId);
