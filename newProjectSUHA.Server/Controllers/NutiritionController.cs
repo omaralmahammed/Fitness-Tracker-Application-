@@ -27,6 +27,14 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(food);
         }
 
+        [HttpGet("allRecipes")]
+        public IActionResult allRecipes()
+        {
+            var food = _db.Recipes.ToList();
+            return Ok(food);
+        }
+
+
         [HttpGet("Recipes/{id}")]
         public IActionResult SubFood(int id)
         {
@@ -41,12 +49,90 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
-
         [HttpGet("Tips")]
         public IActionResult Tips()
         {
             var Tips = _db.Tips.ToList();
             return Ok(Tips);
+        }
+
+        [HttpPost("TipsPost")]
+        public IActionResult tipspost([FromForm] tipsDTO tipsdto)
+
+        {
+
+            var folder = Path.Combine(Directory.GetCurrentDirectory(), "Upload");
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+            var imageFile = Path.Combine(folder, tipsdto.Image.FileName);
+
+            using (var stream = new FileStream(imageFile, FileMode.Create))
+            {
+                tipsdto.Image.CopyToAsync(stream);
+            }
+            Tip tipsdata = new Tip()
+            {
+                Title = tipsdto.Title,
+                Image = tipsdto.Image.FileName,
+                Description = tipsdto.Description,
+               
+
+            };
+            _db.Tips.Add(tipsdata);
+            _db.SaveChanges();
+            return Ok(tipsdata);
+        }
+
+
+
+
+        [HttpPut("Tipsput/{id}")]
+        public async Task<IActionResult> tipsput(int id, tipsDTO tipsdto)
+        {
+            var data = await _db.Tips.FindAsync(id);
+
+            var folder = Path.Combine(Directory.GetCurrentDirectory(), "Upload");
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+            var imageFile = Path.Combine(folder, tipsdto.Image.FileName);
+
+            using (var stream = new FileStream(imageFile, FileMode.Create))
+            {
+                tipsdto.Image.CopyToAsync(stream);
+            }
+
+            if (data == null)
+            {
+                return NotFound();
+            }
+
+            data.Title = tipsdto.Title;
+            data.Description = tipsdto.Description;
+            data.Image = tipsdto.Image.FileName;
+
+            _db.Tips.Update(data);
+            await _db.SaveChangesAsync();
+
+            return Ok(data);
+        }
+
+
+
+        [HttpDelete("DeleteTips/{id}")]
+        public IActionResult Deletetips(int id)
+        {
+            var data = _db.Tips.Find(id);
+            if (data == null)
+            {
+                return NotFound();
+            }
+            _db.Tips.Remove(data);
+            _db.SaveChanges();
+            return Ok(data);
         }
 
         //================== Admin Cycle ==================
@@ -70,23 +156,7 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(blog);
         }
 
-        //[HttpPost("recipepost")]
-        //public IActionResult recipepost([FromForm] RecipeDTO Recipedto) {
-        //    Recipe newitime = new Recipe()
-        //    {
-        //        Name= Recipedto.Name,
-        //        Image = Recipedto.Image,
-        //        Description = Recipedto.Description,
-        //        NutritionalFacts=Recipedto.NutritionalFacts,
-        //        CategoryId = Recipedto.CategoryId,
-
-        //    };
-
-        //    _db.Recipes.Add(newitime);
-        //    _db.SaveChanges();
-
-        //    return Ok(newitime);
-        //}
+       
 
 
 

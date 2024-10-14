@@ -4,6 +4,7 @@ using newProjectSUHA.Server.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace newProjectSUHA.Server.Controllers
 {
@@ -120,7 +121,8 @@ namespace newProjectSUHA.Server.Controllers
 
             return NoContent();
         }
-
+        // GET: api/GymAndClassAdmin/SubscriptionsByClassId/5
+  
         // Subscription CRUD
         // GET: api/GymAndClassAdmin/Subscriptions
         [HttpGet("Subscriptions")]
@@ -129,6 +131,7 @@ namespace newProjectSUHA.Server.Controllers
             var subscriptions = _context.Subscriptions
                 .Select(s => new SubscriptionDto
                 {
+                    id = s.Id,
                     Duration = s.Duration,
                     FinalPrice = s.FinalPrice,
                     ClassId = s.ClassId
@@ -279,5 +282,28 @@ namespace newProjectSUHA.Server.Controllers
             return NoContent();
         }
 
-     }
+        [HttpGet("SubscriptionsByClassId/{classId}")]
+        public async Task<ActionResult<IEnumerable<SubscriptionDto>>> GetSubscriptionsByClassId(int classId)
+        {
+            var subscriptions = await _context.Subscriptions
+                .Where(s => s.ClassId == classId)
+                .Include(s => s.Class) // Include the related Class entity
+                .Select(s => new SubscriptionDto
+                {
+                    id = s.Id,
+                    Duration = s.Duration,
+                    FinalPrice = s.FinalPrice,
+                    ClassId = s.ClassId,
+                 
+                })
+                .ToListAsync();
+
+            if (!subscriptions.Any())
+            {
+                return NotFound($"No subscriptions found for class with ID {classId}");
+            }
+
+            return Ok(subscriptions);
+        }
+    }
 }

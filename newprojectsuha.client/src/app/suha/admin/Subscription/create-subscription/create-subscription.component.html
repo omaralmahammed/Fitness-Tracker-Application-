@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Create New Subscription</h2>
+
+  <form (ngSubmit)="createSubscription()">
+    <div class="form-group">
+      <label for="duration">Duration:</label>
+      <input type="text" class="form-control" id="duration" [(ngModel)]="newSubscription.duration" name="duration" required>
+    </div>
+
+    <div class="form-group">
+      <label for="finalPrice">Final Price:</label>
+      <input type="number" class="form-control" id="finalPrice" [(ngModel)]="newSubscription.finalPrice" name="finalPrice" required>
+    </div>
+
+    <div class="form-group">
+      <label for="classId">Class ID:</label>
+      <input type="number" class="form-control" id="classId" [(ngModel)]="newSubscription.classId" name="classId" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Subscription</button>
+  </form>
+</div>

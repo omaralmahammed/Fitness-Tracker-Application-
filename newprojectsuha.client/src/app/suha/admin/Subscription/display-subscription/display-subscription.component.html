@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Subscription List</h2>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Duration</th>
+        <th>Final Price</th>
+        <th>Class ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let subscription of subscriptions">
+        <td>{{ subscription.duration }}</td>
+        <td>${{ subscription.finalPrice }}</td>
+        <td>{{ subscription.classId }}</td>
+        <td>
+          <button class="btn btn-primary mybutton" (click)="editSubscription(subscription.id)">Edit</button>
+          <button class="btn btn-danger mybutton" (click)="deleteSubscription(subscription.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button class="btn btn-success" (click)="createNewSubscription()">Add New Subscription</button>
+</div>

@@ -129,16 +129,16 @@ namespace newProjectSUHA.Server.Controllers
         [Route("AddProduct")]
         public IActionResult CreateProduct([FromForm] ProductRequestDTO productDto)
         {
-            // Ensure the "Product" directory exists
-            var uploadedFolder = Path.Combine(Directory.GetCurrentDirectory(), "Product");
+            // Ensure the "Upload" directory exists
+            var uploadedFolder = Path.Combine(Directory.GetCurrentDirectory(), "Upload");
             if (!Directory.Exists(uploadedFolder))
             {
                 Directory.CreateDirectory(uploadedFolder);
             }
 
             // Save the uploaded image file
-            var fileImage = Path.Combine(uploadedFolder, productDto.Image.FileName);
-            using (var stream = new FileStream(fileImage, FileMode.Create))
+            var fileImagePath = Path.Combine(uploadedFolder, productDto.Image.FileName);
+            using (var stream = new FileStream(fileImagePath, FileMode.Create))
             {
                 productDto.Image.CopyTo(stream);
             }
@@ -150,7 +150,7 @@ namespace newProjectSUHA.Server.Controllers
                 Description = productDto.Description,
                 Price = productDto.Price,
                 CategoryId = productDto.CategoryId,
-                Image = productDto.Image.FileName
+                Image = productDto.Image.FileName // Store just the file name or the relative path
             };
 
             // Add the product to the database and save changes
@@ -185,7 +185,7 @@ namespace newProjectSUHA.Server.Controllers
             }
 
             // Ensure the "Product" directory exists
-            var uploadedFolder = Path.Combine(Directory.GetCurrentDirectory(), "Product");
+            var uploadedFolder = Path.Combine(Directory.GetCurrentDirectory(), "Upload");
             if (!Directory.Exists(uploadedFolder))
             {
                 Directory.CreateDirectory(uploadedFolder);
