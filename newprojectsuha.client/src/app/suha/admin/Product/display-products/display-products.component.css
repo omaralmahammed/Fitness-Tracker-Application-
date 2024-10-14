@@ -1,0 +1,13 @@
+.table img {
+  max-width: 100px;
+  height: auto;
+}
+
+.table td {
+  vertical-align: middle;
+}
+
+.btn-sm {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
