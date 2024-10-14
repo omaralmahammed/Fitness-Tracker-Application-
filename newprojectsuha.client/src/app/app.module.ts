@@ -67,6 +67,8 @@ import { AdminCategoryComponent } from './suha/admin/admin-category/admin-catego
 import { DisplayProductsComponent } from './suha/admin/Product/display-products/display-products.component';
 import { CreateProductsComponent } from './suha/admin/Product/create-products/create-products.component';
 import { UpdateProductsComponent } from './suha/admin/Product/update-products/update-products.component';
+import { EditAdminCategoryComponent } from './suha/admin/edit-admin-category/edit-admin-category.component';
+import { AddAdminCategoryComponent } from './suha/admin/add-admin-category/add-admin-category.component';
 
 
 @NgModule({
@@ -130,6 +132,8 @@ import { UpdateProductsComponent } from './suha/admin/Product/update-products/up
     DisplayProductsComponent,
     CreateProductsComponent,
     UpdateProductsComponent,
+    EditAdminCategoryComponent,
+    AddAdminCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -218,6 +222,10 @@ import { UpdateProductsComponent } from './suha/admin/Product/update-products/up
 
           { path: "addprodect", component: CreateProductsComponent },
           { path: "updateprodect/:id" , component:UpdateProductsComponent},
+          { path: "AdminCategory", component: AdminCategoryComponent } ,
+          { path: "AdminCategory", component: AdminCategoryComponent },
+          { path: "EditAdminCategory/:id", component: EditAdminCategoryComponent },
+          { path: "AddAdminCategory", component: AddAdminCategoryComponent }
         ]
       },
       { path: "dash", component: DashboardComponent },

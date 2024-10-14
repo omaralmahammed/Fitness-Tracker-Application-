@@ -40,7 +40,7 @@ export class LogInComponent {
         this._router.navigate([`/subscriptions/${checkClassPayment}`]);
         localStorage.removeItem("ClassId");
 
-      } else if (fromCart) {
+      } else if (fromCart && newData.email != 'admin@gmail.com') {
         debugger
 
 
