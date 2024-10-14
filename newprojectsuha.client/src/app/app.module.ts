@@ -157,6 +157,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
           { path: "create-gym-class", component: CreateComponent },
           { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
+          { path: "TestimonialAdmin", component: AdminTestimonialComponent },
 
         
           { path: "ContactAdmin", component: AdminContactComponent },
