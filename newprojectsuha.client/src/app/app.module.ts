@@ -38,15 +38,19 @@ import { AllProductsComponent } from './all-product/all-product.component';
 import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
 import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
 import { AdminContactComponent } from './suha/admin/admin-contact/admin-contact.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
  
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
+import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { GetAllUSERSComponent } from './suha/admin/get-all-users/get-all-users.component';
 import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
 import { CategoriesComponent } from './Categories/categories/categories.component';
 import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
 import { AddCategoryComponent } from './Categories/add-category/add-category.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 
 @NgModule({
@@ -88,9 +92,12 @@ import { AddCategoryComponent } from './Categories/add-category/add-category.com
     CreateComponent,
     AdminOrdersComponent,
     AdminContactComponent,
+    GetAllUSERSComponent,
     CategoriesComponent,
     EditCategoryComponent,
     AddCategoryComponent,
+    OrderHistoryComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,6 +132,7 @@ import { AddCategoryComponent } from './Categories/add-category/add-category.com
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
+      { path: "orderhistory", component: OrderHistoryComponent },
 
       {
         path: "dash", component: DashboardComponent,
@@ -155,8 +163,14 @@ import { AddCategoryComponent } from './Categories/add-category/add-category.com
 
         
           { path: "ContactAdmin", component: AdminContactComponent },
+          { path: "AdminTestimonial", component: AdminTestimonialComponent }
+          { path: "GetAllUsers", component: GetAllUSERSComponent },
         ]
       },
+      { path: "dash", component: DashboardComponent },
+      { path: "myProfile", component: MyProfileComponent },
+
+
 
     ])
   ],

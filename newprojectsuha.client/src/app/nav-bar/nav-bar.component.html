@@ -1,10 +1,4 @@
-<div class="loader">
-  <div class="loader-inner">
-    <div class="circle"></div>
-  </div>
-</div>
-<!--PreLoader Ends-->
-<!-- header -->
+
 <div class="top-header-area" id="sticker">
   <div class="container">
     <div class="row">
@@ -40,9 +34,9 @@
                 </ul>
               </li>
 
-              <li><a routerLink="/Contact">Contact</a></li>
               <li><a routerLink="/Shop">Shop</a></li>
-              <li><a routerLink="About">About</a></li>
+              <li><a routerLink="/About">About</a></li>
+              <li><a routerLink="/Contact">Contact</a></li>
 
               <li>
                 <ul>
@@ -51,13 +45,13 @@
                   <li><a routerLink="/LogIn" *ngIf="UserId == ''">LogIn</a></li>
 
                   <li *ngIf="UserId != ''">
-                    <div >
+                    <div>
                       <a><i class="fas fa-user"></i></a>
                       <ul class="sub-menu">
-                        <li><a href="#">My Profile</a></li>
-                        <li><a href="#">My Orders</a></li>
-                        <li><a href="#">My Subscriptions</a></li>
-                        <li><a href="#">Log Out</a></li>
+                        <li><a routerLink="/myProfile">My Profile</a></li>
+                        <li><a routerLink="orderhistory">My Orders</a></li>
+                        <li><a routerLink="#">My Subscriptions</a></li>
+                        <li><a (click)="logout()">Log Out</a></li>
                       </ul>
                     </div>
                   </li>
@@ -75,21 +69,4 @@
   </div>
 </div>
 <!-- end header -->
-<!-- search area -->
-<div class="search-area">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-12">
-        <span class="close-btn"><i class="fas fa-window-close"></i></span>
-        <div class="search-bar">
-          <div class="search-bar-tablecell">
-            <h3>Search For:</h3>
-            <input type="text" placeholder="Keywords">
-            <button type="submit">Search <i class="fas fa-search"></i></button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end search arewa -->
+

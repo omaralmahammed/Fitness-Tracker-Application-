@@ -78,6 +78,14 @@ export class UrlService {
   }
 
 
+  getallRecipes(): Observable<any[]> {
+    return this.http.get<any[]>('https://localhost:7286/api/Nutirition/showallrecipe');
+  }
+
+
+  addRecipe(formData: FormData): Observable<any> {
+    return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', formData);
+  }
 
 
 
@@ -276,6 +284,15 @@ export class UrlService {
     return this.http.get<any>(`${this.baseUrl}/ContactStatus?contactId=${contactId}`);
   }
 
+
+  GetAllusers(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}User/GetAllUsers`);
+  }
+
+  //GetAllFitness(): Observable<any> {
+  //  return this.http.get<any>(${ this.staticData }/ Admin / GetAllFitnessClass);
+  //}
+
   // Update contact status
   updateContactStatus(contactId: number, status: string): Observable<any> {
     return this.http.put(`${this.baseUrl}/UpdateContactStatus?contactId=${contactId}`, { status });
@@ -365,7 +382,13 @@ export class UrlService {
     return this.http.post<any>(`${this.baseUrl}Categories/AddCategory`, data)
   }
 
+  getUserInfo(id: number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Profile/GetUserProfile/${id}`)
+  }
 
+  changeUserInfo(id: number, data:any): Observable<any> {
+    return this.http.put<any>(`https://localhost:7286/api/Profile/EditUserProfile/${id}`, data)
+  }
   //AddProduct
   AddProduct(data: any): Observable<any> {
     return this.http.post<any>(`${this.baseUrl}Products/AddProduct`, data)

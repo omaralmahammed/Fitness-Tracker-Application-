@@ -48,7 +48,7 @@ export class LogInComponent {
       }
       else if (newData.email == 'admin@gmail.com') {
 
-        this._router.navigate(['/dashboard']);
+        this._router.navigate(['/dash']);
 
       } else {
 

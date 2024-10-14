@@ -1,0 +1,96 @@
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <p>Fresh and Organic</p>
+          <h1>Order History</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end breadcrumb section -->
+
+
+
+<div class="cart-section mt-150 mb-150" *ngIf="userId != ''">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12 col-md-12">
+        <div class="cart-table-wrap">
+
+          <table class="table table-bordered table-hover">
+            <thead class="cart-table-head">
+              <tr class="table-head-row">
+                <th scope="col">Order ID</th>
+                <th scope="col">Total Amount</th>
+                <th scope="col">Payment Method</th>
+                <th scope="col">Order Date</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let order of orders">
+                <td>{{ order.id }}</td>
+                <td>${{ order.total }}</td>
+                <td>{{ order.paymentMethod }}</td>
+                <td>{{ order.date | date }}</td>
+                <td>
+                  <!-- Button to open the modal -->
+                  <button class="btn btn-info" (click)="getOrderItems(order.id)" data-toggle="modal" data-target="#orderItemsModal">View Items</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Modal for displaying order items -->
+          <div class="modal fade" id="orderItemsModal" tabindex="-1" role="dialog" aria-labelledby="orderItemsModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="orderItemsModalLabel">Order Items</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <table class="table table-bordered table-hover">
+                    <thead class="thead-dark">
+                      <tr class="table-head-row">
+                        <th scope="col">Image</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of selectedOrderItems">
+                        <td>
+                          <img src="https://localhost:7286/api/Images/getImages/{{item.product.name}}"
+                               alt="{{item.product.name}}" class="img-fluid" style="max-width: 100px;" />
+                        </td>
+                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.product.price | currency }}</td>
+                        <td>{{ item.total | currency }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
