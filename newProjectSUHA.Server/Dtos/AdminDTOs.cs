@@ -16,6 +16,7 @@
     // Subscription DTO
     public class SubscriptionDto
     {
+        public int? id { get; set; }
         public string? Duration { get; set; }
         public decimal? FinalPrice { get; set; }
         public int? ClassId { get; set; }

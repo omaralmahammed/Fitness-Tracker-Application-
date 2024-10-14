@@ -131,7 +131,7 @@
             <tbody *ngFor="let item of BSCartItemsList">
               <tr class="table-body-row">
                 <td class="product-remove"><button type="button" (click)="removeItem(item.productId)">X</button></td>
-                <td class="product-image"><img src="https://localhost:7286/api/Images/getImages/{{item.cp.image}}" alt="{{item.cp.name}}"></td>
+                <td class="product-image"><img src="https://localhost:7286/api/Images/getImages/{{item.image}}" alt="{{item.name}}"></td>
                 <td class="product-name">{{item.name}}</td>
                 <td class="product-price">${{item.price | number:'1.0-2'}}</td>
                 <td class="product-quantity">

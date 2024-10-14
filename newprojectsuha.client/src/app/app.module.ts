@@ -44,6 +44,7 @@ import { MyProfileComponent } from './my-profile/my-profile.component';
 import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.component';
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
+//import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
 //import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
 //import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
 import { GetAllUSERSComponent } from './suha/admin/get-all-users/get-all-users.component';
@@ -52,6 +53,12 @@ import { CategoriesComponent } from './Categories/categories/categories.componen
 import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
 import { AddCategoryComponent } from './Categories/add-category/add-category.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { UpdateSubscriptionComponent } from './suha/admin/Subscription/update-subscription/update-subscription.component';
+import { CreateSubscriptionComponent } from './suha/admin/Subscription/create-subscription/create-subscription.component';
+import { DisplaySubscriptionComponent } from './suha/admin/Subscription/display-subscription/display-subscription.component';
+import { DisplayClassSubscriptionsComponent } from './suha/admin/Subscription/display-class-subscriptions/display-class-subscriptions.component';
+import { CreateClassSubscriptionsComponent } from './suha/admin/Subscription/create-class-subscriptions/create-class-subscriptions.component';
+import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/update-class-subscriptions/update-class-subscriptions.component';
 import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.component';
 import { TipsAdminComponent } from './suha/admin/tips-admin/tips-admin.component';
 import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
@@ -102,10 +109,17 @@ import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
     AddCategoryComponent,
     OrderHistoryComponent,
     MyProfileComponent,
+    UpdateSubscriptionComponent,
+    CreateSubscriptionComponent,
+    DisplaySubscriptionComponent,
+    DisplayClassSubscriptionsComponent,
+    CreateClassSubscriptionsComponent,
+    UpdateClassSubscriptionsComponent,
     EditRecipeComponent,
     OrderHistoryComponent,
     TipsAdminComponent,
     AddTipsComponent,
+    EditProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -168,13 +182,20 @@ import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
           { path: "AllTips", component: TipsAdminComponent },
           { path: "addTips" , component:AddTipsComponent},
 
+          //Gym and Classes
           { path: "Display_GymAndClasses", component: DisplayComponent },
           { path: "create-gym-class", component: CreateComponent },
           { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
           { path: "TestimonialAdmin", component: AdminTestimonialComponent },
 
-        
+          //Sybscription
+          { path: "Display-Subscription", component: DisplaySubscriptionComponent},
+          { path: "Update-Subscription/:id", component: UpdateSubscriptionComponent },
+          { path: "Create-Subscription", component: CreateSubscriptionComponent },  
+          { path: "display-class-subscription/:id", component: DisplayClassSubscriptionsComponent }, //display-class-subscription
+          { path: "create-class-subscription/:id", component: CreateClassSubscriptionsComponent },
+          { path: "update-class-subscription/:id", component: UpdateClassSubscriptionsComponent },
           { path: "ContactAdmin", component: AdminContactComponent },
           { path: "AdminTestimonial", component: AdminTestimonialComponent },
           { path: "GetAllUsers", component: GetAllUSERSComponent },

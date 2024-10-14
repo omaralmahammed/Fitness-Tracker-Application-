@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../URL-Service/url.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -24,9 +25,10 @@ export class CheckoutComponent {
 
     this.CartItemsTotal(this.userId)
 
+    
   }
 
-  constructor(private _ser: UrlService, private _route: Router) { }
+  constructor(private _ser: UrlService, private _route: Router, private url: UrlService) { }
 
   moveFromCartToOrder(userId: number) {
     this._ser.moveFromCartToOrder(userId).subscribe(() => {
@@ -74,7 +76,62 @@ export class CheckoutComponent {
 
 
 
+  /////////////////////////////////////////////////////////////////////////////////////////
 
+  
+
+  FinalCheckOut() {
+    
+
+
+    this.url.UserIdObserve.subscribe(() => {
+      debugger
+
+      this._ser.CartCheckOut(this.userId).subscribe((data) => {
+
+          const width = 600;
+          const height = 700;
+          const left = (screen.width / 2) - (width / 2);
+          const top = (screen.height / 2) - (height / 2);
+
+
+          const popupWindow = window.open(
+            data.approvalUrl,
+            'PayPal Payment',
+            `width=${width},height=${height},top=${top},scrollbars=yes,resizable=yes`
+          );
+
+          const checkWindowClosed = setInterval(() => {
+            if (popupWindow && popupWindow.closed) {
+              clearInterval(checkWindowClosed);
+
+              Swal.fire({
+                icon: "success",
+                title: "Payment Successfully!",
+                showConfirmButton: false,
+                timer: 2000
+              }).then(() => {
+                setTimeout(() => {
+                  this._route.navigate(['/orderhistory']);
+                }, 1000);
+              });
+
+
+            }
+          }, 500);
+
+        },
+          (error) => {
+            Swal.fire({
+              icon: "warning",
+              title: `${error.error}`,
+              showConfirmButton: false,
+              timer: 2000
+            });
+          });
+      
+    });
+  }
 
 
 }

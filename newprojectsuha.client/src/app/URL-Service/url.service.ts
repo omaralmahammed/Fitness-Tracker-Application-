@@ -47,7 +47,7 @@ export class UrlService {
 
   GetSubscriptions(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetSubscription/${id}`)
-  }
+  } //
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}User/Register`, data)
@@ -210,7 +210,9 @@ export class UrlService {
 
   // Subscription CRUD methods
 
-
+  GetAllSubscriptions(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClassAdmin/Subscriptions`)
+  } 
 
   // Create a new subscription
   CreateSubscription(data: any): Observable<any> {
@@ -259,6 +261,7 @@ export class UrlService {
   BSCArtList: any = []
   BSCArtListSub = new BehaviorSubject<any>(this.BSCArtList)
   BSCArtListObs = this.BSCArtListSub.asObservable()
+  
 
   BSAddToCart(data: any) {
     /*debugger*/
@@ -282,6 +285,11 @@ export class UrlService {
   logoutFunc() {
     this.BSCArtList = [];
     this.BSCArtListSub.next(this.BSCArtList)
+
+    // Clear the email and user ID by emitting an empty string
+    this.email.next("");
+    this.UserId.next("");
+
   }
 
   getProductInfoForCart(productId: number): Observable<any> {
@@ -426,10 +434,13 @@ export class UrlService {
     return this.http.post<any>(`${this.baseUrl}Products/AddProduct`, data)
   }
 
+  GetSubscriptionsByClassId(classId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClassAdmin/SubscriptionsByClassId/${classId}`);
+  }
 
-  //UpdateProduct(id: any, product: any): Observable<any> {
-  //  return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
-  //}
+  UpdateProduct(id: any, product: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
+  }
   // Update category method
   UpdateCategory(id: any, category: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}Categories/${id}`, category);
@@ -442,7 +453,7 @@ export class UrlService {
   }
 
   CartCheckOut(id: number): Observable<any> {
-    return this.http.get<any>(`https://localhost:7286/api/CartPayment/checkoutForSubscription/${id}`);
+    return this.http.post<any>(`https://localhost:7286/api/CartPayment/checkoutForSubscription/${id}`, {});
   }
 
   
