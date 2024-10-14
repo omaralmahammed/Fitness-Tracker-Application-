@@ -78,6 +78,14 @@ export class UrlService {
   }
 
 
+  getallRecipes(): Observable<any[]> {
+    return this.http.get<any[]>('https://localhost:7286/api/Nutirition/showallrecipe');
+  }
+
+
+  addRecipe(formData: FormData): Observable<any> {
+    return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', formData);
+  }
 
 
 

@@ -124,12 +124,13 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
-        //[HttpGet("showallrecipe")]
-        //public IActionResult showallrecipe() { 
-        //var data= _db.Recipes;
-
-        //}
-
+       
+        [HttpGet("showallrecipe")]
+        public IActionResult showallrecipe()
+        {
+            var food = _db.Recipes.ToList();
+            return Ok(food);
+        }
 
 
     }
