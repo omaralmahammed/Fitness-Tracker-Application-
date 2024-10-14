@@ -347,6 +347,38 @@ export class UrlService {
     return this.http.put(`${this.baseUrl}Testimonials/updateTestimonialStatus/${id}`, { status: status });
   }
 
+
+
+
+  // Delete Product by id
+  DeleteProduct(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}Products/Delete/${id}`);
+  }
+  
+  // Delete Category by id
+  DeleteCategory(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}Products/Delete/${id}`);
+  }
+
+  //AddCategory
+  AddCategory(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Categories/AddCategory`, data)
+  }
+
+
+  //AddProduct
+  AddProduct(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Products/AddProduct`, data)
+  }
+
+
+  //UpdateProduct(id: any, product: any): Observable<any> {
+  //  return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
+  //}
+
+  //UpdateCategory(id: any, category: any): Observable<any> {
+  //  return this.http.put<any>(`${this.baseUrl}Categories/${id}`, category) 
+  //}
 }
 
 

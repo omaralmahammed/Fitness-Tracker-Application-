@@ -44,6 +44,9 @@ import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.com
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
 import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { CategoriesComponent } from './Categories/categories/categories.component';
+import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
+import { AddCategoryComponent } from './Categories/add-category/add-category.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 
 
@@ -86,6 +89,9 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     CreateComponent,
     AdminOrdersComponent,
     AdminContactComponent,
+    CategoriesComponent,
+    EditCategoryComponent,
+    AddCategoryComponent,
     OrderHistoryComponent,
   ],
   imports: [
@@ -126,25 +132,31 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
       {
         path: "dash", component: DashboardComponent,
         children: [
+
+          { path: "", redirectTo: "child1", pathMatch: "full" }, // Default child route
+
+          //Products
+
           { path: "EditProduct", component: EditProductComponent },
           { path: "AddProduct", component: AddProductComponent },
           { path: "AllProduct", component: AllProductsComponent },
 
-          { path: "", redirectTo: "child1", pathMatch: "full" }, 
-          { path: "child1", component: EditProductComponent },
-          { path: "", redirectTo: "child1", pathMatch: "full" },  // Default child route
-          { path: "TestimonialAdmin", component: AdminTestimonialComponent },
+          //Categories
+
+          { path: "EditCategory", component: EditCategoryComponent },
+          { path: "AddCategory", component: AddCategoryComponent },
+          { path: "Categories", component: CategoriesComponent },
+
          
-          { path: "", redirectTo: "child1", pathMatch: "full" } , // Default child route
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
 
           { path: "Display_GymAndClasses", component: DisplayComponent },
+          { path: "create-gym-class", component: CreateComponent },
+          { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
 
-          { path: "", redirectTo: "child1", pathMatch: "full" },
-          { path: "child1", component: AddProductComponent },
-          { path: "", redirectTo: "child1", pathMatch: "full" },
+        
           { path: "ContactAdmin", component: AdminContactComponent },
         ]
       },
