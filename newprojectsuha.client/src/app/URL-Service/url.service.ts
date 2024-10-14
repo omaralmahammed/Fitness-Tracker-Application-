@@ -472,8 +472,8 @@ export class UrlService {
     return this.http.put<any>(`${this.baseUrl}Categories/${id}`, data)
   }
 
-  AddAdminCategory(data:any): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}Categories/AddCategory`,data)
+  AddAdminCategory(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Categories/AddCategory`, data)
   }
 
 
