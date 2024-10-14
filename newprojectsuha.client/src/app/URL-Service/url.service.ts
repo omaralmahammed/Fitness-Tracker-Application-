@@ -184,6 +184,7 @@ export class UrlService {
     return this.http.put<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms/${id}`, data);
   }
 
+
   // Delete ClassAndGym by id
   DeleteClassAndGym(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms/${id}`);
@@ -298,9 +299,8 @@ export class UrlService {
   //  return this.http.get<any>(${ this.staticData }/ Admin / GetAllFitnessClass);
   //}
 
-  // Update contact status
-  updateContactStatus(contactId: number, status: string): Observable<any> {
-    return this.http.put(`${this.baseUrl}/UpdateContactStatus?contactId=${contactId}`, { status });
+  updateContactStatus(id: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}Contact/UpdateContactStatus/${id}`, {});
   }
 
 
