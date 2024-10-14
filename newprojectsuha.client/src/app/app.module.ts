@@ -32,6 +32,8 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
 import { CommonModule } from '@angular/common';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+//import { AllProductComponent } from './all-product/all-product.component';
+import { AdminTestimonialComponent } from './suha/admin/admin-testimonial/admin-testimonial.component';
 import { AllProductsComponent } from './all-product/all-product.component';
 import { RecipeDashboardComponent } from './suha/admin/recipe-dashboard/recipe-dashboard.component';
 import { ShowAllRecipeComponent } from './suha/admin/show-all-recipe/show-all-recipe.component';
@@ -42,6 +44,10 @@ import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.com
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
 import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { CategoriesComponent } from './Categories/categories/categories.component';
+import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
+import { AddCategoryComponent } from './Categories/add-category/add-category.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 
 @NgModule({
@@ -73,6 +79,8 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
     ProfileComponent,
     DashboardComponent,
     AddProductComponent,
+    //AllProductComponent,
+    AdminTestimonialComponent,
     AllProductsComponent,
     RecipeDashboardComponent,
     ShowAllRecipeComponent,
@@ -81,14 +89,16 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
     CreateComponent,
     AdminOrdersComponent,
     AdminContactComponent,
+    CategoriesComponent,
+    EditCategoryComponent,
+    AddCategoryComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     CommonModule,  
-    FormsModule,       
-    HttpClientModule,  
-    FormsModule,     
+    FormsModule,           
     AppRoutingModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
@@ -117,26 +127,36 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
+      { path: "orderhistory", component: OrderHistoryComponent },
 
       {
         path: "dash", component: DashboardComponent,
         children: [
+
+          { path: "", redirectTo: "child1", pathMatch: "full" }, // Default child route
+
+          //Products
+
           { path: "EditProduct", component: EditProductComponent },
           { path: "AddProduct", component: AddProductComponent },
           { path: "AllProduct", component: AllProductsComponent },
 
-          { path: "", redirectTo: "child1", pathMatch: "full" }, 
-          { path: "child1", component: EditProductComponent },
-          { path: "", redirectTo: "child1", pathMatch: "full" } , // Default child route
+          //Categories
+
+          { path: "EditCategory", component: EditCategoryComponent },
+          { path: "AddCategory", component: AddCategoryComponent },
+          { path: "Categories", component: CategoriesComponent },
+
+         
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
 
           { path: "Display_GymAndClasses", component: DisplayComponent },
+          { path: "create-gym-class", component: CreateComponent },
+          { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
 
-          { path: "", redirectTo: "child1", pathMatch: "full" },
-          { path: "child1", component: AddProductComponent },
-          { path: "", redirectTo: "child1", pathMatch: "full" },
+        
           { path: "ContactAdmin", component: AdminContactComponent },
         ]
       },

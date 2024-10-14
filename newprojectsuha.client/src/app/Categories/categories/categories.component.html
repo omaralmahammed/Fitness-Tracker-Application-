@@ -8,8 +8,8 @@
 <br />
 <!-- Button to add products -->
 <button class="btn btn-add-product">
-  <span class="mdi mdi-plus mdi-24px"></span> 
-  <span class="add-product-text">Add Product</span> 
+  <span class="mdi mdi-plus mdi-24px"></span>
+  <span class="add-product-text">Add Category</span> 
 </button>
 
 
@@ -18,14 +18,12 @@
   <!-- Table Head -->
   <thead class="table-light">
     <tr>
-      <th>Products</th>
       <th>Category</th>
-      <th>Price</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of allProductsArray">
+    <tr *ngFor="let product of Array">
       <td>
         <a href="#" class="text-inherit">
           <div class="d-flex align-items-center flex-row gap-3">
@@ -38,8 +36,7 @@
           </div>
         </a>
       </td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.price }}$</td>
+    
       <td>
         <div style="display: flex; gap: 10px;">
           <button class="btn btn-edit">
@@ -97,7 +94,7 @@
   }
 
     .btn-add-product:hover {
-      background-color: lighten(blue, 30%);
+      background-color: lighten(blue, 30%); 
     }
 
     .btn-add-product:focus {
@@ -105,6 +102,7 @@
     }
 
   .add-product-text {
+    font-weight: bolder;
     font-size: 18px; 
   }
 

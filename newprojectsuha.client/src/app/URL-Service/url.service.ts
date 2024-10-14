@@ -290,6 +290,10 @@ export class UrlService {
   }
 
 
+  // Update product by id
+  EditProduct(id: number, data: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/Products/UpdateProduct/${id}`, data);
+  }
 
   BSCartItemDelete(productId: number) {
 
@@ -313,11 +317,11 @@ export class UrlService {
     var product = this.BSCArtList.find((a: any) => a.productId == productId);
 
     if (product) {
-      product.quantity += quantity; // Corrected 'Quantity' to 'quantity'
+      product.quantity = quantity;
 
-      // Optional: Prevent negative quantities
-      if (product.quantity < 0) {
-        product.quantity = 0;
+      // stop negative quantities
+      if (product.quantity <= 0) {
+        product.quantity = 1;
       }
 
       this.BSCArtListSub.next([...this.BSCArtList]);
@@ -329,9 +333,60 @@ export class UrlService {
     return this.http.get<any>(`https://localhost:7286/api/Order/getOrderItem/${orderId}`);
   }
 
+  //home page get last 3 products
+
+ 
+  GetLast3Products(): Observable<any[]> {
+    return this.http.get<any>(`${this.baseUrl}Products/GetLast3Products`)
+  }
+  AdminTestimonials(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Testimonials/getAllTestimonialInAdmin`);
+
+  }
+
+  moveFromBStoDB(userId: number, BSList: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Cart/moveFromBStoDB/${userId}`, BSList)
+  }
 
 
 
+
+  updateTestimonialStatus(id: number, status: string): Observable<any> {
+    return this.http.put(`${this.baseUrl}Testimonials/updateTestimonialStatus/${id}`, { status: status });
+  }
+
+
+
+
+  // Delete Product by id
+  DeleteProduct(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}Products/Delete/${id}`);
+  }
+  
+  // Delete Category by id
+  DeleteCategory(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}Products/Delete/${id}`);
+  }
+
+  //AddCategory
+  AddCategory(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Categories/AddCategory`, data)
+  }
+
+
+  //AddProduct
+  AddProduct(data: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}Products/AddProduct`, data)
+  }
+
+
+  //UpdateProduct(id: any, product: any): Observable<any> {
+  //  return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
+  //}
+
+  //UpdateCategory(id: any, category: any): Observable<any> {
+  //  return this.http.put<any>(`${this.baseUrl}Categories/${id}`, category) 
+  //}
 }
 
 
