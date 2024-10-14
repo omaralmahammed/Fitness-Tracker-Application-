@@ -27,4 +27,13 @@ export class DisplayProductsComponent implements OnInit {
       }
     });
   }
+
+
+  deleteProdect11(id: any) {
+    this.urlService.deletProdects(id).subscribe(() => {
+      alert("delete Prodect successfully")
+      this.loadProducts()
+    })
+  }
+
 }

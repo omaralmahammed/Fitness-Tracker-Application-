@@ -213,7 +213,11 @@ import { UpdateProductsComponent } from './suha/admin/Product/update-products/up
           { path: "ContactAdmin", component: AdminContactComponent },
           { path: "AdminTestimonial", component: AdminTestimonialComponent },
           { path: "GetAllUsers", component: GetAllUSERSComponent },
-          { path: "AdminCategory", component: AdminCategoryComponent } 
+          { path: "AdminCategory", component: AdminCategoryComponent },
+
+
+          { path: "addprodect", component: CreateProductsComponent },
+          { path: "updateprodect/:id" , component:UpdateProductsComponent},
         ]
       },
       { path: "dash", component: DashboardComponent },

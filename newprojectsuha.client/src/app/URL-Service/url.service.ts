@@ -106,6 +106,22 @@ export class UrlService {
   addTips(data: any): Observable<any> {
     return this.http.post<any>('https://localhost:7286/api/Nutirition/TipsPost', data);
   }
+  //////////////////
+  addProdect(data: any): Observable<any> {
+    return this.http.post<any>('https://localhost:7286/api/Products/AddProduct', data);
+  }
+
+  PUTProddect(id: any, data: any): Observable<any> {
+    return this.http.put<any>(`https://localhost:7286/api/Products/UpdateProduct/${id}`, data);
+  }
+
+  deletProdects(id: any): Observable<any> {
+    return this.http.delete<any>(`https://localhost:7286/api/Products/Delete/${id}`)
+    this.GetAllProducts();
+  }
+ 
+
+
 
   GetProductById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Products/Product/${id}`)

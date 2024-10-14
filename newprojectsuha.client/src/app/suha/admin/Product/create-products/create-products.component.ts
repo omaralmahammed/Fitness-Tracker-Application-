@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UrlService } from '../../../../URL-Service/url.service';
 
 @Component({
   selector: 'app-create-products',
@@ -7,4 +8,28 @@ import { Component } from '@angular/core';
 })
 export class CreateProductsComponent {
 
+  ngOnInit() {
+
+  }
+
+  constructor(private _ser: UrlService) { }
+
+  image: any
+  changeImage(event: any) {
+    this.image = event.target.files[0]
+  }
+
+  addNewProdect(data: any) {
+
+    var form = new FormData();
+    for (let key in data) {
+      form.append(key, data[key])
+    }
+
+    form.append("Image", this.image)
+    this._ser.addProdect(form).subscribe(() =>
+
+      alert("add Prodect Sucssfully")
+    )
+  }
 }
