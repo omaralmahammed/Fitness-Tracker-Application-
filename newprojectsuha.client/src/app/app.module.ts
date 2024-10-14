@@ -44,6 +44,7 @@ import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.com
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
 import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
     CreateComponent,
     AdminOrdersComponent,
     AdminContactComponent,
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -119,6 +121,7 @@ import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.com
       { path: "checkout", component: CheckoutComponent },
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
+      { path: "orderhistory", component: OrderHistoryComponent },
 
       {
         path: "dash", component: DashboardComponent,
