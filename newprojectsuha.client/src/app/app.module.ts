@@ -49,6 +49,12 @@ import { CategoriesComponent } from './Categories/categories/categories.componen
 import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
 import { AddCategoryComponent } from './Categories/add-category/add-category.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { UpdateSubscriptionComponent } from './suha/admin/Subscription/update-subscription/update-subscription.component';
+import { CreateSubscriptionComponent } from './suha/admin/Subscription/create-subscription/create-subscription.component';
+import { DisplaySubscriptionComponent } from './suha/admin/Subscription/display-subscription/display-subscription.component';
+import { DisplayClassSubscriptionsComponent } from './suha/admin/Subscription/display-class-subscriptions/display-class-subscriptions.component';
+import { CreateClassSubscriptionsComponent } from './suha/admin/Subscription/create-class-subscriptions/create-class-subscriptions.component';
+import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/update-class-subscriptions/update-class-subscriptions.component';
 
 
 @NgModule({
@@ -95,6 +101,12 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AddCategoryComponent,
     OrderHistoryComponent,
     MyProfileComponent,
+    UpdateSubscriptionComponent,
+    CreateSubscriptionComponent,
+    DisplaySubscriptionComponent,
+    DisplayClassSubscriptionsComponent,
+    CreateClassSubscriptionsComponent,
+    UpdateClassSubscriptionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -153,12 +165,19 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
 
+          //Gym and Classes
           { path: "Display_GymAndClasses", component: DisplayComponent },
           { path: "create-gym-class", component: CreateComponent },
           { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
 
-        
+          //Sybscription
+          { path: "Display-Subscription", component: DisplaySubscriptionComponent},
+          { path: "Update-Subscription/:id", component: UpdateSubscriptionComponent },
+          { path: "Create-Subscription", component: CreateSubscriptionComponent },  
+          { path: "display-class-subscription/:id", component: DisplayClassSubscriptionsComponent }, //display-class-subscription
+          { path: "create-class-subscription/:id", component: CreateClassSubscriptionsComponent },
+          { path: "update-class-subscription/:id", component: UpdateClassSubscriptionsComponent },
           { path: "ContactAdmin", component: AdminContactComponent },
         ]
       },

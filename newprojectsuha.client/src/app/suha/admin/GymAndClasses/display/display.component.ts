@@ -65,4 +65,8 @@ export class DisplayComponent implements OnInit {
   createNewItem(): void {
     this.router.navigate(['/dash/create-gym-class']);
   }
+
+  viewSubscriptions(id: number): void {
+    this.router.navigate(['/dash/display-class-subscription', id]);
+  }
 }
