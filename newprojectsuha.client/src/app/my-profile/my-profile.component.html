@@ -14,37 +14,42 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-12 mb-5 mb-lg-0">
-        
+
         <div class="contact-form">
           <form #contactForm="ngForm" (ngSubmit)="submitUserInfo(contactForm.value)">
             <!-- First Name -->
             <p>
-              <input type="text" [(ngModel)]="userData.firstName" name="firstName" style="width:730px" required>
+              <label for="firstName" style="font-size: 1.5em; margin-right: 1em;">First Name:</label>
+              <input type="text" id="firstName" [(ngModel)]="userData.firstName" name="firstName" style="width:730px" required>
             </p>
 
             <!-- Last Name -->
             <p>
-              <input type="text" [(ngModel)]="userData.lastName" name="lastName" style="width:730px" required>
+              <label for="lasttName" style="font-size: 1.5em; margin-right: 1em;">Last Name:</label>
+              <input type="text" id="lasttName" [(ngModel)]="userData.lastName" name="lastName" style="width:730px" required>
             </p>
 
             <!-- Email -->
             <p>
-              <input type="email" [(ngModel)]="userData.email" name="email" style="width:730px" readonly>
+              <label for="email" style="font-size: 1.5em; margin-right: 1em;">Email:</label>
+              <input type="email" id="email" [(ngModel)]="userData.email" name="email" style="width:730px" readonly>
             </p>
 
             <!-- New Password -->
             <p>
-              <input type="text" placeholder="New Password" name="password" style="width:730px" ngModel required>
+              <label for="newPWD" style="font-size: 1.5em; margin-right: 1em; ">Password:</label>
+              <input type="text" id="newPWD" placeholder="New Password" name="password" style="width:730px" ngModel required>
             </p>
 
             <!-- Confirm New Password -->
             <p>
-              <input type="text" placeholder="Confirm New Password" name="confirmPassword" style="width:730px" ngModel required>
+              <label for="ConfirmPWD" style="font-size: 1.5em; margin-right: 1em;">Confirm Password:</label>
+              <input type="text" id="ConfirmPWD" placeholder="Confirm New Password" name="confirmPassword" style="width:730px" ngModel required>
             </p>
 
             <!-- Submit Button -->
             <p>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" id="formSubmit">
             </p>
           </form>
 
@@ -53,4 +58,41 @@
     </div>
   </div>
 </div>
-<a href="my-profile.component.html">my-profile.component.html</a>
+
+
+
+
+
+<!--<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <h4 class="mb-0">Profile Information</h4>
+    </div>
+    <div class="card-body">
+      <form #contactForm="ngForm" (ngSubmit)="submitUserInfo(contactForm.value)">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="userData.firstName" name="firstName" value="{{userData.firstName}}" required>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]="userData.lastName" name="lastName" value="{{userData.lastName}}" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="userData.email" name="email" value="{{userData.email}}" readonly>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="New Password" name="password" ngModel required>
+        </div>
+        <div class="form-group">
+          <label for="Conpassword">Password</label>
+          <input type="password" class="form-control" id="Conpassword" placeholder="Confirm New Password" name="confirmPassword" ngModel required>
+        </div>
+        <input type="submit" value="Edit Profile">
+      </form>
+    </div>
+  </div>
+</div>-->
+

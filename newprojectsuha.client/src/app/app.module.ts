@@ -54,6 +54,7 @@ import { EditCategoryComponent } from './Categories/edit-category/edit-category.
 import { AddCategoryComponent } from './Categories/add-category/add-category.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.component';
+import { UserSubscriptionHistoryComponent } from './user-subscription-history/user-subscription-history.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.compon
     MyProfileComponent,
     EditRecipeComponent,
     OrderHistoryComponent,
+    UserSubscriptionHistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -138,6 +140,7 @@ import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.compon
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
       { path: "orderhistory", component: OrderHistoryComponent },
+      { path: "usersubscriptions", component: UserSubscriptionHistoryComponent },
 
       {
         path: "dash", component: DashboardComponent,

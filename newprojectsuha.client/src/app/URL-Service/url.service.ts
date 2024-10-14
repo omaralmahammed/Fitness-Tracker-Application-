@@ -440,6 +440,26 @@ export class UrlService {
     return this.http.get<any>(`https://localhost:7286/api/CartPayment/checkoutForSubscription/${id}`);
   }
 
+
+  //////get user subscription//////
+  getUserSubscriptions(userId: number, flag: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClass/getUserSubscriptions/${userId}?flag=${flag}`)
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 }
