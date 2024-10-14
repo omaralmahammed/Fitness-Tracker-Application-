@@ -83,8 +83,8 @@ export class UrlService {
   }
 
 
-  addRecipe(formData: FormData): Observable<any> {
-    return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', formData);
+  addRecipe(data: any): Observable<any> {
+    return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', data);
   }
 
 
@@ -242,7 +242,7 @@ export class UrlService {
   BSCArtListObs = this.BSCArtListSub.asObservable()
 
   BSAddToCart(data: any) {
-    //debugger
+    /*debugger*/
     var record = this.BSCArtList.find((x: any) => x.productId == data.productId)
 
     if (record) {

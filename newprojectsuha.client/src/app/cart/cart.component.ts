@@ -42,6 +42,7 @@ export class CartComponent {
 
   /// logged IN user methods
   CartItems(id: number) {
+    debugger
     this._ser.getCartItems(id).subscribe((data) => {
       this.cartItemsList = data.map((item: any) => {
         return {
@@ -136,6 +137,8 @@ export class CartComponent {
   itemTotal: any
 
   getBSCartItems() {
+    debugger
+
     this._ser.BSCArtListObs.subscribe((BSdata) => {
 
       this.BSCartItemsList = BSdata.map((item: any) => {

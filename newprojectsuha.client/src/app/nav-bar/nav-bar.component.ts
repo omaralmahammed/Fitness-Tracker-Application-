@@ -13,6 +13,7 @@ export class NavBarComponent {
 
   email: any;
   UserId: any;
+  BScart : any
 
   
   ngOnInit() {
@@ -24,12 +25,18 @@ export class NavBarComponent {
       this.UserId = UserId;
     });
 
+    this._ser.BSCArtListObs.subscribe((BScart) => {
+      this.BScart = BScart;
+    });
+
   }
 
 
   logout() {
+    debugger
     this.email = "";
     this.UserId = "";
+    this.BScart = [];
     this._route.navigate(['/'])
   }
 
