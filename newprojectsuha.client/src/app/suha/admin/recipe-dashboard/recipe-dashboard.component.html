@@ -15,8 +15,8 @@
     </div>
 
     <div class="form-group" style="margin-bottom: 15px;">
-      <label for="Title" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;"> categoryId</label>
-      <select name="categoryId">
+      <label for="Title" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;"> Select Category Name</label>
+      <select name="categoryId" ngModel>
         <option *ngFor="let item of CategoryName" [value]="item.id">{{item.name}}</option>
       </select>
       <!--<input type="text" id="Title" name="categoryId" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
