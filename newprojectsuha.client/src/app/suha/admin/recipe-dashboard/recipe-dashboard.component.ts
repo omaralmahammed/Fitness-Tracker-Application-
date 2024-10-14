@@ -12,7 +12,7 @@ import { UrlService } from '../../../URL-Service/url.service';
 export class RecipeDashboardComponent  {
  
   ngOnInit() {
-
+   this.GetCategoryName()
   }
 
   constructor(private _ser: UrlService) { }
@@ -35,5 +35,15 @@ export class RecipeDashboardComponent  {
       alert("add Recipe Sucssfully")
     )
   }
+
+  CategoryName:any
+
+  GetCategoryName() {
+    this._ser.getCategorieRecipe().subscribe((data) => {
+      this.CategoryName = data
+    })
+  }
+
+
 
 }

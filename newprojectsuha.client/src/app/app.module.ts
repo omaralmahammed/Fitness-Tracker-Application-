@@ -175,7 +175,7 @@ import { AddAdminCategoryComponent } from './suha/admin/add-admin-category/add-a
         path: "dash", component: DashboardComponent,
         children: [
 
-          { path: "", redirectTo: "child1", pathMatch: "full" }, // Default child route
+          { path: "", component: AdminContactComponent, pathMatch: "full" }, 
 
           //Products
 
