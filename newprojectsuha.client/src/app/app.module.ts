@@ -60,6 +60,7 @@ import { DisplayClassSubscriptionsComponent } from './suha/admin/Subscription/di
 import { CreateClassSubscriptionsComponent } from './suha/admin/Subscription/create-class-subscriptions/create-class-subscriptions.component';
 import { UpdateClassSubscriptionsComponent } from './suha/admin/Subscription/update-class-subscriptions/update-class-subscriptions.component';
 import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.component';
+import { AdminCategoryComponent } from './suha/admin/admin-category/admin-category.component';
 
 
 @NgModule({
@@ -116,6 +117,7 @@ import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.compon
     EditRecipeComponent,
     OrderHistoryComponent,
     EditProductComponent,
+    AdminCategoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -192,6 +194,7 @@ import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.compon
           { path: "ContactAdmin", component: AdminContactComponent },
           { path: "AdminTestimonial", component: AdminTestimonialComponent },
           { path: "GetAllUsers", component: GetAllUSERSComponent },
+          { path: "AdminCategory", component: AdminCategoryComponent }
         ]
       },
       { path: "dash", component: DashboardComponent },

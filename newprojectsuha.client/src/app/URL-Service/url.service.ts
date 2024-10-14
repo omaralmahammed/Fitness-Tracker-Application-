@@ -445,7 +445,11 @@ export class UrlService {
     return this.http.post<any>(`https://localhost:7286/api/CartPayment/checkoutForSubscription/${id}`, {});
   }
 
-  
+
+
+  getAdminCategory(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Categories/AllCategories`)
+  }
 
 }
 
