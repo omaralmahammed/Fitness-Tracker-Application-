@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
@@ -23,7 +25,7 @@ namespace newProjectSUHA.Server.Controllers
         public IActionResult GetClassOrGym(string type)
         {
 
-            if(type == "All")
+            if (type == "All")
             {
                 var categoryItems = _db.ClassAndGyms.ToList();
                 return Ok(categoryItems);
@@ -34,7 +36,7 @@ namespace newProjectSUHA.Server.Controllers
                 return Ok(categoryItems);
             }
 
-            
+
         }
 
 
@@ -104,7 +106,8 @@ namespace newProjectSUHA.Server.Controllers
             var discountAmount = totalPrice * discount;
             var finalPriceAfterDiscount = totalPrice - discountAmount;
 
-            if (durationInMonths == 1) {
+            if (durationInMonths == 1)
+            {
                 finalPriceAfterDiscount = pricePerMonth;
             }
 
@@ -126,8 +129,8 @@ namespace newProjectSUHA.Server.Controllers
         {
             var check = _db.Enrolleds.Where(s => s.ClassSubId == subscriptionInfo.ClassSubId).FirstOrDefault();
 
-            
-            if(check != null)
+
+            if (check != null)
             {
                 return BadRequest("You are already subscribed to this event. Please select a different event.");
             }
@@ -149,5 +152,53 @@ namespace newProjectSUHA.Server.Controllers
 
             return Ok(newOrder);
         }
+
+
+
+
+
+
+        //////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////
+        /// User Subscriptions
+
+        [HttpGet("getUserSubscriptions/{userId}")]
+        public IActionResult getUserSubscriptions(int userId, string flag)
+        {
+            if (userId <= 0) return BadRequest("invalid id");
+            if (flag.IsNullOrEmpty()) return BadRequest("invalid request");
+
+            var enrolledDetails = _db.Enrolleds
+                                    .Include(e => e.ClassSub)    
+                                    .ThenInclude(s => s.Class)                  
+                                    .Where(e => e.UserId == userId && e.ClassSub.Class.Flag == flag)
+                                    .Select(e => new EnrolledDetailsDto
+                                    {
+                                        Image = e.ClassSub.Class.Image,
+                                        Name = e.ClassSub.Class.Name,
+                                        Trainer = e.ClassSub.Class.Trainer,
+                                        Duration = e.ClassSub.Duration,
+                                        FinalPrice = e.ClassSub.FinalPrice,
+                                        StartDate = e.StartDate,
+                                        EndDate = e.EndDate,
+                                        PaymentMethod = e.PaymentMethod
+                                    })
+                                    .ToList();
+
+            if (enrolledDetails.IsNullOrEmpty()) return NotFound("subscriptions are empty");
+
+            return Ok(enrolledDetails);
+        }
+
+
+
+
+
+
+
+
+
+
     }
 }

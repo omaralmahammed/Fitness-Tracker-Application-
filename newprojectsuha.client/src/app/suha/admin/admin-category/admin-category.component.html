@@ -1,0 +1,30 @@
+
+<div class="container mt-4">
+  <h1 class="text-center mb-4">Show AllCategory</h1>
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Category name</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of getCategoryArray">
+          <td>{{item.id}}</td>
+          <td>{{item.name}}</td>
+          <td>
+            <a routerLink="/dash/EditAdminCategory/{{item.id}}" class="btn btn-primary">Edit</a>
+            <button (click)="deleteCategory(item.id)" class="btn btn-danger" >Delete</button>
+          </td>
+
+
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
