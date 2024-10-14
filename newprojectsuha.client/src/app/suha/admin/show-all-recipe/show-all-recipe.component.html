@@ -1,28 +1,37 @@
 
-<div class="container mt-4">
-  <h1>Show All Recipes</h1>
+  <div class="container mt-4">
+    <h1 class="text-center mb-4">Show All Recipes</h1>
 
-  <table class="table table-bordered table-hover">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Image</th>
-        <th scope="col">Category ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Description</th>
-        <th scope="col">Nutritional Facts</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let recipe of recipes">
-        <td>{{recipe.id}}</td>
-        <td><img [src]="recipe.image" alt="Recipe Image" width="100"></td>
-        <td>{{ recipe.categoryId }}</td>
-        <td>{{ recipe.name }}</td>
-        <td>{{recipe.description }}</td>
-        <td>{{ recipe.nutritionalFacts }}</td>
-       
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <!-- جعل الجدول متجاوبًا باستخدام table-responsive -->
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped table-sm">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Image</th>
+            <th scope="col">Category ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Nutritional Facts</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let recipe of RecipeArray">
+            <td>{{recipe.id}}</td>
+            <td><img src="https://localhost:7286/api/Images/RecipesImages/{{recipe.image}}" alt="Recipe Image" class="img-fluid" style="max-width: 80px;"></td> <!-- تعديل حجم الصورة -->
+            <td>{{ recipe.categoryId }}</td>
+            <td>{{ recipe.name }}</td>
+            <td>{{recipe.description }}</td>
+            <td>{{ recipe.nutritionalFacts }}</td>
+            <td>
+              <a routerLink="/dash/editRecipe/{{recipe.id}}" class="btn btn-primary btn-sm">Edit</a> <!-- إضافة btn-sm لتصغير حجم الزر -->
+              <button (click)="deleteRecipe(recipe.id)">Delete</button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+

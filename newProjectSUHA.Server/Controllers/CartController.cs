@@ -152,7 +152,7 @@ namespace newProjectSUHA.Server.Controllers
 
 
         [HttpPost("moveFromCartToOrder/{userId}")]
-        public IActionResult moveFromCartToOrder(int userId, string method)
+        public IActionResult moveFromCartToOrder(int userId)
         {
             if (userId <= 0) return BadRequest("invalid id");
 
@@ -182,7 +182,7 @@ namespace newProjectSUHA.Server.Controllers
                     UserId = userId,
                     Date = DateTime.Now,
                     Total = finalTotal,
-                    PaymentMethod = method,
+                    PaymentMethod = "Paypal",
                 };
 
                 _db.Orders.Add(newOrder);

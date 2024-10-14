@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './admin-contact.component.css'
 })
 export class AdminContactComponent implements OnInit {
- 
+
 
   contacts: any[] = [];
 
@@ -29,14 +29,16 @@ export class AdminContactComponent implements OnInit {
     );
   }
 
-  updateStatus(contactId: number, status: string) {
-    this._ser.updateContactStatus(contactId, status).subscribe(
+
+  updateStatus(id: number) {
+    this._ser.updateContactStatus(id).subscribe(
       () => {
         alert('Contact status updated successfully!');
         this.getContacts(); 
       },
       (error) => {
         alert('Error updating contact status');
+        console.error('Error updating contact status:', error); 
       }
     );
   }

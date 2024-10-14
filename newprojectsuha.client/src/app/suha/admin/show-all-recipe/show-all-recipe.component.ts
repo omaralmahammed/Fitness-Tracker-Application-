@@ -7,19 +7,32 @@ import { UrlService } from '../../../URL-Service/url.service';
   styleUrl: './show-all-recipe.component.css'
 })
 
-export class ShowAllRecipeComponent implements OnInit {
-  recipes: any[] = [];
+export class ShowAllRecipeComponent  {
+  ngOnInit() {
 
-  constructor(private recipeService: UrlService) { }
+    this.getRecipe();
+  }
+  constructor(private _ser: UrlService) {
 
-  ngOnInit(): void {
-    this.recipeService.getallRecipes().subscribe(
-      (data) => {
-        this.recipes = data;
-      },
-      (error) => {
-        console.error('Error fetching recipes', error);
-      }
-    );
+
   }
+
+  RecipeArray: any
+  getRecipe() {
+    this._ser.getallRecipes().subscribe((data) => {
+      this.RecipeArray = data
+      console.log(this.RecipeArray, "this.RecipeArray")
+    })
+
   }
+
+  deleteRecipe(id: any) {
+    this._ser.deleteRecipe(id).subscribe(() => {
+      alert("delete Recipe successfully")
+      this.getRecipe()
+    })
+  }
+
+
+  }
+
