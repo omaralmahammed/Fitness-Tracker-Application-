@@ -83,8 +83,8 @@ export class UrlService {
   }
 
 
-  addRecipe(formData: FormData): Observable<any> {
-    return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', formData);
+  addRecipe(data: any): Observable<any> {
+    return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', data);
   }
 
 
