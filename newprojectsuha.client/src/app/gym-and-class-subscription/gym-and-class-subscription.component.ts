@@ -47,10 +47,8 @@ export class GymAndClassSubscriptionComponent {
     this.subscriptionData.userId = this.UserId;
     this.subscriptionData.classSubId = id;
 
-
     this.url.UserIdObserve.subscribe((userId: any) => {
       if (userId === "") {
-
         Swal.fire({
           icon: "info",
           title: "You must be Login!",
@@ -63,14 +61,11 @@ export class GymAndClassSubscriptionComponent {
           this._router.navigate(['/LogIn']);
         }, 2000);
       } else {
-
         this._ser.addSubscribtionToEnrolled(this.subscriptionData).subscribe((data) => {
-
           const width = 600;
           const height = 700;
           const left = (screen.width / 2) - (width / 2);
           const top = (screen.height / 2) - (height / 2);
-
 
           const popupWindow = window.open(
             data.approvalUrl,
@@ -93,9 +88,16 @@ export class GymAndClassSubscriptionComponent {
               });
             }
           }, 500);
-
+        }, (error) => {
+          Swal.fire({
+            icon: "info",
+            title: "You are subscription in this subscription before!",
+            showConfirmButton: false,
+            timer: 2000
+          });
         });
       }
     });
   }
-}
+ }
+
