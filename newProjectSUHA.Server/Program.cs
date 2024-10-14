@@ -29,6 +29,8 @@ options.AddPolicy("Development", builder =>
 
 
 builder.Services.AddScoped<PayPalPaymentService>();
+builder.Services.AddScoped<CartPayPalPaymentService>();
+
 
 var app = builder.Build();
 

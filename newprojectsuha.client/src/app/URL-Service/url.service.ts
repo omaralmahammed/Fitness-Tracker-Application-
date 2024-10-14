@@ -47,7 +47,7 @@ export class UrlService {
 
   GetSubscriptions(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}GymAndClass/GetSubscription/${id}`)
-  }
+  } //
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.baseUrl}User/Register`, data)
@@ -79,7 +79,7 @@ export class UrlService {
 
 
   getallRecipes(): Observable<any[]> {
-    return this.http.get<any[]>('https://localhost:7286/api/Nutirition/showallrecipe');
+    return this.http.get<any>('https://localhost:7286/api/Nutirition/showallrecipe');
   }
 
 
@@ -87,6 +87,13 @@ export class UrlService {
     return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', data);
   }
 
+  PUTRecipe(id: any, data: any): Observable<any> {
+    return this.http.put<any>(`https://localhost:7286/api/Nutirition/recipeput/${id}`, data);
+  }
+  deleteRecipe(id: any): Observable<any> {
+    return this.http.delete<any>(`https://localhost:7286/api/Nutirition/Delete/${id}`)
+    this.getallRecipes();
+  }
 
 
   GetProductById(id: number): Observable<any> {
@@ -184,6 +191,7 @@ export class UrlService {
     return this.http.put<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms/${id}`, data);
   }
 
+
   // Delete ClassAndGym by id
   DeleteClassAndGym(id: number): Observable<any> {
     return this.http.delete<any>(`${this.baseUrl}GymAndClassAdmin/ClassAndGyms/${id}`);
@@ -191,7 +199,9 @@ export class UrlService {
 
   // Subscription CRUD methods
 
-
+  GetAllSubscriptions(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClassAdmin/Subscriptions`)
+  } 
 
   // Create a new subscription
   CreateSubscription(data: any): Observable<any> {
@@ -240,6 +250,7 @@ export class UrlService {
   BSCArtList: any = []
   BSCArtListSub = new BehaviorSubject<any>(this.BSCArtList)
   BSCArtListObs = this.BSCArtListSub.asObservable()
+  
 
   BSAddToCart(data: any) {
     /*debugger*/
@@ -257,6 +268,16 @@ export class UrlService {
       this.BSCArtListSub.next(this.BSCArtList)
       //console.log(this.BSCArtList)
     }
+
+  }
+
+  logoutFunc() {
+    this.BSCArtList = [];
+    this.BSCArtListSub.next(this.BSCArtList)
+
+    // Clear the email and user ID by emitting an empty string
+    this.email.next("");
+    this.UserId.next("");
 
   }
 
@@ -293,9 +314,8 @@ export class UrlService {
   //  return this.http.get<any>(${ this.staticData }/ Admin / GetAllFitnessClass);
   //}
 
-  // Update contact status
-  updateContactStatus(contactId: number, status: string): Observable<any> {
-    return this.http.put(`${this.baseUrl}/UpdateContactStatus?contactId=${contactId}`, { status });
+  updateContactStatus(id: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}Contact/UpdateContactStatus/${id}`, {});
   }
 
 
@@ -335,6 +355,15 @@ export class UrlService {
 
       this.BSCArtListSub.next([...this.BSCArtList]);
     }
+  }
+
+
+  //get all orders
+
+
+  getAllOrders(): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Order/GetAllOrdersAdmin`);
+
   }
 
   // Get order items by OrderId
@@ -394,10 +423,13 @@ export class UrlService {
     return this.http.post<any>(`${this.baseUrl}Products/AddProduct`, data)
   }
 
+  GetSubscriptionsByClassId(classId: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}GymAndClassAdmin/SubscriptionsByClassId/${classId}`);
+  }
 
-  //UpdateProduct(id: any, product: any): Observable<any> {
-  //  return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
-  //}
+  UpdateProduct(id: any, product: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}Products/UpdateProduct/${id}`, product)
+  }
   // Update category method
   UpdateCategory(id: any, category: any): Observable<any> {
     return this.http.put<any>(`${this.baseUrl}Categories/${id}`, category);
@@ -408,6 +440,12 @@ export class UrlService {
   GetCategoryById(id: number): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}Categories/GetCategoryById/${id}`);
   }
+
+  CartCheckOut(id: number): Observable<any> {
+    return this.http.post<any>(`https://localhost:7286/api/CartPayment/checkoutForSubscription/${id}`, {});
+  }
+
+  
 
 }
 
