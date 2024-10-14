@@ -69,43 +69,24 @@
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="section-title">
           <h3><span class="orange-text">Our</span> Products</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, fuga quas itaque eveniet beatae optio.</p>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-lg-4 col-md-6 text-center">
+      <div class="col-lg-4 col-md-6 text-center" *ngFor="let product of Last3ProductArray">
         <div class="single-product-item">
           <div class="product-image">
-            <a href="single-product.html"><img src="assets/img/products/product-img-1.jpg" alt=""></a>
+            <a [routerLink]="['/SingleProduct', product.id]">
+              <img src="https://localhost:7286/api/Products/getImages/{{ product.image }}" alt="{{ product.name }}" style="width: 300px; height: 300px; object-fit: cover;">
+            </a>
           </div>
-          <h3>Strawberry</h3>
-          <p class="product-price"><span>Per Kg</span> 85$ </p>
-          <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+          <a [routerLink]="['/SingleProduct', product.id]">{{ product.name }}</a>
+          <p class="product-price"> {{ product.price }}$ </p>
+          <a class="cart-btn" (click)="addToCart(product.id, 1)"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
         </div>
       </div>
-      <div class="col-lg-4 col-md-6 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product.html"><img src="assets/img/products/product-img-2.jpg" alt=""></a>
-          </div>
-          <h3>Berry</h3>
-          <p class="product-price"><span>Per Kg</span> 70$ </p>
-          <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-6 offset-md-3 offset-lg-0 text-center">
-        <div class="single-product-item">
-          <div class="product-image">
-            <a href="single-product.html"><img src="assets/img/products/product-img-3.jpg" alt=""></a>
-          </div>
-          <h3>Lemon</h3>
-          <p class="product-price"><span>Per Kg</span> 35$ </p>
-          <a href="cart.html" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-        </div>
-      </div>
-    </div>
+     
   </div>
 </div>
 <!-- end product section -->
@@ -147,7 +128,7 @@
       <div class="col-lg-10 offset-lg-1 text-center">
         <div class="testimonial-sliders owl-carousel">
           <div *ngFor="let testimonial of testimonialArray" class="single-testimonial-slider">
-           
+
             <div class="client-meta">
               <h3>{{ testimonial.userName }} <span>Customer</span></h3>
               <p class="testimonial-body">
@@ -162,15 +143,19 @@
       </div>
     </div>
   </div>
+  <br />
+  <div *ngIf="testimonialArray.length === 0" class="text-center">
+    <p>No testimonials available at the moment.</p>
+  </div>
+  <div *ngIf="UserId != ''" class="align-content-center">
+    <a routerLink="/Testimonial" class="btn btn-warning">Write Your Testimonial</a>
+  </div>
+  <br />
 </div>
 
 
 
 <!-- Display a message if there are no testimonials -->
-<div *ngIf="testimonialArray.length === 0" class="text-center">
-  <p>No testimonials available at the moment.</p>
-</div>
-<a routerLink="/Testimonial" class="btn btn-warning">Write Your Testimonial</a>
 
 <!-- end testimonail-section -->
 <!-- advertisement section -->

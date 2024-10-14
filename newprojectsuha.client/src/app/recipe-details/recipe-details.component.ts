@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RecipeDetailsComponent implements OnInit {
 
-  recipeDetails: any; // لتخزين تفاصيل الوصفة
   recipeId: number | null = null;
 
   constructor(private route: ActivatedRoute, private _ser: UrlService) { }
@@ -23,6 +22,8 @@ export class RecipeDetailsComponent implements OnInit {
       }
     });
   }
+
+  recipeDetails: any;
 
 
   getRecipeDetails(recipeId: number) {

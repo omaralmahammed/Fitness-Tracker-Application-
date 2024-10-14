@@ -1,34 +1,31 @@
 <div class="container mt-4">
-  <h1>Gym and Class List</h1>
-  
-  <!--<button class="btn btn-success mb-3" (click)="createNewItem()">Create New Item</button>-->  
-
-  <table class="table table-bordered table-hover">
-    <thead class="thead-dark">
+  <h2 class="mb-4">Gym and Class List</h2>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
       <tr>
-        <th scope="col">Image</th>
-        <th scope="col">Name</th>
-        <th scope="col">Trainer</th>
-        <th scope="col">Description</th>a
-        <th scope="col">Price</th>
-        <th scope="col">Actions</th> <!-- Updated header for actions -->
+        <th>Image</th>
+        <th>Name</th>
+        <th>Trainer</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let item of gymAndClassItems">
         <td>
-          <img [src]="'https://localhost:7286/api/Images/getImages/' + item.image" 
-               alt="{{item.name}}" class="img-fluid" style="max-width: 150px;" />
+          <img [src]="'https://localhost:7286/api/Images/getImages/' + item.image" alt="{{ item.name }}" class="img-thumbnail" style="max-width: 100px;">
         </td>
-        <td>{{item.name}}</td>
-        <td>{{item.trainer}}</td>
-        <td>{{item.description | slice:0:100}}...</td>
-        <td>${{item.price}}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.trainer }}</td>
+        <td>{{ item.description | slice:0:50 }}...</td>
+        <td>${{ item.price }}</td>
         <td>
-          <!--<button class="btn btn-warning" (click)="editItem(item)">Edit</button>-->  
-          <!--<button class="btn btn-danger" (click)="deleteItem(item.id)">Delete</button>--> 
+          <button class="btn btn-primary btn-sm me-2 mybutton" (click)="editItem(item.id)">Edit</button>
+          <button class="btn btn-danger btn-sm ms-2 mybutton" (click)="deleteItem(item.id)">Delete</button>
         </td>
       </tr>
     </tbody>
   </table>
+  <button class="btn btn-success mt-3" (click)="createNewItem()">Add New Gym/Class</button>
 </div>

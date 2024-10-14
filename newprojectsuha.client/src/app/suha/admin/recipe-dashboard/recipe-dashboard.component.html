@@ -1,1 +1,35 @@
-<p>recipe-dashboard works!</p>
+<div class="container mt-4">
+  <h2>Add New Recipe</h2>
+
+  <form [formGroup]="addRecipeForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Recipe Name</label>
+      <input type="text" id="name" class="form-control" formControlName="name" placeholder="Enter recipe name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="categoryId">Category ID</label>
+      <input type="number" id="categoryId" class="form-control" formControlName="categoryId" placeholder="Enter category ID" required>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" class="form-control" formControlName="description" placeholder="Enter recipe description" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="nutritionalFacts">Nutritional Facts</label>
+      <textarea id="nutritionalFacts" class="form-control" formControlName="nutritionalFacts" placeholder="Enter nutritional facts" required></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="image">Upload Image</label>
+      <input type="file" id="image" class="form-control" (change)="onFileSelected($event)" >
+    </div>
+
+    <button type="submit" class="btn btn-primary" >Add Recipe</button>
+
+    <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+  </form>
+</div>

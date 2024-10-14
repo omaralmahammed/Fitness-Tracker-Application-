@@ -35,7 +35,7 @@ namespace newProjectSUHA.Server.Controllers
             _db.SaveChanges();
 
 
-            return Ok("Contact request submitted successfully");
+            return Ok(Contact);
         }
 
 
