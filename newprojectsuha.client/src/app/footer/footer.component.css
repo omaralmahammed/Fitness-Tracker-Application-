@@ -1,0 +1,84 @@
+/*.footer-area {
+  padding: 20px 0;
+  background-color: #051922;  or any previous color like #222, dark grey, etc. 
+  color: #fff;  Ensure text is readable on dark backgrounds 
+}
+.footer-section {
+  margin-bottom: 20px;  Adjust the value as needed 
+}
+
+.footer-box {
+  margin-bottom: 20px;
+}
+
+.footer-area .row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footer-area input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.footer-area button {
+  padding: 10px;
+  background-color: #ff6600;  Button color to stand out 
+  border: none;
+  color: #051922;
+  cursor: pointer;
+}
+
+.footer-area a {
+  color: #ff6600;  Link color to stand out 
+}
+*/
+
+footer {
+  background-color: #051922; 
+  color: #fff; 
+  padding: 20px; 
+  text-align: left; 
+}
+
+.footer-container {
+  display: flex; 
+  justify-content: space-between; 
+  max-width: 1200px; 
+  margin: auto; 
+}
+
+.footer-section {
+  width: 30%; 
+}
+
+  .footer-section h2 {
+    margin-bottom: 10px; 
+  }
+
+  .footer-section p,
+  .footer-section ul {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+  }
+
+  .footer-section ul {
+    list-style-type: none; 
+  }
+
+    .footer-section ul li {
+      margin-bottom: 5px; 
+    }
+
+  .footer-section a {
+    color: #fff; 
+    text-decoration: none;
+  }
+
+    .footer-section a:hover {
+      text-decoration: underline; 
+    }
