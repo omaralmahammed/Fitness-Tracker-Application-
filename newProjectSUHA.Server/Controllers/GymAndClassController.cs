@@ -171,7 +171,7 @@ namespace newProjectSUHA.Server.Controllers
 
             var enrolledDetails = _db.Enrolleds
                                     .Include(e => e.ClassSub)    
-                                        .ThenInclude(s => s.Class)                  
+                                    .ThenInclude(s => s.Class)                  
                                     .Where(e => e.UserId == userId && e.ClassSub.Class.Flag == flag)
                                     .Select(e => new EnrolledDetailsDto
                                     {

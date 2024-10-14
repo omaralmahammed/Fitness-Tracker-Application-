@@ -102,9 +102,12 @@ namespace newProjectSUHA.Server.Controllers
             var reminderDate = currentDate.AddDays(5).Date;
 
             var subscriptions = await _db.Enrolleds
-                .Include(sub => sub.User)
-                .Where(sub => sub.EndDate > currentDate && sub.EndDate <= reminderDate)
-                .ToListAsync();
+                    .Include(e => e.ClassSub) 
+                    .ThenInclude(cs => cs.Class) 
+                    .Include(e => e.User)
+                    .Where(e => e.EndDate > currentDate && e.EndDate <= reminderDate)
+                    .ToListAsync();
+
 
             if (!subscriptions.Any())
             {
@@ -118,7 +121,7 @@ namespace newProjectSUHA.Server.Controllers
                     string subject = "Your Subscription is Ending Soon";
                     string body = $@"
                                     <p>Dear {subscription.User.FirstName} {subscription.User.LastName} ,</p>
-                                    <p>This is a reminder that your subscription for [Service/Class Name] will end on {subscription.EndDate:MMMM dd, yyyy}.</p>
+                                    <p>This is a reminder that your subscription for {subscription.ClassSub.Duration} months subscription in {subscription.ClassSub.Class.Name} {subscription.ClassSub.Class.Flag} will end on {subscription.EndDate:MMMM dd, yyyy}.</p>
                                     <p>We encourage you to renew your subscription before it expires to continue enjoying our services.</p>
                                     <p>If you have any questions or need assistance, feel free to contact us.</p>
                                     <p>Thank you for being a valued member!</p>
@@ -130,7 +133,7 @@ namespace newProjectSUHA.Server.Controllers
                 }
             }
 
-            return Ok("Reminder emails sent successfully.");
+            return Ok(subscriptions);
         }
 
 
@@ -140,6 +143,8 @@ namespace newProjectSUHA.Server.Controllers
             var currentDate = DateTime.Now;
 
             var subscriptions = await _db.Enrolleds
+                .Include(e => e.ClassSub)
+                .ThenInclude(cs => cs.Class)
                 .Include(sub => sub.User)
                 .Where(sub => sub.EndDate <= currentDate && sub.PaymentMethod != "Inactive")
                 .ToListAsync();
@@ -156,7 +161,7 @@ namespace newProjectSUHA.Server.Controllers
                     string subject = "Your Subscription Has Ended";
                     string body = $@"
                                     <p>Dear {subscription.User.FirstName} {subscription.User.LastName} ,</p>
-                                    <p>We wanted to inform you that your subscription has ended as of {subscription.EndDate:MMMM dd, yyyy}. We hope you enjoyed the benefits of your subscription and found value in our services.</p>
+                                    <p>We wanted to inform you that your {subscription.ClassSub.Duration} months subscription in {subscription.ClassSub.Class.Name} {subscription.ClassSub.Class.Flag} has ended as of {subscription.EndDate:MMMM dd, yyyy}. We hope you enjoyed the benefits of your subscription and found value in our services.</p>
                                     <p>If you'd like to renew your subscription or explore other offers, please visit your account or contact us for assistance.</p>
                                     <p>Thank you for being a valued member!</p>
                                     <p>Best regards,</p>
@@ -178,5 +183,7 @@ namespace newProjectSUHA.Server.Controllers
         }
 
 
+
+      
     }
 }

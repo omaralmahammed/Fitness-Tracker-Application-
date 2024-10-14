@@ -94,15 +94,8 @@ export class GymAndClassSubscriptionComponent {
             }
           }, 500);
 
-        },
-          (error) => {
-            Swal.fire({
-              icon: "warning",
-              title: `${error.error}`,
-              showConfirmButton: false,
-              timer: 2000
-            });
-          });      }
+        });
+      }
     });
   }
 }
