@@ -134,13 +134,13 @@ import { AddCategoryComponent } from './Categories/add-category/add-category.com
 
           //Products
 
-          { path: "EditProduct", component: EditProductComponent },
+          { path: "EditProduct/:id", component: EditProductComponent },
           { path: "AddProduct", component: AddProductComponent },
           { path: "AllProduct", component: AllProductsComponent },
 
           //Categories
 
-          { path: "EditCategory", component: EditCategoryComponent },
+          { path: "EditCategory/:id", component: EditCategoryComponent },
           { path: "AddCategory", component: AddCategoryComponent },
           { path: "Categories", component: CategoriesComponent },
 
