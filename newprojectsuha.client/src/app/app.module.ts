@@ -97,7 +97,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AddCategoryComponent,
     OrderHistoryComponent,
     MyProfileComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
   ],
   imports: [
     BrowserModule,
