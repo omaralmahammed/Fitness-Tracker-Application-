@@ -63,6 +63,7 @@ import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.compon
 import { UserSubscriptionHistoryComponent } from './user-subscription-history/user-subscription-history.component';
 import { TipsAdminComponent } from './suha/admin/tips-admin/tips-admin.component';
 import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
+import { AdminCategoryComponent } from './suha/admin/admin-category/admin-category.component';
 
 
 @NgModule({
@@ -121,6 +122,7 @@ import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
     TipsAdminComponent,
     AddTipsComponent,
     EditProductComponent,
+    AdminCategoryComponent,
     UserSubscriptionHistoryComponent,
   ],
   imports: [
@@ -202,6 +204,7 @@ import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
           { path: "ContactAdmin", component: AdminContactComponent },
           { path: "AdminTestimonial", component: AdminTestimonialComponent },
           { path: "GetAllUsers", component: GetAllUSERSComponent },
+          { path: "AdminCategory", component: AdminCategoryComponent }
         ]
       },
       { path: "dash", component: DashboardComponent },

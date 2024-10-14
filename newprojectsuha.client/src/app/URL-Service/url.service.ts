@@ -478,6 +478,10 @@ export class UrlService {
 
   
 
+  getAdminCategory(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}Categories/AllCategories`)
+  }
+
 }
 
 
