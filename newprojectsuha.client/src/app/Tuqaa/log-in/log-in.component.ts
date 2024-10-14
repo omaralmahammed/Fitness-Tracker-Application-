@@ -39,7 +39,7 @@ export class LogInComponent {
         localStorage.removeItem("ClassId");
 
       } else if (fromCart) {
-        //debugger
+        debugger
         this.moveFromBStoDB(newData.id, this.BSCartItemsList)
 
         this._router.navigate([`/cart`]);

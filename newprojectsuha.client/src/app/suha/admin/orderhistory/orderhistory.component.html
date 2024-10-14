@@ -4,7 +4,6 @@
   <table class="table table-bordered table-hover">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">Order ID</th>
         <th scope="col">User ID</th>
         <th scope="col">Total Amount</th>
         <th scope="col">Order Date</th>
@@ -13,10 +12,9 @@
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
-        <td>{{ order.id }}</td>
         <td>{{ order.userId }}</td>
-        <td>${{ order.totalAmount }}</td>  Adjust according to your order properties 
-        <td>{{ order.orderDate | date }}</td>  Adjust according to your order properties 
+        <td>${{ order.totalAmount }}</td>  Adjust according to your order properties
+        <!--<td>{{ order.orderDate | date }}</td>  Adjust according to your order properties-->
         <td>
           <button class="btn btn-info" (click)="getOrderItems(order.id)">View Items</button>
         </td>

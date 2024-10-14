@@ -7,9 +7,9 @@
 <br />
 <br />
 <!-- Button to add products -->
-<button class="btn btn-add-product">
-  <span class="mdi mdi-plus mdi-24px"></span> 
-  <span class="add-product-text">Add Product</span> 
+<button class="btn btn-add-product" (click)="createNewProduct()">
+  <span class="mdi mdi-plus mdi-24px"></span>
+  <span class="add-product-text">Add Product</span>
 </button>
 
 
@@ -42,18 +42,19 @@
       <td>{{ product.price }}$</td>
       <td>
         <div style="display: flex; gap: 10px;">
-          <button class="btn btn-edit">
+          <button class="btn btn-edit" (click)="editProduct(product.id)">
             <span class="mdi mdi-pencil mdi-24px"></span>
             <span class="mdi mdi-pencil-outline mdi-24px"></span>
             <span>Edit</span>
           </button>
 
-          <button class="btn btn-delete">
+          <button class="btn btn-delete" (click)="deleteProduct(product.id)">
             <span class="mdi mdi-delete mdi-24px"></span>
             <span class="mdi mdi-delete-empty mdi-24px"></span>
             <span>Delete</span>
           </button>
         </div>
+
       </td>
     </tr>
   </tbody>
