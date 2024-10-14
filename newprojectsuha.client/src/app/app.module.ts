@@ -29,6 +29,7 @@ import { ContactUsComponent } from './Tuqaa/contact-us/contact-us.component';
 import { ProfileComponent } from './Qusai/profile/profile.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 
 
 @NgModule({
@@ -59,6 +60,7 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
     CheckoutComponent,
     ProfileComponent,
     DashboardComponent,
+    MyProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -95,6 +97,8 @@ import { DashboardComponent } from './suha/admin/dashboard/dashboard.component';
       { path: "checkout", component: CheckoutComponent },  
       { path: "profile", component: ProfileComponent },
       { path: "dash", component: DashboardComponent },
+      { path: "myProfile", component: MyProfileComponent },
+
 
 
     ])

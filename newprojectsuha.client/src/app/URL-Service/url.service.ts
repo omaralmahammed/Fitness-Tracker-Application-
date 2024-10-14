@@ -187,9 +187,13 @@ export class UrlService {
 
 
 
+  getUserInfo(id: number): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Profile/GetUserProfile/${id}`)
+  }
 
-
-
+  changeUserInfo(id: number, data:any): Observable<any> {
+    return this.http.put<any>(`https://localhost:7286/api/Profile/EditUserProfile/${id}`, data)
+  }
 
 }
 

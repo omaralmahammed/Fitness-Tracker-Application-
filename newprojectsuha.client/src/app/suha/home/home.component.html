@@ -147,7 +147,7 @@
       <div class="col-lg-10 offset-lg-1 text-center">
         <div class="testimonial-sliders owl-carousel">
           <div *ngFor="let testimonial of testimonialArray" class="single-testimonial-slider">
-           
+
             <div class="client-meta">
               <h3>{{ testimonial.userName }} <span>Customer</span></h3>
               <p class="testimonial-body">
@@ -162,15 +162,19 @@
       </div>
     </div>
   </div>
+  <br />
+  <div *ngIf="testimonialArray.length === 0" class="text-center">
+    <p>No testimonials available at the moment.</p>
+  </div>
+  <div *ngIf="UserId != ''" class="align-content-center">
+    <a routerLink="/Testimonial" class="btn btn-warning">Write Your Testimonial</a>
+  </div>
+  <br />
 </div>
 
 
 
 <!-- Display a message if there are no testimonials -->
-<div *ngIf="testimonialArray.length === 0" class="text-center">
-  <p>No testimonials available at the moment.</p>
-</div>
-<a routerLink="/Testimonial" class="btn btn-warning">Write Your Testimonial</a>
 
 <!-- end testimonail-section -->
 <!-- advertisement section -->

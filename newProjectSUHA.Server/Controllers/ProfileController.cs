@@ -17,19 +17,11 @@ namespace newProjectSUHA.Server.Controllers
         }
 
         // GET: api/profile/{id}
-        [HttpGet("{id}")]
-        public ActionResult<ProfileDTO> GetUserProfile(int id)
+        [HttpGet("GetUserProfile/{id}")]
+        public IActionResult GetUserProfile(int id)
         {
-            var user = _db.Users
-                .Where(u => u.Id == id)
-                .Select(u => new ProfileDTO
-                {
-                 
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                    Email = u.Email
-                })
-                .FirstOrDefault();
+            var user = _db.Users.Find(id);
+                
 
             if (user == null)
             {
@@ -40,8 +32,8 @@ namespace newProjectSUHA.Server.Controllers
         }
 
         // PUT: api/profile/{id}
-        [HttpPut("{id}")]
-        public IActionResult EditUserProfile(int id, [FromBody] ProfileDTO profileDto)
+        [HttpPut("EditUserProfile/{id}")]
+        public IActionResult EditUserProfile(int id, [FromForm] ProfileDTO profileDto)
         {
             if (!ModelState.IsValid)
             {
@@ -56,9 +48,10 @@ namespace newProjectSUHA.Server.Controllers
             }
 
             // Update the user profile fields
-            user.FirstName = profileDto.FirstName;
-            user.LastName = profileDto.LastName;
-            user.Email = profileDto.Email;
+            user.FirstName = profileDto.FirstName?? user.FirstName;
+            user.LastName = profileDto.LastName ?? user.LastName;
+            user.Email = profileDto.Email ?? user.Email;
+            
 
             try
             {

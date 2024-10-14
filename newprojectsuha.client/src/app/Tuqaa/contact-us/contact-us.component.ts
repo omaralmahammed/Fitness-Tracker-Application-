@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../URL-Service/url.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact-us',
@@ -32,8 +33,15 @@ export class ContactUsComponent {
     }
 
     this._ser.submitContact(form).subscribe(() => {
-      alert('Your message has been successfully sent! We will get back to you soon.');
-      this._router.navigate(['/LogIn'])
+      Swal.fire({
+        title: "Thank you!",
+        text: "Your message has been successfully sent! We will get back to you soon!",
+        showConfirmButton: false,
+        timer: 2000
+      })
+      setTimeout(() => {
+        this._router.navigate(['/']);
+      }, 1000);
     },
       (error) => {
         alert(error.error)

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using newProjectSUHA.Server.Models;
 
 namespace newProjectSUHA.Server.Controllers
@@ -27,7 +28,7 @@ namespace newProjectSUHA.Server.Controllers
         [HttpGet("Recipes/{id}")]
         public IActionResult SubFood(int id)
         {
-            var SubFood = _db.Recipes.Where(a => a.CategoryId == id);
+            var SubFood = _db.Recipes.Include(c => c.Category).Where(a => a.CategoryId == id).ToList();
             return Ok(SubFood);
         }
         [HttpGet("Recipesdetels/{id}")]

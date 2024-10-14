@@ -13,8 +13,13 @@ export class HomeComponent {
 
   constructor(private _ser: UrlService) { }
 
+  UserId:any
+
   ngOnInit() {
     this.getTestimonial();
+    this._ser.UserIdObserve.subscribe((UserId) => {
+      this.UserId = UserId;
+    });
   }
 
   testimonialArray: any[] = [];

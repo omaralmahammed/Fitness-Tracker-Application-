@@ -25,14 +25,16 @@
         <div class="contact-form">
           <form #contactForm="ngForm" (ngSubmit)="submitContactForm(contactForm.value)">
             <p>
-              <input type="text" placeholder="Name" name="name" ngModel required>
-              <input type="email" placeholder="Email" name="email" ngModel required>
+              <input type="text" placeholder="Name" name="name" style="width:730px" ngModel required>
             </p>
             <p>
-              <input type="text" placeholder="Subject" name="subject" ngModel required>
+              <input type="email"  placeholder="Email" name="email"style="width:730px" ngModel required>
+            </p>
+            <p>
+              <input type="text" placeholder="Subject" name="subject"style="width:730px" ngModel required>
             </p>
             <p><textarea name="message" cols="30" rows="10" placeholder="Message" ngModel required></textarea></p>
-            <input type="hidden" name="token" value="FsWga4&f6aw" />
+
             <p><input type="submit" value="Submit"></p>
           </form>
         </div>
@@ -41,12 +43,9 @@
         <div class="contact-form-wrap">
           <div class="contact-form-box">
             <h4><i class="fas fa-map"></i> Shop Address</h4>
-            <p>Jordan <br> Amman <br> - Irbid</p>
+            <p>Jordan - Amman/Irbid</p>
           </div>
-          <div class="contact-form-box">
-            <h4><i class="far fa-clock"></i> Shop Hours</h4>
-            <p>MON - FRIDAY: 8 to 9 PM <br> SAT - SUN: 10 to 8 PM </p>
-          </div>
+          
           <div class="contact-form-box">
             <h4><i class="fas fa-address-book"></i> Contact</h4>
             <p>Phone: +96279752698 <br> Email: supportfruitkha.com</p>
