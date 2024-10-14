@@ -337,6 +337,15 @@ export class UrlService {
     }
   }
 
+
+  //get all orders
+
+
+  getAllOrders(): Observable<any> {
+    return this.http.get<any>(`https://localhost:7286/api/Order/GetAllOrdersAdmin`);
+
+  }
+
   // Get order items by OrderId
   getOrderItems(orderId: number): Observable<any> {
     return this.http.get<any>(`https://localhost:7286/api/Order/getOrderItem/${orderId}`);
