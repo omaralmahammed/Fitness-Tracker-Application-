@@ -79,7 +79,7 @@ export class UrlService {
 
 
   getallRecipes(): Observable<any[]> {
-    return this.http.get<any[]>('https://localhost:7286/api/Nutirition/showallrecipe');
+    return this.http.get<any>('https://localhost:7286/api/Nutirition/showallrecipe');
   }
 
 
@@ -87,6 +87,13 @@ export class UrlService {
     return this.http.post<any>('https://localhost:7286/api/Nutirition/recipepost', data);
   }
 
+  PUTRecipe(id: any, data: any): Observable<any> {
+    return this.http.put<any>(`https://localhost:7286/api/Nutirition/recipeput/${id}`, data);
+  }
+  deleteRecipe(id: any): Observable<any> {
+    return this.http.delete<any>(`https://localhost:7286/api/Nutirition/Delete/${id}`)
+    this.getallRecipes();
+  }
 
 
   GetProductById(id: number): Observable<any> {
