@@ -45,12 +45,15 @@ import { DisplayComponent } from './suha/admin/GymAndClasses/display/display.com
 import { UpdateComponent } from './suha/admin/GymAndClasses/update/update.component';
 import { CreateComponent } from './suha/admin/GymAndClasses/create/create.component';
 //import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
+//import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
+//import { OrderhistoryComponent } from './suha/admin/orderhistory/orderhistory.component';
 import { GetAllUSERSComponent } from './suha/admin/get-all-users/get-all-users.component';
 import { AdminOrdersComponent } from './suha/admin/orderhistory/orderhistory.component';
 import { CategoriesComponent } from './Categories/categories/categories.component';
 import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
 import { AddCategoryComponent } from './Categories/add-category/add-category.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
+import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.component';
 
 
 @NgModule({
@@ -98,6 +101,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AddCategoryComponent,
     OrderHistoryComponent,
     MyProfileComponent,
+    EditRecipeComponent,
     OrderHistoryComponent,
   ],
   imports: [
@@ -156,6 +160,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
          
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
+          { path: "editRecipe/:id", component:EditRecipeComponent},
 
           { path: "Display_GymAndClasses", component: DisplayComponent },
           { path: "create-gym-class", component: CreateComponent },
