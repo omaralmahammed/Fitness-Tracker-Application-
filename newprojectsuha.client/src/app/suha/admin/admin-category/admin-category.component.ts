@@ -25,4 +25,13 @@ export class AdminCategoryComponent {
     })
 
   }
+
+  deleteCategory(id: any) {
+    this._ser.DeleteCategory(id).subscribe(() => {
+      alert("delete Category successfully")
+      this.getCategory()
+    }
+
+    )
+  }
 }
