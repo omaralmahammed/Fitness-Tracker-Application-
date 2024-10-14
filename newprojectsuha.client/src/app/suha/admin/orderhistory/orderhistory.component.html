@@ -14,7 +14,7 @@
       <tr *ngFor="let order of orders">
         <td>{{ order.userId }}</td>
         <td>${{ order.totalAmount }}</td>  Adjust according to your order properties
-        <!--<td>{{ order.orderDate | date }}</td>  Adjust according to your order properties-->
+        <td>{{ order.orderDate | date }}</td> 
         <td>
           <button class="btn btn-info" (click)="getOrderItems(order.id)">View Items</button>
         </td>

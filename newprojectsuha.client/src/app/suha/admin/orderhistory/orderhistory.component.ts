@@ -15,11 +15,12 @@ export class AdminOrdersComponent {
   constructor(private orderService: UrlService) { }
 
   ngOnInit(): void {
-    this.getAllOrdersByUserId(this.userId);
+    this.getAllOrders();
+    console.log(this.selectedOrderItems)
   }
 
-  getAllOrdersByUserId(userId: number): void {
-    this.orderService.getAllOrdersByUserId(userId).subscribe(
+  getAllOrders(): void {
+    this.orderService.getAllOrders().subscribe(
       (data: any) => {
         this.orders = data; // Assign fetched orders to the array
       },

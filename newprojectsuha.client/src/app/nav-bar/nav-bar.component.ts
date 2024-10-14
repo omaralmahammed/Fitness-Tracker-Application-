@@ -34,10 +34,21 @@ export class NavBarComponent {
 
   logout() {
     debugger
-    this.email = "";
-    this.UserId = "";
-    this.BScart = [];
-    this._route.navigate(['/'])
+    this._ser.emailaddress.subscribe((email) => {
+      this.email = "";
+    });
+
+    this._ser.UserIdObserve.subscribe((UserId) => {
+      this.UserId = "";
+    });
+
+    this._ser.BSCArtListObs.subscribe((BScart) => {
+      this.BScart = [];
+    });
+
+    this._ser.logoutFunc();
+
+    this._route.navigate(["/"])
   }
 
 }
