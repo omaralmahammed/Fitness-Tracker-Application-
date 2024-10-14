@@ -242,7 +242,7 @@ export class UrlService {
   BSCArtListObs = this.BSCArtListSub.asObservable()
 
   BSAddToCart(data: any) {
-    //debugger
+    /*debugger*/
     var record = this.BSCArtList.find((x: any) => x.productId == data.productId)
 
     if (record) {
