@@ -160,6 +160,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 
         
           { path: "ContactAdmin", component: AdminContactComponent },
+          { path: "AdminTestimonial", component: AdminTestimonialComponent }
         ]
       },
       { path: "dash", component: DashboardComponent },
