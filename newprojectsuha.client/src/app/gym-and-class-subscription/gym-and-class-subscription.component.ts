@@ -86,6 +86,10 @@ export class GymAndClassSubscriptionComponent {
                 title: "Subscribed Successfully!",
                 showConfirmButton: false,
                 timer: 2000
+              }).then(() => {
+                setTimeout(() => {
+                  this._router.navigate(['/usersubscriptions']);
+                }, 1000);
               });
             }
           }, 500);

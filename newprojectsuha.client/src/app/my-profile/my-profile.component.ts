@@ -16,7 +16,7 @@ export class MyProfileComponent {
   ngOnInit() {
     // Subscribe to UserId and handle it once it's emitted
     this._ser.UserIdObserve.subscribe((UserId) => {
-      this.UserId = 1;
+      this.UserId = UserId;
 
       if (this.UserId) {
         this.showUserDetails(this.UserId);

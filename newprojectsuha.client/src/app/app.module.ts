@@ -64,6 +64,9 @@ import { UserSubscriptionHistoryComponent } from './user-subscription-history/us
 import { TipsAdminComponent } from './suha/admin/tips-admin/tips-admin.component';
 import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
 import { AdminCategoryComponent } from './suha/admin/admin-category/admin-category.component';
+import { DisplayProductsComponent } from './suha/admin/Product/display-products/display-products.component';
+import { CreateProductsComponent } from './suha/admin/Product/create-products/create-products.component';
+import { UpdateProductsComponent } from './suha/admin/Product/update-products/update-products.component';
 import { EditAdminCategoryComponent } from './suha/admin/edit-admin-category/edit-admin-category.component';
 import { AddAdminCategoryComponent } from './suha/admin/add-admin-category/add-admin-category.component';
 
@@ -126,6 +129,9 @@ import { AddAdminCategoryComponent } from './suha/admin/add-admin-category/add-a
     EditProductComponent,
     AdminCategoryComponent,
     UserSubscriptionHistoryComponent,
+    DisplayProductsComponent,
+    CreateProductsComponent,
+    UpdateProductsComponent,
     EditAdminCategoryComponent,
     AddAdminCategoryComponent,
   ],
@@ -197,6 +203,9 @@ import { AddAdminCategoryComponent } from './suha/admin/add-admin-category/add-a
           { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
           { path: "TestimonialAdmin", component: AdminTestimonialComponent },
+          //Products
+
+          { path: "DisplayProducts", component: DisplayProductsComponent },
 
           //Sybscription
           { path: "Display-Subscription", component: DisplaySubscriptionComponent},
@@ -208,6 +217,7 @@ import { AddAdminCategoryComponent } from './suha/admin/add-admin-category/add-a
           { path: "ContactAdmin", component: AdminContactComponent },
           { path: "AdminTestimonial", component: AdminTestimonialComponent },
           { path: "GetAllUsers", component: GetAllUSERSComponent },
+          { path: "AdminCategory", component: AdminCategoryComponent } 
           { path: "AdminCategory", component: AdminCategoryComponent },
           { path: "EditAdminCategory/:id", component: EditAdminCategoryComponent },
           { path: "AddAdminCategory", component: AddAdminCategoryComponent }

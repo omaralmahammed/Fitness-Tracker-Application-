@@ -12,6 +12,7 @@
     <Folder Include="src\app\Qusai\URL\" />
     <Folder Include="src\app\suha\admin\GymAndClasses\" />
     <Folder Include="src\app\suha\admin\AvailableTime\" />
+    <Folder Include="src\app\suha\admin\Product\" />
     <Folder Include="src\app\suha\admin\Subscription\" />
     <Folder Include="src\app\Tuqaa\" />
     <Folder Include="src\app\URL-Service\" />

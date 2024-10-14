@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using newProjectSUHA.Server.Controllers;
 using newProjectSUHA.Server.Models;
 using newProjectSUHA.Server.Services;
 
@@ -31,6 +32,10 @@ options.AddPolicy("Development", builder =>
 builder.Services.AddScoped<PayPalPaymentService>();
 builder.Services.AddScoped<CartPayPalPaymentService>();
 
+builder.Services.AddTransient<EmailService>();
+
+builder.Services.AddScoped<PymentController>(); 
+builder.Services.AddHostedService<EmailReminderService>();
 
 var app = builder.Build();
 
