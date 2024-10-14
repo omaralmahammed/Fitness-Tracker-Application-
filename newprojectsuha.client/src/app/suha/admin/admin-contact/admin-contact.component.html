@@ -22,7 +22,7 @@
         <td>{{ contact.message }}</td>
         <td>{{ contact.status }}</td>
         <td>
-          <button *ngIf="contact.status === 'pending'" class="btn btn-success" (click)="updateStatus(contact.id, 'done')">
+          <button *ngIf="contact.status === 'pending'" class="btn btn-success" (click)="updateStatus(contact.id)">
             Mark as Done
           </button>
         </td>

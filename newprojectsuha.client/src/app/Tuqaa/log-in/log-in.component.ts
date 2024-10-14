@@ -42,6 +42,7 @@ export class LogInComponent {
         debugger
         this.moveFromBStoDB(newData.id, this.BSCartItemsList)
 
+        this._router.navigate([`/shop`]);
         this._router.navigate([`/cart`]);
         localStorage.removeItem("cartPage");
 

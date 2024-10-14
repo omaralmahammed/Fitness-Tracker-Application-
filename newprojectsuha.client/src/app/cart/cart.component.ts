@@ -14,6 +14,7 @@ export class CartComponent {
   userId: any
 
   ngOnInit() {
+    debugger
     this._ser.UserIdObserve.subscribe((data) => {
       this.userId = data
     })
