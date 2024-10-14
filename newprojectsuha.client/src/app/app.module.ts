@@ -53,6 +53,8 @@ import { EditCategoryComponent } from './Categories/edit-category/edit-category.
 import { AddCategoryComponent } from './Categories/add-category/add-category.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.component';
+import { TipsAdminComponent } from './suha/admin/tips-admin/tips-admin.component';
+import { AddTipsComponent } from './suha/admin/add-tips/add-tips.component';
 
 
 @NgModule({
@@ -102,6 +104,8 @@ import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.compon
     MyProfileComponent,
     EditRecipeComponent,
     OrderHistoryComponent,
+    TipsAdminComponent,
+    AddTipsComponent,
   ],
   imports: [
     BrowserModule,
@@ -159,7 +163,10 @@ import { EditRecipeComponent } from './suha/admin/edit-recipe/edit-recipe.compon
          
           { path: "recipeDashboard", component: RecipeDashboardComponent },
           { path: "showrecipe", component: ShowAllRecipeComponent },
-          { path: "editRecipe/:id", component:EditRecipeComponent},
+          { path: "editRecipe/:id", component: EditRecipeComponent },
+
+          { path: "AllTips", component: TipsAdminComponent },
+          { path: "addTips" , component:AddTipsComponent},
 
           { path: "Display_GymAndClasses", component: DisplayComponent },
           { path: "create-gym-class", component: CreateComponent },
