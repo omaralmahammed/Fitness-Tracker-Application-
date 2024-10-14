@@ -6,12 +6,11 @@
 <br />
 <br />
 <br />
-<!-- Button to add products -->
-<button class="btn btn-add-product">
+<!-- Button to add categories -->
+<button class="btn btn-add-product" (click)="createNewCategory()">
   <span class="mdi mdi-plus mdi-24px"></span>
-  <span class="add-product-text">Add Category</span> 
+  <span class="add-product-text">Add Category</span>
 </button>
-
 
 <!-- Table -->
 <table class="table mb-0 text-nowrap table-hover table-centered table-with-checkbox">
@@ -23,35 +22,36 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of Array">
+    <tr *ngFor="let category of categories">
       <td>
         <a href="#" class="text-inherit">
           <div class="d-flex align-items-center flex-row gap-3">
             <div>
-              <img src="https://localhost:7286/api/Products/getImages/{{ product.image }}" alt="{{ product.name }}" style="width: 60px; height: 60px; object-fit: cover;"> &nbsp;&nbsp;
+              <img src="https://localhost:7286/api/Products/getImages/{{ category.image }}" alt="{{ category.name }}" style="width: 60px; height: 60px; object-fit: cover;"> &nbsp;&nbsp;
             </div>
             <div class="">
-              <h5 class="mb-0 text-primary-hover">{{ product.name }}</h5>
+              <h5 class="mb-0 text-primary-hover">{{ category.name }}</h5>
             </div>
           </div>
         </a>
       </td>
-    
+
       <td>
         <div style="display: flex; gap: 10px;">
-          <button class="btn btn-edit">
+          <button class="btn btn-edit" (click)="editCategory(category.id)">
             <span class="mdi mdi-pencil mdi-24px"></span>
             <span class="mdi mdi-pencil-outline mdi-24px"></span>
             <span>Edit</span>
           </button>
 
-          <button class="btn btn-delete">
+          <button class="btn btn-delete" (click)="deleteCategory(category.id)">
             <span class="mdi mdi-delete mdi-24px"></span>
             <span class="mdi mdi-delete-empty mdi-24px"></span>
             <span>Delete</span>
           </button>
         </div>
       </td>
+
     </tr>
   </tbody>
 </table>
@@ -86,15 +86,15 @@
   .btn-add-product {
     font-size: 16px;
     color: white;
-    background-color: blue; 
+    background-color: blue;
     border: 1px solid blue;
     margin-bottom: 16px;
     font-weight: bold;
-    float: right; 
+    float: right;
   }
 
     .btn-add-product:hover {
-      background-color: lighten(blue, 30%); 
+      background-color: lighten(blue, 30%);
     }
 
     .btn-add-product:focus {
@@ -103,7 +103,7 @@
 
   .add-product-text {
     font-weight: bolder;
-    font-size: 18px; 
+    font-size: 18px;
   }
 
   /* Delete button styles */

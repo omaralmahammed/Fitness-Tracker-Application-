@@ -98,6 +98,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
     AddCategoryComponent,
     OrderHistoryComponent,
     MyProfileComponent,
+    OrderHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -142,13 +143,13 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 
           //Products
 
-          { path: "EditProduct", component: EditProductComponent },
+          { path: "EditProduct/:id", component: EditProductComponent },
           { path: "AddProduct", component: AddProductComponent },
           { path: "AllProduct", component: AllProductsComponent },
 
           //Categories
 
-          { path: "EditCategory", component: EditCategoryComponent },
+          { path: "EditCategory/:id", component: EditCategoryComponent },
           { path: "AddCategory", component: AddCategoryComponent },
           { path: "Categories", component: CategoriesComponent },
 
@@ -160,9 +161,11 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
           { path: "create-gym-class", component: CreateComponent },
           { path: "update-gym-class/:id", component: UpdateComponent },
           { path: "Orderhisstory", component: AdminOrdersComponent },
+          { path: "TestimonialAdmin", component: AdminTestimonialComponent },
 
         
           { path: "ContactAdmin", component: AdminContactComponent },
+          { path: "AdminTestimonial", component: AdminTestimonialComponent },
           { path: "GetAllUsers", component: GetAllUSERSComponent },
         ]
       },
