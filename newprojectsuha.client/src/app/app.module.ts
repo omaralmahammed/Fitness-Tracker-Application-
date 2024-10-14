@@ -217,7 +217,7 @@ import { AddAdminCategoryComponent } from './suha/admin/add-admin-category/add-a
           { path: "ContactAdmin", component: AdminContactComponent },
           { path: "AdminTestimonial", component: AdminTestimonialComponent },
           { path: "GetAllUsers", component: GetAllUSERSComponent },
-          { path: "AdminCategory", component: AdminCategoryComponent } 
+          { path: "AdminCategory", component: AdminCategoryComponent } ,
           { path: "AdminCategory", component: AdminCategoryComponent },
           { path: "EditAdminCategory/:id", component: EditAdminCategoryComponent },
           { path: "AddAdminCategory", component: AddAdminCategoryComponent }
