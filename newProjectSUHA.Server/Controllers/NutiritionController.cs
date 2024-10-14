@@ -27,12 +27,6 @@ namespace newProjectSUHA.Server.Controllers
             return Ok(food);
         }
 
-        [HttpGet("allRecipes")]
-        public IActionResult allRecipes()
-        {
-            var food = _db.Recipes.ToList();
-            return Ok(food);
-        }
 
 
         [HttpGet("Recipes/{id}")]

@@ -1,9 +1,9 @@
-<div class="breadcrumb-section breadcrumb-bg" >
+<!--<div class="breadcrumb-section breadcrumb-bg">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="breadcrumb-text">
-          <h1>Our {{ arrayOfItems[0]?.category.name}}</h1> 
+          <h1>Our {{ arrayOfItems[0]?.category.name}}</h1>
         </div>
       </div>
     </div>
@@ -25,6 +25,45 @@
       </div>
     </div>
   </div>
+</div>-->
+<!-- Breadcrumb Section -->
+<div class="breadcrumb-section breadcrumb-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 text-center">
+        <div class="breadcrumb-text">
+          <h1>Our {{ arrayOfItems[0]?.category.name }}</h1>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Product Section -->
+<div class="product-section d-flex justify-content-center align-items-center m-5" style="min-height: 100vh;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 col-md-6" *ngFor="let item of arrayOfItems">
+        <!-- Two cards per row (col-lg-6) -->
+        <div class="single-product-item">
+          <div class="product-image">
+            <a routerLink="/Recipedetals/{{item.id}}">
+              <img src="https://localhost:7286/api/Images/RecipesImages/{{item.image}}" alt="{{item.image}}" class="product-img">
+            </a>
+          </div>
+          <div class="product-text-box">
+            <h3><a routerLink="/Recipedetals/{{ item.id }}">{{ item.name }}</a></h3>
+
+            <p class="excerpt">{{ item.description }}</p>
+            <a routerLink="/Recipedetals/{{ item.id }}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 
 

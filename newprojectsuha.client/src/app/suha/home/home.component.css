@@ -1,0 +1,96 @@
+.health-recipes-section {
+  background-image: linear-gradient(135deg, #fecd8a 0%, #ffe5b4 100%); /* Light orange background */
+  padding: 60px 0;
+}
+
+.health-recipes-card {
+  background-color: #fff; /* Clean white card */
+  border-radius: 15px; /* Rounded edges */
+  padding: 40px;
+  text-align: center; /* Center-align text */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+  transition: transform 0.4s ease, box-shadow 0.4s ease; /* Dynamic hover effect */
+}
+
+  .health-recipes-card:hover {
+    transform: scale(1.05); /* Dramatic hover scaling */
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
+  }
+
+  .health-recipes-card h2 {
+    font-size: 2.8rem; /* Increased heading size */
+    font-weight: 700; /* Bold heading */
+    color: #ff6f3d; /* Orange color for heading */
+  }
+
+  .health-recipes-card p {
+    font-size: 1.3rem;
+    font-weight: bold; /* Increased paragraph size */
+    color: #555; /* Darker gray for better readability */
+    line-height: 1.8; /* More spacing between lines */
+  }
+
+.btn-recipe {
+  background-color: #ff6f3d; /* Bold orange button */
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 1.2rem; /* Slightly larger button text */
+  font-weight: 600;
+  border-radius: 50px; /* Pill-shaped button */
+  text-transform: uppercase; /* All caps for emphasis */
+  transition: background-color 0.3s ease-in-out;
+}
+
+  .btn-recipe:hover {
+    background-color: #e65b29; /* Darker orange on hover */
+  }
+
+
+  /*==================*/
+.shop-banner {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 60px 20px; /* Adjust padding for a cleaner look */
+}
+
+  .shop-banner .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align content to the left */
+    justify-content: center; /* Keep vertical centering */
+    min-height: 300px; /* Ensure enough height */
+  }
+
+  .shop-banner h3 {
+    font-size: 2.5rem; /* Large headline */
+    font-weight: bold;
+    color: #333; /* Darker text for contrast */
+    margin-bottom: 20px;
+    text-align: left; /* Left-align text */
+  }
+
+  .shop-banner .orange-text {
+    color: #ff6f3d; /* Orange color for emphasis */
+  }
+
+  .shop-banner .sale-percent {
+    font-size: 2rem; /* Large text */
+    color: #ff6f3d; /* Match orange color */
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: left; /* Left-align sale percent */
+  }
+
+  .shop-banner .cart-btn {
+    background-color: #ff6f3d; /* Orange button */
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px; /* Slightly rounded button */
+    text-transform: uppercase;
+    text-align: left; /* Left-align button */
+  }
+
+    .shop-banner .cart-btn:hover {
+      background-color: #e65b29; /* Darker orange on hover */
+    }
