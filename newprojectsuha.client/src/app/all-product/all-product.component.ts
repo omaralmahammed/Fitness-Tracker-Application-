@@ -57,6 +57,6 @@ export class AllProductsComponent implements OnInit {
 
   // Navigate to create new product
   createNewProduct(): void {
-    this.router.navigate(['/dash/AddProduct']); // Navigate to Add Product
+    this.router.navigate(['/dash/addprodect']); // Navigate to Add Product
   }
 }

@@ -18,11 +18,13 @@ namespace newProjectSUHA.Server.Controllers
             _db = db;
         }
 
-        // Get all products
         [HttpGet("AllProducts")]
         public IActionResult GetAllProducts()
         {
-            var data = _db.Products.Include(c => c.Category).ToList();
+            // Fetch products and include the associated category
+            var data = _db.Products.Include(p => p.Category).ToList();
+
+            // Return the raw data (including product and category information)
             return Ok(data);
         }
 

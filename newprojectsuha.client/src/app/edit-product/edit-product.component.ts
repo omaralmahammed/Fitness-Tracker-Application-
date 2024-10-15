@@ -13,6 +13,7 @@ export class EditProductComponent {
   image: any;
   categories: any[] = [];  // Array to hold categories
 
+  product: any = {}; // Object to hold the product data
 
   constructor(private _ser: UrlService, private _active: ActivatedRoute) { }
 
@@ -20,16 +21,29 @@ export class EditProductComponent {
     // Get the product ID from the route parameters
     this.parameter = this._active.snapshot.paramMap.get('id');
     this.getAllCategories();
+    this.getProductById(this.parameter);
 
+  }
+
+
+  // Method to fetch product details by ID
+  getProductById(id: number) {
+    this._ser.GetProductById(id).subscribe(
+      (data: any) => {
+        this.product = data;  // Assign fetched product data to 'product'
+        console.log('Fetched product:', this.product);
+      },
+      (error) => {
+        console.error('Error fetching product:', error);
+      }
+    );
   }
 
   // Method to handle image change event
   // Method to handle image change event
   changeImage(event: any) {
-    this.image = event.target.files[0]; // Capture the selected image file
-    console.log(this.image); // Debugging to ensure the file is captured correctly
+    this.image = event.target.files[0];
   }
-
 
   // Method to handle product edit form submission
   editProduct(data: any) {
@@ -41,11 +55,9 @@ export class EditProductComponent {
     }
 
     // Append the product image to FormData
-    form.append("ProductImage", this.image);
-
-    // Call the service method to update the product (PUT request)
-    this._ser.UpdateProduct(this.parameter, form).subscribe((response) => {
-      alert("Product updated successfully");
+    form.append("Image", this.image)
+    this._ser.UpdateProduct(this.parameter, form).subscribe((data) => {
+      alert("ok")
     }, (error) => {
       console.error('Error updating product:', error);
     });
