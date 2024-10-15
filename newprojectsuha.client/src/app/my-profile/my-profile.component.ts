@@ -57,4 +57,9 @@ export class MyProfileComponent {
       this._router.navigate(['/'])
     })
   }
+
+ 
+
+
+
 }
