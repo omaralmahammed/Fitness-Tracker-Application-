@@ -45,7 +45,7 @@ namespace newProjectSUHA.Server.Controllers
 
             if (cartList.IsNullOrEmpty()) return BadRequest("empty cart");
 
-            decimal? totalPrice = 0;
+            decimal? totalPrice = 0 + 5;
 
             foreach (var item in cartList)
             {
@@ -53,6 +53,7 @@ namespace newProjectSUHA.Server.Controllers
 
                 totalPrice += item.Quantity * product.Price;
             }
+
 
 
             var payment = payPalService.CreatePayment(_redirectUrl ?? " ", totalPrice, null, userId);

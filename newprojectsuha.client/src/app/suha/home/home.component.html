@@ -93,6 +93,9 @@
   <!-- testimonail-section -->
   <div class="testimonail-section mt-150 mb-150">
     <div class="container">
+      <h2 style="text-align: center">Testimonial</h2>
+      <hr />
+      <br />
       <div class="row">
         <div class="col-lg-10 offset-lg-1 text-center">
           <div class="testimonial-sliders owl-carousel">
@@ -112,28 +115,8 @@
         </div>
       </div>
     </div>
-    <br />
-    <div *ngIf="testimonialArray.length === 0" class="text-center">
-      <p>No testimonials available at the moment.</p>
-    </div>
-    <div *ngIf="UserId != ''" class="align-content-center">
-      <a routerLink="/Testimonial" class="btn btn-warning">Write Your Testimonial</a>
-    </div>
-    <br />
   </div>
 
-
-
-  <!-- Display a message if there are no testimonials -->
-  <!-- end testimonail-section -->
-  <!-- shop banner -->
-  <section class="shop-banner">
-    <div class="container">
-      <h3>White Friday Sale! <br> Huge <span class="orange-text">Discount...</span></h3>
-      <div class="sale-percent"><span>Get Fit! <br> Upto</span>50% </div>
-      <a routerLink="/Shop" class="cart-btn btn-lg">Shop Now</a>
-    </div>
-  </section>
 
   <!-- end logo carousel -->
 
