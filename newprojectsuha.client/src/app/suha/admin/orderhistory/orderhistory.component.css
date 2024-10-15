@@ -1,4 +1,4 @@
-/*.modal {
+.modal {
   position: fixed;
   z-index: 1050;
   left: 0;
@@ -35,4 +35,4 @@
 .show {
   display: block;
 }
-*/
+
