@@ -258,5 +258,36 @@ namespace newProjectSUHA.Server.Controllers
             }
             return NotFound();
         }
+
+
+
+
+        // Search products by name
+        [HttpGet("SearchByName")]
+        public IActionResult SearchProductsByName([FromQuery] string name)
+        {
+            // If no name is provided, return a Bad Request response
+            if (string.IsNullOrEmpty(name))
+            {
+                return BadRequest(new { message = "Name parameter is required." });
+            }
+
+            // Search for products where the name contains the search term (case-insensitive)
+            var matchingProducts = _db.Products
+                                      .Where(p => p.Name.Contains(name))  // Case-sensitive
+                                                                          // .Where(p => p.Name.ToLower().Contains(name.ToLower()))  // Uncomment for case-insensitive search
+                                      .Include(c => c.Category)  // Include related Category
+                                      .ToList();
+
+            // If no matching products found, return an empty result
+            if (!matchingProducts.Any())
+            {
+                return NotFound(new { message = "No products found matching the search term." });
+            }
+
+            // Return the list of matching products
+            return Ok(matchingProducts);
+        }
+   
     }
 }

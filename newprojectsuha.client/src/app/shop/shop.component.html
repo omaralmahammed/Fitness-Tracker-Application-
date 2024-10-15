@@ -32,14 +32,27 @@
 </div>
 <!-- end breadcrumb section -->
 
+
+
 <!-- end breadcrumb section -->
 <!--Esraa Category Filters-->
-
 
 <div class="row">
   <div class="col-md-12">
     <div class="product-filters">
       <ul>
+        <li>
+          <div class="header-icons">
+            <span class="search-icon">
+              <i class="fas fa-search"></i>  <!-- Font Awesome search icon -->
+            </span>
+            <input type="text"
+                   [(ngModel)]="searchTerm"
+                   placeholder="Type a product name"
+                   (input)="onSearchChange(searchTerm)"class="rounded-input">
+          </div>
+
+        </li>
         <li (click)="onFilterChanged('')"
             [ngClass]="{'active': selectedCategory === ''}"
             data-filter="*">All</li>
@@ -53,13 +66,30 @@
   </div>
 </div>
 
-
-
 <!--Category Filters-->
 <!--Product-->
 <div class="container">
   <div class="row">
-    <div class="col-lg-4 col-md-6" *ngFor="let product of allProductsArray" [ngClass]="'category-' + product.categoryId">
+    <!-- Condition to display message if no results found -->
+    <div *ngIf="noResultsFound" class="full-height-section error-section no-results">
+      <div class="full-height-tablecell">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+              <div class="error-text">
+                <i class="far fa-sad-cry"></i>
+                <h1>Oops! Not Found.</h1>
+                <p>The product you searched for could not be found.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Loop through filtered products -->
+    <div class="col-lg-4 col-md-6" *ngFor="let product of filteredProductsArray" [ngClass]="'category-' + product.categoryId">
       <div class="single-product-item">
         <div class="product-image">
           <a [routerLink]="['/SingleProduct', product.id]">
@@ -67,11 +97,13 @@
           </a>
         </div>
         <a [routerLink]="['/SingleProduct', product.id]">{{ product.name }}</a>
-        <p class="product-price"> {{ product.price }}$</p>
-        <a class="cart-btn" (click)="addToCart(product.id, 1)"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+        <p class="product-price">{{ product.price }}$</p>
+        <a class="cart-btn" (click)="addToCart(product.id, 1)">
+          <i class="fas fa-shopping-cart"></i> Add to Cart
+        </a>
       </div>
     </div>
   </div>
 </div>
-<!-- end products -->
 
+<!-- end products -->
