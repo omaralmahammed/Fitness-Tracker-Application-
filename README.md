@@ -1,4 +1,3 @@
-FitLife
 FitLife is a comprehensive web-based platform designed to provide users with an all-in-one solution for their fitness needs. 
 This project features a gym subscription service, online shop for gym tools, and a section dedicated to healthy lifestyle recipes. 
 Users can browse through various subscription plans, shop for fitness equipment, and access nutritious recipes to support their fitness journey.
