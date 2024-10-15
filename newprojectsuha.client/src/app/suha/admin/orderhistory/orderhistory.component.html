@@ -63,6 +63,71 @@
     </div>
   </div>
 </div>-->
+<!--<div class="container mt-4">
+  <h1>User Orders</h1>
+
+  <table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">User ID</th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Payment Method</th>
+        <th scope="col">Order Date</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.userId }}</td>
+        <td>${{ order.totalAmount }}</td>-->
+<!-- Adjust according to your order properties -->
+<!--<td>{{ order.orderDate | date }}</td>
+      <td>
+        <button class="btn btn-info" (click)="getOrderItems(order.id); openModal()">View Items</button>
+      </td>
+    </tr>
+  </tbody>
+</table>-->
+<!-- Modal -->
+<!--<div class="modal fade" id="orderItemsModal" tabindex="-1" role="dialog" aria-labelledby="orderItemsModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="orderItemsModalLabel">Order Items</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of selectedOrderItems">
+                <td>
+                  <img [src]="'https://localhost:7286/api/Images/getImages/' + item.product.image"
+                       alt="{{item.product.name}}" class="img-fluid" style="max-width: 100px;" />
+                </td>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>${{ item.product.price }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>-->
 
 <div class="container mt-4">
   <h1>User Orders</h1>
