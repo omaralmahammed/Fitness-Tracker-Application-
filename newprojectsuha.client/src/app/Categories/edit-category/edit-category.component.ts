@@ -1,17 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UrlService } from '../../URL-Service/url.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
-  styleUrl: './edit-category.component.css'
+  styleUrls: ['./edit-category.component.css'] // Corrected from styleUrl to styleUrls
 })
-export class EditCategoryComponent {
-  categoryId: any| null = null; // Initialize categoryId
+export class EditCategoryComponent implements OnInit {
+  categoryId: any | null = null; // Initialize categoryId
   categoryData: any = {}; // Placeholder for the category data
 
-  constructor(private route: ActivatedRoute, private router: Router, private service: UrlService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: UrlService
+  ) { }
 
   ngOnInit(): void {
     // Fetch the category ID from the route
@@ -30,26 +35,36 @@ export class EditCategoryComponent {
       },
       error => {
         console.error('Error fetching category:', error);
-        // Handle error, e.g., show a notification
+        // Optionally show an error notification
+        Swal.fire('Error!', 'Unable to fetch category details.', 'error');
       }
     );
   }
 
   editCategory(formValues: any): void {
     if (this.categoryId) {
+      // Create a FormData object to send data
+      const form = new FormData();
+      for (const key in formValues) {
+        if (formValues.hasOwnProperty(key)) {
+          form.append(key, formValues[key]);
+        }
+      }
+
       // Call the service to update the category
-      this.service.UpdateCategory(this.categoryId, formValues).subscribe(
+      this.service.UpdateCategory(this.categoryId, form).subscribe(
         response => {
           console.log('Category updated successfully:', response);
-          // Navigate back or show success message
-          this.router.navigate(['/dash/Categories']);
+          Swal.fire('Updated!', 'Category has been updated.', 'success').then(() => {
+            // Navigate back to the categories list
+            this.router.navigate(['/dash/Categories']);
+          });
         },
         error => {
           console.error('Error updating category:', error);
-          // Handle error, e.g., show a notification
+          Swal.fire('Error!', 'Error updating category, please try again.', 'error');
         }
       );
     }
   }
-
 }

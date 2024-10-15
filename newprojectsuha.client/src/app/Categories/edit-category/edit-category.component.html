@@ -1,4 +1,4 @@
-<form #editCategoryForm="ngForm" (ngSubmit)="editCategory(editCategoryForm.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+<form #EDITCategory="ngForm" (ngSubmit)="editCategory(EDITCategory.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
   <!-- CSRF Token (if needed) -->
   <input type="hidden" name="__RequestVerificationToken" value="TOKEN_VALUE">
 
@@ -8,7 +8,7 @@
     <!-- Title Field -->
     <div class="form-group" style="margin-bottom: 15px;">
       <label for="categoryName" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Category Name</label>
-      <input type="text" id="categoryName" name="CategoryName" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+      <input type="text" id="categoryName" name="Name" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
       <span class="text-danger" id="categoryName-error" style="color: red; font-size: 0.875em;"></span>
     </div>
 
