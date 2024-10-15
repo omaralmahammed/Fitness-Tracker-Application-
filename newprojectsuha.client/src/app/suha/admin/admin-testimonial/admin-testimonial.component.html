@@ -1,30 +1,32 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">User Name</th>
-      <th scope="col">Contnet</th>
-      <th scope="col">Status</th>
-      <th scope="col">Action</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of TestimonialAdminArray">
-      <td>{{item.id}}</td>
-      <td>{{item.userName}}</td>
-      <td>{{item.content}}</td>
-      <td>{{item.status}}</td>
-      <!--<td><a routerLink="/dashboard/{{item.id}}" class="btn btn-success">Accepted</a>
-  <a routerLink="/dashboard/{{item.id}}" class="btn btn-danger">Reject</a></td>-->
-      <td>
-        <!-- Display buttons only if status is pending -->
-        <div *ngIf="item.status === 'Pending'">
-          <button class="btn btn-success" (click)="updateStatus(item, 'Accepted')">Accept</button>
-          <button class="btn btn-danger" (click)="updateStatus(item, 'Rejected')">Reject</button>
-        </div>
-      </td>
+<div class="container mt-4">
+  <h2 class="mb-4">Testimonial</h2>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>id</th>
+        <th>User Name</th>
+        <th>Contnet</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of TestimonialAdminArray">
+        <td>{{item.id}}</td>
+        <td>{{item.userName}}</td>
+        <td>{{item.content}}</td>
+        <td>{{item.status}}</td>
+        <!--<td><a routerLink="/dashboard/{{item.id}}" class="btn btn-success">Accepted</a>
+        <a routerLink="/dashboard/{{item.id}}" class="btn btn-danger">Reject</a></td>-->
+        <td>
+          <!-- Display buttons only if status is pending -->
+          <div *ngIf="item.status === 'Pending'">
+            <button class="btn btn-success btn-sm me-2" (click)="updateStatus(item, 'Accepted')">Accept</button>
+            <button class="btn btn-danger btn-sm me-2" (click)="updateStatus(item, 'Rejected')">Reject</button>
+          </div>
+        </td>
 
-    </tr>
-  </tbody>
-</table>
-
+      </tr>
+    </tbody>
+  </table>
+  </div>
