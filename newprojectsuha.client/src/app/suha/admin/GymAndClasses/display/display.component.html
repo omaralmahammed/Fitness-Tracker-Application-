@@ -7,7 +7,6 @@
         <th>Name</th>
         <th>Trainer</th>
         <th>Description</th>
-        <th>Price</th>
         <th>Actions</th>
       </tr>
     </thead>
@@ -19,7 +18,6 @@
         <td>{{ item.name }}</td>
         <td>{{ item.trainer }}</td>
         <td>{{ item.description | slice:0:50 }}...</td>
-        <td>${{ item.price }}</td>
         <td>
           <button class="btn btn-primary btn-sm me-2" (click)="editItem(item.id)">Edit</button>
           <button class="btn btn-danger btn-sm me-2" (click)="deleteItem(item.id)">Delete</button>

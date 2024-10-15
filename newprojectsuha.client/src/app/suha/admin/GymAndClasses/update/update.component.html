@@ -1,42 +1,49 @@
-<div class="container mt-5">
-  <h2 class="mb-4">Update Gym/Class</h2>
-  <div class="table-responsive">
-    <table class="table table-bordered">
-      <thead class="table-dark">
-        <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Trainer</th>
-          <th>Description</th>
-          <th>Price</th>
-          <th>Flag</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>
-            <input type="text" class="form-control" [(ngModel)]="item.image" name="image" placeholder="Image URL">
-          </td>
-          <td>
-            <input type="text" class="form-control" [(ngModel)]="item.name" name="name" placeholder="Name">
-          </td>
-          <td>
-            <input type="text" class="form-control" [(ngModel)]="item.trainer" name="trainer" placeholder="Trainer">
-          </td>
-          <td>
-            <textarea class="form-control" [(ngModel)]="item.description" name="description" placeholder="Description" rows="3"></textarea>
-          </td>
-          <td>
-            <input type="number" class="form-control" [(ngModel)]="item.price" name="price" placeholder="Price">
-          </td>
-          <td>
-            <input type="text" class="form-control" [(ngModel)]="item.flag" name="flag" placeholder="Flag">
-          </td>
-        </tr>
-      </tbody>
-    </table>
+<br />
+<br />
+<br />
+
+<form #addGymClass="ngForm" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+  <!-- CSRF Token (if needed) -->
+  <input type="hidden" name="__RequestVerificationToken" value="TOKEN_VALUE">
+
+  <h2 style="text-align: center; margin-bottom: 20px;">Update Gym/Class</h2>
+
+  <div class="form-container">
+    <!-- Image Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="image" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Image</label>
+      <input type="file" id="image" name="image" class="form-control" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+    </div>
+
+    <!-- Name Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="name" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Gym/Class Name</label>
+      <input type="text" id="name" name="name" class="form-control" required placeholder="Name" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+    </div>
+
+    <!-- Trainer Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="trainer" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Trainer Name</label>
+      <input type="text" id="trainer" name="trainer" class="form-control" required placeholder="Trainer" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+
+    </div>
+
+    <!-- Description Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="description" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Description</label>
+      <textarea id="description" name="description" class="form-control" required placeholder="Description" rows="3" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel></textarea>
+    </div>
+
+    <!-- Price Field -->
+    <div class="form-group" style="margin-bottom: 15px;">
+      <label for="price" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Monthly Price</label>
+      <input type="number" id="price" name="price" class="form-control" required placeholder="Price" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+    </div>
+
+
+    <!-- Submit Button -->
+    <div class="form-group" style="text-align: center;">
+      <button type="submit" class="btn btn-success" style="padding: 10px 20px; background-color: #007bff; border: none; border-radius: 5px; color: white; font-size: 1em; cursor: pointer;">Update</button>
+    </div>
   </div>
-  <div class="text-center mt-3">
-    <button (click)="updateItem()" class="btn btn-primary">Update Gym/Class</button>
-  </div>
-</div>
+</form>

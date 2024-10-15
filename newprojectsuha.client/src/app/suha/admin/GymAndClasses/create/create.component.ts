@@ -10,20 +10,30 @@ import Swal from 'sweetalert2';
   styleUrls: ['./create.component.css']  
 })
 export class CreateComponent {
-  newItem: any = {
-    name: '',
-    trainer: '',
-    description: '',
-    price: null,
-    flag: '',   
-    image: ''
-  };  // Property to hold the new item data
 
   constructor(private urlService: UrlService, private router: Router) { }
 
+  imageFile: any
+  changeImage(event: any) {
+
+    this.imageFile = event.target.files[0]
+
+  }
+
  
-  createItem(): void {
-    this.urlService.CreateClassAndGym(this.newItem).subscribe({
+  createItem(data: any): void {
+    // Assign the form data to `newItem`
+    var formdata = new FormData();
+
+
+    for (let item in data) {
+      formdata.append(item, data[item])
+    }
+
+    formdata.append("Image", this.imageFile)
+
+    // Call the API to create the new gym/class
+    this.urlService.CreateClassAndGym(formdata).subscribe({
       next: (response) => {
         console.log('Item created successfully:', response);
         Swal.fire('Success', 'New gym/class item created successfully', 'success')
@@ -37,5 +47,6 @@ export class CreateComponent {
       }
     });
   }
+
  
 }
