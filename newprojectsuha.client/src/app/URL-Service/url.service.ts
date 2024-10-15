@@ -492,7 +492,9 @@ export class UrlService {
     return this.http.post<any>(`${this.baseUrl}Categories/AddCategory`, data)
   }
 
-
+  SearchProductsByName(name: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}Products/SearchByName?name=${name}`);
+  }
 
 }
 
