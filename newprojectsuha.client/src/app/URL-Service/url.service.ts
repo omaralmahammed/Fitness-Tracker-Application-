@@ -237,7 +237,7 @@ export class UrlService {
 
   // Update subscription by id
   UpdateSubscription(id: number, data: any): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}GymAndClassAdmin/Subscriptions/${id}`, data);
+    return this.http.put<any>(`https://localhost:7286/api/GymAndClassAdmin/Subscriptions/${id}`, data);
   }
 
   // Delete subscription by id
