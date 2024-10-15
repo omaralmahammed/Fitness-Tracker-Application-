@@ -1,27 +1,38 @@
 <div class="container mt-4">
-  <h2 class="mb-4">Subscription List</h2>
+  <h2 class="text-center mb-4">Subscription List</h2>
 
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Duration</th>
-        <th>Final Price</th>
-        <th>Class ID</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let subscription of subscriptions">
-        <td>{{ subscription.duration }} months</td>
-        <td>${{ subscription.finalPrice }}</td>
-        <td>{{ subscription.classId }}</td>
-        <td>
-          <button class="btn btn-primary mybutton" (click)="editSubscription(subscription.id)">Edit</button>
-          <button class="btn btn-danger mybutton" (click)="deleteSubscription(subscription.id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
 
-  <button class="btn btn-success" (click)="createNewSubscription()">Add New Subscription</button>
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Duration</th>
+          <th scope="col">Final Price</th>
+          <th scope="col">Class ID</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subscription of subscriptions">
+          <td>{{ subscription.duration }} months</td>
+          <td>${{ subscription.finalPrice }}</td>
+          <td>{{ subscription.classId }}</td>
+          <td>
+            <a routerLink="/dash/Update-Subscription/{{subscription.id}}" class="btn btn-primary btn-sm">Edit</a>
+            <button (click)="deleteSubscription(subscription.id)" class="btn btn-danger btn-sm">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="subscriptions.length === 0 && !errorMessage" class="alert alert-info">
+    No subscriptions found.
+  </div>
+
+  <button class="btn btn-success mt-3" (click)="createNewSubscription()">Add New Subscription</button>
 </div>

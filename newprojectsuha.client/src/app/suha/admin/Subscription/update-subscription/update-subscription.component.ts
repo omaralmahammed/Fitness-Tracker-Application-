@@ -8,66 +8,28 @@ import Swal from 'sweetalert2';
   templateUrl: './update-subscription.component.html',
   styleUrls: ['./update-subscription.component.css']
 })
-export class UpdateSubscriptionComponent implements OnInit {
-  subscription: any = {};
-  subscriptionId: number;
+export class UpdateSubscriptionComponent  {
+ 
+  parameter: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-    private urlService: UrlService
-  ) {
-    this.subscriptionId = this.route.snapshot.params['id'];
+  ngOnInit() {
+    this.parameter = this._active.snapshot.paramMap.get('id');
   }
 
-  ngOnInit(): void {
-    this.loadSubscription();
-  }
+  constructor(private _ser: UrlService, private _active: ActivatedRoute) { }
 
-  loadSubscription(): void {
-    this.urlService.GetSubscriptions(this.subscriptionId).subscribe({
-      next: (data) => {
-        this.subscription = data;
-      },
-      error: (error) => {
-        console.error('Error fetching subscription:', error);
-        Swal.fire('Error', 'Failed to load subscription details. Please try again.', 'error');
-      }
+  editSubscription(data: any) {
+    var form = new FormData();
+
+    // إضافة البيانات إلى FormData
+    for (let key in data) {
+      form.append(key, data[key]);
+    }
+
+    // استدعاء الخدمة لتحديث الاشتراك بدون التعامل مع الصورة
+    this._ser.UpdateSubscription(this.parameter, form).subscribe((data) => {
+      alert("Subscription updated successfully");
     });
   }
 
-  updateSubscription(): void {
-    this.urlService.UpdateSubscription(this.subscriptionId, this.subscription).subscribe({
-      next: () => {
-        Swal.fire('Success', 'Subscription updated successfully', 'success');
-        this.router.navigate(['/dash/display-subscriptions']);
-      },
-      error: (error) => {
-        console.error('Error updating subscription:', error);
-        Swal.fire('Error', 'Failed to update subscription. Please try again.', 'error');
-      }
-    });
-  }
-
-  //*************** */
-  //parameter: any;
-  //ngOnInit() {
-  //  this.parameter = this._active.snapshot.paramMap.get('id');
-  //}
-  //image: any
-  //changeImage(event: any) {
-  //  this.image = event.target.files[0];
-  //}
-  //constructor(private _ser: UrlService, private _active: ActivatedRoute) { }
-
-  //editProdect(data: any) {
-  //  var form = new FormData();
-  //  for (let key in data) {
-  //    form.append(key, data[key])
-  //  }
-  //  form.append("Image", this.image)
-  //  this._ser.PUTProddect(this.parameter, form).subscribe((data) => {
-  //    alert("ok")
-  //  })
-  //}
 }
