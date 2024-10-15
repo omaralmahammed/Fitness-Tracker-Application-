@@ -43,7 +43,7 @@ namespace newProjectSUHA.Server.Controllers
         [HttpPost("checkoutForSubscription")]
         public IActionResult CreatePayment([FromBody] EnrolledRequestDTO orderInfo)
         {
-            var checkSubscription = _db.Enrolleds.Where(u => u.UserId == orderInfo.UserId && u.ClassSubId == orderInfo.ClassSubId).FirstOrDefault();
+            var checkSubscription = _db.Enrolleds.Where(u => u.UserId == orderInfo.UserId && u.ClassSubId == orderInfo.ClassSubId && u.PaymentMethod == "Active").FirstOrDefault();
 
             if (checkSubscription != null)
             {
