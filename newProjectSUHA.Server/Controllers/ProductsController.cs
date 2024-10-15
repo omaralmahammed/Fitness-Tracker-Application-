@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
@@ -21,7 +22,7 @@ namespace newProjectSUHA.Server.Controllers
         [HttpGet("AllProducts")]
         public IActionResult GetAllProducts()
         {
-            var data = _db.Products.ToList();
+            var data = _db.Products.Include(c => c.Category).ToList();
             return Ok(data);
         }
 
