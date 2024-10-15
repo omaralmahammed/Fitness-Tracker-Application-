@@ -20,6 +20,7 @@ export class EditCategoryComponent implements OnInit {
 
   ngOnInit(): void {
     // Fetch the category ID from the route
+    // Fetch the category ID from the route
     this.categoryId = this.route.snapshot.paramMap.get('id');
 
     // Fetch category details using the ID
