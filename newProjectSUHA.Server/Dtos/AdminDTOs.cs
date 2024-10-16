@@ -20,6 +20,8 @@
         public string? Duration { get; set; }
         public decimal? FinalPrice { get; set; }
         public int? ClassId { get; set; }
+        public string? Name { get; set; }
+
     }
 
     // AvailableTime DTO
