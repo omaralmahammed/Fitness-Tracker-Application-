@@ -53,7 +53,7 @@ import { CategoriesComponent } from './Categories/categories/categories.componen
 import { EditCategoryComponent } from './Categories/edit-category/edit-category.component';
 import { AddCategoryComponent } from './Categories/add-category/add-category.component';
 import { OrderHistoryComponent } from './order-history/order-history.component';
-import { UpdateSubscriptionComponent } from './suha/admin/Subscription/update-subscription/update-subscription.component';
+import { UpdateSubscriptionComponent } from './suha/admin/Subscription/update-subscription/UpdateSubscriptionComponent';
 import { CreateSubscriptionComponent } from './suha/admin/Subscription/create-subscription/create-subscription.component';
 import { DisplaySubscriptionComponent } from './suha/admin/Subscription/display-subscription/display-subscription.component';
 import { DisplayClassSubscriptionsComponent } from './suha/admin/Subscription/display-class-subscriptions/display-class-subscriptions.component';

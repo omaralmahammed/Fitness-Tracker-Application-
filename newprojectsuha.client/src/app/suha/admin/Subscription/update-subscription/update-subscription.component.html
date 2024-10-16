@@ -4,17 +4,19 @@
   <form #edit="ngForm" (ngSubmit)="editSubscription(edit.value)" >
     <div class="form-group">
       <label for="duration">Duration:</label>
-      <input type="text" class="form-control" id="duration" name="duration" required>
+      <input type="text" class="form-control" id="duration" name="duration" required ngModel>
     </div>
 
     <div class="form-group">
       <label for="finalPrice">Final Price:</label>
-      <input type="number" class="form-control" id="finalPrice" name="finalPrice" required>
+      <input type="number" class="form-control" id="finalPrice" name="finalPrice" required ngModel>
     </div>
 
     <div class="form-group">
-      <label for="classId">Class ID:</label>
-      <input type="number" class="form-control" id="classId" name="classId" required>
+      <label for="classId">Class Name:</label>
+      <select name="classId" ngModel>
+        <option *ngFor="let item of ClassName" [value]="item.id">{{item.name}}</option>
+      </select>
     </div>
 
     <button type="submit" class="btn btn-primary">Update Subscription</button>

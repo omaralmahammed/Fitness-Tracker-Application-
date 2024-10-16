@@ -15,7 +15,23 @@ export class CreateSubscriptionComponent {
     classId: null
   };
 
+  ngOnInit() {
+    this.GetClassAndGymName();
+  }
+
   constructor(private urlService: UrlService, private router: Router) { }
+
+
+
+
+
+  ClassName: any;
+
+  GetClassAndGymName() {
+    this.urlService.GetClassAndGyms().subscribe((data) => {
+      this.ClassName = data;
+    });
+  }
 
   createSubscription(): void {
     this.urlService.CreateSubscription(this.newSubscription).subscribe({
@@ -30,4 +46,6 @@ export class CreateSubscriptionComponent {
       }
     });
   }
+
+
 }

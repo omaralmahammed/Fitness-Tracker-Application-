@@ -150,16 +150,20 @@ namespace newProjectSUHA.Server.Controllers
         public async Task<ActionResult<IEnumerable<SubscriptionDto>>> GetSubscriptions()
         {
             var subscriptions = _context.Subscriptions
+                .Include(c=>c.Class)
                 .Select(s => new SubscriptionDto
                 {
                     id = s.Id,
                     Duration = s.Duration,
                     FinalPrice = s.FinalPrice,
-                    ClassId = s.ClassId
+                    ClassId = s.ClassId,
+                    Name= s.Class.Name
                 }).ToList();
 
             return Ok(subscriptions);
         }
+
+      
 
         // POST: api/GymAndClassAdmin/Subscriptions
         [HttpPost("Subscriptions")]
@@ -180,7 +184,7 @@ namespace newProjectSUHA.Server.Controllers
 
         // PUT: api/GymAndClassAdmin/Subscriptions/5
         [HttpPut("Subscriptions/{id}")]
-        public async Task<IActionResult> UpdateSubscription(int id, SubscriptionDto subscriptionDto)
+        public async Task<IActionResult> UpdateSubscription(int id,[FromForm] SubscriptionDto subscriptionDto)
         {
             var subscription = await _context.Subscriptions.FindAsync(id);
             if (subscription == null)
@@ -197,6 +201,23 @@ namespace newProjectSUHA.Server.Controllers
 
             return NoContent();
         }
+
+        //[HttpPut("Subscriptions/{id}")]
+        //public IActionResult UpdateSubscription(int id , SubscriptionDto subscriptionDto)
+        //{
+        //    var subscription =_context.Subscriptions.FirstOrDefault(s => s.Id == id);
+        //    if (subscription == null)
+        //    {
+
+        //    return NoContent(); }
+        //    subscription.Duration = subscriptionDto.Duration;
+        //    subscription.FinalPrice = subscriptionDto.FinalPrice;
+        //    subscription.ClassId = subscriptionDto.ClassId;
+
+        //    _context.Subscriptions.Update(subscription);
+        //    _context.SaveChanges();
+        //    return Ok(subscription);
+        //}
 
         // DELETE: api/GymAndClassAdmin/Subscriptions/5
         [HttpDelete("Subscriptions/{id}")]
