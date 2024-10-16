@@ -1,51 +1,45 @@
-import { Component } from '@angular/core';
-//import { UrlService } from '../../URL-Service/url.service';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import { Component, OnInit } from '@angular/core';
 import { UrlService } from '../../../URL-Service/url.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-contact-us',
-  templateUrl: './contact-us.component.html',
-  styleUrls: ['./contact-us.component.css']
+  selector: 'app-admin-contact',
+  templateUrl: './admin-contact.component.html',
+  styleUrl: './admin-contact.component.css'
 })
-export class ContactUsComponent {
+export class AdminContactComponent implements OnInit {
 
-  // This is your form model
-  contactForm = {
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  };
+
+  contacts: any[] = [];
 
   constructor(private _ser: UrlService, private _router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.getContacts();
+  }
 
-  // This will submit the form data
-  submitContactForm(data: any) {
-    const form = new FormData();
-
-    // Append form fields dynamically to FormData
-    for (let key in data) {
-      form.append(key, data[key])
-    }
-
-    this._ser.submitContact(form).subscribe(() => {
-      Swal.fire({
-        title: "Thank you!",
-        text: "Your message has been successfully sent! We will get back to you soon!",
-        showConfirmButton: false,
-        timer: 2000
-      })
-      setTimeout(() => {
-        this._router.navigate(['/']);
-      }, 1000);
-    },
+  getContacts() {
+    this._ser.getContacts().subscribe(
+      (data: any[]) => {
+        this.contacts = data; // Store the contact messages in the array
+      },
       (error) => {
-        alert(error.error)
-      })
+        console.error('Error fetching contacts:', error);
+      }
+    );
+  }
+
+
+  updateStatus(id: number) {
+    this._ser.updateContactStatus(id).subscribe(
+      () => {
+        alert('Contact status updated successfully!');
+        this.getContacts();
+      },
+      (error) => {
+        alert('Error updating contact status');
+        console.error('Error updating contact status:', error);
+      }
+    );
   }
 }

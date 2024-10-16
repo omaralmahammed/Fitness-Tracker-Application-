@@ -346,8 +346,8 @@ export class UrlService {
   //}
 
 
-  updateContactStatus(id: number, status: string) {
-    return this.http.put(`${this.baseUrl}contacts/${id}/status`, { status });
+  updateContactStatus(id: number ){ 
+    return this.http.put(`${this.baseUrl}contacts/${id}/status`, {});
   }
 
   // Update product by id
