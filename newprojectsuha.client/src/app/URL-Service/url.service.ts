@@ -349,8 +349,9 @@ export class UrlService {
 
 
   updateContactStatus(id: number ){ 
-    return this.http.put(`${this.baseUrl}contacts/${id}/status`, {});
+    return this.http.put(`${this.baseUrl}Contact/UpdateContactStatus/${id}`, {});
   }
+
 
   // Update product by id
   EditProduct(id: number, data: any): Observable<any> {

@@ -70,13 +70,35 @@ namespace newProjectSUHA.Server.Controllers
                 return NotFound("Contact not found");
             }
 
-            contact.Status = "Pending";
+            contact.Status = "Done";
 
             _db.ContactUs.Update(contact);
             _db.SaveChanges();
 
             return Ok(contact);
         }
+
+        [HttpPut("Reject/{contactId}")]
+        public IActionResult Reject(int contactId)
+        {
+
+            var contact = _db.ContactUs.Find(contactId);
+
+            if (contact == null)
+            {
+                return NotFound("Contact not found");
+            }
+
+            contact.Status = "Reject";
+
+            _db.ContactUs.Update(contact);
+            _db.SaveChanges();
+
+            return Ok(contact);
+        }
+
+
+
 
     }
 }
