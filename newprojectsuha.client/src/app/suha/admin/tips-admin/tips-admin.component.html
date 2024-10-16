@@ -22,7 +22,8 @@
           <td>{{tips.description }}</td>
           <td>
             <!--<a routerLink="/dash/editRecipe/{{tips.id}}" class="btn btn-primary btn-sm">Edit</a>--> <!-- إضافة btn-sm لتصغير حجم الزر -->
-            <button (click)="deleteTips(tips.id)">Delete</button>
+            <button (click)="deleteTips(tips.id)" class="btn btn-danger btn-sm">Delete</button>
+
           </td>
 
         </tr>
