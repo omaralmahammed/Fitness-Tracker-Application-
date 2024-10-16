@@ -1,0 +1,98 @@
+ General layout 
+.container-fluid {
+  padding: 0;
+  margin: 0;
+}
+
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+ Sidebar styling 
+.col-auto {
+  background-color: #343a40;
+  border-right: 1px solid #495057;
+}
+
+.text-white {
+  color: #f8f9fa !important;
+}
+
+.nav-link {
+  color: #adb5bd;
+  padding: 10px 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+  .nav-link:hover {
+    background-color: #495057;
+    color: #ffffff;
+    border-radius: 5px;
+  }
+
+  .nav-link i {
+    margin-right: 10px;
+  }
+
+.nav-pills .nav-link.active {
+  background-color: #198754;
+  color: white !important;
+}
+
+.nav li {
+  width: 100%;
+}
+
+  .nav li i {
+    margin-right: 10px;
+  }
+
+ Menu header styling 
+.fs-5 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.d-none.d-sm-inline {
+  display: inline-block !important;
+}
+
+.align-items-center {
+  margin-bottom: 20px;
+}
+
+ Menu title 
+.widget-title {
+  margin-bottom: 20px;
+  color: #adb5bd;
+}
+
+ Submenu styling 
+.collapse.nav {
+  background-color: #495057;
+  padding-left: 20px;
+}
+
+.nav li a {
+  padding: 10px 15px;
+}
+
+  .nav li a:hover {
+    background-color: #6c757d;
+  }
+
+ Horizontal line styling 
+hr {
+  width: 100%;
+  border-color: #6c757d;
+}
+
+ Main content area 
+.py-3 {
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+

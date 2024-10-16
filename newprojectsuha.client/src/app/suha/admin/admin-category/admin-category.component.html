@@ -1,6 +1,46 @@
-
 <div class="container mt-4">
-  <h1 class="text-center mb-4">Show AllCategory</h1>
+  <h1 class="text-center mb-4">Show All Categories</h1>
+
+  <!-- Add Category Button -->
+  <!--<div class="text-center mb-3">
+    <button class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">
+      Add Category
+    </button>
+  </div>-->
+
+  <!-- Add Category Modal -->
+  <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addCategoryModalLabel">Add Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #addCategory="ngForm" (ngSubmit)="addNewCategory(addCategory.value)" style="max-width: 100%; padding: 20px; border-radius: 10px;">
+            <!-- CSRF Token (if needed) -->
+            <input type="hidden" name="__RequestVerificationToken" value="TOKEN_VALUE">
+
+            <!-- Category Name Field -->
+            <div class="form-group" style="margin-bottom: 15px;">
+              <label for="Title" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Category Name</label>
+              <input type="text" id="Title" name="name" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+              <span class="text-danger" id="Title-error" style="color: red; font-size: 0.875em;"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group" style="text-align: center;">
+              <button type="submit" class="btn btn-primary" style="padding: 10px 20px; background-color: #007bff; border: none; border-radius: 5px; color: white; font-size: 1em; cursor: pointer;">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category Table -->
   <div class="table-responsive">
     <table class="table table-bordered table-striped table-sm">
       <thead class="thead-dark">
@@ -16,15 +56,13 @@
           <td>{{item.name}}</td>
           <td>
             <a routerLink="/dash/EditAdminCategory/{{item.id}}" class="btn btn-primary">Edit</a>
-            <button (click)="deleteCategory(item.id)" class="btn btn-danger" >Delete</button>
+            <button (click)="deleteCategory(item.id)" class="btn btn-danger">Delete</button>
           </td>
-
-
-
         </tr>
       </tbody>
     </table>
   </div>
 </div>
+
 
 

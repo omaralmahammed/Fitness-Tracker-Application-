@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 
@@ -17,11 +18,13 @@ namespace newProjectSUHA.Server.Controllers
             _db = db;
         }
 
-        // Get all products
         [HttpGet("AllProducts")]
         public IActionResult GetAllProducts()
         {
-            var data = _db.Products.ToList();
+            // Fetch products and include the associated category
+            var data = _db.Products.Include(p => p.Category).ToList();
+
+            // Return the raw data (including product and category information)
             return Ok(data);
         }
 
@@ -257,5 +260,36 @@ namespace newProjectSUHA.Server.Controllers
             }
             return NotFound();
         }
+
+
+
+
+        // Search products by name
+        [HttpGet("SearchByName")]
+        public IActionResult SearchProductsByName([FromQuery] string name)
+        {
+            // If no name is provided, return a Bad Request response
+            if (string.IsNullOrEmpty(name))
+            {
+                return BadRequest(new { message = "Name parameter is required." });
+            }
+
+            // Search for products where the name contains the search term (case-insensitive)
+            var matchingProducts = _db.Products
+                                      .Where(p => p.Name.Contains(name))  // Case-sensitive
+                                                                          // .Where(p => p.Name.ToLower().Contains(name.ToLower()))  // Uncomment for case-insensitive search
+                                      .Include(c => c.Category)  // Include related Category
+                                      .ToList();
+
+            // If no matching products found, return an empty result
+            if (!matchingProducts.Any())
+            {
+                return NotFound(new { message = "No products found matching the search term." });
+            }
+
+            // Return the list of matching products
+            return Ok(matchingProducts);
+        }
+   
     }
 }

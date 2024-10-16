@@ -10,6 +10,8 @@
         public DateTime? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public string? PaymentMethod { get; set; }
+        public DateTime? ClassStartTime { get; set; }
+        public DateTime? ClassEndTime { get; set; }
     }
 
 }

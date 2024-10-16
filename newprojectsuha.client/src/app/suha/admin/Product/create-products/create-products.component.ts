@@ -9,7 +9,7 @@ import { UrlService } from '../../../../URL-Service/url.service';
 export class CreateProductsComponent {
 
   ngOnInit() {
-
+    this.GetCategoryName()
   }
 
   constructor(private _ser: UrlService) { }
@@ -31,5 +31,13 @@ export class CreateProductsComponent {
 
       alert("add Prodect Sucssfully")
     )
+  }
+
+  CategoryName: any
+
+  GetCategoryName() {
+    this._ser.getAdminCategory().subscribe((data) => {
+      this.CategoryName = data
+    })
   }
 }

@@ -19,15 +19,11 @@ export class AddProductComponent {
     this.fetchCategories();
   }
 
+
   fetchCategories() {
-    this._ser.GetAllCategories().subscribe(
-      (data: any[]) => {
-        this.categories = data; // Assuming `data` is an array of categories
-      },
-      (error) => {
-        alert('Error fetching categories');
-      }
-    );
+    this._ser.GetAllCategories().subscribe((data) => {
+      this.categories = data
+    })
   }
 
   changeImage(event: any) {

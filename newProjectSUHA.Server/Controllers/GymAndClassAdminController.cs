@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using PayPal;
 
 namespace newProjectSUHA.Server.Controllers
 {
@@ -57,7 +58,6 @@ namespace newProjectSUHA.Server.Controllers
                 Description = classAndGym.Description,
                 Price = classAndGym.Price,
                 Flag = classAndGym.Flag,
-                Image = classAndGym.Image
             };
 
             return Ok(classAndGymDto);
@@ -65,8 +65,29 @@ namespace newProjectSUHA.Server.Controllers
 
         // POST: api/GymAndClassAdmin/ClassAndGyms
         [HttpPost("ClassAndGyms")]
-        public async Task<ActionResult<ClassAndGym>> CreateClassAndGym(ClassAndGymDto classAndGymDto)
+        public async Task<ActionResult<ClassAndGym>> CreateClassAndGym([FromForm] addGYMClassDTO classAndGymDto)
         {
+
+            var folder = Path.Combine(Directory.GetCurrentDirectory(), "Upload");
+
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            var fileImage = Path.Combine(folder, classAndGymDto.Image.FileName);
+
+            if (!System.IO.File.Exists(fileImage))
+            {
+                using (var stream = new FileStream(fileImage, FileMode.Create))
+                {
+
+                    classAndGymDto.Image.CopyToAsync(stream);
+
+                }
+            }
+
+
             var classAndGym = new ClassAndGym
             {
                 Name = classAndGymDto.Name,
@@ -74,7 +95,7 @@ namespace newProjectSUHA.Server.Controllers
                 Description = classAndGymDto.Description,
                 Price = classAndGymDto.Price,
                 Flag = classAndGymDto.Flag,
-                Image = classAndGymDto.Image
+                Image = classAndGymDto.Image.FileName
             };
 
             _context.ClassAndGyms.Add(classAndGym);

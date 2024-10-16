@@ -93,3 +93,25 @@
   </div>
 </div>
 
+<div class="contact-from-section mt-150 mb-150">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 mb-5 mb-lg-0">
+        <div class="form-title">
+          <h2>We love to share your testimonial with us!</h2>
+          <p style="text-align:start">We love to hear from our customers! Your feedback helps us grow and improve, so feel free to share your experience with us. Whether it's about the service you received, the quality of our products, or how we helped make a difference, your words matter. Tell us how we did and let others know why they should choose us. We're committed to providing the best for you, and your testimonial will help others understand what they can expect. Thank you for being a part of our journey!"</p>
+        </div>
+        <div id="form_status"></div>
+        <div class="contact-form">
+          <form #contactForm="ngForm" (ngSubmit)="submitTestimonial(contactForm.value)">
+
+            <p><textarea name="Content" cols="30" rows="10" placeholder="Message" ngModel required></textarea></p>
+
+            <p><input type="submit" value="Submit"></p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

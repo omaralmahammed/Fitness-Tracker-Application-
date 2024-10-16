@@ -30,6 +30,7 @@
                 <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Trainer</th>
+                <th scope="col">Time Period</th>
                 <th scope="col">Duration</th>
                 <th scope="col">Price</th>
                 <th scope="col">Start Date</th>
@@ -42,6 +43,7 @@
                 <td><img src="https://localhost:7286/api/Images/getImages/{{item.image}}" alt="{{ item.name }}" style="width: 10em" /></td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.trainer }}</td>
+                <td>{{ item.classStartTime | date: 'shortTime' }} - {{item.classEndTime | date: 'shortTime'}}</td>
                 <td>{{ item.duration }} Months</td>
                 <td>{{ item.finalPrice | currency }}</td>
                 <td>{{ item.startDate | date }}</td>
@@ -72,6 +74,7 @@
                 <th scope="col">Image</th>
                 <th scope="col">Name</th>
                 <th scope="col">Trainer</th>
+                <th scope="col">Time Period</th>
                 <th scope="col">Duration</th>
                 <th scope="col">Price</th>
                 <th scope="col">Start Date</th>
@@ -84,6 +87,7 @@
                 <td><img src="https://localhost:7286/api/Images/getImages/{{item.image}}" alt="{{ item.name }}" style="width: 10em" /></td>
                 <td>{{ item.name }}</td>
                 <td>{{ item.trainer }}</td>
+                <td>{{ item.classStartTime | date: 'shortTime' }} - {{item.classEndTime | date: 'shortTime'}}</td>
                 <td>{{ item.duration }} Months</td>
                 <td>{{ item.finalPrice | currency }}</td>
                 <td>{{ item.startDate | date }}</td>

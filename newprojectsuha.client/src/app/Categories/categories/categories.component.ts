@@ -56,4 +56,17 @@ export class CategoriesComponent implements OnInit {
   createNewCategory(): void {
     this.router.navigate(['/dash/AddCategory']); // Navigate to Add Category
   }
+
+
+
+  addNewCategory(data: any) {
+    var form = new FormData();
+    for (let key in data) {
+      form.append(key, data[key])
+    }
+    this.service.AddAdminCategory(form).subscribe(() => {
+      alert("Category added!")
+    })
+
+  }
 }
