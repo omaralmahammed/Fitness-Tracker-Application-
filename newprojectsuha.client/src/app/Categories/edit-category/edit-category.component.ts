@@ -58,7 +58,7 @@ export class EditCategoryComponent implements OnInit {
           console.log('Category updated successfully:', response);
           Swal.fire('Updated!', 'Category has been updated.', 'success').then(() => {
             // Navigate back to the categories list
-            this.router.navigate(['/dash/Categories']);
+            this.router.navigate(['/dash/AdminCategory']);
           });
         },
         error => {

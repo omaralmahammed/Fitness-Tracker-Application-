@@ -1,158 +1,29 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Products</h2>
+  <table class="table table-striped table-hover">
+    <thead class="table-dark">
+      <tr>
+        <th>Products</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of allProductsArray">
 
-<!-- Button to add products -->
-<!--<button class="btn btn-add-product" (click)="createNewProduct()">
-  <span class="mdi mdi-plus mdi-24px"></span>
-  <span class="add-product-text">Add Product</span>
-</button>-->
-
-
-<!-- Table -->
-<table class="table mb-0 text-nowrap table-hover table-centered table-with-checkbox">
-  <!-- Table Head -->
-  <thead class="table-light">
-    <tr>
-      <th>Products</th>
-      <th>Category</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of allProductsArray">
-      <td>
-        <a href="#" class="text-inherit">
-          <div class="d-flex align-items-center flex-row gap-3">
-            <div>
-              <img src="https://localhost:7286/api/Products/getImages/{{ product.image }}" alt="{{ product.name }}" style="width: 60px; height: 60px; object-fit: cover;"> &nbsp;&nbsp;
-            </div>
-            <div class="">
-              <h5 class="mb-0 text-primary-hover">{{ product.name }}</h5>
-            </div>
-          </div>
-        </a>
-      </td>
-      <td>{{ product.category.name }}</td>
-      <td>{{ product.price }}$</td>
-      <td>{{ product.description }}</td>
-      <td>
-        <div style="display: flex; gap: 10px;">
-          <button class="btn btn-edit" (click)="editProduct(product.id)">
-            <span class="mdi mdi-pencil mdi-24px"></span>
-            <span class="mdi mdi-pencil-outline mdi-24px"></span>
-            <span>Edit</span>
-          </button>
-
-          <button class="btn btn-delete" (click)="deleteProduct(product.id)">
-            <span class="mdi mdi-delete mdi-24px"></span>
-            <span class="mdi mdi-delete-empty mdi-24px"></span>
-            <span>Delete</span>
-          </button>
-        </div>
-
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<style>
-  body {
-    margin: 32px;
-  }
-
-  .btn {
-    display: flex;
-    align-items: center;
-    background: none;
-    border: 1px solid lighten(gray, 24%);
-    height: 48px;
-    padding: 0 24px 0 16px;
-    letter-spacing: .25px;
-    border-radius: 24px;
-    cursor: pointer;
-    margin-right: 1px;
-  }
-
-    .btn:focus {
-      outline: none;
-    }
-
-  .mdi {
-    margin-right: 8px;
-  }
-
-  /* Add Product button styles */
-  .btn-add-product {
-    font-size: 16px;
-    color: white;
-    background-color: blue; 
-    border: 1px solid blue;
-    margin-bottom: 16px;
-    font-weight: bold;
-    float: right; 
-  }
-
-    .btn-add-product:hover {
-      background-color: lighten(blue, 30%);
-    }
-
-    .btn-add-product:focus {
-      box-shadow: 0 0 0 4px lighten(blue, 40%);
-    }
-
-  .add-product-text {
-    font-size: 18px; 
-  }
-
-  /* Delete button styles */
-  .btn-delete {
-    font-size: 16px;
-    color: red;
-  }
-
-    .btn-delete > .mdi-delete-empty {
-      display: none;
-    }
-
-    .btn-delete:hover {
-      background-color: lighten(red, 48%);
-    }
-
-      .btn-delete:hover > .mdi-delete-empty {
-        display: block;
-      }
-
-      .btn-delete:hover > .mdi-delete {
-        display: none;
-      }
-
-    .btn-delete:focus {
-      box-shadow: 0 0 0 4px lighten(red, 40%);
-    }
-
-  /* Edit button styles */
-  .btn-edit {
-    font-size: 16px;
-    color: blue;
-  }
-
-    .btn-edit > .mdi-pencil-outline {
-      display: none;
-    }
-
-    .btn-edit:hover {
-      background-color: lighten(blue, 48%);
-    }
-
-      .btn-edit:hover > .mdi-pencil-outline {
-        display: block;
-      }
-
-      .btn-edit:hover > .mdi-pencil {
-        display: none;
-      }
-
-    .btn-edit:focus {
-      box-shadow: 0 0 0 4px lighten(blue, 40%);
-    }
-</style>
+        <td>
+          <img src="https://localhost:7286/api/Products/getImages/{{ product.image }}" alt="{{ product.name }}" class="img-thumbnail" style="max-width: 100px;">
+        </td>
+        <td>{{ product.category.name }}</td>
+        <td>{{ product.price }}$</td>
+        <td>{{ product.description }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm me-2" (click)="editProduct(product.id)">Edit</button> &nbsp;
+          <button class="btn btn-danger btn-sm me-2" (click)="deleteProduct(product.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

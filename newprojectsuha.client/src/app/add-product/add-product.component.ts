@@ -40,11 +40,11 @@ export class AddProductComponent {
     this._ser.AddProduct(form).subscribe(
       () => {
         alert('The product was added successfully');
-        this._router.navigate(['AdminDashBoard/GetProducts']);
+        this._router.navigate(['dash/AllProduct']);
       },
       (error) => {
         alert(error.error);
       }
     );
   }
-} 
+}

@@ -6,52 +6,58 @@
           <span class="fs-5 d-none d-sm-inline">Admin Dashboard</span>
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+
+
           <li>
-            <a routerLink="/dash/ContactAdmin" class="nav-link px-0"> <span class="d-none d-sm-inline">Contact</span> 2 </a>
+            <a routerLink="/dash/GetAllUsers" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">All User</span>
+            </a>
           </li>
+
+          <li>
+            <a routerLink="/dash/ContactAdmin" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Contact</span>
+            </a>
+          </li>
+
           <li>
             <a routerLink="/dash/TestimonialAdmin" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Testimonial</span>
             </a>
           </li>
+
+          <p class="nav-link px-0 align-middle">-------------------------------------------</p>
+
           <li>
             <a routerLink="/dash/Display_GymAndClasses" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
               <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Gym and Classes</span>
             </a>
           </li>
-          <li>
-            <a routerLink="/dash/Orderhisstory" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-              <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Order History</span>
-            </a>
-          </li>
+
 
           <li>
             <a routerLink="/dash/Display-Subscription" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-              <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Display-Sybscription</span>
+              <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">All Subscription</span>
             </a>
           </li>
-          <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-            <li class="w-100">
-              <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Itemmm</span> 7</a>
-            </li>
-            <li>
-              <a routerLink="/dash/orderhistory" class="nav-link px-0">order history</a>
-            </li>
-          </ul>
+
+          <p class="nav-link px-0 align-middle">-------------------------------------------</p>
 
           <li>
-            <a routerLink="/dash/Display_GymAndClasses" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-              <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Gym and Classes</span>
+            <a routerLink="/dash/showrecipe" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">All Recipe</span>
             </a>
           </li>
+
           <li>
             <a routerLink="/dash/recipeDashboard" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Add Recipe</span>
             </a>
           </li>
+
           <li>
-            <a routerLink="/dash/showrecipe" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Show Recipe</span>
+            <a routerLink="/dash/AllTips" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">All Tips</span>
             </a>
           </li>
 
@@ -60,26 +66,29 @@
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Add Tips</span>
             </a>
           </li>
+
+          <p class="nav-link px-0 align-middle">-------------------------------------------</p>
+
           <li>
-            <a routerLink="/dash/AllTips" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Show Tips</span>
-            </a>
-          </li>
-          <li>
-            <a routerLink="/dash/Categories" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Show Categories</span>
+            <a routerLink="/dash/Orderhisstory" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Order History</span>
             </a>
           </li>
 
-          <!--<li>
+
+          <li>
+            <a routerLink="/dash/AdminCategory" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">All Product Categories</span>
+            </a>
+          </li>
+          <li>
             <a routerLink="/dash/AddAdminCategory" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">add Categories</span>
             </a>
-          </li>-->
-
+          </li>
           <li>
             <a routerLink="/dash/AllProduct" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Show Product</span>
+              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">All Product</span>
             </a>
           </li>
 
@@ -89,12 +98,7 @@
             </a>
           </li>
 
-         
-          <li>
-            <a routerLink="/dash/GetAllUsers" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">All User</span>
-            </a>
-          </li>
+
 
         </ul>
         <hr>
@@ -108,3 +112,6 @@
     </div>
   </div>
 </div>
+
+
+
