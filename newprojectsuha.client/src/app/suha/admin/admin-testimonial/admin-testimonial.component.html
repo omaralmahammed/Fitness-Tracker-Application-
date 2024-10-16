@@ -14,11 +14,10 @@
       <td>{{item.userName}}</td>
       <td>{{item.content}}</td>
       <td>{{item.status}}</td>
-      <!--<td><a routerLink="/dashboard/{{item.id}}" class="btn btn-success">Accepted</a>
-  <a routerLink="/dashboard/{{item.id}}" class="btn btn-danger">Reject</a></td>-->
+      <td><a routerLink="/dashboard/{{item.id}}" class="btn btn-success">Accepted</a>
+  <a routerLink="/dashboard/{{item.id}}" class="btn btn-danger">Reject</a></td>
       <td>
-        <!-- Display buttons only if status is pending -->
-        <div *ngIf="item.status === 'Pending'">
+        <div *ngIf="item.status === 'Done'">
           <button class="btn btn-success" (click)="updateStatus(item, 'Accepted')">Accept</button>
           <button class="btn btn-danger" (click)="updateStatus(item, 'Rejected')">Reject</button>
         </div>

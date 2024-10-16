@@ -341,10 +341,14 @@ export class UrlService {
   //  return this.http.get<any>(${ this.staticData }/ Admin / GetAllFitnessClass);
   //}
 
-  updateContactStatus(id: number): Observable<any> {
-    return this.http.put(`${this.baseUrl}Contact/UpdateContactStatus/${id}`, {});
-  }
+  //updateContactStatus(id: number): Observable<any> {
+  //  return this.http.put(`${this.baseUrl}Contact/UpdateContactStatus/${id}`, {});
+  //}
 
+
+  updateContactStatus(id: number, status: string) {
+    return this.http.put(`${this.baseUrl}contacts/${id}/status`, { status });
+  }
 
   // Update product by id
   EditProduct(id: number, data: any): Observable<any> {
