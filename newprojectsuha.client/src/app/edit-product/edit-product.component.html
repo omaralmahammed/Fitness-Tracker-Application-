@@ -1,43 +1,46 @@
-<div class="edit-product-form">
-  <h2>Edit Product</h2>
+<br />
+<br />
+<br />
 
-  <!-- Form for editing product -->
-  <form (ngSubmit)="editProduct(product)">
-    <!-- Product Category -->
-    <div class="form-group">
-      <label for="productCategory">Category:</label>
-      <select id="productCategory" [(ngModel)]="product.categoryId" name="categoryId" class="form-control" required>
-        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
-      </select>
-    </div>
+<form style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;" (ngSubmit)="editProduct(product)">
+  <!-- CSRF Token (if needed) -->
 
+  <h2 style="text-align: center; margin-bottom: 20px;">Update Product</h2>
 
-    <!-- Product Name -->
-    <div class="form-group">
-      <label for="productName">Product Name:</label>
-      <input id="productName" [(ngModel)]="product.name" name="name" class="form-control" required>
-    </div>
-
-    <!-- Product Price -->
-    <div class="form-group">
-      <label for="productPrice">Product Price:</label>
-      <input id="productPrice" [(ngModel)]="product.price" name="price" type="number" class="form-control" required>
-    </div>
-    <!-- Product Description -->
-    <div class="form-group" style="margin-bottom: 15px;">
-      <label for="description" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Product Description:</label>
-      <textarea id="description" [(ngModel)]="product.description" name="description" class="form-control" placeholder="Enter Product Description" rows="4" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel></textarea>
-      <div class="invalid-feedback" style="color: red; font-size: 0.875em;">Product Description can't be empty</div>
-    </div>
+  <!-- Product Category -->
+  <div class="form-group">
+    <label for="productCategory">Category:</label>
+    <select id="productCategory" [(ngModel)]="product.categoryId" name="categoryId" class="form-control" required>
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+    </select>
+  </div>
 
 
-    <!-- Product Image -->
-    <div class="form-group">
-      <label for="productImage">Product Image:</label>
-      <input id="productImage" type="file" (change)="changeImage($event)" class="form-control">
-    </div>
+  <!-- Product Name -->
+  <div class="form-group">
+    <label for="productName">Product Name:</label>
+    <input id="productName" [(ngModel)]="product.name" name="name" class="form-control" required>
+  </div>
 
-    <!-- Submit Button -->
-    <button type="submit" class="btn btn-primary">Update Product</button>
-  </form>
-</div>
+  <!-- Product Price -->
+  <div class="form-group">
+    <label for="productPrice">Product Price:</label>
+    <input id="productPrice" [(ngModel)]="product.price" name="price" type="number" class="form-control" required>
+  </div>
+  <!-- Product Description -->
+  <div class="form-group" style="margin-bottom: 15px;">
+    <label for="description" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Product Description:</label>
+    <textarea id="description" [(ngModel)]="product.description" name="description" class="form-control" placeholder="Enter Product Description" rows="4" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel></textarea>
+    <div class="invalid-feedback" style="color: red; font-size: 0.875em;">Product Description can't be empty</div>
+  </div>
+
+
+  <!-- Product Image -->
+  <div class="form-group">
+    <label for="productImage">Product Image:</label>
+    <input id="productImage" type="file" (change)="changeImage($event)" class="form-control">
+  </div>
+
+  <!-- Submit Button -->
+  <button type="submit" class="btn btn-primary">Update Product</button>
+</form>

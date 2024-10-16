@@ -1,46 +1,46 @@
-                <h3>Add Product</h3>
-              <div class="card-body">
-                <form #addProductForm="ngForm" (ngSubmit)="addnewProduct(addProductForm.value)">
-                  <!-- Category Dropdown -->
-                  <div class="form-group">
-                    <label for="category">Category Name:</label>
-                    <select id="category" name="categoryId" class="form-control" ngModel required>
-                      <option value="" disabled selected>Select a category</option>
-                      <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
-                    </select>
-                  </div>
-
-                 
-
-                  <!-- Product Name -->
-                  <div class="form-group">
-                    <label for="productname">Product Name:</label>
-                    <input type="text" class="form-control" name="Name" placeholder="Enter Product Name" required ngModel>
-                  </div>
+<h3>Add Product</h3>
+<div class="card-body">
+  <form #addProductForm="ngForm" (ngSubmit)="addnewProduct(addProductForm.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+    <!-- Category Dropdown -->
+    <div class="form-group">
+      <label for="category">Category Name:</label>
+      <select id="category" name="categoryId" class="form-control" ngModel required>
+        <option value="" disabled selected>Select a category</option>
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name }}</option>
+      </select>
+    </div>
 
 
-                  <!-- Product Price -->
-                  <div class="form-group">
-                    <label for="productprice">Product Price:</label>
-                    <input type="text" class="form-control" name="price" placeholder="Enter Product Price" required ngModel>
-                  </div>
+
+    <!-- Product Name -->
+    <div class="form-group">
+      <label for="productname">Product Name:</label>
+      <input type="text" class="form-control" name="Name" placeholder="Enter Product Name" required ngModel>
+    </div>
 
 
-                  <!-- Product Description -->
-                  <div class="form-group">
-                    <label for="description">Product Description:</label>
-                    <textarea id="description" name="description" class="form-control" placeholder="Enter Product Description" rows="4" required ngModel></textarea>
-                  </div>
+    <!-- Product Price -->
+    <div class="form-group">
+      <label for="productprice">Product Price:</label>
+      <input type="text" class="form-control" name="price" placeholder="Enter Product Price" required ngModel>
+    </div>
 
-                  <!-- Product Image -->
-                  <div class="form-group">
-                    <label for="Image">Main Image</label>
-                    <input type="file" id="Image" name="Image" class="form-control" required (change)="changeImage($event)">
-                  </div>
-                  <br /><br />
-                  <!-- Submit Button -->
-                  <div class="form-group" style="text-align: center;">
-                    <button class="btn btn-primary" type="submit">Add Product</button>
-                  </div>
-                </form>
-              </div>
+
+    <!-- Product Description -->
+    <div class="form-group">
+      <label for="description">Product Description:</label>
+      <textarea id="description" name="description" class="form-control" placeholder="Enter Product Description" rows="4" required ngModel></textarea>
+    </div>
+
+    <!-- Product Image -->
+    <div class="form-group">
+      <label for="Image">Main Image</label>
+      <input type="file" id="Image" name="Image" class="form-control" required (change)="changeImage($event)">
+    </div>
+    <br /><br />
+    <!-- Submit Button -->
+    <div class="form-group" style="text-align: center;">
+      <button class="btn btn-primary" type="submit">Add Product</button>
+    </div>
+  </form>
+</div>

@@ -1,3 +1,22 @@
+
+
+/* Customize the input field to remove the border and background */
 .rounded-input {
-  border-radius: 15px; /* Adjust for desired roundness */
+  border: none; /* Remove the border */
+  outline: none; /* Remove the outline when focused */
+  box-shadow: none; /* Remove any shadow */
+  background-color: transparent; /* Make the background transparent */
+  padding: 5px 10px; /* Adjust padding as needed */
+  font-size: 14px; /* Adjust font size */
+}
+
+/* Optionally, style the search icon and make sure it's aligned */
+.header-icons .search-icon {
+  margin-right: 10px; /* Space between the icon and the input */
+  color: #666; /* Customize the color of the icon */
+}
+
+/* Optional: Change placeholder text color */
+.rounded-input::placeholder {
+  color: #999; /* Customize placeholder text color */
 }

@@ -1,12 +1,11 @@
-<div class="container mt-4">
-  <h1 class="text-center mb-4">Show All Categories</h1>
+<br>
+<br />
+<br />
+<br />
 
-  <!-- Add Category Button -->
-  <!--<div class="text-center mb-3">
-    <button class="btn btn-success" data-toggle="modal" data-target="#addCategoryModal">
-      Add Category
-    </button>
-  </div>-->
+<div class="container mt-4">
+  <h2 class="text-center mb-4"> Categories</h2>
+
 
   <!-- Add Category Modal -->
   <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
@@ -55,7 +54,7 @@
           <td>{{item.id}}</td>
           <td>{{item.name}}</td>
           <td>
-            <a routerLink="/dash/EditAdminCategory/{{item.id}}" class="btn btn-primary">Edit</a>
+            <a routerLink="/dash/EditCategory/{{item.id}}" class="btn btn-primary">Edit</a> &nbsp;
             <button (click)="deleteCategory(item.id)" class="btn btn-danger">Delete</button>
           </td>
         </tr>
@@ -66,3 +65,8 @@
 
 
 
+<div class="text-center mb-3">
+  <button class="btn btn-primary" routerLink="/dash/AddAdminCategory">
+    Add Category
+  </button>
+</div>

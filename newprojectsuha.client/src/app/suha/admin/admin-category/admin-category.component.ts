@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { UrlService } from '../../../URL-Service/url.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-admin-category',
@@ -8,40 +10,77 @@ import { UrlService } from '../../../URL-Service/url.service';
 })
 export class AdminCategoryComponent {
 
-  ngOnInit() {
+  // Array to store categories
+  getCategoryArray: any;
 
+  // Initialize component and get categories
+  ngOnInit() {
     this.getCategory();
   }
-  constructor(private _ser: UrlService) {
 
+  constructor(private service: UrlService, private router: Router) { }
 
-  }
+  // Add a new category and refresh the category list immediately
   addNewCategory(data: any) {
     debugger
     var form = new FormData();
+
+    // Add new data to the form
     for (let key in data) {
       form.append(key, data[key])
     }
-    this._ser.AddAdminCategory(form).subscribe(() => {
-      alert("Category added!")
-    })
 
+    // Add a predefined "Sweaters" category to the form
+    form.append('categoryName', 'Sweaters');
+
+    // Call the service to add the category
+    this.service.AddAdminCategory(form).subscribe(() => {
+      Swal.fire('Success', 'Category added successfully!', 'success');
+
+      // Refresh the category list immediately after adding
+      this.getCategory();
+    }, (error) => {
+      console.error('Error adding category:', error);
+      Swal.fire('Error', 'Failed to add category. Please try again.', 'error');
+    });
   }
-  getCategoryArray: any
+
+  // Fetch categories and update the view
   getCategory() {
-    this._ser.getAdminCategory().subscribe((data) => {
-      this.getCategoryArray = data
-      console.log(this.getCategoryArray, "this.getCategoryArray")
-    })
-
+    this.service.getAdminCategory().subscribe((data) => {
+      this.getCategoryArray = data;
+      console.log(this.getCategoryArray, "this.getCategoryArray");
+    });
   }
 
-  deleteCategory(id: any) {
-    this._ser.DeleteCategory(id).subscribe(() => {
-      alert("delete Category successfully")
-      this.getCategory()
-    }
+  // Edit category
+  editCategory(id: number): void {
+    this.router.navigate(['/dash/EditCategory', id]);
+  }
 
-    )
+  // Delete category with confirmation
+  deleteCategory(id: number): void {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.service.DeleteCategory(id).subscribe({
+          next: () => {
+            this.getCategory(); // Refresh the list after deletion
+            Swal.fire('Deleted!', 'The category has been deleted.', 'success');
+          },
+          error: (error) => {
+            console.error('Error deleting category:', error);
+            Swal.fire('Error', 'Failed to delete category. Please try again.', 'error');
+          }
+        });
+      }
+    });
   }
 }

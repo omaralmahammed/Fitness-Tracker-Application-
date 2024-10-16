@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+
+   toggleDropdown(element:any) {
+  element.classList.toggle('active');
+}
 }
