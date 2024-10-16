@@ -43,4 +43,7 @@ Backend Setup (API)
 
 --------
 Trello:  https://trello.com/b/tBIfog5M/project-8
+Presentation and Buisness model :https://www.canva.com/design/DAGTvIbLWYQ/x0yCHLiVQyCaNEvY_doKlw/edit
+Figma: https://www.figma.com/design/tQLvqzAa4EqJc3xzASqPKu/FitLife?node-id=1-2&t=ZpBMiDqlgs6fuISK-1
+
 
