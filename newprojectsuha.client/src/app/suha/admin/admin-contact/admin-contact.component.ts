@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class AdminContactComponent implements OnInit {
 
-
   contacts: any[] = [];
 
   constructor(private _ser: UrlService, private _router: Router) { }
@@ -28,7 +27,6 @@ export class AdminContactComponent implements OnInit {
       }
     );
   }
-
 
   updateStatus(id: number) {
     this._ser.updateContactStatus(id).subscribe(
