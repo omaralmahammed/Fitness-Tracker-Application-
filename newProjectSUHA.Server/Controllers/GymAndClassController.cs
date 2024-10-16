@@ -170,8 +170,8 @@ namespace newProjectSUHA.Server.Controllers
             if (flag.IsNullOrEmpty()) return BadRequest("invalid request");
 
             var enrolledDetails = _db.Enrolleds
-                                    .Include(e => e.ClassSub)    
-                                    .ThenInclude(s => s.Class)                  
+                                    .Include(e => e.ClassSub)
+                                        .ThenInclude(s => s.Class)
                                     .Where(e => e.UserId == userId && e.ClassSub.Class.Flag == flag)
                                     .Select(e => new EnrolledDetailsDto
                                     {
@@ -182,7 +182,15 @@ namespace newProjectSUHA.Server.Controllers
                                         FinalPrice = e.ClassSub.FinalPrice,
                                         StartDate = e.StartDate,
                                         EndDate = e.EndDate,
-                                        PaymentMethod = e.PaymentMethod
+                                        PaymentMethod = e.PaymentMethod,
+                                        ClassStartTime = _db.AvailableTimes
+                                                            .Where(at => at.Id == e.ClassTimeId)
+                                                            .Select(at => at.StartTime)
+                                                            .FirstOrDefault(),
+                                        ClassEndTime = _db.AvailableTimes
+                                                            .Where(at => at.Id == e.ClassTimeId)
+                                                            .Select(at => at.EndTime)
+                                                            .FirstOrDefault()
                                     })
                                     .ToList();
 

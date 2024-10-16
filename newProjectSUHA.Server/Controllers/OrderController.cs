@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using newProjectSUHA.Server.Dtos;
 using newProjectSUHA.Server.Models;
 using PayPal.Api;
 
@@ -19,7 +20,18 @@ namespace newProjectSUHA.Server.Controllers
         [HttpGet("GetAllOrdersAdmin")]
         public IActionResult GetAllOrdersAdmin()
         {
-            var data = _db.Orders.ToList();
+            var data = _db.Orders
+                .Include(a => a.User)
+                .Select( x => new AdminOrderHistiryOrdersDTO
+                {
+                    FirstName = x.User.FirstName,
+                    LastName = x.User.LastName,
+                    UserId = x.User.Id,
+                    Total = x.Total,
+                    PaymentMethod = x.PaymentMethod,
+                    Date = x.Date,
+                })
+                .ToList();
             return Ok(data);
         }
 

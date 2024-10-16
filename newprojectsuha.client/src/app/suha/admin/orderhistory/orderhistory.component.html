@@ -135,7 +135,7 @@
   <table class="table table-bordered table-hover">
     <thead class="thead-dark">
       <tr>
-        <th scope="col">User ID</th>
+        <th scope="col">User Name</th>
         <th scope="col">Total Amount</th>
         <th scope="col">Payment Method</th>
         <th scope="col">Order Date</th>
@@ -144,12 +144,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let order of orders">
-        <td>{{ order.userId }}</td>
-        <td>${{ order.totalAmount }}</td>
+        <td>{{ order.firstName }} {{order.lastName}}</td>
+        <td>${{ order.total }}</td>
         <td>{{ order.paymentMethod }}</td>
         <td>{{ order.date | date }}</td>
         <td>
-          <button class="btn btn-info" (click)="getOrderItems(order.id)">View Items</button>
+          <button class="btn btn-info" (click)="getOrderItems(order.userId)">View Items</button>
         </td>
       </tr>
     </tbody>
