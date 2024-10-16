@@ -33,7 +33,7 @@ export class LogInComponent {
       var checkClassPayment = localStorage.getItem("ClassId")
       var fromCart = localStorage.getItem("cartPage")
 
-      this.moveFromBStoDB(newData.id, this.BSCartItemsList)
+      
 
       if (checkClassPayment != null) {
 
@@ -41,8 +41,9 @@ export class LogInComponent {
         localStorage.removeItem("ClassId");
 
       } else if (fromCart && newData.email != 'admin@gmail.com') {
-        debugger
+        //debugger
 
+        this.moveFromBStoDB(newData.id, this.BSCartItemsList)
 
         this._router.navigate([`/shop`]);
         this._router.navigate([`/cart`]);
@@ -54,6 +55,8 @@ export class LogInComponent {
         this._router.navigate(['/dash']);
 
       } else {
+
+        this.moveFromBStoDB(newData.id, this.BSCartItemsList)
 
         Swal.fire({
           icon: "success",

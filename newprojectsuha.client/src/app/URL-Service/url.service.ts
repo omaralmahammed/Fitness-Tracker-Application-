@@ -306,6 +306,8 @@ export class UrlService {
     this.email.next("");
     this.UserId.next("");
 
+    localStorage.clear();
+
   }
 
   getProductInfoForCart(productId: number): Observable<any> {
