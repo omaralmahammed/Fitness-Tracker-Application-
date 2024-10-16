@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-admin-contact',
   templateUrl: './admin-contact.component.html',
-  styleUrl: './admin-contact.component.css'
+  styleUrls: ['./admin-contact.component.css'] // Fixed typo here
 })
 export class AdminContactComponent implements OnInit {
 
@@ -30,11 +30,16 @@ export class AdminContactComponent implements OnInit {
 
   updateStatus(id: number) {
     this._ser.updateContactStatus(id).subscribe(
+
       () => {
+        debugger
+
         alert('Contact status updated successfully!');
         this.getContacts();
       },
       (error) => {
+        debugger
+
         alert('Error updating contact status');
         console.error('Error updating contact status:', error);
       }

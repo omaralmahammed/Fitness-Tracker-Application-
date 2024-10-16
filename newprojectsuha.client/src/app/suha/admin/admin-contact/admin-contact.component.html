@@ -1,32 +1,34 @@
-<!--<div class="container">
+<div class="container">
   <h2>Manage Contact Messages</h2>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Subject</th>
-        <th>Message</th>
-        <th>Status</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ngFor="let contact of contacts">
-        <td>{{ contact.id }}</td>
-        <td>{{ contact.name }}</td>
-        <td>{{ contact.email }}</td>
-        <td>{{ contact.subject }}</td>
-        <td>{{ contact.message }}</td>
-        <td>{{ contact.status }}</td>
-        <td>
-          <buttonngIf ="contact.status === 'pending'" class="btn btn-success" (click)="updateStatus(contact.id)">
-            Mark as Done
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Subject</th>
+          <th>Message</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let contact of contacts">
+          <td>{{ contact.id }}</td>
+          <td>{{ contact.name }}</td>
+          <td>{{ contact.email }}</td>
+          <td>{{ contact.subject }}</td>
+          <td>{{ contact.message }}</td>
+          <td>{{ contact.status }}</td>
+          <td>
+            <button *ngIf="contact.status === 'Pending'" class="btn btn-success" (click)="updateStatus(contact.id)">
+              Mark as Done
             </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>-->
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
