@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text.Json.Serialization;
 
 namespace newProjectSUHA.Server.Models;
 
@@ -17,6 +16,8 @@ public partial class Recipe
     public string? Description { get; set; }
 
     public string? NutritionalFacts { get; set; }
+
+    public string? Ingredients { get; set; }
 
     public virtual RecipesCategory? Category { get; set; }
 }

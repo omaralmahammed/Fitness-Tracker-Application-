@@ -3,7 +3,7 @@
 
   <div class="table-responsive">
     <table class="table">
-      <thead>
+      <thead class="table-dark">
         <tr>
           <th>#</th>
           <th>Name</th>
@@ -24,7 +24,7 @@
           <td>{{ contact.status }}</td>
           <td>
             <button *ngIf="contact.status === 'Pending'" class="btn btn-success" (click)="updateStatus(contact.id)">
-              Mark as Done
+              Done
             </button>
           </td>
         </tr>

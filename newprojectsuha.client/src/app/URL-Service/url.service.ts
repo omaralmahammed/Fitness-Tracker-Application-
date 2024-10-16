@@ -502,7 +502,7 @@ export class UrlService {
   SearchProductsByName(name: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}Products/SearchByName?name=${name}`);
   }
-
+  
 }
 
 

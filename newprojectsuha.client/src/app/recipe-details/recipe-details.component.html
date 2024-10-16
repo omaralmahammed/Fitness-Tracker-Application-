@@ -24,25 +24,43 @@
           <div class="single-article-text">
             <div>
               <img src="https://localhost:7286/api/Images/RecipesImages/{{recipeDetails.image}}" alt="{{recipeDetails.image}}" height="500" width="600" />
-            </div>
-            <br />
-            <h2>Details</h2>
-            <p>{{recipeDetails.description}}</p>
+            </div>           
           </div>
 
         </div>
       </div>
       <div class="col-lg-4">
         <div class="sidebar-section">
-          <div class="recent-posts">
+          <div style=" text-align: left;">
             <h4>Nutritional Facts</h4>
             <br />
-            <ul style="text-align:start">
+            <ul style=" text-align: left; list-style-type: circle; ">
               <li *ngFor="let fact of recipeDetails.nutritionalFacts.split(',')">
-                {{ fact.trim() }}
+                {{ fact.trim()}}
               </li>
             </ul>
           </div>
+
+          <div style=" text-align: left;">
+            <h4>Ingredients</h4>
+            <br/>
+            <ul style=" text-align: left; list-style-type: circle;">
+              <li *ngFor="let fact of recipeDetails.ingredients.split(',')">
+                {{ fact.trim()}}
+              </li>
+            </ul>
+          </div>
+
+          <div style=" text-align: left;">
+            <h4>Steps</h4>
+            <br />
+            <ul style="text-align: left; list-style-type: circle; ">
+              <li *ngFor="let fact of recipeDetails.description.split(',')">
+                {{ fact.trim()}}
+              </li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </div>

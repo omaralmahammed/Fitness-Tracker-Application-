@@ -1,15 +1,20 @@
-<div class="container mt-4">
-  <h2 class="mb-4">Create New Subscription for {{ className }}</h2>
-  <form (ngSubmit)="createSubscription()">
-    <div class="mb-3">
-      <label for="duration" class="form-label">Duration</label>
-      <input type="text" class="form-control" id="duration" [(ngModel)]="newSubscription.duration" name="duration" required>
-    </div>
-    <div class="mb-3">
-      <label for="finalPrice" class="form-label">Final Price</label>
-      <input type="number" class="form-control" id="finalPrice" [(ngModel)]="newSubscription.finalPrice" name="finalPrice" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Create Subscription</button>
-    <button type="button" class="btn btn-secondary ms-2" (click)="cancelData()">Cancel</button>
-  </form>
-</div>
+<br />
+<br />
+<br />
+<form (ngSubmit)="createSubscription()" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+  <h2 style="text-align: center; margin-bottom: 20px;">Create New Subscription for {{ className }}</h2>
+
+
+  <div class="form-group" style="margin-bottom: 15px;">
+    <label for="duration" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Duration</label>
+    <input type="text"  class="form-control" required  style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;"  id="duration" [(ngModel)]="newSubscription.duration" name="duration" required>
+  </div>
+  <div class="form-group" style="margin-bottom: 15px;">
+    <label for="finalPrice" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Final Price</label>
+    <input type="number" class="form-control" required  style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;" id="finalPrice" [(ngModel)]="newSubscription.finalPrice" name="finalPrice" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Subscription</button>
+</form>
+
+
+

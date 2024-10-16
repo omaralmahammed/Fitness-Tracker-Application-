@@ -22,6 +22,8 @@ export class RecipesComponent implements OnInit {
         this.getRecipesByCategory(this.categoryId); 
       }
     });
+
+    debugger
   }
 
   getRecipesByCategory(categoryId: number) {

@@ -175,7 +175,7 @@ import { AddAdminCategoryComponent } from './suha/admin/add-admin-category/add-a
         path: "dash", component: DashboardComponent,
         children: [
 
-          { path: "", component: AdminContactComponent, pathMatch: "full" }, 
+          { path: "", component: GetAllUSERSComponent, pathMatch: "full" }, 
 
           //Products
 

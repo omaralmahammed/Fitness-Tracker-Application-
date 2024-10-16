@@ -27,12 +27,13 @@
   </div>
 </div>-->
 <!-- Breadcrumb Section -->
+
 <div class="breadcrumb-section breadcrumb-bg">
   <div class="container">
     <div class="row">
       <div class="col-lg-8 offset-lg-2 text-center">
         <div class="breadcrumb-text">
-          <h1>Our {{ arrayOfItems[0]?.category.name }}</h1>
+          <!--<h1>Our {{ arrayOfItems[0]?.category.name }}</h1>-->
         </div>
       </div>
     </div>
@@ -54,7 +55,7 @@
           <div class="product-text-box">
             <h3><a routerLink="/Recipedetals/{{ item.id }}">{{ item.name }}</a></h3>
 
-            <p class="excerpt">{{ item.description }}</p>
+            <p class="excerpt">{{ item.nutritionalFacts }}</p>
             <a routerLink="/Recipedetals/{{ item.id }}" class="read-more-btn">read more <i class="fas fa-angle-right"></i></a>
           </div>
         </div>
