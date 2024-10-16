@@ -173,6 +173,7 @@ namespace newProjectSUHA.Server.Controllers
                                     .Include(e => e.ClassSub)
                                         .ThenInclude(s => s.Class)
                                     .Where(e => e.UserId == userId && e.ClassSub.Class.Flag == flag)
+                                    .OrderBy(e => e.StartDate)
                                     .Select(e => new EnrolledDetailsDto
                                     {
                                         Image = e.ClassSub.Class.Image,
