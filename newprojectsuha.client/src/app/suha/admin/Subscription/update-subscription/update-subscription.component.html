@@ -1,26 +1,36 @@
 <div class="container mt-4">
-  <h2 class="mb-4">Update Subscription</h2>
+  <form #edit="ngForm" (ngSubmit)="editSubscription(edit.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
+    <h2 style="text-align: center; margin-bottom: 20px;">Update Subscription</h2>
 
-  <form #edit="ngForm" (ngSubmit)="editSubscription(edit.value)" >
-    <div class="form-group">
-      <label for="duration">Duration:</label>
-      <input type="text" class="form-control" id="duration" name="duration" required ngModel>
+    <div class="form-container">
+      <!-- Duration Field -->
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="duration" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Duration</label>
+        <input type="text" id="duration" name="duration" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+        <span class="text-danger" id="duration-error" style="color: red; font-size: 0.875em;"></span>
+      </div>
+
+      <!-- Final Price Field -->
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="finalPrice" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Final Price</label>
+        <input type="number" id="finalPrice" name="finalPrice" class="form-control" required="required" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+        <span class="text-danger" id="finalPrice-error" style="color: red; font-size: 0.875em;"></span>
+      </div>
+
+      <!-- Class Name Field -->
+      <div class="form-group" style="margin-bottom: 15px;">
+        <label for="classId" class="form-label" style="display: block; font-weight: bold; margin-bottom: 5px;">Class Name</label>
+        <select id="classId" name="classId" class="form-control" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" ngModel>
+          <option *ngFor="let item of ClassName" [value]="item.id">{{item.name}}</option>
+        </select>
+        <span class="text-danger" id="classId-error" style="color: red; font-size: 0.875em;"></span>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-group" style="text-align: center;">
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px; background-color: #007bff; border: none; border-radius: 5px; color: white; font-size: 1em; cursor: pointer;">Update Subscription</button>
+      </div>
     </div>
-
-    <div class="form-group">
-      <label for="finalPrice">Final Price:</label>
-      <input type="number" class="form-control" id="finalPrice" name="finalPrice" required ngModel>
-    </div>
-
-    <div class="form-group">
-      <label for="classId">Class Name:</label>
-      <select name="classId" ngModel>
-        <option *ngFor="let item of ClassName" [value]="item.id">{{item.name}}</option>
-      </select>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Update Subscription</button>
-
   </form>
 </div>
 
@@ -28,7 +38,7 @@
 <!--
 
 <form #edit="ngForm" (ngSubmit)="editProdect(edit.value)" style="max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #ccc; border-radius: 10px; background-color: #f9f9f9;">
-  
+
   <input type="hidden" name="__RequestVerificationToken" value="TOKEN_VALUE">
 
   <h2 style="text-align: center; margin-bottom: 20px;">Edit Recipec</h2>
@@ -65,7 +75,7 @@
       <span class="text-danger" id="Image-error" style="color: red; font-size: 0.875em;"></span>
     </div>
 
- 
+
     <div class="form-group" style="text-align: center;">
       <button type="submit" class="btn btn-primary" style="padding: 10px 20px; background-color: #007bff; border: none; border-radius: 5px; color: white; font-size: 1em; cursor: pointer;">Submit</button>
     </div>
