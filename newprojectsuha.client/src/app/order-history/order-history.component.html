@@ -69,12 +69,12 @@
                     <tbody>
                       <tr *ngFor="let item of selectedOrderItems">
                         <td>
-                          <img src="https://localhost:7286/api/Images/getImages/{{item.product.image}}"
-                               alt="{{item.product.name}}" class="img-fluid" style="max-width: 100px;" />
+                          <img src="https://localhost:7286/api/Images/getImages/{{item.image}}"
+                               alt="{{item.name}}" class="img-fluid" style="max-width: 100px;" />
                         </td>
-                        <td>{{ item.product.name }}</td>
+                        <td>{{ item.name }}</td>
                         <td>{{ item.quantity }}</td>
-                        <td>{{ item.product.price | currency }}</td>
+                        <td>{{ item.price | currency }}</td>
                         <td>{{ item.total | currency }}</td>
                       </tr>
                     </tbody>

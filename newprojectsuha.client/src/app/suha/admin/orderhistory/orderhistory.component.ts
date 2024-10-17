@@ -70,7 +70,12 @@ export class AdminOrdersComponent {
   getOrderItems(orderId: number): void {
     this.orderService.getOrderItems(orderId).subscribe(
       data => {
-        this.selectedOrderItems = data; // Assign fetched order items to the array
+        this.selectedOrderItems = data.map((item: any) => {
+          return {
+            ...item,
+            total: item.price * item.quantity
+          };
+        });; // Assign fetched order items to the array
         this.showModal = true; // Show the modal
       },
       error => {

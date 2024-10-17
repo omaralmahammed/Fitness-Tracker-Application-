@@ -54,7 +54,17 @@ namespace newProjectSUHA.Server.Controllers
         [HttpGet("getOrderItem/{orderId}")]
         public IActionResult GetOrderDetails(int orderId)
         {
-            var orderDetails = _db.OrderItems.Include(p => p.Product).Where(oi => oi.OrderId == orderId).ToList();
+            var orderDetails = _db.OrderItems
+                .Include(p => p.Product)
+                .Where(oi => oi.OrderId == orderId)
+                .Select(a => new OrderHistoryItemsDTO
+                {
+                    Name = a.Product.Name,
+                    Image = a.Product.Image,
+                    Price = a.Product.Price,
+                    Quantity = a.Quantity,
+                })
+                .ToList();
 
             if (orderDetails == null || orderDetails.Count == 0)
             {

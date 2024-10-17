@@ -41,11 +41,11 @@ export class OrderHistoryComponent {
       this.selectedOrderItems = data.map((item: any) => {
         return {
           ...item,
-          total: item.product.price * item.quantity
+          total: item.price * item.quantity
         };
       });
 
-      },
+    },
       error => {
         console.error('Error fetching order items:', error);
       }
